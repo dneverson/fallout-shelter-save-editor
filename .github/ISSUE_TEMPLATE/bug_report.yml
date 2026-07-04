@@ -1,0 +1,40 @@
+name: Bug report
+description: Something is broken or behaves wrongly
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. The more precisely we can reproduce it, the faster it gets fixed.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+      placeholder: |
+        1. Loaded my Vault1.sav
+        2. Changed a dweller's outfit
+        3. Exported and loaded in game -> ...
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Game platform of the save
+      placeholder: PC (Steam) / Android / iOS / Switch
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
+      placeholder: e.g. Chrome 138 on Windows 11
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: |
+        Console errors (F12), screenshots, or a reproducing save file. If you attach a save,
+        strip anything personal first; only share what you are comfortable making public.

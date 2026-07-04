@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+
+/* Themed scrollbars everywhere. Replaces the default light browser chrome (white
+   track, gray thumb, arrow buttons) with the app's dark neutral + amber accent.
+   Firefox and newer Chromium use the standard scrollbar-* properties; WebKit/Blink
+   use the ::-webkit-scrollbar pseudo-elements. Colors reference Tailwind's generated
+   theme variables so they track the palette used across the UI. */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-700) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-neutral-700);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-amber-500);
+  }
+
+  /* Remove the up/down (and left/right) arrow buttons that classic Windows
+     scrollbars render, and keep the corner where two bars meet transparent. */
+  *::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}

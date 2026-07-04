@@ -1,0 +1,3872 @@
+[
+  {
+    "id": "AbrahamSpecial",
+    "name": "Abraham's Relaxedwear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 2,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Abraham_Washington",
+    "gender": "male"
+  },
+  {
+    "id": "ActionWeddingDress",
+    "name": "Action Wedding Dress",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "ActionWeddingDress",
+    "gender": "female"
+  },
+  {
+    "id": "AlienSpaceSuit",
+    "name": "Alien Space Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 4,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "AlienSpaceSuit",
+    "gender": null
+  },
+  {
+    "id": "AlienSpaceSuitEnemy",
+    "name": "Alien Space Suit",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 2,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "AlienSpaceSuit",
+    "gender": "male"
+  },
+  {
+    "id": "AlistairSpecial",
+    "name": "Tenpenny's Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 2,
+      "I": 2,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Alistair_Tempenny",
+    "gender": "male"
+  },
+  {
+    "id": "AllNightware",
+    "name": "Nightwear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 3,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "Nightwear",
+    "gender": null
+  },
+  {
+    "id": "AllNightware_Lucky",
+    "name": "Lucky Nightwear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 7,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Nightwear",
+    "gender": null
+  },
+  {
+    "id": "AllNightware_Naughty",
+    "name": "Naughty Nightwear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 5,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Nightwear",
+    "gender": null
+  },
+  {
+    "id": "AmataSpecial",
+    "name": "Amata's Jumpsuit",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 2,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "Normal",
+    "gender": "female"
+  },
+  {
+    "id": "ArgyleSweater",
+    "name": "Accountant Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "M_ArgyleSweater",
+    "gender": "male"
+  },
+  {
+    "id": "BaseballUniform",
+    "name": "Baseball Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 4,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "BaseballUniform",
+    "gender": null
+  },
+  {
+    "id": "BattleArmor",
+    "name": "Battle Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "BattleArmor",
+    "gender": null
+  },
+  {
+    "id": "BattleArmor_Heavy",
+    "name": "Heavy Battle Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 0,
+      "E": 3,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "BattleArmor",
+    "gender": null
+  },
+  {
+    "id": "BattleArmor_Sturdy",
+    "name": "Sturdy Battle Armor",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "BattleArmor",
+    "gender": null
+  },
+  {
+    "id": "BishopSpecial",
+    "name": "Clergy Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 4,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Cleric",
+    "gender": "male"
+  },
+  {
+    "id": "BittercupSpecial",
+    "name": "Bittercup's Outfit",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 2,
+      "E": 2,
+      "C": 1,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Bittercup",
+    "gender": "female"
+  },
+  {
+    "id": "BOSCasual",
+    "name": "BOS Casual",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "BOSCasual",
+    "gender": null
+  },
+  {
+    "id": "BOSUniform",
+    "name": "BoS Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 1,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "BOS_Orange",
+    "gender": null
+  },
+  {
+    "id": "BOSUniform_Advanced",
+    "name": "Advanced BoS Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "BOS_Olive",
+    "gender": null
+  },
+  {
+    "id": "BOSUniform_Expert",
+    "name": "Expert BoS Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 0,
+      "C": 3,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "BOS_JetBlack",
+    "gender": null
+  },
+  {
+    "id": "BowlingShirt",
+    "name": "Drag Racer",
+    "category": 2,
+    "special": {
+      "S": 1,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 1,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "M_BowlingShirt",
+    "gender": "male"
+  },
+  {
+    "id": "BusinessDress",
+    "name": "Agent Provocateur",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "F_BusinessDress",
+    "gender": "female"
+  },
+  {
+    "id": "BusinessSuit",
+    "name": "Business Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 4,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "M_BusinessSuit",
+    "gender": "male"
+  },
+  {
+    "id": "ButchSpecial",
+    "name": "Tunnel Snakes' Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 1,
+      "C": 2,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Butch",
+    "gender": "male"
+  },
+  {
+    "id": "CaitsCorset",
+    "name": "Cait's Corset",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "Cait Corset",
+    "gender": "female"
+  },
+  {
+    "id": "CheckeredShirt",
+    "name": "Spring Casualwear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 1,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "M_CheckeredShirt",
+    "gender": "male"
+  },
+  {
+    "id": "ColonelSpecial",
+    "name": "Autumn's Uniform",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 2,
+      "E": 2,
+      "C": 1,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Colonel_Autumn",
+    "gender": "male"
+  },
+  {
+    "id": "CombatArmor",
+    "name": "Combat Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 1,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "CombatArmor",
+    "gender": null
+  },
+  {
+    "id": "CombatArmor_Heavy",
+    "name": "Heavy Combat Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 3,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "CombatArmor",
+    "gender": null
+  },
+  {
+    "id": "CombatArmor_Sturdy",
+    "name": "Sturdy Combat Armor",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "CombatArmor",
+    "gender": null
+  },
+  {
+    "id": "ComedianSpecial",
+    "name": "Comedian Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "comedian",
+    "gender": "male"
+  },
+  {
+    "id": "costume_01",
+    "name": "Casual01",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_02",
+    "name": "Casual02",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_03",
+    "name": "Casual03",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_04",
+    "name": "Casual04",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_05",
+    "name": "Casual05",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_06",
+    "name": "Casual06",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_07",
+    "name": "Casual07",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_08",
+    "name": "Casual08",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_09",
+    "name": "Casual09",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "costume_10",
+    "name": "Casual10",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "",
+    "gender": null
+  },
+  {
+    "id": "CourserUniform",
+    "name": "Courser Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 5,
+      "E": 5,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Courser",
+    "gender": null
+  },
+  {
+    "id": "CromwellSpecial",
+    "name": "Confessor Cromwell's Rags",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 2,
+      "C": 0,
+      "I": 1,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Confessor_Cromwell",
+    "gender": "male"
+  },
+  {
+    "id": "Detective",
+    "name": "Detective Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 4,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Colonel_Autumn",
+    "gender": "male"
+  },
+  {
+    "id": "DooWopOutfit",
+    "name": "Doo-Wop Singer",
+    "category": 2,
+    "special": {
+      "S": 1,
+      "P": 0,
+      "E": 0,
+      "C": 1,
+      "I": 0,
+      "A": 1,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "F_DooWopOutfit",
+    "gender": "female"
+  },
+  {
+    "id": "DrLiSpecial",
+    "name": "Doctor Li's Outfit",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 3,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "LabCoat",
+    "gender": "female"
+  },
+  {
+    "id": "ElderLyonsSpecial",
+    "name": "Elder Lyon's Robe",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 1,
+      "C": 6,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "Elder_Lyons",
+    "gender": "male"
+  },
+  {
+    "id": "EmpressSpecial",
+    "name": "Republic Robes",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 4,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "empress",
+    "gender": "female"
+  },
+  {
+    "id": "EnclaveOfficerUniform",
+    "name": "Enclave Officer Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 2,
+      "C": 4,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "EnclaveOfficerUniform",
+    "gender": null
+  },
+  {
+    "id": "EnclaveOfficerUniform_Helmetless",
+    "name": "Enclave Officer Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 2,
+      "C": 4,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "EnclaveOfficerUniform",
+    "gender": null
+  },
+  {
+    "id": "EnclavePowerArmor",
+    "name": "Enclave Power Armor",
+    "category": 2,
+    "special": {
+      "S": 6,
+      "P": 0,
+      "E": 6,
+      "C": 0,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "EnclavePowerArmor",
+    "gender": null
+  },
+  {
+    "id": "EnclaveSecurityOutfit",
+    "name": "Enclave Security Outfit",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "EnclaveSecurityOutfit",
+    "gender": null
+  },
+  {
+    "id": "EnclaveSecurityOutfit_Helmetless",
+    "name": "Enclave Security Outfit",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "EnclaveSecurityOutfit",
+    "gender": null
+  },
+  {
+    "id": "EngineerSpecial",
+    "name": "Engineer Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 2,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Engineer",
+    "gender": "female"
+  },
+  {
+    "id": "EulogyJonesSpecial",
+    "name": "Eulogy Jones' Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 2,
+      "I": 1,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Eulogy_Jones",
+    "gender": "male"
+  },
+  {
+    "id": "FarHarborSpecial",
+    "name": "Tattered Longcoat",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 2,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "OldLongFellow",
+    "gender": "male"
+  },
+  {
+    "id": "FlightSuit",
+    "name": "Flight Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "FlightSuit",
+    "gender": null
+  },
+  {
+    "id": "FlightSuit_Advanced",
+    "name": "Advanced Flight Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 3,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "FlightSuit",
+    "gender": null
+  },
+  {
+    "id": "FlightSuit_Expert",
+    "name": "Expert Flight Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 3,
+      "C": 0,
+      "I": 0,
+      "A": 4,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "FlightSuit",
+    "gender": null
+  },
+  {
+    "id": "FormalWear",
+    "name": "Formal Wear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 3
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "GamblerSuit",
+    "gender": null
+  },
+  {
+    "id": "FormalWear_Fancy",
+    "name": "Fancy Formal Wear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 5
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "GamblerSuit",
+    "gender": null
+  },
+  {
+    "id": "FormalWear_Lucky",
+    "name": "Lucky Formal Wear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 7
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "GamblerSuit",
+    "gender": null
+  },
+  {
+    "id": "Gen1Synth",
+    "name": "Gen1 Synth",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 3,
+      "I": 0,
+      "A": 0,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Gen1Synth",
+    "gender": "male"
+  },
+  {
+    "id": "Gen2SynthEnemy",
+    "name": "Gen2 Synth Enemy",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "Gen2Synth",
+    "gender": "male"
+  },
+  {
+    "id": "GreaserSpecial",
+    "name": "Greaser Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 2,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Greaser",
+    "gender": "male"
+  },
+  {
+    "id": "HandymanJumpsuit",
+    "name": "Handyman Jumpsuit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 3,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "HandymanJumpsuit",
+    "gender": null
+  },
+  {
+    "id": "HandymanJumpsuit_Advanced",
+    "name": "Advanced Jumpsuit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 5,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "HandymanJumpsuit",
+    "gender": null
+  },
+  {
+    "id": "HandymanJumpsuit_Expert",
+    "name": "Expert Jumpsuit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 7,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "HandymanJumpsuit",
+    "gender": null
+  },
+  {
+    "id": "HanksPowerArmor",
+    "name": "Hank's Power Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 3,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "PA_60",
+    "gender": "male"
+  },
+  {
+    "id": "HarknessSpecial",
+    "name": "Harkness' Security Uniform",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 5,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 3,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "BattleArmor",
+    "gender": "male"
+  },
+  {
+    "id": "HazmatSuit",
+    "name": "Wasteland Gear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 3,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Normal",
+    "sprite": "HazmatSuit",
+    "gender": null
+  },
+  {
+    "id": "HazmatSuit_Heavy",
+    "name": "Heavy Wasteland Gear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 7,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "HazmatSuit",
+    "gender": null
+  },
+  {
+    "id": "HazmatSuit_Sturdy",
+    "name": "Sturdy Wasteland Gear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 5,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "HazmatSuit",
+    "gender": null
+  },
+  {
+    "id": "Horseman_DeathJacket",
+    "name": "Death's Jacket",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 4,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "M&F_JacketTshirt",
+    "gender": null
+  },
+  {
+    "id": "Horseman_FamineVestment",
+    "name": "Famine's Vestment",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Elder_Lyons",
+    "gender": null
+  },
+  {
+    "id": "Horseman_PestilencePlating",
+    "name": "Pestilence's Plating",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 4,
+      "C": 4,
+      "I": 4,
+      "A": 4,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "SynthArmor",
+    "gender": null
+  },
+  {
+    "id": "Horseman_WarArmor",
+    "name": "War's Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 4,
+      "E": 4,
+      "C": 4,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_60",
+    "gender": null
+  },
+  {
+    "id": "HunterGear_Bounty",
+    "name": "Bounty Hunter Gear",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "TreasureHunter",
+    "gender": null
+  },
+  {
+    "id": "HunterGear_Mutant",
+    "name": "Mutant Hunter Gear",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "TreasureHunter",
+    "gender": null
+  },
+  {
+    "id": "HunterGear_Treasure",
+    "name": "Treasure Hunter Gear",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 1,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "TreasureHunter",
+    "gender": null
+  },
+  {
+    "id": "Incognito",
+    "name": "Incognito Leisurewear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 2,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Incognito_Leisureware",
+    "gender": null
+  },
+  {
+    "id": "InstituteJumper_Advanced",
+    "name": "Advanced Institute Jumper",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 3,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "InstituteJumper",
+    "gender": null
+  },
+  {
+    "id": "InstituteJumper_Expert",
+    "name": "Expert Institute Jumper",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 4,
+      "A": 3,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "InstituteJumper",
+    "gender": null
+  },
+  {
+    "id": "JacketTshirt",
+    "name": "Motorcycle Jacket",
+    "category": 2,
+    "special": {
+      "S": 6,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "M&F_JacketTshirt",
+    "gender": null
+  },
+  {
+    "id": "JailhouseRocker",
+    "name": "Jailhouse Rocker",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 4,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "GhoulKing",
+    "gender": "male"
+  },
+  {
+    "id": "JamesSpecial",
+    "name": "Dad's Lab Uniform",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 5,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "LabCoat",
+    "gender": "male"
+  },
+  {
+    "id": "JerichoSpecial",
+    "name": "Jericho's Leather Armor",
+    "category": 4,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 6,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "WandrersArmor",
+    "gender": "male"
+  },
+  {
+    "id": "JobinsonsJersey",
+    "name": "Rackie Jobinson's Jersey",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 4,
+      "E": 0,
+      "C": 4,
+      "I": 0,
+      "A": 4,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "BaseballUniform",
+    "gender": null
+  },
+  {
+    "id": "jumpsuit",
+    "name": "Vault Suit",
+    "category": 3,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "Normal",
+    "gender": null
+  },
+  {
+    "id": "KelloggsOutfit",
+    "name": "Kellogg's Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 6,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Kellogg_Armor",
+    "gender": "male"
+  },
+  {
+    "id": "KingSpecial",
+    "name": "Medieval Ruler Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "King",
+    "gender": "male"
+  },
+  {
+    "id": "KnightSpecial",
+    "name": "Knight Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Knight",
+    "gender": "male"
+  },
+  {
+    "id": "LabCoat",
+    "name": "Lab Coat",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 3,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "LabCoat",
+    "gender": null
+  },
+  {
+    "id": "LabCoat_Advanced",
+    "name": "Advanced Lab Coat",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 5,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "LabCoat",
+    "gender": null
+  },
+  {
+    "id": "LabCoat_Expert",
+    "name": "Expert Lab Coat",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 7,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "LabCoat",
+    "gender": null
+  },
+  {
+    "id": "LegatesArmor",
+    "name": "Legate's Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 0,
+      "E": 6,
+      "C": 4,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "Legate",
+    "gender": "male"
+  },
+  {
+    "id": "LibrarianSpecial",
+    "name": "Librarian Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Librarian",
+    "gender": "female"
+  },
+  {
+    "id": "LifeguardOutfit",
+    "name": "Lifeguard Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Lifeguard",
+    "gender": null
+  },
+  {
+    "id": "LoungeShirt",
+    "name": "Bowling Shirt",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 6,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "M_LoungeShirt",
+    "gender": "male"
+  },
+  {
+    "id": "LucasSpecial",
+    "name": "Sheriff's Duster",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 5,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Lucas_Simms",
+    "gender": "male"
+  },
+  {
+    "id": "LucysVaultSuit",
+    "name": "Lucy's Vault Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 3
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "LucysVaultSuit",
+    "gender": null
+  },
+  {
+    "id": "LucysYellowDress",
+    "name": "Lucy's Yellow Dress",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 6,
+      "I": 0,
+      "A": 4,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "LucyYellowDress",
+    "gender": "female"
+  },
+  {
+    "id": "MaJuneJacket",
+    "name": "Ma June Jacket",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "MaJuneJacket",
+    "gender": null
+  },
+  {
+    "id": "MaximusJacket",
+    "name": "Maximus' Jacket",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 4,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Maximus Coat",
+    "gender": "male"
+  },
+  {
+    "id": "MayorSpecial",
+    "name": "Mayor Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 2,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Mayor",
+    "gender": "male"
+  },
+  {
+    "id": "MechanicJumpsuit",
+    "name": "Mechanic Jumpsuit",
+    "category": 2,
+    "special": {
+      "S": 1,
+      "P": 0,
+      "E": 0,
+      "C": 1,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "M_MechanicJumpSuit",
+    "gender": "male"
+  },
+  {
+    "id": "MetalArmor_Heavy",
+    "name": "Heavy Metal Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 3
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "MetalArmor",
+    "gender": null
+  },
+  {
+    "id": "MetalArmor_Sturdy",
+    "name": "Sturdy Metal Armor",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "MetalArmor",
+    "gender": null
+  },
+  {
+    "id": "MetalArmorRaiderBoss",
+    "name": "Metal Armor Raider Boss",
+    "category": 0,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Common",
+    "sprite": "MetalArmor",
+    "gender": null
+  },
+  {
+    "id": "MilitaryJumpsuit",
+    "name": "Military Fatigues",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "Military",
+    "gender": null
+  },
+  {
+    "id": "MilitaryJumpsuit_Commander",
+    "name": "Commander Fatigues",
+    "category": 2,
+    "special": {
+      "S": 7,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Military",
+    "gender": null
+  },
+  {
+    "id": "MilitaryJumpsuit_Officer",
+    "name": "Officer Fatigues",
+    "category": 2,
+    "special": {
+      "S": 5,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Military",
+    "gender": null
+  },
+  {
+    "id": "MoiraSpecial",
+    "name": "Moira's RobCo Jumpsuit",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 1,
+      "C": 0,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "Moira_Brown",
+    "gender": "female"
+  },
+  {
+    "id": "MojaveWastelandSurvivor",
+    "name": "Mojave Wasteland Survivor",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 5,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "LucyNewVegas",
+    "gender": "female"
+  },
+  {
+    "id": "MoldaversArmor",
+    "name": "Moldaver's Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 2,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "MoldaversArmor",
+    "gender": null
+  },
+  {
+    "id": "MoviefanSpecial",
+    "name": "Movie Fan Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Movie_Fan",
+    "gender": "female"
+  },
+  {
+    "id": "MrBurkeSpecial",
+    "name": "Mr. Burke's Businesswear",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 4,
+      "I": 0,
+      "A": 0,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "Mr_Burque",
+    "gender": "male"
+  },
+  {
+    "id": "MrHousesSuit",
+    "name": "Mr. House's Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 4,
+      "I": 2,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Mr House",
+    "gender": "male"
+  },
+  {
+    "id": "NCR_Ranger",
+    "name": "NCR Ranger Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "ncr_ranger",
+    "gender": null
+  },
+  {
+    "id": "NCR_Ranger_Helmetless",
+    "name": "NCR Ranger Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "ncr_ranger",
+    "gender": null
+  },
+  {
+    "id": "NCRPowerArmor",
+    "name": "NCR Power Armor",
+    "category": 2,
+    "special": {
+      "S": 1,
+      "P": 2,
+      "E": 4,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "NCRPowerArmor",
+    "gender": null
+  },
+  {
+    "id": "NinjaSuit",
+    "name": "Ninja Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 4,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Ninja",
+    "gender": "male"
+  },
+  {
+    "id": "NormalClothing",
+    "name": "Normal Clothing",
+    "category": 1,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "NormalClothing",
+    "gender": null
+  },
+  {
+    "id": "OrionsExplorerGear",
+    "name": "Orion's Explorer Gear",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 5,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "OrionMoreno_Outfit",
+    "gender": "male"
+  },
+  {
+    "id": "OverseerClaffsJumpsuit",
+    "name": "Pioneer Overseer Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 3,
+      "C": 4,
+      "I": 5,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Claff_Armor",
+    "gender": "male"
+  },
+  {
+    "id": "PaladinDansesPowerArmor",
+    "name": "Paladin Danse's Power Armor",
+    "category": 2,
+    "special": {
+      "S": 5,
+      "P": 1,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "PaladinDanse_T60",
+    "gender": "male"
+  },
+  {
+    "id": "PaladinDansesPowerArmorWithHelmet",
+    "name": "Paladin Danse's Power Armor",
+    "category": 2,
+    "special": {
+      "S": 5,
+      "P": 1,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PaladinDanse_T60",
+    "gender": "male"
+  },
+  {
+    "id": "PaladinJacket",
+    "name": "BoS Paladin Jacket",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 4,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "BOS Paladin",
+    "gender": null
+  },
+  {
+    "id": "PiperSpecial",
+    "name": "Piper's Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "Piper",
+    "gender": "female"
+  },
+  {
+    "id": "PolkaDotDress",
+    "name": "Polka Dot Sundress",
+    "category": 2,
+    "special": {
+      "S": 1,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 1,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "F_PolkaDot",
+    "gender": "female"
+  },
+  {
+    "id": "PowerArmor",
+    "name": "T-45a Power Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PowerArmor",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_51a",
+    "name": "T-51a Power Armor",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 1,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_51",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_51d",
+    "name": "T-51d Power Armor",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_51",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_51f",
+    "name": "T-51f Power Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_51",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_MkI",
+    "name": "X-01 Mk I Power Armor",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 1,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_X1",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_MkIV",
+    "name": "X-01 Mk IV Power Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 1,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_X1",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_MkVI",
+    "name": "X-01 Mk VI Power Armor",
+    "category": 2,
+    "special": {
+      "S": 5,
+      "P": 1,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_X1",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_T45d",
+    "name": "T-45d Power Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 4,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PowerArmor",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_T45f",
+    "name": "T-45f Power Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 5,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PowerArmor",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_T60a",
+    "name": "T-60a Power Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 3,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_60",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_T60d",
+    "name": "T-60d Power Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_60",
+    "gender": null
+  },
+  {
+    "id": "PowerArmor_T60f",
+    "name": "T-60f Power Armor",
+    "category": 2,
+    "special": {
+      "S": 1,
+      "P": 1,
+      "E": 5,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "PA_60",
+    "gender": null
+  },
+  {
+    "id": "PrestonSpecial",
+    "name": "Minuteman Uniform",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 2,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Preston",
+    "gender": "male"
+  },
+  {
+    "id": "PrewarCowboy",
+    "name": "Prewar Cowboy Costume",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "PrewarCowboy",
+    "gender": null
+  },
+  {
+    "id": "PrinceSpecial",
+    "name": "Nobility Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 2,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Prince",
+    "gender": "male"
+  },
+  {
+    "id": "ProfessorSpecial",
+    "name": "Professor Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Professor",
+    "gender": "male"
+  },
+  {
+    "id": "RadiationSuit",
+    "name": "Radiation Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Normal",
+    "sprite": "EnvironmentSuit",
+    "gender": null
+  },
+  {
+    "id": "RadiationSuit_Advanced",
+    "name": "Advanced Radiation Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 3,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "EnvironmentSuit",
+    "gender": null
+  },
+  {
+    "id": "RadiationSuit_Expert",
+    "name": "Expert Radiation Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "EnvironmentSuit",
+    "gender": null
+  },
+  {
+    "id": "RaiderArmor",
+    "name": "Raider Armor",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "RaidersArmor",
+    "gender": null
+  },
+  {
+    "id": "RaiderArmor_Heavy",
+    "name": "Heavy Raider Armor",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 4,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "RaidersArmor",
+    "gender": null
+  },
+  {
+    "id": "RaiderArmor_Sturdy",
+    "name": "Sturdy Raider Armor",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 3,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "RaidersArmor",
+    "gender": null
+  },
+  {
+    "id": "RegsDirtyBlackSuit",
+    "name": "Regs' Dirty Black Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 6,
+      "E": 0,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "SleekSuit",
+    "gender": "male"
+  },
+  {
+    "id": "RiotGear",
+    "name": "Merc Gear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 1,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "RiotGear",
+    "gender": null
+  },
+  {
+    "id": "RiotGear_Heavy",
+    "name": "Heavy Merc Gear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 3,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "RiotGear",
+    "gender": null
+  },
+  {
+    "id": "RiotGear_Sturdy",
+    "name": "Sturdy Merc Gear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "RiotGear",
+    "gender": null
+  },
+  {
+    "id": "RobCoFactoryUniform",
+    "name": "RobCo Factory Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "RobCoFactoryUniform",
+    "gender": null
+  },
+  {
+    "id": "RobCoRdSuit",
+    "name": "RobCo R&D Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "RobCoRdSuit",
+    "gender": null
+  },
+  {
+    "id": "RobCoRdSuit_Helmetless",
+    "name": "RobCo R&D Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 4,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "RobCoRdSuit",
+    "gender": null
+  },
+  {
+    "id": "RobotArmor",
+    "name": "Robot Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "RobotArmor",
+    "gender": null
+  },
+  {
+    "id": "RothchildSpecial",
+    "name": "Scribe Rothchild's Robe",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 1,
+      "C": 2,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "ScribeRobe",
+    "gender": "male"
+  },
+  {
+    "id": "RottedDuster",
+    "name": "The Ghoul's Coat",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 2,
+      "C": 2,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "RottedDuster",
+    "gender": null
+  },
+  {
+    "id": "SantaSuit_Original",
+    "name": "Original Santa Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 3,
+      "C": 4,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Santa",
+    "gender": null
+  },
+  {
+    "id": "SarahSpecial",
+    "name": "Lyon's Pride Armor",
+    "category": 4,
+    "special": {
+      "S": 4,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "PowerArmor",
+    "gender": "female"
+  },
+  {
+    "id": "ScarredPowerArmor",
+    "name": "Scarred Power Armor",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 2,
+      "E": 4,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "ScarredPowerArmor",
+    "gender": null
+  },
+  {
+    "id": "ScientistScrubs",
+    "name": "Junior Officer Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 1,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "ScientistScrubs",
+    "gender": null
+  },
+  {
+    "id": "ScientistScrubs_Commander",
+    "name": "Commander Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 3,
+      "I": 4,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "ScientistScrubs",
+    "gender": null
+  },
+  {
+    "id": "ScientistScrubs_Officer",
+    "name": "Officer Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 3,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "ScientistScrubs",
+    "gender": null
+  },
+  {
+    "id": "ScifiSpecial",
+    "name": "Sci-Fi Fan Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 2,
+      "A": 2,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Scifi_Fan",
+    "gender": "male"
+  },
+  {
+    "id": "Scorched",
+    "name": "Scorched",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 2,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Scorched",
+    "gender": null
+  },
+  {
+    "id": "ScorchedHeavy",
+    "name": "Scorched",
+    "category": 4,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 1,
+      "C": 0,
+      "I": 2,
+      "A": 2,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Scorched 2",
+    "gender": null
+  },
+  {
+    "id": "ScribeRobe",
+    "name": "Scribe Robe",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 3,
+      "I": 0,
+      "A": 2,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "ScribeRobe",
+    "gender": null
+  },
+  {
+    "id": "ScribeRobe_Elder",
+    "name": "Elder Robe",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 4,
+      "I": 0,
+      "A": 3,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Elder_Lyons",
+    "gender": null
+  },
+  {
+    "id": "ScribeRobe_Initiate",
+    "name": "Initiate Robe",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 1,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "ScribeRobe",
+    "gender": null
+  },
+  {
+    "id": "SequinDress",
+    "name": "Vault Socialite",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 1,
+      "I": 0,
+      "A": 1,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "F_SequinDress",
+    "gender": "female"
+  },
+  {
+    "id": "SlasherSpecial",
+    "name": "Horror Fan Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Horror",
+    "gender": "male"
+  },
+  {
+    "id": "SleazySuit",
+    "name": "Sleazy Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "SleazySuit",
+    "gender": null
+  },
+  {
+    "id": "SleekSuit",
+    "name": "Sleek Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 2,
+      "A": 4,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "SleekSuit",
+    "gender": null
+  },
+  {
+    "id": "SodaFountainDress",
+    "name": "Soda Fountain Dress",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 1,
+      "C": 0,
+      "I": 1,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "F_SodaFountainDress",
+    "gender": "female"
+  },
+  {
+    "id": "SoldierSpecial",
+    "name": "Soldier Uniform",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Soldier",
+    "gender": null
+  },
+  {
+    "id": "SpecialThemeHalloween",
+    "name": "Ghost Costume",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 3,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Ghost",
+    "gender": null
+  },
+  {
+    "id": "SpecialThemeHalloween2",
+    "name": "Skeleton Costume",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 3
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Skeleton",
+    "gender": null
+  },
+  {
+    "id": "SpecialThemeThanksGiving",
+    "name": "Pilgrim Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 3,
+      "I": 2,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Pilgrim",
+    "gender": null
+  },
+  {
+    "id": "SpecialThemeXmas",
+    "name": "Santa Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Santa",
+    "gender": null
+  },
+  {
+    "id": "SpecialThemeXmas2",
+    "name": "Elf Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 3,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Elf",
+    "gender": null
+  },
+  {
+    "id": "SportsfanSpecial",
+    "name": "Sports Fan Outfit",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Sports_Fan",
+    "gender": "male"
+  },
+  {
+    "id": "StarPaladinSpecial",
+    "name": "Cross' Power Armor",
+    "category": 4,
+    "special": {
+      "S": 5,
+      "P": 2,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "None",
+    "sprite": "PowerArmor",
+    "gender": "female"
+  },
+  {
+    "id": "SurgeonSpecial",
+    "name": "Surgeon Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Surgeon",
+    "gender": "female"
+  },
+  {
+    "id": "SurvivorSpecial",
+    "name": "Survivor Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Survivor",
+    "gender": "male"
+  },
+  {
+    "id": "Suspenders",
+    "name": "Bespoke Attire",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "M_Suspenders",
+    "gender": "male"
+  },
+  {
+    "id": "SweaterVest",
+    "name": "Pre-War Suburbanite",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 0,
+      "C": 0,
+      "I": 1,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "M_SweaterVest",
+    "gender": "male"
+  },
+  {
+    "id": "Swimsuit",
+    "name": "Swimsuit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Swimsuit",
+    "gender": null
+  },
+  {
+    "id": "SwingDress",
+    "name": "Swing Dress",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 6,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "F_SwingDress",
+    "gender": "female"
+  },
+  {
+    "id": "SynthArmor_Heavy",
+    "name": "Heavy Synth Armor",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 3,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "SynthArmor",
+    "gender": null
+  },
+  {
+    "id": "ThreedogSpecial",
+    "name": "Three Dog's Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 5,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Three_Dog",
+    "gender": "male"
+  },
+  {
+    "id": "TiedBlouse",
+    "name": "Country Girl",
+    "category": 2,
+    "special": {
+      "S": 4,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Normal",
+    "sprite": "F_TiedBlouse",
+    "gender": "female"
+  },
+  {
+    "id": "UtilityJumpsuit",
+    "name": "Armored Vault Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "UtilityJumpSuit",
+    "gender": null
+  },
+  {
+    "id": "UtilityJumpsuit_Heavy",
+    "name": "Heavy Vault Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 7,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "UtilityJumpSuit",
+    "gender": null
+  },
+  {
+    "id": "UtilityJumpsuit_Sturdy",
+    "name": "Sturdy Vault Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 5,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "UtilityJumpSuit",
+    "gender": null
+  },
+  {
+    "id": "ValentinesTrenchCoat",
+    "name": "Valentine's Trench Coat",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 6,
+      "E": 0,
+      "C": 0,
+      "I": 4,
+      "A": 4,
+      "L": 0
+    },
+    "hasHelmet": true,
+    "rarity": "Legendary",
+    "sprite": "NickValentine_TrenchCoat",
+    "gender": "male"
+  },
+  {
+    "id": "Vault33Suit",
+    "name": "Vault 33 Suit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "Vault33Suit",
+    "gender": null
+  },
+  {
+    "id": "VaultSecurityOutfit",
+    "name": "Vault Security Outfit",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "VaultSecurityOutfit",
+    "gender": null
+  },
+  {
+    "id": "Vest",
+    "name": "Post-War Casanova",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 0,
+      "C": 1,
+      "I": 1,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "M_Vest",
+    "gender": "male"
+  },
+  {
+    "id": "WaitressUniform",
+    "name": "Waitress Uniform",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 4,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "F_WaitressUniform",
+    "gender": "female"
+  },
+  {
+    "id": "WandererArmor",
+    "name": "Leather Armor",
+    "category": 2,
+    "special": {
+      "S": 1,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "WandrersArmor",
+    "gender": null
+  },
+  {
+    "id": "WandererArmor_Heavy",
+    "name": "Heavy Leather Armor",
+    "category": 2,
+    "special": {
+      "S": 3,
+      "P": 0,
+      "E": 4,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "WandrersArmor",
+    "gender": null
+  },
+  {
+    "id": "WandererArmor_Sturdy",
+    "name": "Sturdy Leather Armor",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 3,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "WandrersArmor",
+    "gender": null
+  },
+  {
+    "id": "WastelandSurgeon",
+    "name": "Wasteland Surgeon",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 3
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "WastelandSurgeon",
+    "gender": null
+  },
+  {
+    "id": "WastelandSurgeon_Doctor",
+    "name": "Wasteland Doctor",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 3,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": false,
+    "rarity": "Rare",
+    "sprite": "WastelandSurgeon",
+    "gender": null
+  },
+  {
+    "id": "WastelandSurgeon_Settler",
+    "name": "Wasteland Medic",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 2,
+      "E": 0,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "WastelandSurgeon",
+    "gender": null
+  },
+  {
+    "id": "WeddingDress",
+    "name": "Wedding Dress",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 2,
+      "I": 0,
+      "A": 0,
+      "L": 2
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "WeddingDress",
+    "gender": "female"
+  },
+  {
+    "id": "WilzigsTravelwear",
+    "name": "Wilzig's Travelwear",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 4,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 2,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "WilzigsTravelwear",
+    "gender": null
+  },
+  {
+    "id": "WorkDress",
+    "name": "Rural Schoolmarm",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 1,
+      "E": 1,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 0
+    },
+    "hasHelmet": false,
+    "rarity": "Normal",
+    "sprite": "F_WorkDress",
+    "gender": "female"
+  },
+  {
+    "id": "WrestlerSpecial",
+    "name": "Wrestler Outfit",
+    "category": 2,
+    "special": {
+      "S": 2,
+      "P": 0,
+      "E": 2,
+      "C": 0,
+      "I": 0,
+      "A": 0,
+      "L": 1
+    },
+    "hasHelmet": true,
+    "rarity": "Rare",
+    "sprite": "Wrestler",
+    "gender": "male"
+  },
+  {
+    "id": "ZekesJacketAndJeans",
+    "name": "Zeke's Jacket and Jeans",
+    "category": 2,
+    "special": {
+      "S": 0,
+      "P": 0,
+      "E": 0,
+      "C": 3,
+      "I": 0,
+      "A": 0,
+      "L": 4
+    },
+    "hasHelmet": false,
+    "rarity": "Legendary",
+    "sprite": "Zeke jacket and jeans",
+    "gender": "male"
+  }
+]

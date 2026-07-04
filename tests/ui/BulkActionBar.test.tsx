@@ -1,0 +1,66 @@
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { BulkActionBar } from '../../src/ui/components/dwellers/BulkActionBar.tsx';
+import { useSaveStore } from '../../src/state/saveStore.ts';
+import type { SaveData } from '../../src/domain/model/saveSchema.ts';
+
+// The selection action bar drives one applyEdit per button over the selected
+// serializeIds. Heal and Cure are independent: Heal restores health without touching
+// radiation, Cure zeroes radiationValue without touching health.
+
+function makeSave(): SaveData {
+  return {
+    dwellers: {
+      dwellers: [
+        {
+          serializeId: 1,
+          name: 'Alice',
+          gender: 1,
+          rarity: 'Normal',
+          health: { healthValue: 50, maxHealth: 100, radiationValue: 30 },
+        },
+        {
+          serializeId: 2,
+          name: 'Bob',
+          gender: 2,
+          rarity: 'Normal',
+          health: { healthValue: 80, maxHealth: 80, radiationValue: 45 },
+        },
+      ],
+    },
+  } as SaveData;
+}
+
+const dwellerById = (id: number) =>
+  useSaveStore.getState().save?.dwellers?.dwellers.find((d) => d.serializeId === id);
+
+beforeEach(() => {
+  useSaveStore.setState({ save: makeSave(), status: 'loaded', past: [], future: [] });
+});
+
+describe('BulkActionBar - heal / cure', () => {
+  it('Cure zeroes radiationValue for the selection without changing health', async () => {
+    const user = userEvent.setup();
+    render(<BulkActionBar selectedIds={[1, 2]} onClear={vi.fn()} />);
+
+    await user.click(screen.getByRole('button', { name: 'Cure' }));
+
+    expect(dwellerById(1)?.health?.radiationValue).toBe(0);
+    expect(dwellerById(2)?.health?.radiationValue).toBe(0);
+    // Health untouched (cure is NOT heal).
+    expect(dwellerById(1)?.health?.healthValue).toBe(50);
+    expect(dwellerById(2)?.health?.healthValue).toBe(80);
+  });
+
+  it('Heal restores health to max without touching radiation', async () => {
+    const user = userEvent.setup();
+    render(<BulkActionBar selectedIds={[1]} onClear={vi.fn()} />);
+
+    await user.click(screen.getByRole('button', { name: 'Heal' }));
+
+    expect(dwellerById(1)?.health?.healthValue).toBe(100);
+    // Radiation untouched (heal is NOT cure).
+    expect(dwellerById(1)?.health?.radiationValue).toBe(30);
+  });
+});

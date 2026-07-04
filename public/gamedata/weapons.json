@@ -1,0 +1,2542 @@
+[
+  {
+    "id": "032Pistol",
+    "name": ".32 Pistol",
+    "damageMin": 1,
+    "damageMax": 2,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "0.32Pistol"
+  },
+  {
+    "id": "032Pistol_ArmorPiercing",
+    "name": "Armor Piercing .32 Pistol",
+    "damageMin": 1,
+    "damageMax": 5,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "0.32Pistol"
+  },
+  {
+    "id": "032Pistol_Enhanced",
+    "name": "Enhanced .32 Pistol",
+    "damageMin": 1,
+    "damageMax": 3,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "0.32Pistol"
+  },
+  {
+    "id": "032Pistol_Hardened",
+    "name": "Hardened .32 Pistol",
+    "damageMin": 1,
+    "damageMax": 4,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "0.32Pistol"
+  },
+  {
+    "id": "032Pistol_Rusty",
+    "name": "Rusty .32 Pistol",
+    "damageMin": 1,
+    "damageMax": 1,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "0.32Pistol"
+  },
+  {
+    "id": "032Pistol_WildBillsSidearm",
+    "name": "Wild Bill's Sidearm",
+    "damageMin": 1,
+    "damageMax": 6,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "0.32Pistol"
+  },
+  {
+    "id": "50CalMachineGun",
+    "name": ".50 Cal Machine Gun",
+    "damageMin": 11,
+    "damageMax": 14,
+    "type": 6,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "50CalMachineGun"
+  },
+  {
+    "id": "50CalMachineGun_ArmorPiercing",
+    "name": "Armor Piercing .50 Cal Machine Gun",
+    "damageMin": 15,
+    "damageMax": 16,
+    "type": 6,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "50CalMachineGun"
+  },
+  {
+    "id": "50CalMachineGun_Enhanced",
+    "name": "Enhanced .50 Cal Machine Gun",
+    "damageMin": 12,
+    "damageMax": 14,
+    "type": 6,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "50CalMachineGun"
+  },
+  {
+    "id": "50CalMachineGun_Hardened",
+    "name": "Hardened .50 Cal Machine Gun",
+    "damageMin": 13,
+    "damageMax": 15,
+    "type": 6,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "50CalMachineGun"
+  },
+  {
+    "id": "50CalMachineGun_Rusty",
+    "name": "Rusty .50 Cal Machine Gun",
+    "damageMin": 10,
+    "damageMax": 12,
+    "type": 6,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "50CalMachineGun"
+  },
+  {
+    "id": "AlienBlaster",
+    "name": "Alien Blaster",
+    "damageMin": 18,
+    "damageMax": 19,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "AlienBlaster"
+  },
+  {
+    "id": "AlienBlaster_Amplified",
+    "name": "Amplified Alien Blaster",
+    "damageMin": 18,
+    "damageMax": 22,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "AlienBlaster"
+  },
+  {
+    "id": "AlienBlaster_Destabilizer",
+    "name": "Destabilizer",
+    "damageMin": 18,
+    "damageMax": 23,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "AlienBlaster"
+  },
+  {
+    "id": "AlienBlaster_Focused",
+    "name": "Focused Alien Blaster",
+    "damageMin": 18,
+    "damageMax": 21,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "AlienBlaster"
+  },
+  {
+    "id": "AlienBlaster_Rusty",
+    "name": "Rusty Alien Blaster",
+    "damageMin": 18,
+    "damageMax": 18,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "AlienBlaster"
+  },
+  {
+    "id": "AlienBlaster_Tuned",
+    "name": "Tuned Alien Blaster",
+    "damageMin": 18,
+    "damageMax": 20,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "AlienBlaster"
+  },
+  {
+    "id": "AlienDisintegrator",
+    "name": "Alien Disintegrator",
+    "damageMin": 17,
+    "damageMax": 17,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "AlienDisintegrator"
+  },
+  {
+    "id": "AlienDisintegrator_Enhanced",
+    "name": "Enhanced Alien Disintegrator",
+    "damageMin": 18,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "AlienDisintegrator"
+  },
+  {
+    "id": "AlienDisintegrator_Hardened",
+    "name": "Hardened Alien Disintegrator",
+    "damageMin": 19,
+    "damageMax": 19,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "AlienDisintegrator"
+  },
+  {
+    "id": "AlienDisintegrator_Rusty",
+    "name": "Rusty Alien Disintegrator",
+    "damageMin": 16,
+    "damageMax": 16,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "AlienDisintegrator"
+  },
+  {
+    "id": "AmataPistol",
+    "name": "Amata's Pistol",
+    "damageMin": 2,
+    "damageMax": 5,
+    "type": 2,
+    "tier": 1,
+    "rarity": "None",
+    "sprite": "Pistol"
+  },
+  {
+    "id": "AssaultRifle",
+    "name": "Assault Rifle",
+    "damageMin": 8,
+    "damageMax": 9,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultRifle"
+  },
+  {
+    "id": "AssaultRifle_ArmorPiercing",
+    "name": "Armor Piercing Assault Rifle",
+    "damageMin": 8,
+    "damageMax": 12,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultRifle"
+  },
+  {
+    "id": "AssaultRifle_Enhanced",
+    "name": "Enhanced Assault Rifle",
+    "damageMin": 8,
+    "damageMax": 10,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultRifle"
+  },
+  {
+    "id": "AssaultRifle_Hardened",
+    "name": "Hardened Assault Rifle",
+    "damageMin": 8,
+    "damageMax": 11,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultRifle"
+  },
+  {
+    "id": "AssaultRifle_Infiltrator",
+    "name": "Infiltrator",
+    "damageMin": 8,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "AssaultRifle"
+  },
+  {
+    "id": "AssaultRifle_Rusty",
+    "name": "Rusty Assault Rifle",
+    "damageMin": 8,
+    "damageMax": 8,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultRifle"
+  },
+  {
+    "id": "AssaultronHead",
+    "name": "Assaultron Head",
+    "damageMin": 8,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultronHead"
+  },
+  {
+    "id": "AssaultronHead_Enhanced",
+    "name": "Enhanced Assaultron Head",
+    "damageMin": 9,
+    "damageMax": 13,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultronHead"
+  },
+  {
+    "id": "AssaultronHead_Hardened",
+    "name": "Hardened Assaultron Head",
+    "damageMin": 10,
+    "damageMax": 14,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultronHead"
+  },
+  {
+    "id": "AssaultronHead_Rusty",
+    "name": "Rusty Assaultron Head",
+    "damageMin": 7,
+    "damageMax": 11,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "AssaultronHead"
+  },
+  {
+    "id": "BBGun",
+    "name": "BB Gun",
+    "damageMin": 0,
+    "damageMax": 2,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "BBGun"
+  },
+  {
+    "id": "BBGun_ArmorPiercing",
+    "name": "Armor Piercing BB Gun",
+    "damageMin": 0,
+    "damageMax": 5,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "BBGun"
+  },
+  {
+    "id": "BBGun_Enhanced",
+    "name": "Enhanced BB Gun",
+    "damageMin": 0,
+    "damageMax": 3,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "BBGun"
+  },
+  {
+    "id": "BBGun_Hardened",
+    "name": "Hardened BB Gun",
+    "damageMin": 0,
+    "damageMax": 4,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "BBGun"
+  },
+  {
+    "id": "BBGun_RedRocket",
+    "name": "Red Rocket",
+    "damageMin": 0,
+    "damageMax": 6,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "BBGun"
+  },
+  {
+    "id": "BBGun_Rusty",
+    "name": "Rusty BB Gun",
+    "damageMin": 0,
+    "damageMax": 1,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "BBGun"
+  },
+  {
+    "id": "BOSAssaultRifle",
+    "name": "BOS Assault Rifle",
+    "damageMin": 16,
+    "damageMax": 16,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "BOSAssaultRifle"
+  },
+  {
+    "id": "BOSAssaultRifle_ArmorPiercing",
+    "name": "Armor Piercing BOS Assault Rifle",
+    "damageMin": 19,
+    "damageMax": 21,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "BOSAssaultRifle"
+  },
+  {
+    "id": "BOSAssaultRifle_Enhanced",
+    "name": "Enhanced BOS Assault Rifle",
+    "damageMin": 16,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "BOSAssaultRifle"
+  },
+  {
+    "id": "BOSAssaultRifle_Hardened",
+    "name": "Hardened BOS Assault Rifle",
+    "damageMin": 17,
+    "damageMax": 19,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "BOSAssaultRifle"
+  },
+  {
+    "id": "BOSAssaultRifle_Rusty",
+    "name": "Rusty BOS Assault Rifle",
+    "damageMin": 15,
+    "damageMax": 15,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "BOSAssaultRifle"
+  },
+  {
+    "id": "CombatShotgun",
+    "name": "Combat Shotgun",
+    "damageMin": 13,
+    "damageMax": 14,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "CombatShogun"
+  },
+  {
+    "id": "CombatShotgun_CharonsShotgun",
+    "name": "Charon's Shotgun",
+    "damageMin": 13,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "CombatShogun"
+  },
+  {
+    "id": "CombatShotgun_DoubleBarrelled",
+    "name": "Double-Barrel Combat Shotgun",
+    "damageMin": 13,
+    "damageMax": 17,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "CombatShogun"
+  },
+  {
+    "id": "CombatShotgun_Enhanced",
+    "name": "Enhanced Combat Shotgun",
+    "damageMin": 13,
+    "damageMax": 15,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "CombatShogun"
+  },
+  {
+    "id": "CombatShotgun_Hardened",
+    "name": "Hardened Combat Shotgun",
+    "damageMin": 13,
+    "damageMax": 16,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "CombatShogun"
+  },
+  {
+    "id": "CombatShotgun_Rusty",
+    "name": "Rusty Combat Shotgun",
+    "damageMin": 13,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "CombatShogun"
+  },
+  {
+    "id": "Cryolator",
+    "name": "Cryolator",
+    "damageMin": 20,
+    "damageMax": 24,
+    "type": 3,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "Cryolator"
+  },
+  {
+    "id": "EnclavePlasmaRifle",
+    "name": "Enclave Plasma Rifle",
+    "damageMin": 18,
+    "damageMax": 22,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Enclave_PlasmaRifle"
+  },
+  {
+    "id": "Fatman",
+    "name": "Fat Man",
+    "damageMin": 22,
+    "damageMax": 23,
+    "type": 5,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "FatMan"
+  },
+  {
+    "id": "Fatman_Enhanced",
+    "name": "Enhanced Fat Man",
+    "damageMin": 22,
+    "damageMax": 24,
+    "type": 5,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "FatMan"
+  },
+  {
+    "id": "Fatman_Guided",
+    "name": "Guided Fat Man",
+    "damageMin": 22,
+    "damageMax": 26,
+    "type": 5,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "FatMan"
+  },
+  {
+    "id": "Fatman_Hardened",
+    "name": "Hardened Fat Man",
+    "damageMin": 22,
+    "damageMax": 25,
+    "type": 5,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "FatMan"
+  },
+  {
+    "id": "Fatman_Mirv",
+    "name": "MIRV",
+    "damageMin": 22,
+    "damageMax": 27,
+    "type": 5,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "FatMan"
+  },
+  {
+    "id": "Fatman_Rusty",
+    "name": "Rusty Fat Man",
+    "damageMin": 22,
+    "damageMax": 22,
+    "type": 5,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "FatMan"
+  },
+  {
+    "id": "Fist",
+    "name": "Fist",
+    "damageMin": 1,
+    "damageMax": 1,
+    "type": 1,
+    "tier": 1,
+    "rarity": "None",
+    "sprite": "Fist"
+  },
+  {
+    "id": "Flamer",
+    "name": "Flamer",
+    "damageMin": 15,
+    "damageMax": 16,
+    "type": 3,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "Flamer"
+  },
+  {
+    "id": "Flamer_Burnmaster",
+    "name": "Burnmaster",
+    "damageMin": 15,
+    "damageMax": 20,
+    "type": 3,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Flamer"
+  },
+  {
+    "id": "Flamer_Enhanced",
+    "name": "Enhanced Flamer",
+    "damageMin": 15,
+    "damageMax": 17,
+    "type": 3,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "Flamer"
+  },
+  {
+    "id": "Flamer_Hardened",
+    "name": "Hardened Flamer",
+    "damageMin": 15,
+    "damageMax": 18,
+    "type": 3,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "Flamer"
+  },
+  {
+    "id": "Flamer_Pressurized",
+    "name": "Pressurized Flamer",
+    "damageMin": 15,
+    "damageMax": 19,
+    "type": 3,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "Flamer"
+  },
+  {
+    "id": "Flamer_Rusty",
+    "name": "Rusty Flamer",
+    "damageMin": 15,
+    "damageMax": 15,
+    "type": 3,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "Flamer"
+  },
+  {
+    "id": "GatlingLaser",
+    "name": "Gatling Laser",
+    "damageMin": 21,
+    "damageMax": 22,
+    "type": 7,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GatlingLaser"
+  },
+  {
+    "id": "GatlingLaser_Amplified",
+    "name": "Amplified Gatling Laser",
+    "damageMin": 21,
+    "damageMax": 25,
+    "type": 7,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GatlingLaser"
+  },
+  {
+    "id": "GatlingLaser_Focused",
+    "name": "Focused Gatling Laser",
+    "damageMin": 21,
+    "damageMax": 24,
+    "type": 7,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GatlingLaser"
+  },
+  {
+    "id": "GatlingLaser_Rusty",
+    "name": "Rusty Gatling Laser",
+    "damageMin": 21,
+    "damageMax": 21,
+    "type": 7,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GatlingLaser"
+  },
+  {
+    "id": "GatlingLaser_Tuned",
+    "name": "Tuned Gatling Laser",
+    "damageMin": 21,
+    "damageMax": 23,
+    "type": 7,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GatlingLaser"
+  },
+  {
+    "id": "GatlingLaser_Vengeance",
+    "name": "Vengeance",
+    "damageMin": 21,
+    "damageMax": 26,
+    "type": 7,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GatlingLaser"
+  },
+  {
+    "id": "GaussPistol_Enhanced",
+    "name": "Enhanced Gauss Pistol",
+    "damageMin": 14,
+    "damageMax": 14,
+    "type": 2,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "GaussPistolRusty"
+  },
+  {
+    "id": "GaussPistol_Focused",
+    "name": "Focused Gauss Pistol",
+    "damageMin": 13,
+    "damageMax": 13,
+    "type": 2,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "GaussPistolRusty"
+  },
+  {
+    "id": "GaussPistol_Hardened",
+    "name": "Hardened Gauss Pistol",
+    "damageMin": 15,
+    "damageMax": 15,
+    "type": 2,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "GaussPistolRusty"
+  },
+  {
+    "id": "GaussPistol_Rusty",
+    "name": "Rusty Gauss Pistol",
+    "damageMin": 12,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "GaussPistolRusty"
+  },
+  {
+    "id": "GaussRifle",
+    "name": "Gauss Rifle",
+    "damageMin": 16,
+    "damageMax": 17,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "GaussRifle"
+  },
+  {
+    "id": "GaussRifle_Accelerated",
+    "name": "Accelerated Gauss Rifle",
+    "damageMin": 16,
+    "damageMax": 20,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GaussRifle"
+  },
+  {
+    "id": "GaussRifle_Enhanced",
+    "name": "Enhanced Gauss Rifle",
+    "damageMin": 16,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GaussRifle"
+  },
+  {
+    "id": "GaussRifle_Hardened",
+    "name": "Hardened Gauss Rifle",
+    "damageMin": 16,
+    "damageMax": 19,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GaussRifle"
+  },
+  {
+    "id": "GaussRifle_Magnetro4000",
+    "name": "Magnetron 4000",
+    "damageMin": 16,
+    "damageMax": 21,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "GaussRifle"
+  },
+  {
+    "id": "GaussRifle_Rusty",
+    "name": "Rusty Gauss Rifle",
+    "damageMin": 16,
+    "damageMax": 16,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "GaussRifle"
+  },
+  {
+    "id": "GhoulRevolver",
+    "name": "Ghoul Revolver",
+    "damageMin": 8,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "GhoulRevolver"
+  },
+  {
+    "id": "GrognaksAxe",
+    "name": "Grognak's Axe",
+    "damageMin": 18,
+    "damageMax": 26,
+    "type": 17,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "GrognaksAxe"
+  },
+  {
+    "id": "HuntingRifle",
+    "name": "Hunting Rifle",
+    "damageMin": 5,
+    "damageMax": 6,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "HuntingRifle"
+  },
+  {
+    "id": "HuntingRifle_ArmorPiercing",
+    "name": "Armor Piercing Hunting Rifle",
+    "damageMin": 5,
+    "damageMax": 9,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "HuntingRifle"
+  },
+  {
+    "id": "HuntingRifle_Enhanced",
+    "name": "Enhanced Hunting Rifle",
+    "damageMin": 5,
+    "damageMax": 7,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "HuntingRifle"
+  },
+  {
+    "id": "HuntingRifle_Hardened",
+    "name": "Hardened Hunting Rifle",
+    "damageMin": 5,
+    "damageMax": 8,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "HuntingRifle"
+  },
+  {
+    "id": "HuntingRifle_OlPainless",
+    "name": "Ol' Painless",
+    "damageMin": 5,
+    "damageMax": 10,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "HuntingRifle"
+  },
+  {
+    "id": "HuntingRifle_Rusty",
+    "name": "Rusty Hunting Rifle",
+    "damageMin": 5,
+    "damageMax": 5,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "HuntingRifle"
+  },
+  {
+    "id": "InstitutePistol",
+    "name": "Institute Pistol",
+    "damageMin": 9,
+    "damageMax": 11,
+    "type": 11,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "InstitutePistol"
+  },
+  {
+    "id": "InstitutePistol_Apotheosis",
+    "name": "Apotheosis",
+    "damageMin": 14,
+    "damageMax": 21,
+    "type": 11,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "InstitutePistol"
+  },
+  {
+    "id": "InstitutePistol_Improved",
+    "name": "Improved Institute Pistol",
+    "damageMin": 11,
+    "damageMax": 15,
+    "type": 11,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "InstitutePistol"
+  },
+  {
+    "id": "InstitutePistol_Incendiary",
+    "name": "Incendiary Institute Pistol",
+    "damageMin": 10,
+    "damageMax": 13,
+    "type": 11,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "InstitutePistol"
+  },
+  {
+    "id": "InstitutePistol_Scattered",
+    "name": "Scattered Institute Pistol",
+    "damageMin": 13,
+    "damageMax": 19,
+    "type": 11,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "InstitutePistol"
+  },
+  {
+    "id": "InstitutePistol_Scoped",
+    "name": "Scoped Institute Pistol",
+    "damageMin": 12,
+    "damageMax": 17,
+    "type": 11,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "InstitutePistol"
+  },
+  {
+    "id": "InstituteRifle",
+    "name": "Institute Rifle",
+    "damageMin": 14,
+    "damageMax": 16,
+    "type": 12,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "InstituteRifle"
+  },
+  {
+    "id": "InstituteRifle_Excited",
+    "name": "Excited Institute Rifle",
+    "damageMin": 15,
+    "damageMax": 18,
+    "type": 12,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "InstituteRifle"
+  },
+  {
+    "id": "InstituteRifle_Long",
+    "name": "Long Institute Rifle",
+    "damageMin": 16,
+    "damageMax": 20,
+    "type": 12,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "InstituteRifle"
+  },
+  {
+    "id": "InstituteRifle_NightVision",
+    "name": "Night-Vision Institute Rifle",
+    "damageMin": 17,
+    "damageMax": 22,
+    "type": 12,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "InstituteRifle"
+  },
+  {
+    "id": "InstituteRifle_Targeting",
+    "name": "Targeting Institute Rifle",
+    "damageMin": 18,
+    "damageMax": 24,
+    "type": 12,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "InstituteRifle"
+  },
+  {
+    "id": "InstituteRifle_VirgilsRifle",
+    "name": "Virgil's Rifle",
+    "damageMin": 19,
+    "damageMax": 26,
+    "type": 12,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "InstituteRifle"
+  },
+  {
+    "id": "JunkJet",
+    "name": "Junk Jet",
+    "damageMin": 13,
+    "damageMax": 15,
+    "type": 9,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "JunkJet"
+  },
+  {
+    "id": "JunkJet_Electrified",
+    "name": "Electrified Junk Jet",
+    "damageMin": 16,
+    "damageMax": 21,
+    "type": 9,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "JunkJet"
+  },
+  {
+    "id": "JunkJet_Flaming",
+    "name": "Flaming Junk Jet",
+    "damageMin": 17,
+    "damageMax": 23,
+    "type": 9,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "JunkJet"
+  },
+  {
+    "id": "JunkJet_RecoilCompensated",
+    "name": "Recoil Compensated Junk Jet",
+    "damageMin": 14,
+    "damageMax": 17,
+    "type": 9,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "JunkJet"
+  },
+  {
+    "id": "JunkJet_Tactical",
+    "name": "Tactical Junk Jet",
+    "damageMin": 15,
+    "damageMax": 19,
+    "type": 9,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "JunkJet"
+  },
+  {
+    "id": "JunkJet_TechniciansRevenge",
+    "name": "Technician's Revenge",
+    "damageMin": 18,
+    "damageMax": 25,
+    "type": 9,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "JunkJet"
+  },
+  {
+    "id": "KelloggsPistol",
+    "name": "Kellogg's Pistol",
+    "damageMin": 15,
+    "damageMax": 27,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "KelloggsGun"
+  },
+  {
+    "id": "LaserMusket",
+    "name": "Laser Musket",
+    "damageMin": 10,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "LaserMusket"
+  },
+  {
+    "id": "LaserPistol",
+    "name": "Laser Pistol",
+    "damageMin": 7,
+    "damageMax": 8,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "LaserPistol"
+  },
+  {
+    "id": "LaserPistol_Amplified",
+    "name": "Amplified Laser Pistol",
+    "damageMin": 7,
+    "damageMax": 11,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "LaserPistol"
+  },
+  {
+    "id": "LaserPistol_Focused",
+    "name": "Focused Laser Pistol",
+    "damageMin": 7,
+    "damageMax": 10,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "LaserPistol"
+  },
+  {
+    "id": "LaserPistol_Rusty",
+    "name": "Rusty Laser Pistol",
+    "damageMin": 7,
+    "damageMax": 7,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "LaserPistol"
+  },
+  {
+    "id": "LaserPistol_SmugglersEnd",
+    "name": "Smuggler's End",
+    "damageMin": 7,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "LaserPistol"
+  },
+  {
+    "id": "LaserPistol_Tuned",
+    "name": "Tuned Laser Pistol",
+    "damageMin": 7,
+    "damageMax": 9,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "LaserPistol"
+  },
+  {
+    "id": "LaserRifle",
+    "name": "Laser Rifle",
+    "damageMin": 12,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "LaserRifle"
+  },
+  {
+    "id": "LaserRifle_Amplified",
+    "name": "Amplified Laser Rifle",
+    "damageMin": 12,
+    "damageMax": 16,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "LaserRifle"
+  },
+  {
+    "id": "LaserRifle_Focused",
+    "name": "Focused Laser Rifle",
+    "damageMin": 12,
+    "damageMax": 15,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "LaserRifle"
+  },
+  {
+    "id": "LaserRifle_Rusty",
+    "name": "Rusty Laser Rifle",
+    "damageMin": 12,
+    "damageMax": 12,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "LaserRifle"
+  },
+  {
+    "id": "LaserRifle_Tuned",
+    "name": "Tuned Laser Rifle",
+    "damageMin": 12,
+    "damageMax": 14,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "LaserRifle"
+  },
+  {
+    "id": "LaserRifle_WaserWifle",
+    "name": "Wazer Wifle",
+    "damageMin": 12,
+    "damageMax": 17,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "LaserRifle"
+  },
+  {
+    "id": "LeverActionRifle_Henrietta",
+    "name": "Henrietta",
+    "damageMin": 13,
+    "damageMax": 16,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "Henrietta"
+  },
+  {
+    "id": "Magnum",
+    "name": "Scoped .44",
+    "damageMin": 3,
+    "damageMax": 4,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "MagnumRevolver"
+  },
+  {
+    "id": "Magnum_ArmorPiercing",
+    "name": "Armor Piercing Scoped .44",
+    "damageMin": 3,
+    "damageMax": 7,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "MagnumRevolver"
+  },
+  {
+    "id": "Magnum_Blackhawk",
+    "name": "Blackhawk",
+    "damageMin": 3,
+    "damageMax": 8,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "MagnumRevolver"
+  },
+  {
+    "id": "Magnum_Enhanced",
+    "name": "Enhanced Scoped .44",
+    "damageMin": 3,
+    "damageMax": 5,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "MagnumRevolver"
+  },
+  {
+    "id": "Magnum_Hardened",
+    "name": "Hardened Scoped .44",
+    "damageMin": 3,
+    "damageMax": 6,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "MagnumRevolver"
+  },
+  {
+    "id": "Magnum_Rusty",
+    "name": "Rusty Scoped .44",
+    "damageMin": 3,
+    "damageMax": 3,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "MagnumRevolver"
+  },
+  {
+    "id": "MaresLeg",
+    "name": "Mare's Leg",
+    "damageMin": 9,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "MaresLeg"
+  },
+  {
+    "id": "Melee_BaseballBat",
+    "name": "Baseball Bat",
+    "damageMin": 5,
+    "damageMax": 15,
+    "type": 13,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "baseball_bat"
+  },
+  {
+    "id": "Melee_ButcherKnife",
+    "name": "Butcher Knife",
+    "damageMin": 8,
+    "damageMax": 18,
+    "type": 16,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "machete"
+  },
+  {
+    "id": "Melee_FireHydrantBat",
+    "name": "Fire Hydrant Bat",
+    "damageMin": 19,
+    "damageMax": 31,
+    "type": 13,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "Fire_Hydrant_Bat"
+  },
+  {
+    "id": "Melee_KitchenKnife",
+    "name": "Kitchen Knife",
+    "damageMin": 3,
+    "damageMax": 11,
+    "type": 16,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "butcher_knife"
+  },
+  {
+    "id": "Melee_Pickaxe",
+    "name": "Pickaxe",
+    "damageMin": 11,
+    "damageMax": 21,
+    "type": 17,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "PickAxe"
+  },
+  {
+    "id": "Melee_PoolCue",
+    "name": "Pool Cue",
+    "damageMin": 0,
+    "damageMax": 8,
+    "type": 18,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "taco"
+  },
+  {
+    "id": "Melee_RaiderSword",
+    "name": "Relentless Raider Sword",
+    "damageMin": 16,
+    "damageMax": 28,
+    "type": 19,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "bumper_sword"
+  },
+  {
+    "id": "Minigun",
+    "name": "Minigun",
+    "damageMin": 19,
+    "damageMax": 20,
+    "type": 6,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Minigun"
+  },
+  {
+    "id": "Minigun_ArmorPiercing",
+    "name": "Armor Piercing Minigun",
+    "damageMin": 19,
+    "damageMax": 23,
+    "type": 6,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Minigun"
+  },
+  {
+    "id": "Minigun_Enhanced",
+    "name": "Enhanced Minigun",
+    "damageMin": 19,
+    "damageMax": 21,
+    "type": 6,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Minigun"
+  },
+  {
+    "id": "Minigun_Hardened",
+    "name": "Hardened Minigun",
+    "damageMin": 19,
+    "damageMax": 22,
+    "type": 6,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Minigun"
+  },
+  {
+    "id": "Minigun_LeadBelcher",
+    "name": "Lead Belcher",
+    "damageMin": 19,
+    "damageMax": 24,
+    "type": 6,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Minigun"
+  },
+  {
+    "id": "Minigun_Rusty",
+    "name": "Rusty Minigun",
+    "damageMin": 19,
+    "damageMax": 19,
+    "type": 6,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "Minigun"
+  },
+  {
+    "id": "MissilLauncher",
+    "name": "Missile Launcher",
+    "damageMin": 20,
+    "damageMax": 21,
+    "type": 8,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "MissileLauncher"
+  },
+  {
+    "id": "MissilLauncher_Enhanced",
+    "name": "Enhanced Missile Launcher",
+    "damageMin": 20,
+    "damageMax": 22,
+    "type": 8,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "MissileLauncher"
+  },
+  {
+    "id": "MissilLauncher_Guided",
+    "name": "Guided Missile Launcher",
+    "damageMin": 20,
+    "damageMax": 24,
+    "type": 8,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "MissileLauncher"
+  },
+  {
+    "id": "MissilLauncher_Hardened",
+    "name": "Hardened Missile Launcher",
+    "damageMin": 20,
+    "damageMax": 23,
+    "type": 8,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "MissileLauncher"
+  },
+  {
+    "id": "MissilLauncher_MissLauncher",
+    "name": "Miss Launcher",
+    "damageMin": 20,
+    "damageMax": 25,
+    "type": 8,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "MissileLauncher"
+  },
+  {
+    "id": "MissilLauncher_Rusty",
+    "name": "Rusty Missile Launcher",
+    "damageMin": 20,
+    "damageMax": 20,
+    "type": 8,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "MissileLauncher"
+  },
+  {
+    "id": "MountainMomma",
+    "name": "Mountain Momma",
+    "damageMin": 14,
+    "damageMax": 19,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "CombatShogun"
+  },
+  {
+    "id": "PipePistol",
+    "name": "Pipe Pistol",
+    "damageMin": 1,
+    "damageMax": 3,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "PipePistol"
+  },
+  {
+    "id": "PipePistol_Auto",
+    "name": "Auto Pipe Pistol",
+    "damageMin": 5,
+    "damageMax": 11,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "PipePistol"
+  },
+  {
+    "id": "PipePistol_HairTrigger",
+    "name": "Hair Trigger Pipe Pistol",
+    "damageMin": 2,
+    "damageMax": 5,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "PipePistol"
+  },
+  {
+    "id": "PipePistol_Heavy",
+    "name": "Heavy Pipe Pistol",
+    "damageMin": 3,
+    "damageMax": 7,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "PipePistol"
+  },
+  {
+    "id": "PipePistol_LittleBrother",
+    "name": "Little Brother",
+    "damageMin": 6,
+    "damageMax": 13,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PipePistol"
+  },
+  {
+    "id": "PipePistol_Scoped",
+    "name": "Scoped Pipe Pistol",
+    "damageMin": 4,
+    "damageMax": 9,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "PipePistol"
+  },
+  {
+    "id": "PipeRifle",
+    "name": "Pipe Rifle",
+    "damageMin": 5,
+    "damageMax": 7,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "PipeRifle"
+  },
+  {
+    "id": "PipeRifle_Bayoneted",
+    "name": "Bayoneted Pipe Rifle",
+    "damageMin": 9,
+    "damageMax": 15,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "PipeRifle"
+  },
+  {
+    "id": "PipeRifle_BigSister",
+    "name": "Big Sister",
+    "damageMin": 10,
+    "damageMax": 17,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PipeRifle"
+  },
+  {
+    "id": "PipeRifle_Calibrated",
+    "name": "Calibrated Pipe Rifle",
+    "damageMin": 6,
+    "damageMax": 9,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "PipeRifle"
+  },
+  {
+    "id": "PipeRifle_Long",
+    "name": "Long Pipe Rifle",
+    "damageMin": 7,
+    "damageMax": 11,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "PipeRifle"
+  },
+  {
+    "id": "PipeRifle_NightVision",
+    "name": "Night-Vision Pipe Rifle",
+    "damageMin": 8,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "PipeRifle"
+  },
+  {
+    "id": "Pistol",
+    "name": "10mm Pistol",
+    "damageMin": 2,
+    "damageMax": 3,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "Pistol"
+  },
+  {
+    "id": "Pistol_ArmorPiercing",
+    "name": "Armor Piercing 10mm Pistol",
+    "damageMin": 2,
+    "damageMax": 6,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "Pistol"
+  },
+  {
+    "id": "Pistol_Enhanced",
+    "name": "Enhanced 10mm Pistol",
+    "damageMin": 2,
+    "damageMax": 4,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "Pistol"
+  },
+  {
+    "id": "Pistol_Hardened",
+    "name": "Hardened 10mm Pistol",
+    "damageMin": 2,
+    "damageMax": 5,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "Pistol"
+  },
+  {
+    "id": "Pistol_LoneWanderer",
+    "name": "Lone Wanderer",
+    "damageMin": 2,
+    "damageMax": 7,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "Pistol"
+  },
+  {
+    "id": "Pistol_Rusty",
+    "name": "Rusty 10mm Pistol",
+    "damageMin": 2,
+    "damageMax": 2,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "Pistol"
+  },
+  {
+    "id": "PlasmaCaster",
+    "name": "Plasma Caster",
+    "damageMin": 17,
+    "damageMax": 21,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaCaster"
+  },
+  {
+    "id": "PlasmaCaster_Enhanced",
+    "name": "Enhanced Plasma Caster",
+    "damageMin": 18,
+    "damageMax": 22,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaCaster"
+  },
+  {
+    "id": "PlasmaCaster_Hardened",
+    "name": "Hardened Plasma Caster",
+    "damageMin": 19,
+    "damageMax": 23,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaCaster"
+  },
+  {
+    "id": "PlasmaCaster_Rusty",
+    "name": "Rusty Plasma Caster",
+    "damageMin": 16,
+    "damageMax": 20,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaCaster"
+  },
+  {
+    "id": "PlasmaPistol",
+    "name": "Plasma Pistol",
+    "damageMin": 11,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "PlasmaPistol"
+  },
+  {
+    "id": "PlasmaPistol_Amplified",
+    "name": "Amplified Plasma Pistol",
+    "damageMin": 11,
+    "damageMax": 15,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaPistol"
+  },
+  {
+    "id": "PlasmaPistol_Focused",
+    "name": "Focused Plasma Pistol",
+    "damageMin": 11,
+    "damageMax": 14,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "PlasmaPistol"
+  },
+  {
+    "id": "PlasmaPistol_MPLXNovasurge",
+    "name": "MPLX Novasurge",
+    "damageMin": 11,
+    "damageMax": 16,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaPistol"
+  },
+  {
+    "id": "PlasmaPistol_Rusty",
+    "name": "Rusty Plasma Pistol",
+    "damageMin": 11,
+    "damageMax": 11,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "PlasmaPistol"
+  },
+  {
+    "id": "PlasmaPistol_Tuned",
+    "name": "Tuned Plasma Pistol",
+    "damageMin": 11,
+    "damageMax": 13,
+    "type": 2,
+    "tier": 1,
+    "rarity": "Rare",
+    "sprite": "PlasmaPistol"
+  },
+  {
+    "id": "PlasmaRifle",
+    "name": "Plasma Rifle",
+    "damageMin": 17,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "PlasmaRifle"
+  },
+  {
+    "id": "PlasmaRifle_Amplified",
+    "name": "Amplified Plasma Rifle",
+    "damageMin": 17,
+    "damageMax": 22,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaRifle"
+  },
+  {
+    "id": "PlasmaRifle_Focused",
+    "name": "Focused Plasma Rifle",
+    "damageMin": 17,
+    "damageMax": 20,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaRifle"
+  },
+  {
+    "id": "PlasmaRifle_MeanGreenMonster",
+    "name": "Mean Green Monster",
+    "damageMin": 17,
+    "damageMax": 23,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaRifle"
+  },
+  {
+    "id": "PlasmaRifle_Rusty",
+    "name": "Rusty Plasma Rifle",
+    "damageMin": 17,
+    "damageMax": 17,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "PlasmaRifle"
+  },
+  {
+    "id": "PlasmaRifle_Tuned",
+    "name": "Tuned Plasma Rifle",
+    "damageMin": 17,
+    "damageMax": 19,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "PlasmaRifle"
+  },
+  {
+    "id": "PlasmaThrower",
+    "name": "Plasma Thrower",
+    "damageMin": 17,
+    "damageMax": 19,
+    "type": 10,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaThrower"
+  },
+  {
+    "id": "PlasmaThrower_Agitated",
+    "name": "Agitated Plasma Thrower",
+    "damageMin": 18,
+    "damageMax": 21,
+    "type": 10,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaThrower"
+  },
+  {
+    "id": "PlasmaThrower_Boosted",
+    "name": "Boosted Plasma Thrower",
+    "damageMin": 20,
+    "damageMax": 25,
+    "type": 10,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaThrower"
+  },
+  {
+    "id": "PlasmaThrower_DragonsMaw",
+    "name": "Dragon's Maw",
+    "damageMin": 22,
+    "damageMax": 29,
+    "type": 10,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaThrower"
+  },
+  {
+    "id": "PlasmaThrower_Overcharged",
+    "name": "Overcharged Plasma Thrower",
+    "damageMin": 21,
+    "damageMax": 27,
+    "type": 10,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaThrower"
+  },
+  {
+    "id": "PlasmaThrower_Tactical",
+    "name": "Tactical Plasma Thrower",
+    "damageMin": 19,
+    "damageMax": 23,
+    "type": 10,
+    "tier": 1,
+    "rarity": "Legendary",
+    "sprite": "PlasmaThrower"
+  },
+  {
+    "id": "PoliceBaton",
+    "name": "Police Baton",
+    "damageMin": 1,
+    "damageMax": 1,
+    "type": 1,
+    "tier": 1,
+    "rarity": "None",
+    "sprite": "Police_Baton"
+  },
+  {
+    "id": "PowerFist",
+    "name": "Power Fist",
+    "damageMin": 13,
+    "damageMax": 18,
+    "type": 21,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PowerFist"
+  },
+  {
+    "id": "PowerFist_Enhanced",
+    "name": "Enhanced Power Fist",
+    "damageMin": 14,
+    "damageMax": 19,
+    "type": 21,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PowerFist"
+  },
+  {
+    "id": "PowerFist_Hardened",
+    "name": "Hardened Power Fist",
+    "damageMin": 15,
+    "damageMax": 20,
+    "type": 21,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PowerFist"
+  },
+  {
+    "id": "PowerFist_Rusty",
+    "name": "Rusty Power Fist",
+    "damageMin": 12,
+    "damageMax": 17,
+    "type": 21,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PowerFist"
+  },
+  {
+    "id": "PowerFistEd",
+    "name": "Ed's Custom Power Fist",
+    "damageMin": 16,
+    "damageMax": 22,
+    "type": 21,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PowerFist"
+  },
+  {
+    "id": "PulseRifle",
+    "name": "Pulse Rifle",
+    "damageMin": 18,
+    "damageMax": 19,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PulseRifle"
+  },
+  {
+    "id": "PulseRifle_Enhanced",
+    "name": "Enhanced Pulse Rifle",
+    "damageMin": 19,
+    "damageMax": 20,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PulseRifle"
+  },
+  {
+    "id": "PulseRifle_Hardened",
+    "name": "Hardened Pulse Rifle",
+    "damageMin": 20,
+    "damageMax": 21,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PulseRifle"
+  },
+  {
+    "id": "PulseRifle_Rusty",
+    "name": "Rusty Pulse Rifle",
+    "damageMin": 17,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "PulseRifle"
+  },
+  {
+    "id": "RadiumRifle",
+    "name": "Radium Rifle",
+    "damageMin": 18,
+    "damageMax": 22,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "RadiumRifle"
+  },
+  {
+    "id": "Railgun",
+    "name": "Railway Rifle",
+    "damageMin": 14,
+    "damageMax": 15,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Railgun"
+  },
+  {
+    "id": "Railgun_Accelerated",
+    "name": "Accelerated Railway Rifle",
+    "damageMin": 14,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "Railgun"
+  },
+  {
+    "id": "Railgun_Enhanced",
+    "name": "Enhanced Railway Rifle",
+    "damageMin": 14,
+    "damageMax": 16,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Railgun"
+  },
+  {
+    "id": "Railgun_Hardened",
+    "name": "Hardened Railway Rifle",
+    "damageMin": 14,
+    "damageMax": 17,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "Railgun"
+  },
+  {
+    "id": "Railgun_Railmaster",
+    "name": "Railmaster",
+    "damageMin": 14,
+    "damageMax": 19,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "Railgun"
+  },
+  {
+    "id": "Railgun_Rusty",
+    "name": "Rusty Railway Rifle",
+    "damageMin": 14,
+    "damageMax": 14,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Railgun"
+  },
+  {
+    "id": "Rifle",
+    "name": "Lever-Action Rifle",
+    "damageMin": 4,
+    "damageMax": 5,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "LeverActionRifle"
+  },
+  {
+    "id": "Rifle_ArmorPiercing",
+    "name": "Armor Piercing Lever-Action Rifle",
+    "damageMin": 4,
+    "damageMax": 8,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "LeverActionRifle"
+  },
+  {
+    "id": "Rifle_Enhanced",
+    "name": "Enhanced Lever-Action Rifle",
+    "damageMin": 4,
+    "damageMax": 6,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "LeverActionRifle"
+  },
+  {
+    "id": "Rifle_Hardened",
+    "name": "Hardened Lever-Action Rifle",
+    "damageMin": 4,
+    "damageMax": 7,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "LeverActionRifle"
+  },
+  {
+    "id": "Rifle_LincolnsRepeater",
+    "name": "Lincoln's Repeater",
+    "damageMin": 4,
+    "damageMax": 9,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "LeverActionRifle"
+  },
+  {
+    "id": "Rifle_Rusty",
+    "name": "Rusty Lever-Action Rifle",
+    "damageMin": 4,
+    "damageMax": 4,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "LeverActionRifle"
+  },
+  {
+    "id": "Ripper",
+    "name": "Ripper",
+    "damageMin": 11,
+    "damageMax": 16,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Ripper"
+  },
+  {
+    "id": "Ripper_Enhanced",
+    "name": "Enhanced Ripper",
+    "damageMin": 12,
+    "damageMax": 17,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Ripper"
+  },
+  {
+    "id": "Ripper_Hardened",
+    "name": "Hardened Ripper",
+    "damageMin": 13,
+    "damageMax": 18,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Ripper"
+  },
+  {
+    "id": "Ripper_Rusty",
+    "name": "Rusty Ripper",
+    "damageMin": 10,
+    "damageMax": 15,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Ripper"
+  },
+  {
+    "id": "SawedOffShotgun",
+    "name": "Sawed-Off Shotgun",
+    "damageMin": 6,
+    "damageMax": 7,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "SawedOff"
+  },
+  {
+    "id": "SawedOffShotgun_DoubleBarrelled",
+    "name": "Double-Barrel Sawed-Off Shotgun",
+    "damageMin": 6,
+    "damageMax": 10,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SawedOff"
+  },
+  {
+    "id": "SawedOffShotgun_Enhanced",
+    "name": "Enhanced Sawed-Off Shotgun",
+    "damageMin": 6,
+    "damageMax": 8,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "SawedOff"
+  },
+  {
+    "id": "SawedOffShotgun_Hardened",
+    "name": "Hardened Sawed-Off Shotgun",
+    "damageMin": 6,
+    "damageMax": 9,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SawedOff"
+  },
+  {
+    "id": "SawedOffShotgun_Kneecapper",
+    "name": "Kneecapper",
+    "damageMin": 6,
+    "damageMax": 11,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "SawedOff"
+  },
+  {
+    "id": "SawedOffShotgun_Rusty",
+    "name": "Rusty Sawed-Off Shotgun",
+    "damageMin": 6,
+    "damageMax": 6,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "SawedOff"
+  },
+  {
+    "id": "Shotgun",
+    "name": "Shotgun",
+    "damageMin": 9,
+    "damageMax": 10,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Shotgun"
+  },
+  {
+    "id": "Shotgun_DoubleBarrelled",
+    "name": "Double-Barrel Shotgun",
+    "damageMin": 9,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Shotgun"
+  },
+  {
+    "id": "Shotgun_Enhanced",
+    "name": "Enhanced Shotgun",
+    "damageMin": 9,
+    "damageMax": 11,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Shotgun"
+  },
+  {
+    "id": "Shotgun_FarmersDaughter",
+    "name": "Farmer's Daughter",
+    "damageMin": 9,
+    "damageMax": 14,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "Shotgun"
+  },
+  {
+    "id": "Shotgun_Hardened",
+    "name": "Hardened Shotgun",
+    "damageMin": 9,
+    "damageMax": 12,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Shotgun"
+  },
+  {
+    "id": "Shotgun_Rusty",
+    "name": "Rusty Shotgun",
+    "damageMin": 9,
+    "damageMax": 9,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "Shotgun"
+  },
+  {
+    "id": "SniperRifle",
+    "name": "Sniper Rifle",
+    "damageMin": 10,
+    "damageMax": 11,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SniperRifle"
+  },
+  {
+    "id": "SniperRifle_ArmorPiercing",
+    "name": "Armor Piercing Sniper Rifle",
+    "damageMin": 10,
+    "damageMax": 14,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SniperRifle"
+  },
+  {
+    "id": "SniperRifle_Enhanced",
+    "name": "Enhanced Sniper Rifle",
+    "damageMin": 10,
+    "damageMax": 12,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SniperRifle"
+  },
+  {
+    "id": "SniperRifle_Hardened",
+    "name": "Hardened Sniper Rifle",
+    "damageMin": 10,
+    "damageMax": 13,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SniperRifle"
+  },
+  {
+    "id": "SniperRifle_Rusty",
+    "name": "Rusty Sniper Rifle",
+    "damageMin": 10,
+    "damageMax": 10,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SniperRifle"
+  },
+  {
+    "id": "SniperRifle_VictoryRifle",
+    "name": "Victory Rifle",
+    "damageMin": 10,
+    "damageMax": 15,
+    "type": 4,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "SniperRifle"
+  },
+  {
+    "id": "SuperSledge",
+    "name": "Super Sledge",
+    "damageMin": 18,
+    "damageMax": 32,
+    "type": 13,
+    "tier": 2,
+    "rarity": "Legendary",
+    "sprite": "SuperSledge"
+  },
+  {
+    "id": "SurgicalRipper",
+    "name": "Surgical Ripper",
+    "damageMin": 13,
+    "damageMax": 14,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SurgicalRipper"
+  },
+  {
+    "id": "SurgicalRipper_Enhanced",
+    "name": "Enhanced Surgical Ripper",
+    "damageMin": 14,
+    "damageMax": 15,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SurgicalRipper"
+  },
+  {
+    "id": "SurgicalRipper_Hardened",
+    "name": "Hardened Surgical Ripper",
+    "damageMin": 16,
+    "damageMax": 17,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SurgicalRipper"
+  },
+  {
+    "id": "SurgicalRipper_Rusty",
+    "name": "Rusty Surgical Ripper",
+    "damageMin": 12,
+    "damageMax": 12,
+    "type": 20,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "SurgicalRipper"
+  },
+  {
+    "id": "T60Pistol",
+    "name": "T60 Pistol",
+    "damageMin": 10,
+    "damageMax": 14,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "T60Pistol"
+  },
+  {
+    "id": "T60Pistol_ArmorPiercing",
+    "name": "Armor Piercing T60 Pistol",
+    "damageMin": 13,
+    "damageMax": 16,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "T60Pistol"
+  },
+  {
+    "id": "T60Pistol_Enhanced",
+    "name": "Enhanced T60 Pistol",
+    "damageMin": 11,
+    "damageMax": 14,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "T60Pistol"
+  },
+  {
+    "id": "T60Pistol_Hardened",
+    "name": "Hardened T60 Pistol",
+    "damageMin": 12,
+    "damageMax": 15,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "T60Pistol"
+  },
+  {
+    "id": "T60Pistol_Rusty",
+    "name": "Rusty T60 Pistol",
+    "damageMin": 9,
+    "damageMax": 13,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "T60Pistol"
+  },
+  {
+    "id": "TranqPistol",
+    "name": "Tranq Gun",
+    "damageMin": 2,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "TranqPistol"
+  },
+  {
+    "id": "TranqPistol_Enhanced",
+    "name": "Enhanced Tranq Gun",
+    "damageMin": 4,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "TranqPistol"
+  },
+  {
+    "id": "TranqPistol_Hardened",
+    "name": "Hardened Tranq Gun",
+    "damageMin": 6,
+    "damageMax": 12,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "TranqPistol"
+  },
+  {
+    "id": "TranqPistol_Rusty",
+    "name": "Rusty Tranq Gun",
+    "damageMin": 1,
+    "damageMax": 10,
+    "type": 2,
+    "tier": 2,
+    "rarity": "Rare",
+    "sprite": "TranqPistol"
+  },
+  {
+    "id": "TriBeamLaserRifle",
+    "name": "Tri-Beam Laser Rifle",
+    "damageMin": 16,
+    "damageMax": 24,
+    "type": 4,
+    "tier": 3,
+    "rarity": "Legendary",
+    "sprite": "LaserRifle"
+  },
+  {
+    "id": "UltraciteGatling1",
+    "name": "Ultracite Gatling Laser",
+    "damageMin": 7,
+    "damageMax": 12,
+    "type": 7,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "UltraciteGatlingLaser"
+  },
+  {
+    "id": "UltraciteGatling2",
+    "name": "Maximized Ultracite Gatling Laser",
+    "damageMin": 20,
+    "damageMax": 22,
+    "type": 7,
+    "tier": 4,
+    "rarity": "Legendary",
+    "sprite": "UltraciteGatlingLaser"
+  },
+  {
+    "id": "UltracitePlasma1",
+    "name": "Ultracite Plasma Rifle",
+    "damageMin": 6,
+    "damageMax": 8,
+    "type": 4,
+    "tier": 1,
+    "rarity": "Normal",
+    "sprite": "UltracitePlasmaRifle"
+  },
+  {
+    "id": "UltracitePlasma2",
+    "name": "Optimized Ultracite Plasma Rifle",
+    "damageMin": 16,
+    "damageMax": 18,
+    "type": 4,
+    "tier": 4,
+    "rarity": "Legendary",
+    "sprite": "UltracitePlasmaRifle"
+  },
+  {
+    "id": "UltraciteSword1",
+    "name": "Ultracite Sword",
+    "damageMin": 3,
+    "damageMax": 6,
+    "type": 19,
+    "tier": 2,
+    "rarity": "Normal",
+    "sprite": "UltraciteTerrorSword"
+  },
+  {
+    "id": "UltraciteSword2",
+    "name": "Ultracite Sword2",
+    "damageMin": 10,
+    "damageMax": 14,
+    "type": 19,
+    "tier": 3,
+    "rarity": "Rare",
+    "sprite": "UltraciteTerrorSword"
+  }
+]

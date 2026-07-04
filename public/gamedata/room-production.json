@@ -1,0 +1,2724 @@
+{
+  "globals": {
+    "taskCycle": 0.1,
+    "noRushResourcesMultiplier": 1,
+    "foodConsumptionPerDweller": 0.06,
+    "waterConsumptionPerDweller": 0.06,
+    "dwellerConsumptionPeriod": 10,
+    "energyConsumptionPeriod": 8,
+    "happinessFactorList": [
+      0,
+      0.01,
+      0.02,
+      0.03,
+      0.04,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1
+    ]
+  },
+  "rooms": {
+    "Armory": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Bar": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "BarberShop": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Cafeteria": {
+      "1": {
+        "1": {
+          "produced": {
+            "Food": 1,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Food": 8,
+            "Nuka": 5
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 1.23,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Food": 10,
+            "Nuka": 5
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 1.51,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Food": 12,
+            "Nuka": 5
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "Food": 2.2,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Food": 18,
+            "Nuka": 7
+          },
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 2.706,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Food": 22,
+            "Nuka": 7
+          },
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 3.2,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Food": 26,
+            "Nuka": 7
+          },
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "Food": 3.3,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Food": 28,
+            "Nuka": 10
+          },
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 4.059,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Food": 34,
+            "Nuka": 10
+          },
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 4.983,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Food": 40,
+            "Nuka": 10
+          },
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Casino": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Classroom": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "DecorationFactory": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      }
+    },
+    "DesignFactory": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      }
+    },
+    "Dojo": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Elevator": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "Energy2": {
+      "1": {
+        "1": {
+          "produced": {
+            "Energy": 0.99,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Energy": 13,
+            "Nuka": 5
+          },
+          "consumption": {}
+        },
+        "2": {
+          "produced": {
+            "Energy": 1.188,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Energy": 15.6,
+            "Nuka": 5
+          },
+          "consumption": {}
+        },
+        "3": {
+          "produced": {
+            "Energy": 1.485,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Energy": 19.5,
+            "Nuka": 5
+          },
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "Energy": 2.079,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Energy": 27.3,
+            "Nuka": 7
+          },
+          "consumption": {}
+        },
+        "2": {
+          "produced": {
+            "Energy": 2.4948,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Energy": 32.76,
+            "Nuka": 7
+          },
+          "consumption": {}
+        },
+        "3": {
+          "produced": {
+            "Energy": 3.135,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Energy": 40.95,
+            "Nuka": 7
+          },
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "Energy": 4.18,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Energy": 57.33,
+            "Nuka": 10
+          },
+          "consumption": {}
+        },
+        "2": {
+          "produced": {
+            "Energy": 5.005,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Energy": 68.796,
+            "Nuka": 10
+          },
+          "consumption": {}
+        },
+        "3": {
+          "produced": {
+            "Energy": 6.27,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Energy": 85.995,
+            "Nuka": 10
+          },
+          "consumption": {}
+        }
+      }
+    },
+    "Entrance": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "Geothermal": {
+      "1": {
+        "1": {
+          "produced": {
+            "Energy": 0.9,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Energy": 10,
+            "Nuka": 5
+          },
+          "consumption": {}
+        },
+        "2": {
+          "produced": {
+            "Energy": 1.08,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Energy": 12,
+            "Nuka": 5
+          },
+          "consumption": {}
+        },
+        "3": {
+          "produced": {
+            "Energy": 1.35,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Energy": 15,
+            "Nuka": 5
+          },
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "Energy": 1.89,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Energy": 21,
+            "Nuka": 7
+          },
+          "consumption": {}
+        },
+        "2": {
+          "produced": {
+            "Energy": 2.268,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Energy": 25.2,
+            "Nuka": 7
+          },
+          "consumption": {}
+        },
+        "3": {
+          "produced": {
+            "Energy": 2.85,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Energy": 31.5,
+            "Nuka": 7
+          },
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "Energy": 3.8,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Energy": 44.1,
+            "Nuka": 10
+          },
+          "consumption": {}
+        },
+        "2": {
+          "produced": {
+            "Energy": 4.55,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Energy": 52.92,
+            "Nuka": 10
+          },
+          "consumption": {}
+        },
+        "3": {
+          "produced": {
+            "Energy": 5.7,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Energy": 66.15,
+            "Nuka": 10
+          },
+          "consumption": {}
+        }
+      }
+    },
+    "Gym": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Hydroponic": {
+      "1": {
+        "1": {
+          "produced": {
+            "Food": 1.1,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Food": 10,
+            "Nuka": 5
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 1.353,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Food": 12,
+            "Nuka": 5
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 1.661,
+            "Nuka": 5
+          },
+          "reserve": {
+            "Food": 15,
+            "Nuka": 5
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "Food": 2.42,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Food": 22,
+            "Nuka": 7
+          },
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 2.9766,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Food": 27,
+            "Nuka": 7
+          },
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 3.52,
+            "Nuka": 7
+          },
+          "reserve": {
+            "Food": 33,
+            "Nuka": 7
+          },
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "Food": 3.63,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Food": 35,
+            "Nuka": 10
+          },
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 4.4649,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Food": 46,
+            "Nuka": 10
+          },
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 5.4813,
+            "Nuka": 10
+          },
+          "reserve": {
+            "Food": 55,
+            "Nuka": 10
+          },
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "LivingQuarters": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "MedBay": {
+      "1": {
+        "1": {
+          "produced": {
+            "StimPack": 0.05
+          },
+          "reserve": {
+            "StimPack": 1
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "StimPack": 0.055
+          },
+          "reserve": {
+            "StimPack": 2
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "StimPack": 0.06
+          },
+          "reserve": {
+            "StimPack": 3
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "StimPack": 0.115
+          },
+          "reserve": {
+            "StimPack": 3
+          },
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {
+            "StimPack": 0.1265
+          },
+          "reserve": {
+            "StimPack": 6
+          },
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {
+            "StimPack": 0.138
+          },
+          "reserve": {
+            "StimPack": 9
+          },
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "StimPack": 0.17
+          },
+          "reserve": {
+            "StimPack": 4
+          },
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {
+            "StimPack": 0.187
+          },
+          "reserve": {
+            "StimPack": 8
+          },
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {
+            "StimPack": 0.204
+          },
+          "reserve": {
+            "StimPack": 12
+          },
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "NukaCola": {
+      "1": {
+        "1": {
+          "produced": {
+            "Food": 1.1,
+            "Nuka": 10,
+            "Water": 1.1
+          },
+          "reserve": {
+            "Food": 10,
+            "Nuka": 10,
+            "Water": 10
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 1.353,
+            "Nuka": 10,
+            "Water": 1.353
+          },
+          "reserve": {
+            "Food": 12,
+            "Nuka": 10,
+            "Water": 12
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 1.661,
+            "Nuka": 10,
+            "Water": 1.661
+          },
+          "reserve": {
+            "Food": 15,
+            "Nuka": 10,
+            "Water": 15
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "Food": 2.42,
+            "Nuka": 15,
+            "Water": 2.42
+          },
+          "reserve": {
+            "Food": 22,
+            "Nuka": 15,
+            "Water": 22
+          },
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 2.9766,
+            "Nuka": 15,
+            "Water": 2.9766
+          },
+          "reserve": {
+            "Food": 27,
+            "Nuka": 15,
+            "Water": 27
+          },
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 3.52,
+            "Nuka": 15,
+            "Water": 3.52
+          },
+          "reserve": {
+            "Food": 33,
+            "Nuka": 15,
+            "Water": 33
+          },
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "Food": 3.63,
+            "Nuka": 20,
+            "Water": 3.63
+          },
+          "reserve": {
+            "Food": 35,
+            "Nuka": 20,
+            "Water": 35
+          },
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {
+            "Food": 4.4649,
+            "Nuka": 20,
+            "Water": 4.4649
+          },
+          "reserve": {
+            "Food": 46,
+            "Nuka": 20,
+            "Water": 46
+          },
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {
+            "Food": 5.4813,
+            "Nuka": 20,
+            "Water": 5.4813
+          },
+          "reserve": {
+            "Food": 55,
+            "Nuka": 20,
+            "Water": 55
+          },
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "OutfitFactory": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Overseer": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestBOSPowerArmor": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestCave": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "5": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "6": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestEnclave": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestEnclaveBoss": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestFilly": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestIndustrial": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "5": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "6": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestMausoleum": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestObservatory": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestObservatoryMain": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestRedRocket": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestRobCo": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestStandard": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "5": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "6": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestUFO": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "QuestVault": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "5": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "6": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        },
+        "4": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {}
+        }
+      }
+    },
+    "Radio": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "ScienceLab": {
+      "1": {
+        "1": {
+          "produced": {
+            "RadAway": 0.05
+          },
+          "reserve": {
+            "RadAway": 1
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "RadAway": 0.055
+          },
+          "reserve": {
+            "RadAway": 2
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "RadAway": 0.06
+          },
+          "reserve": {
+            "RadAway": 3
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "RadAway": 0.115
+          },
+          "reserve": {
+            "RadAway": 3
+          },
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {
+            "RadAway": 0.1265
+          },
+          "reserve": {
+            "RadAway": 6
+          },
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {
+            "RadAway": 0.138
+          },
+          "reserve": {
+            "RadAway": 9
+          },
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "RadAway": 0.17
+          },
+          "reserve": {
+            "RadAway": 4
+          },
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {
+            "RadAway": 0.187
+          },
+          "reserve": {
+            "RadAway": 8
+          },
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {
+            "RadAway": 0.204
+          },
+          "reserve": {
+            "RadAway": 12
+          },
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "Storage": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "SuperRoom2": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "UltraciteMining": {
+      "1": {
+        "1": {
+          "produced": {
+            "DummyUltracite": 0.0038
+          },
+          "reserve": {
+            "DummyUltracite": 1
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "DummyUltracite": 0.0056
+          },
+          "reserve": {
+            "DummyUltracite": 2
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "DummyUltracite": 0.0094
+          },
+          "reserve": {
+            "DummyUltracite": 3
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      }
+    },
+    "UltraciteWeaponFactory": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      }
+    },
+    "Water2": {
+      "1": {
+        "1": {
+          "produced": {
+            "Nuka": 5,
+            "Water": 1.1
+          },
+          "reserve": {
+            "Nuka": 5,
+            "Water": 10
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "Nuka": 5,
+            "Water": 1.353
+          },
+          "reserve": {
+            "Nuka": 5,
+            "Water": 12
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "Nuka": 5,
+            "Water": 1.661
+          },
+          "reserve": {
+            "Nuka": 5,
+            "Water": 15
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "Nuka": 7,
+            "Water": 2.42
+          },
+          "reserve": {
+            "Nuka": 7,
+            "Water": 22
+          },
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {
+            "Nuka": 7,
+            "Water": 2.9766
+          },
+          "reserve": {
+            "Nuka": 7,
+            "Water": 27
+          },
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {
+            "Nuka": 7,
+            "Water": 3.52
+          },
+          "reserve": {
+            "Nuka": 7,
+            "Water": 33
+          },
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "Nuka": 10,
+            "Water": 3.63
+          },
+          "reserve": {
+            "Nuka": 10,
+            "Water": 35
+          },
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {
+            "Nuka": 10,
+            "Water": 4.4649
+          },
+          "reserve": {
+            "Nuka": 10,
+            "Water": 46
+          },
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {
+            "Nuka": 10,
+            "Water": 5.4813
+          },
+          "reserve": {
+            "Nuka": 10,
+            "Water": 55
+          },
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "WaterPlant": {
+      "1": {
+        "1": {
+          "produced": {
+            "Nuka": 5,
+            "Water": 1
+          },
+          "reserve": {
+            "Nuka": 5,
+            "Water": 8
+          },
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {
+            "Nuka": 5,
+            "Water": 1.23
+          },
+          "reserve": {
+            "Nuka": 5,
+            "Water": 10
+          },
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {
+            "Nuka": 5,
+            "Water": 1.51
+          },
+          "reserve": {
+            "Nuka": 5,
+            "Water": 12
+          },
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {
+            "Nuka": 7,
+            "Water": 2.2
+          },
+          "reserve": {
+            "Nuka": 7,
+            "Water": 18
+          },
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {
+            "Nuka": 7,
+            "Water": 2.706
+          },
+          "reserve": {
+            "Nuka": 7,
+            "Water": 22
+          },
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {
+            "Nuka": 7,
+            "Water": 3.2
+          },
+          "reserve": {
+            "Nuka": 7,
+            "Water": 26
+          },
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {
+            "Nuka": 10,
+            "Water": 3.3
+          },
+          "reserve": {
+            "Nuka": 10,
+            "Water": 28
+          },
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {
+            "Nuka": 10,
+            "Water": 4.059
+          },
+          "reserve": {
+            "Nuka": 10,
+            "Water": 34
+          },
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {
+            "Nuka": 10,
+            "Water": 4.983
+          },
+          "reserve": {
+            "Nuka": 10,
+            "Water": 40
+          },
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    },
+    "WeaponFactory": {
+      "1": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.06901
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.082812
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.151822
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.144921
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.1739052
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.3188262
+          }
+        }
+      },
+      "3": {
+        "1": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.227733
+          }
+        },
+        "2": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.2732796
+          }
+        },
+        "3": {
+          "produced": {},
+          "reserve": {},
+          "consumption": {
+            "Energy": 0.5010126
+          }
+        }
+      }
+    }
+  }
+}

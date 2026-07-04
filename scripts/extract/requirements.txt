@@ -1,0 +1,7 @@
+# Python dep for the game-file extraction stage (scripts/extract/extract_enums.py).
+# Pinned so the venv is reproducible from scratch on the curation machine:
+#   py -3 -m venv scripts/extract/.venv
+#   scripts/extract/.venv/Scripts/python -m pip install -r scripts/extract/requirements.txt
+# enums.json is read straight from Assembly-CSharp.dll via
+# dnfile; all asset/parametric data now comes from the AssetRipper export instead.
+dnfile==0.18.0

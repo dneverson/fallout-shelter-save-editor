@@ -1,0 +1,2018 @@
+[
+  {
+    "catalogId": "Face_ClaffBeard",
+    "pieceName": "Claff_beard",
+    "sortId": 119,
+    "name": "Face Claff Beard",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Doctor_spectacles",
+    "pieceName": "Doctor_spectacles",
+    "sortId": 126,
+    "name": "Face Doctor spectacles",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_DrHenryGlasses",
+    "pieceName": "DrHenry_glasses",
+    "sortId": 122,
+    "name": "Face Dr Henry Glasses",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Female_clown_nose",
+    "pieceName": "clown_nose",
+    "sortId": 60,
+    "name": "Face Female clown nose",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Female_Courser_Sunglasses",
+    "pieceName": "Courser_sunglasses",
+    "sortId": 128,
+    "name": "Face Female Courser Sunglasses",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Female_eyepatch_Stephanie",
+    "pieceName": "eyepatch_Stephanie",
+    "sortId": 112,
+    "name": "Face Female eyepatch Stephanie",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Female_face_paint",
+    "pieceName": "face_paint",
+    "sortId": 11,
+    "name": "Face Female face paint",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Female_ghoul_face",
+    "pieceName": "ghoul_face",
+    "sortId": 22,
+    "name": "Face Female ghoul face",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 2000
+  },
+  {
+    "catalogId": "Face_Female_glasses",
+    "pieceName": "glasses",
+    "sortId": 40,
+    "name": "Face Female glasses",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 900
+  },
+  {
+    "catalogId": "Face_Female_glasses_Ma_June",
+    "pieceName": "glasses_Ma_June",
+    "sortId": 103,
+    "name": "Face Female glasses Ma June",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Female_glasses2",
+    "pieceName": "glasses2",
+    "sortId": 41,
+    "name": "Face Female glasses2",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "Face_Female_glasses3_raider",
+    "pieceName": "glasses3_raider",
+    "sortId": 43,
+    "name": "Face Female glasses3 raider",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Female_glasses4",
+    "pieceName": "glasses4",
+    "sortId": 42,
+    "name": "Face Female glasses4",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 800
+  },
+  {
+    "catalogId": "Face_Female_glitter_makeup",
+    "pieceName": "glitter_makeup",
+    "sortId": 8,
+    "name": "Face Female glitter makeup",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1200
+  },
+  {
+    "catalogId": "Face_Female_makeup",
+    "pieceName": "makeup",
+    "sortId": 2,
+    "name": "Face Female makeup",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1100
+  },
+  {
+    "catalogId": "Face_Female_makeup_02",
+    "pieceName": "makeup_02",
+    "sortId": 3,
+    "name": "Face Female makeup 02",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Female_makeup_03",
+    "pieceName": "makeup_03",
+    "sortId": 4,
+    "name": "Face Female makeup 03",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 800
+  },
+  {
+    "catalogId": "Face_Female_makeup_04",
+    "pieceName": "makeup_04",
+    "sortId": 5,
+    "name": "Face Female makeup 04",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 900
+  },
+  {
+    "catalogId": "Face_Female_makeup_05",
+    "pieceName": "makeup_05",
+    "sortId": 6,
+    "name": "Face Female makeup 05",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "Face_Female_makeup_06",
+    "pieceName": "makeup_06",
+    "sortId": 7,
+    "name": "Face Female makeup 06",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 700
+  },
+  {
+    "catalogId": "Face_Female_monocle",
+    "pieceName": "monocle",
+    "sortId": 44,
+    "name": "Face Female monocle",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1100
+  },
+  {
+    "catalogId": "Face_Female_null",
+    "pieceName": "null",
+    "sortId": 1,
+    "name": "Face Female null",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 100
+  },
+  {
+    "catalogId": "Face_Female_scars",
+    "pieceName": "scars",
+    "sortId": 20,
+    "name": "Face Female scars",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "Face_Female_skull_face_paint",
+    "pieceName": "skull_face_paint",
+    "sortId": 10,
+    "name": "Face Female skull face paint",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1100
+  },
+  {
+    "catalogId": "Face_Female_surgeon_mask",
+    "pieceName": "surgeon_mask",
+    "sortId": 61,
+    "name": "Face Female surgeon mask",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 1500
+  },
+  {
+    "catalogId": "Face_Female_thief_mask",
+    "pieceName": "thief_mask",
+    "sortId": 9,
+    "name": "Face Female thief mask",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 900
+  },
+  {
+    "catalogId": "Face_Female_wrinkles",
+    "pieceName": "wrinkles",
+    "sortId": 21,
+    "name": "Face Female wrinkles",
+    "attribute": "Face",
+    "gender": 2,
+    "price": 250
+  },
+  {
+    "catalogId": "Face_KelloggBeard",
+    "pieceName": "Kellogg_beard",
+    "sortId": 130,
+    "name": "Face Kellogg Beard",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Male_clown_nose",
+    "pieceName": "clown_nose",
+    "sortId": 61,
+    "name": "Face Male clown nose",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Male_Courser_Sunglasses",
+    "pieceName": "Courser_sunglasses",
+    "sortId": 127,
+    "name": "Face Male Courser Sunglasses",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Male_f_hair_01",
+    "pieceName": "f_hair_01",
+    "sortId": 2,
+    "name": "Face Male f hair 01",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 500
+  },
+  {
+    "catalogId": "Face_Male_f_hair_02",
+    "pieceName": "f_hair_02",
+    "sortId": 3,
+    "name": "Face Male f hair 02",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 700
+  },
+  {
+    "catalogId": "Face_Male_f_hair_03",
+    "pieceName": "f_hair_03",
+    "sortId": 4,
+    "name": "Face Male f hair 03",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 900
+  },
+  {
+    "catalogId": "Face_Male_f_hair_04",
+    "pieceName": "f_hair_04",
+    "sortId": 5,
+    "name": "Face Male f hair 04",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Male_f_hair_05",
+    "pieceName": "f_hair_05",
+    "sortId": 6,
+    "name": "Face Male f hair 05",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 600
+  },
+  {
+    "catalogId": "Face_Male_f_hair_06",
+    "pieceName": "f_hair_06",
+    "sortId": 7,
+    "name": "Face Male f hair 06",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 900
+  },
+  {
+    "catalogId": "Face_Male_f_hair_07",
+    "pieceName": "f_hair_07",
+    "sortId": 8,
+    "name": "Face Male f hair 07",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 500
+  },
+  {
+    "catalogId": "Face_Male_f_hair_08",
+    "pieceName": "f_hair_08",
+    "sortId": 9,
+    "name": "Face Male f hair 08",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 700
+  },
+  {
+    "catalogId": "Face_Male_f_hair_09",
+    "pieceName": "f_hair_09",
+    "sortId": 10,
+    "name": "Face Male f hair 09",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 800
+  },
+  {
+    "catalogId": "Face_Male_f_hair_10",
+    "pieceName": "f_hair_10",
+    "sortId": 11,
+    "name": "Face Male f hair 10",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 600
+  },
+  {
+    "catalogId": "Face_Male_f_hair_11",
+    "pieceName": "f_hair_11",
+    "sortId": 12,
+    "name": "Face Male f hair 11",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Male_f_hair_12",
+    "pieceName": "f_hair_12",
+    "sortId": 13,
+    "name": "Face Male f hair 12",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 800
+  },
+  {
+    "catalogId": "Face_Male_f_hair_13",
+    "pieceName": "f_hair_13",
+    "sortId": 14,
+    "name": "Face Male f hair 13",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "Face_Male_face_paint",
+    "pieceName": "face_paint",
+    "sortId": 23,
+    "name": "Face Male face paint",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Male_ghoul_face",
+    "pieceName": "ghoul_face",
+    "sortId": 35,
+    "name": "Face Male ghoul face",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 2000
+  },
+  {
+    "catalogId": "Face_Male_glasses",
+    "pieceName": "glasses",
+    "sortId": 40,
+    "name": "Face Male glasses",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 800
+  },
+  {
+    "catalogId": "Face_Male_glasses_Wilzig",
+    "pieceName": "glasses_Wilzig",
+    "sortId": 110,
+    "name": "Face Male glasses Wilzig",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 800
+  },
+  {
+    "catalogId": "Face_Male_glasses2",
+    "pieceName": "glasses2",
+    "sortId": 41,
+    "name": "Face Male glasses2",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "Face_Male_glasses2_withBeard",
+    "pieceName": "glasses2_withBeard",
+    "sortId": 42,
+    "name": "Face Male glasses2 with Beard",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1900
+  },
+  {
+    "catalogId": "Face_Male_glasses3_raider",
+    "pieceName": "glasses3_raider",
+    "sortId": 44,
+    "name": "Face Male glasses3 raider",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_Male_glitter_makeup",
+    "pieceName": "glitter_makeup",
+    "sortId": 20,
+    "name": "Face Male glitter makeup",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Face_Male_incognito_beard",
+    "pieceName": "incognito_beard",
+    "sortId": 42,
+    "name": "Face Male incognito beard",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Face_Male_monocle",
+    "pieceName": "monocle",
+    "sortId": 45,
+    "name": "Face Male monocle",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1100
+  },
+  {
+    "catalogId": "Face_Male_null",
+    "pieceName": "null",
+    "sortId": 1,
+    "name": "Face Male null",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 100
+  },
+  {
+    "catalogId": "Face_Male_scars_01",
+    "pieceName": "scars_01",
+    "sortId": 30,
+    "name": "Face Male scars 01",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Face_Male_scars_02",
+    "pieceName": "scars_02",
+    "sortId": 31,
+    "name": "Face Male scars 02",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 250
+  },
+  {
+    "catalogId": "Face_Male_scars_03",
+    "pieceName": "scars_03",
+    "sortId": 32,
+    "name": "Face Male scars 03",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 250
+  },
+  {
+    "catalogId": "Face_Male_skull_face_paint",
+    "pieceName": "skull_face_paint",
+    "sortId": 22,
+    "name": "Face Male skull face paint",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1100
+  },
+  {
+    "catalogId": "Face_Male_thief_mask",
+    "pieceName": "thief_mask",
+    "sortId": 21,
+    "name": "Face Male thief mask",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 900
+  },
+  {
+    "catalogId": "Face_Male_wrinkles",
+    "pieceName": "wrinkles",
+    "sortId": 34,
+    "name": "Face Male wrinkles",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 400
+  },
+  {
+    "catalogId": "Face_Military_glasses",
+    "pieceName": "Military_glasses",
+    "sortId": 125,
+    "name": "Face Military glasses",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_MrHouseMustache",
+    "pieceName": "Mr House mustache",
+    "sortId": 72,
+    "name": "Face Mr House Mustache",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_NickValentine",
+    "pieceName": "NickValentine_facemask",
+    "sortId": 129,
+    "name": "Face Nick Valentine",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_OrionMorenoGlasses",
+    "pieceName": "OrionMoreno_glasses",
+    "sortId": 123,
+    "name": "Face Orion Moreno Glasses",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_PaladinFacialHair",
+    "pieceName": "BOS Paladin Facial Hair",
+    "sortId": 72,
+    "name": "Face Paladin Facial Hair",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Face_RegsSunglasses",
+    "pieceName": "Regs_sunglasses",
+    "sortId": 120,
+    "name": "Face Regs Sunglasses",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Face_Zeke Sunglasses",
+    "pieceName": "Zeke Sunglasses",
+    "sortId": 117,
+    "name": "Face Zeke Sunglasses",
+    "attribute": "Face",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Hair_Betty",
+    "pieceName": "hair_Betty",
+    "sortId": 107,
+    "name": "Hair Betty",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Cait",
+    "pieceName": "hair_Cait",
+    "sortId": 115,
+    "name": "Hair Cait",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Chet",
+    "pieceName": "hair_Chet",
+    "sortId": 105,
+    "name": "Hair Chet",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Claff",
+    "pieceName": "hair_Claff",
+    "sortId": 118,
+    "name": "Hair Claff",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_CooperHoward",
+    "pieceName": "hair_CooperHoward",
+    "sortId": 111,
+    "name": "Hair Cooper Howard",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Female_01",
+    "pieceName": "01",
+    "sortId": 1,
+    "name": "Hair Female 01",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "Hair_Female_02",
+    "pieceName": "02",
+    "sortId": 2,
+    "name": "Hair Female 02",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Female_03",
+    "pieceName": "03",
+    "sortId": 3,
+    "name": "Hair Female 03",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Female_04",
+    "pieceName": "04",
+    "sortId": 4,
+    "name": "Hair Female 04",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Female_05",
+    "pieceName": "05",
+    "sortId": 5,
+    "name": "Hair Female 05",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Female_06",
+    "pieceName": "06",
+    "sortId": 6,
+    "name": "Hair Female 06",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Female_07",
+    "pieceName": "07",
+    "sortId": 7,
+    "name": "Hair Female 07",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 700
+  },
+  {
+    "catalogId": "Hair_Female_08",
+    "pieceName": "08",
+    "sortId": 8,
+    "name": "Hair Female 08",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 600
+  },
+  {
+    "catalogId": "Hair_Female_09",
+    "pieceName": "09",
+    "sortId": 9,
+    "name": "Hair Female 09",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Female_10",
+    "pieceName": "10",
+    "sortId": 10,
+    "name": "Hair Female 10",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 600
+  },
+  {
+    "catalogId": "Hair_Female_11",
+    "pieceName": "11",
+    "sortId": 11,
+    "name": "Hair Female 11",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 250
+  },
+  {
+    "catalogId": "Hair_Female_12",
+    "pieceName": "12",
+    "sortId": 12,
+    "name": "Hair Female 12",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 500
+  },
+  {
+    "catalogId": "Hair_Female_13",
+    "pieceName": "13",
+    "sortId": 13,
+    "name": "Hair Female 13",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Female_14",
+    "pieceName": "14",
+    "sortId": 14,
+    "name": "Hair Female 14",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "Hair_Female_15",
+    "pieceName": "15",
+    "sortId": 15,
+    "name": "Hair Female 15",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 250
+  },
+  {
+    "catalogId": "Hair_Female_16",
+    "pieceName": "16",
+    "sortId": 16,
+    "name": "Hair Female 16",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 600
+  },
+  {
+    "catalogId": "Hair_Female_17",
+    "pieceName": "17",
+    "sortId": 17,
+    "name": "Hair Female 17",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Female_18",
+    "pieceName": "18",
+    "sortId": 18,
+    "name": "Hair Female 18",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Female_19",
+    "pieceName": "19",
+    "sortId": 19,
+    "name": "Hair Female 19",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Female_20",
+    "pieceName": "20",
+    "sortId": 20,
+    "name": "Hair Female 20",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 700
+  },
+  {
+    "catalogId": "Hair_Female_21",
+    "pieceName": "21",
+    "sortId": 21,
+    "name": "Hair Female 21",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Female_22",
+    "pieceName": "22",
+    "sortId": 22,
+    "name": "Hair Female 22",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 500
+  },
+  {
+    "catalogId": "Hair_Female_23",
+    "pieceName": "23",
+    "sortId": 24,
+    "name": "Hair Female 23",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Female_23_1",
+    "pieceName": "23_1",
+    "sortId": 23,
+    "name": "Hair Female 23 1",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 600
+  },
+  {
+    "catalogId": "Hair_Female_24",
+    "pieceName": "24",
+    "sortId": 25,
+    "name": "Hair Female 24",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 800
+  },
+  {
+    "catalogId": "Hair_Female_hair_radiation",
+    "pieceName": "hair_radiation",
+    "sortId": 99,
+    "name": "Hair Female hair radiation",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1000
+  },
+  {
+    "catalogId": "Hair_Female_null",
+    "pieceName": "null",
+    "sortId": 100,
+    "name": "Hair Female null",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 250
+  },
+  {
+    "catalogId": "Hair_GhoulKing",
+    "pieceName": "Hair_GhoulKing",
+    "sortId": 114,
+    "name": "Hair Ghoul King",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Hank",
+    "pieceName": "hair_Hank",
+    "sortId": 108,
+    "name": "Hair Hank",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Kellogg",
+    "pieceName": "Kellogg_hair",
+    "sortId": 131,
+    "name": "Hair Kellogg",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Hair_Legate",
+    "pieceName": "hair_Legate",
+    "sortId": 40,
+    "name": "Hair Legate",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_lucy",
+    "pieceName": "hair_Lucy",
+    "sortId": 101,
+    "name": "Hair lucy",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Lucy_Wedding",
+    "pieceName": "hair_Lucy_Wedding",
+    "sortId": 103,
+    "name": "Hair Lucy Wedding",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_ma_june",
+    "pieceName": "hair_Ma_June",
+    "sortId": 102,
+    "name": "Hair ma june",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1750
+  },
+  {
+    "catalogId": "Hair_Male_01",
+    "pieceName": "01",
+    "sortId": 1,
+    "name": "Hair Male 01",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Male_02",
+    "pieceName": "02",
+    "sortId": 2,
+    "name": "Hair Male 02",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 500
+  },
+  {
+    "catalogId": "Hair_Male_03",
+    "pieceName": "03",
+    "sortId": 3,
+    "name": "Hair Male 03",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Male_04",
+    "pieceName": "04",
+    "sortId": 22,
+    "name": "Hair Male 04",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 800
+  },
+  {
+    "catalogId": "Hair_Male_07",
+    "pieceName": "07",
+    "sortId": 4,
+    "name": "Hair Male 07",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 500
+  },
+  {
+    "catalogId": "Hair_Male_08",
+    "pieceName": "08",
+    "sortId": 5,
+    "name": "Hair Male 08",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Male_09",
+    "pieceName": "09",
+    "sortId": 6,
+    "name": "Hair Male 09",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Male_10",
+    "pieceName": "10",
+    "sortId": 7,
+    "name": "Hair Male 10",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Male_11",
+    "pieceName": "11",
+    "sortId": 8,
+    "name": "Hair Male 11",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 600
+  },
+  {
+    "catalogId": "Hair_Male_12",
+    "pieceName": "12",
+    "sortId": 9,
+    "name": "Hair Male 12",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "Hair_Male_13",
+    "pieceName": "13",
+    "sortId": 10,
+    "name": "Hair Male 13",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Male_14",
+    "pieceName": "14",
+    "sortId": 11,
+    "name": "Hair Male 14",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 800
+  },
+  {
+    "catalogId": "Hair_Male_15",
+    "pieceName": "15",
+    "sortId": 12,
+    "name": "Hair Male 15",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Male_16",
+    "pieceName": "16",
+    "sortId": 13,
+    "name": "Hair Male 16",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 250
+  },
+  {
+    "catalogId": "Hair_Male_17",
+    "pieceName": "17",
+    "sortId": 14,
+    "name": "Hair Male 17",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Male_18",
+    "pieceName": "18",
+    "sortId": 15,
+    "name": "Hair Male 18",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Male_19",
+    "pieceName": "19",
+    "sortId": 16,
+    "name": "Hair Male 19",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "Hair_Male_20",
+    "pieceName": "20",
+    "sortId": 17,
+    "name": "Hair Male 20",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 600
+  },
+  {
+    "catalogId": "Hair_Male_22",
+    "pieceName": "22",
+    "sortId": 19,
+    "name": "Hair Male 22",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 400
+  },
+  {
+    "catalogId": "Hair_Male_24",
+    "pieceName": "24",
+    "sortId": 21,
+    "name": "Hair Male 24",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 250
+  },
+  {
+    "catalogId": "Hair_Male_hair_21-2",
+    "pieceName": "hair_21-2",
+    "sortId": 18,
+    "name": "Hair Male hair 21-2",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Hair_Male_hair_23-2",
+    "pieceName": "hair_23-2",
+    "sortId": 20,
+    "name": "Hair Male hair 23-2",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 700
+  },
+  {
+    "catalogId": "Hair_Male_hair_radiation",
+    "pieceName": "hair_radiation",
+    "sortId": 99,
+    "name": "Hair Male hair radiation",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Hair_Male_null",
+    "pieceName": "null",
+    "sortId": 100,
+    "name": "Hair Male null",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 250
+  },
+  {
+    "catalogId": "Hair_Moldaver",
+    "pieceName": "hair_Moldaver",
+    "sortId": 104,
+    "name": "Hair Moldaver",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_MrHouseHair",
+    "pieceName": "hair_Mr House",
+    "sortId": 72,
+    "name": "Hair Mr House Hair",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Norm",
+    "pieceName": "hair_Norm",
+    "sortId": 106,
+    "name": "Hair Norm",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_OrionMoreno",
+    "pieceName": "hair_OrionMoreno",
+    "sortId": 124,
+    "name": "Hair Orion Moreno",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_PaladinHair",
+    "pieceName": "hair_BOS Paladin",
+    "sortId": 72,
+    "name": "Hair Paladin Hair",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Regs",
+    "pieceName": "hair_Regs",
+    "sortId": 121,
+    "name": "Hair Regs",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Stephanie",
+    "pieceName": "hair_Stephanie",
+    "sortId": 113,
+    "name": "Hair Stephanie",
+    "attribute": "Hair",
+    "gender": 2,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Wilzig",
+    "pieceName": "hair_Wilzig",
+    "sortId": 109,
+    "name": "Hair Wilzig",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Hair_Zeke",
+    "pieceName": "hair_Zeke",
+    "sortId": 116,
+    "name": "Hair Zeke",
+    "attribute": "Hair",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "HairColor_Female_00",
+    "pieceName": "",
+    "sortId": 1,
+    "name": "Hair Color Female 00",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 250
+  },
+  {
+    "catalogId": "HairColor_Female_00_customization_only",
+    "pieceName": "",
+    "sortId": 86,
+    "name": "Hair Color Female 00 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Female_01",
+    "pieceName": "",
+    "sortId": 2,
+    "name": "Hair Color Female 01",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 200
+  },
+  {
+    "catalogId": "HairColor_Female_01_customization_only",
+    "pieceName": "",
+    "sortId": 88,
+    "name": "Hair Color Female 01 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 600
+  },
+  {
+    "catalogId": "HairColor_Female_02",
+    "pieceName": "",
+    "sortId": 3,
+    "name": "Hair Color Female 02",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Female_02_customization_only",
+    "pieceName": "",
+    "sortId": 90,
+    "name": "Hair Color Female 02 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Female_03",
+    "pieceName": "",
+    "sortId": 4,
+    "name": "Hair Color Female 03",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Female_03_customization_only",
+    "pieceName": "",
+    "sortId": 92,
+    "name": "Hair Color Female 03 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 700
+  },
+  {
+    "catalogId": "HairColor_Female_04",
+    "pieceName": "",
+    "sortId": 5,
+    "name": "Hair Color Female 04",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 500
+  },
+  {
+    "catalogId": "HairColor_Female_04_customization_only",
+    "pieceName": "",
+    "sortId": 94,
+    "name": "Hair Color Female 04 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Female_05",
+    "pieceName": "",
+    "sortId": 6,
+    "name": "Hair Color Female 05",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 250
+  },
+  {
+    "catalogId": "HairColor_Female_05_customization_only",
+    "pieceName": "",
+    "sortId": 96,
+    "name": "Hair Color Female 05 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 600
+  },
+  {
+    "catalogId": "HairColor_Female_06",
+    "pieceName": "",
+    "sortId": 7,
+    "name": "Hair Color Female 06",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Female_06_customization_only",
+    "pieceName": "",
+    "sortId": 98,
+    "name": "Hair Color Female 06 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 700
+  },
+  {
+    "catalogId": "HairColor_Female_07",
+    "pieceName": "",
+    "sortId": 8,
+    "name": "Hair Color Female 07",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Female_07_customization_only",
+    "pieceName": "",
+    "sortId": 100,
+    "name": "Hair Color Female 07 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Female_08",
+    "pieceName": "",
+    "sortId": 9,
+    "name": "Hair Color Female 08",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 200
+  },
+  {
+    "catalogId": "HairColor_Female_08_customization_only",
+    "pieceName": "",
+    "sortId": 13,
+    "name": "Hair Color Female 08 customization only",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 500
+  },
+  {
+    "catalogId": "HairColor_Female_09",
+    "pieceName": "",
+    "sortId": 10,
+    "name": "Hair Color Female 09",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 200
+  },
+  {
+    "catalogId": "HairColor_Female_10",
+    "pieceName": "",
+    "sortId": 11,
+    "name": "Hair Color Female 10",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 300
+  },
+  {
+    "catalogId": "HairColor_Female_11",
+    "pieceName": "",
+    "sortId": 12,
+    "name": "Hair Color Female 11",
+    "attribute": "HairColor",
+    "gender": 2,
+    "price": 400
+  },
+  {
+    "catalogId": "HairColor_Male_00",
+    "pieceName": "",
+    "sortId": 1,
+    "name": "Hair Color Male 00",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 250
+  },
+  {
+    "catalogId": "HairColor_Male_00_customization_only",
+    "pieceName": "",
+    "sortId": 86,
+    "name": "Hair Color Male 00 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Male_01",
+    "pieceName": "",
+    "sortId": 2,
+    "name": "Hair Color Male 01",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 200
+  },
+  {
+    "catalogId": "HairColor_Male_01_customization_only",
+    "pieceName": "",
+    "sortId": 88,
+    "name": "Hair Color Male 01 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 600
+  },
+  {
+    "catalogId": "HairColor_Male_02",
+    "pieceName": "",
+    "sortId": 3,
+    "name": "Hair Color Male 02",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Male_02_customization_only",
+    "pieceName": "",
+    "sortId": 90,
+    "name": "Hair Color Male 02 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Male_03",
+    "pieceName": "",
+    "sortId": 4,
+    "name": "Hair Color Male 03",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Male_03_customization_only",
+    "pieceName": "",
+    "sortId": 92,
+    "name": "Hair Color Male 03 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 700
+  },
+  {
+    "catalogId": "HairColor_Male_04",
+    "pieceName": "",
+    "sortId": 5,
+    "name": "Hair Color Male 04",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 200
+  },
+  {
+    "catalogId": "HairColor_Male_04_customization_only",
+    "pieceName": "",
+    "sortId": 94,
+    "name": "Hair Color Male 04 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Male_05",
+    "pieceName": "",
+    "sortId": 6,
+    "name": "Hair Color Male 05",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 500
+  },
+  {
+    "catalogId": "HairColor_Male_05_customization_only",
+    "pieceName": "",
+    "sortId": 96,
+    "name": "Hair Color Male 05 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 600
+  },
+  {
+    "catalogId": "HairColor_Male_06",
+    "pieceName": "",
+    "sortId": 7,
+    "name": "Hair Color Male 06",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 400
+  },
+  {
+    "catalogId": "HairColor_Male_06_customization_only",
+    "pieceName": "",
+    "sortId": 98,
+    "name": "Hair Color Male 06 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 700
+  },
+  {
+    "catalogId": "HairColor_Male_07",
+    "pieceName": "",
+    "sortId": 8,
+    "name": "Hair Color Male 07",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 250
+  },
+  {
+    "catalogId": "HairColor_Male_07_customization_only",
+    "pieceName": "",
+    "sortId": 100,
+    "name": "Hair Color Male 07 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "HairColor_Male_08",
+    "pieceName": "",
+    "sortId": 9,
+    "name": "Hair Color Male 08",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 200
+  },
+  {
+    "catalogId": "HairColor_Male_08_customization_only",
+    "pieceName": "",
+    "sortId": 13,
+    "name": "Hair Color Male 08 customization only",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 500
+  },
+  {
+    "catalogId": "HairColor_Male_09",
+    "pieceName": "",
+    "sortId": 10,
+    "name": "Hair Color Male 09",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Male_10",
+    "pieceName": "",
+    "sortId": 11,
+    "name": "Hair Color Male 10",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 100
+  },
+  {
+    "catalogId": "HairColor_Male_11",
+    "pieceName": "",
+    "sortId": 12,
+    "name": "Hair Color Male 11",
+    "attribute": "HairColor",
+    "gender": 1,
+    "price": 300
+  },
+  {
+    "catalogId": "Helmet_Female_aviator_cap",
+    "pieceName": "aviator_cap",
+    "sortId": 76,
+    "name": "Helmet Female aviator cap",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1300
+  },
+  {
+    "catalogId": "Helmet_Female_cat_ears",
+    "pieceName": "cat_ears",
+    "sortId": 73,
+    "name": "Helmet Female cat ears",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1400
+  },
+  {
+    "catalogId": "Helmet_Female_combat_hat",
+    "pieceName": "combat_hat",
+    "sortId": 68,
+    "name": "Helmet Female combat hat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "Helmet_Female_environment",
+    "pieceName": "environment",
+    "sortId": 70,
+    "name": "Helmet Female environment",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1250
+  },
+  {
+    "catalogId": "Helmet_Female_hard_hat",
+    "pieceName": "hard_hat",
+    "sortId": 62,
+    "name": "Helmet Female hard hat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1000
+  },
+  {
+    "catalogId": "Helmet_Female_hazmat",
+    "pieceName": "hazmat",
+    "sortId": 71,
+    "name": "Helmet Female hazmat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1400
+  },
+  {
+    "catalogId": "Helmet_Female_laurel",
+    "pieceName": "laurel",
+    "sortId": 64,
+    "name": "Helmet Female laurel",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 2000
+  },
+  {
+    "catalogId": "Helmet_Female_mascot_head",
+    "pieceName": "mascot_head",
+    "sortId": 77,
+    "name": "Helmet Female mascot head",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1900
+  },
+  {
+    "catalogId": "Helmet_Female_military",
+    "pieceName": "military",
+    "sortId": 67,
+    "name": "Helmet Female military",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 900
+  },
+  {
+    "catalogId": "Helmet_Female_military_cap",
+    "pieceName": "military_cap",
+    "sortId": 65,
+    "name": "Helmet Female military cap",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 750
+  },
+  {
+    "catalogId": "Helmet_Female_ninja",
+    "pieceName": "ninja",
+    "sortId": 69,
+    "name": "Helmet Female ninja",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1900
+  },
+  {
+    "catalogId": "Helmet_Female_nose_mustache",
+    "pieceName": "nose_mustache",
+    "sortId": 60,
+    "name": "Helmet Female nose mustache",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 2000
+  },
+  {
+    "catalogId": "Helmet_Female_oscar_hat",
+    "pieceName": "oscar_hat",
+    "sortId": 63,
+    "name": "Helmet Female oscar hat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1800
+  },
+  {
+    "catalogId": "Helmet_Female_party_hat",
+    "pieceName": "party_hat",
+    "sortId": 78,
+    "name": "Helmet Female party hat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1100
+  },
+  {
+    "catalogId": "Helmet_Female_piper_hat",
+    "pieceName": "piper_hat",
+    "sortId": 66,
+    "name": "Helmet Female piper hat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1500
+  },
+  {
+    "catalogId": "Helmet_Female_pirate_hat",
+    "pieceName": "pirate_hat",
+    "sortId": 74,
+    "name": "Helmet Female pirate hat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1700
+  },
+  {
+    "catalogId": "Helmet_Female_silver_shroud_hat",
+    "pieceName": "silver_shroud_hat",
+    "sortId": 75,
+    "name": "Helmet Female silver shroud hat",
+    "attribute": "Helmet",
+    "gender": 2,
+    "price": 1600
+  },
+  {
+    "catalogId": "Helmet_Male_aviator_cap",
+    "pieceName": "aviator_cap",
+    "sortId": 82,
+    "name": "Helmet Male aviator cap",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1300
+  },
+  {
+    "catalogId": "Helmet_Male_cat_ears",
+    "pieceName": "cat_ears",
+    "sortId": 79,
+    "name": "Helmet Male cat ears",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1400
+  },
+  {
+    "catalogId": "Helmet_Male_circlet",
+    "pieceName": "circlet",
+    "sortId": 66,
+    "name": "Helmet Male circlet",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1400
+  },
+  {
+    "catalogId": "Helmet_Male_combat_hat",
+    "pieceName": "combat_hat",
+    "sortId": 75,
+    "name": "Helmet Male combat hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 750
+  },
+  {
+    "catalogId": "Helmet_Male_cowboy_hat",
+    "pieceName": "cowboy_hat",
+    "sortId": 71,
+    "name": "Helmet Male cowboy hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1500
+  },
+  {
+    "catalogId": "Helmet_Male_DanseT60",
+    "pieceName": "Paladin_T60_Helmet",
+    "sortId": 132,
+    "name": "Helmet Male Danse T60",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1750
+  },
+  {
+    "catalogId": "Helmet_Male_environment",
+    "pieceName": "environment",
+    "sortId": 77,
+    "name": "Helmet Male environment",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1250
+  },
+  {
+    "catalogId": "Helmet_Male_football_helmet",
+    "pieceName": "football_helmet",
+    "sortId": 69,
+    "name": "Helmet Male football helmet",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1600
+  },
+  {
+    "catalogId": "Helmet_Male_Goggles_helm",
+    "pieceName": "Goggles_helm",
+    "sortId": 43,
+    "name": "Helmet Male Goggles helm",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 900
+  },
+  {
+    "catalogId": "Helmet_Male_hazmat",
+    "pieceName": "hazmat",
+    "sortId": 78,
+    "name": "Helmet Male hazmat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1400
+  },
+  {
+    "catalogId": "Helmet_Male_horror_mask",
+    "pieceName": "horror_mask",
+    "sortId": 63,
+    "name": "Helmet Male horror mask",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 2000
+  },
+  {
+    "catalogId": "Helmet_Male_king_crown",
+    "pieceName": "king_crown",
+    "sortId": 67,
+    "name": "Helmet Male king crown",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1500
+  },
+  {
+    "catalogId": "Helmet_Male_knight_hat",
+    "pieceName": "knight_hat",
+    "sortId": 65,
+    "name": "Helmet Male knight hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1300
+  },
+  {
+    "catalogId": "Helmet_Male_luchador",
+    "pieceName": "luchador",
+    "sortId": 64,
+    "name": "Helmet Male luchador",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1800
+  },
+  {
+    "catalogId": "Helmet_Male_mascot_head",
+    "pieceName": "mascot_head",
+    "sortId": 83,
+    "name": "Helmet Male mascot head",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1900
+  },
+  {
+    "catalogId": "Helmet_Male_military",
+    "pieceName": "military",
+    "sortId": 74,
+    "name": "Helmet Male military",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 900
+  },
+  {
+    "catalogId": "Helmet_Male_mortar_board",
+    "pieceName": "mortar_board",
+    "sortId": 68,
+    "name": "Helmet Male mortar board",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1000
+  },
+  {
+    "catalogId": "Helmet_Male_ninja",
+    "pieceName": "ninja",
+    "sortId": 76,
+    "name": "Helmet Male ninja",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1900
+  },
+  {
+    "catalogId": "Helmet_Male_nose_mustache",
+    "pieceName": "nose_mustache",
+    "sortId": 60,
+    "name": "Helmet Male nose mustache",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 2000
+  },
+  {
+    "catalogId": "Helmet_Male_party_hat",
+    "pieceName": "party_hat",
+    "sortId": 84,
+    "name": "Helmet Male party hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1100
+  },
+  {
+    "catalogId": "Helmet_Male_pirate_hat",
+    "pieceName": "pirate_hat",
+    "sortId": 80,
+    "name": "Helmet Male pirate hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1700
+  },
+  {
+    "catalogId": "Helmet_Male_PointyEars_helm",
+    "pieceName": "PointyEars_helm",
+    "sortId": 62,
+    "name": "Helmet Male Pointy Ears helm",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1500
+  },
+  {
+    "catalogId": "Helmet_Male_porkpie_hat",
+    "pieceName": "porkpie_hat",
+    "sortId": 70,
+    "name": "Helmet Male porkpie hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1200
+  },
+  {
+    "catalogId": "Helmet_Male_Preston_hat",
+    "pieceName": "Preston_hat",
+    "sortId": 73,
+    "name": "Helmet Male Preston hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1700
+  },
+  {
+    "catalogId": "Helmet_Male_silver_shroud_hat",
+    "pieceName": "silver_shroud_hat",
+    "sortId": 81,
+    "name": "Helmet Male silver shroud hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1600
+  },
+  {
+    "catalogId": "Helmet_Male_three_dog_hat",
+    "pieceName": "three_dog_hat",
+    "sortId": 72,
+    "name": "Helmet Male three dog hat",
+    "attribute": "Helmet",
+    "gender": 1,
+    "price": 1750
+  }
+]

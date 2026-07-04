@@ -1,0 +1,21 @@
+name: Feature request
+description: Suggest an improvement or a new capability
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do that you currently can't?
+      description: Describe the goal, not just the mechanism; there may be a better way to get you there.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: How do you imagine it working?
+      description: Optional sketch of the UI or behavior you have in mind.
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+      description: Screenshots, links to how other tools do it, save-format details, etc.

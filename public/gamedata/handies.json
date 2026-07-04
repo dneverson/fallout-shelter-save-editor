@@ -1,0 +1,66 @@
+[
+  {
+    "id": "mrhandy",
+    "variantId": "MrHandy",
+    "characterType": 2,
+    "actorDataId": null,
+    "sprite": "MrHandy",
+    "source": "Lunchboxes, Mr. Handy boxes and the starter pack",
+    "name": "Mr. Handy",
+    "starterPack": true,
+    "mrHandyBoxOdds": 0.92,
+    "lotteryOdds": {
+      "normal": 0.006521739,
+      "rare": 0.01304348,
+      "legendary": 0.01304348
+    }
+  },
+  {
+    "id": "snipsnip",
+    "variantId": "SnipSnip",
+    "characterType": 2,
+    "actorDataId": "SnipSnip",
+    "sprite": "MrHandyQuestReward_SnipSnip",
+    "source": "Rare lunchbox / Mr. Handy box drop and quest rewards",
+    "name": "Snip Snip",
+    "starterPack": false,
+    "mrHandyBoxOdds": 0.08,
+    "lotteryOdds": {
+      "normal": 0.0008,
+      "rare": 0.0016,
+      "legendary": 0.0016
+    }
+  },
+  {
+    "id": "victor",
+    "variantId": "Victor",
+    "characterType": 5,
+    "actorDataId": "Victor",
+    "sprite": "Icon_VictorCard",
+    "source": "Season pass reward (securitron)",
+    "name": "Victor",
+    "starterPack": false,
+    "mrHandyBoxOdds": 0,
+    "lotteryOdds": {
+      "normal": 0,
+      "rare": 0,
+      "legendary": 0
+    }
+  },
+  {
+    "id": "curie",
+    "variantId": "Curie",
+    "characterType": 6,
+    "actorDataId": "Curie",
+    "sprite": "Curie",
+    "source": "Season pass reward (Miss Nanny)",
+    "name": "Curie",
+    "starterPack": false,
+    "mrHandyBoxOdds": 0,
+    "lotteryOdds": {
+      "normal": 0,
+      "rare": 0,
+      "legendary": 0
+    }
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "id": "AlarmClock",
+    "name": "Alarm Clock",
+    "rarity": "Normal",
+    "value": 2,
+    "sprite": "AlarmClock"
+  },
+  {
+    "id": "BaseballGlove",
+    "name": "Baseball Glove",
+    "rarity": "Normal",
+    "value": 2,
+    "sprite": "BaseballGlove"
+  },
+  {
+    "id": "BrahminHide",
+    "name": "Brahmin Hide",
+    "rarity": "Rare",
+    "value": 50,
+    "sprite": "Leather-Brahmin"
+  },
+  {
+    "id": "Camera",
+    "name": "Camera",
+    "rarity": "Rare",
+    "value": 50,
+    "sprite": "camera"
+  },
+  {
+    "id": "ChemistrySet",
+    "name": "Chemistry Flask",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "ChemestryJar"
+  },
+  {
+    "id": "DeskFan",
+    "name": "Desk Fan",
+    "rarity": "Normal",
+    "value": 2,
+    "sprite": "fan"
+  },
+  {
+    "id": "DuctTape",
+    "name": "Duct Tape",
+    "rarity": "Normal",
+    "value": 2,
+    "sprite": "DuctTape"
+  },
+  {
+    "id": "GiddyupButtercup",
+    "name": "Giddyup Buttercup",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "Giddyup_Buttercup"
+  },
+  {
+    "id": "Globe",
+    "name": "Globe",
+    "rarity": "Rare",
+    "value": 50,
+    "sprite": "Globe"
+  },
+  {
+    "id": "GoldWatch",
+    "name": "Gold Watch",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "Gold_Watch"
+  },
+  {
+    "id": "MagnifyingGlass",
+    "name": "Magnifying Glass",
+    "rarity": "Normal",
+    "value": 2,
+    "sprite": "MagnifyingGlass"
+  },
+  {
+    "id": "Microscope",
+    "name": "Microscope",
+    "rarity": "Rare",
+    "value": 50,
+    "sprite": "Microscope"
+  },
+  {
+    "id": "MilitaryCircuitBoard",
+    "name": "Military Circuit Board",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "Military-Grade_Circuit_Board"
+  },
+  {
+    "id": "MilitaryDuctTape",
+    "name": "Military Duct Tape",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "DuctTape-Military"
+  },
+  {
+    "id": "Shovel",
+    "name": "Shovel",
+    "rarity": "Rare",
+    "value": 50,
+    "sprite": "Shovel"
+  },
+  {
+    "id": "TeddyBear",
+    "name": "Teddy Bear",
+    "rarity": "Rare",
+    "value": 50,
+    "sprite": "TeddyBear"
+  },
+  {
+    "id": "ToyCar",
+    "name": "Toy Car",
+    "rarity": "Normal",
+    "value": 2,
+    "sprite": "car"
+  },
+  {
+    "id": "TriFoldFlag",
+    "name": "Tri-Fold Flag",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "Tri-FoldFlag"
+  },
+  {
+    "id": "Ultracite",
+    "name": "Ultracite",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "Ultracite"
+  },
+  {
+    "id": "Wonderglue",
+    "name": "Wonderglue",
+    "rarity": "Rare",
+    "value": 50,
+    "sprite": "WonderGlue"
+  },
+  {
+    "id": "YaoGuaiHide",
+    "name": "Yao Guai Hide",
+    "rarity": "Legendary",
+    "value": 200,
+    "sprite": "Leather-YaoGuai"
+  },
+  {
+    "id": "Yarn",
+    "name": "Yarn",
+    "rarity": "Normal",
+    "value": 2,
+    "sprite": "Cotton_Yarn"
+  }
+]

@@ -1,0 +1,11 @@
+dist
+node_modules
+coverage
+playwright-report
+public/gamedata
+pnpm-lock.yaml
+tools
+
+# Codec fixture: must stay byte-for-byte the compact form stringifyLossless emits
+# (losslessJson.test.ts asserts re-encode === source). Prettifying it breaks that gate.
+tests/fixtures/season-sample.json

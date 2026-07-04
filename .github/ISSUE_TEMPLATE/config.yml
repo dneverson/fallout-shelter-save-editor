@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question or discussion
+    url: https://github.com/dneverson/fallout-shelter-save-editor/discussions
+    about: Ask questions or discuss ideas that are not yet a concrete bug or feature.

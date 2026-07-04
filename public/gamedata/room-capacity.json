@@ -1,0 +1,2789 @@
+{
+  "base": {
+    "resources": {
+      "Food": 0,
+      "Energy": 0,
+      "Nuka": 999999,
+      "Water": 0,
+      "StimPack": 5,
+      "RadAway": 5,
+      "NukaColaQuantum": 999999,
+      "DummyUltracite": 25,
+      "PokerChip": 999
+    },
+    "items": 10,
+    "maxPetCount": 100,
+    "mrHandyHealth": 5000
+  },
+  "perDweller": {
+    "StimPack": 25,
+    "RadAway": 25
+  },
+  "rooms": {
+    "Armory": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Bar": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "BarberShop": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Cafeteria": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 50,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 75,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 100,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 100,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 150,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 200,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 150,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 225,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 300,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "Casino": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Classroom": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "DecorationFactory": {
+      "1": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "DesignFactory": {
+      "1": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Dojo": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Elevator": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Energy2": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 200,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 300,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 400,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 400,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 600,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 800,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 600,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 900,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 1200,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "Entrance": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Geothermal": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 50,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 75,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 100,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 100,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 150,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 200,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 150,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 225,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 300,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "Gym": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Hydroponic": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 50,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 75,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 100,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 100,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 150,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 200,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 150,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 225,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 300,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "LivingQuarters": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "MedBay": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 10,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 10,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 10,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 20,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 20,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 20,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 30,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 30,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 30,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "NukaCola": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 50,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 50,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 75,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 75,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 100,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 100,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 100,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 100,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 150,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 150,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 200,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 200,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 150,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 150,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 225,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 225,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 300,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 300,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "OutfitFactory": {
+      "1": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Overseer": {
+      "1": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestBOSPowerArmor": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestCave": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "5": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "6": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestEnclave": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestEnclaveBoss": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestFilly": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestIndustrial": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "5": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "6": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestMausoleum": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestObservatory": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestObservatoryMain": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestRedRocket": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestRobCo": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestStandard": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "5": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "6": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestUFO": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "QuestVault": {
+      "1": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "5": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "6": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        },
+        "4": {
+          "maxDwellers": 1,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Radio": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "ScienceLab": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 10,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 10,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 10,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 20,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 20,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 20,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 30,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 30,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 30,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "Storage": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 10
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 15
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 25
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 20
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 35
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 55
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 30
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 75
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 125
+        }
+      }
+    },
+    "SuperRoom2": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "UltraciteMining": {
+      "1": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 25,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 40,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 0,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 60,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "UltraciteWeaponFactory": {
+      "1": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    },
+    "Water2": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 50,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 75,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 100,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 100,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 150,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 200,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 150,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 225,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 300,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "WaterPlant": {
+      "1": {
+        "1": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 50,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 75,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 2,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 100,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 100,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 150,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 4,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 200,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 150,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 225,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {
+            "Food": 0,
+            "Energy": 0,
+            "Nuka": 0,
+            "Water": 300,
+            "StimPack": 0,
+            "RadAway": 0,
+            "NukaColaQuantum": 0,
+            "DummyUltracite": 0,
+            "PokerChip": 0
+          },
+          "storageItems": 0
+        }
+      }
+    },
+    "WeaponFactory": {
+      "1": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "2": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      },
+      "3": {
+        "1": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "2": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        },
+        "3": {
+          "maxDwellers": 6,
+          "storage": {},
+          "storageItems": 0
+        }
+      }
+    }
+  }
+}

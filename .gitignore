@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+scripts/extract/.venv/
+
+# Build output
+dist/
+build/
+
+# Test output
+coverage/
+test-results/
+playwright-report/
+
+# Extraction intermediates (regenerate via scripts/extract/ + the Node build)
+scripts/extract/*.json
+scripts/extract/__pycache__/
+
+# Extraction tooling: the AssetRipper release zip and README ARE committed so forks
+# can regenerate game data themselves; the unpacked tool and its export output
+# (~1.2 GB of extracted game assets) stay local-only.
+tools/*
+!tools/AssetRipper_win_x64.zip
+!tools/README.md
+
+# Personal save files (never commit real saves)
+*.sav
+*.sav.bkp
+# Exception: the bundled new-game baseline save shipped with the app.
+# It is the one intentional committed save - a clean, synthetic-equivalent new vault.
+!/public/baseline/Vault2.sav
+# Season-pass data files (spd.dat / nvf.dat) are also personal saves
+*.dat
+*.dat.bkp
+
+# Env / editor
+.env
+.env.*
+.DS_Store
+*.log
+
+# Local Claude Code settings (per-machine, not shared)
+.claude/settings.local.json
+
+# Local files
+.local/

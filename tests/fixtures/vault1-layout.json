@@ -1,0 +1,1190 @@
+{
+  "note": "Geometry-only room layout extracted from the real Vault1.sav (v2.4.1) for layout/validator tests. Game-structure data only; no personal info.",
+  "roomCount": 87,
+  "rockCount": 34,
+  "rooms": [
+    {
+      "type": "Entrance",
+      "class": "Facility",
+      "deserializeID": 1,
+      "row": 0,
+      "col": 3,
+      "level": 3,
+      "mergeLevel": 2,
+      "broken": false,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [20, 16]
+    },
+    {
+      "type": "FakeWasteland",
+      "class": "Facility",
+      "deserializeID": 2,
+      "row": 0,
+      "col": 0,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 3,
+      "row": 0,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 4,
+      "row": 1,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 5,
+      "row": 2,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "LivingQuarters",
+      "class": "Facility",
+      "deserializeID": 13,
+      "row": 0,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [79, 111, 113, 114, 115, 129]
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 16,
+      "row": 3,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 17,
+      "row": 4,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Overseer",
+      "class": "Quest",
+      "deserializeID": 33,
+      "row": 4,
+      "col": 3,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 95,
+      "row": 5,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 230,
+      "row": 6,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 255,
+      "row": 0,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 256,
+      "row": 1,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 257,
+      "row": 3,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 258,
+      "row": 4,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 259,
+      "row": 5,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 260,
+      "row": 2,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 261,
+      "row": 6,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 324,
+      "row": 4,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Armory",
+      "class": "Training",
+      "deserializeID": 417,
+      "row": 5,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [52]
+    },
+    {
+      "type": "Dojo",
+      "class": "Training",
+      "deserializeID": 420,
+      "row": 3,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [48]
+    },
+    {
+      "type": "Gym",
+      "class": "Training",
+      "deserializeID": 423,
+      "row": 2,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [31]
+    },
+    {
+      "type": "Classroom",
+      "class": "Training",
+      "deserializeID": 459,
+      "row": 0,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [50]
+    },
+    {
+      "type": "SuperRoom2",
+      "class": "Training",
+      "deserializeID": 707,
+      "row": 6,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [53]
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 713,
+      "row": 7,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 714,
+      "row": 8,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 715,
+      "row": 7,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 716,
+      "row": 8,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Bar",
+      "class": "Training",
+      "deserializeID": 899,
+      "row": 7,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [51]
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1492,
+      "row": 9,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1493,
+      "row": 9,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1494,
+      "row": 10,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1495,
+      "row": 10,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1659,
+      "row": 10,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [88]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1667,
+      "row": 10,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [80]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1672,
+      "row": 10,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [65]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1677,
+      "row": 9,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [59, 74]
+    },
+    {
+      "type": "BarberShop",
+      "class": "Training",
+      "deserializeID": 1683,
+      "row": 1,
+      "col": 20,
+      "level": 2,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [49]
+    },
+    {
+      "type": "Casino",
+      "class": "Training",
+      "deserializeID": 1686,
+      "row": 4,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [29]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1691,
+      "row": 9,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [11]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1694,
+      "row": 9,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [64]
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1696,
+      "row": 11,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1697,
+      "row": 11,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1702,
+      "row": 11,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [68, 92]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1707,
+      "row": 11,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [66]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 1710,
+      "row": 11,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [87, 91]
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1711,
+      "row": 12,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1712,
+      "row": 13,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1713,
+      "row": 14,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1746,
+      "row": 12,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "LivingQuarters",
+      "class": "Facility",
+      "deserializeID": 1751,
+      "row": 1,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [123, 124, 101, 108, 125, 128]
+    },
+    {
+      "type": "LivingQuarters",
+      "class": "Facility",
+      "deserializeID": 1756,
+      "row": 2,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [122, 126, 127, 140, 141]
+    },
+    {
+      "type": "LivingQuarters",
+      "class": "Facility",
+      "deserializeID": 1761,
+      "row": 3,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1762,
+      "row": 15,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1763,
+      "row": 16,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1764,
+      "row": 13,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1765,
+      "row": 14,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1766,
+      "row": 15,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1767,
+      "row": 16,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Energy2",
+      "class": "Production",
+      "deserializeID": 1772,
+      "row": 16,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [39, 34, 2, 1]
+    },
+    {
+      "type": "Energy2",
+      "class": "Production",
+      "deserializeID": 1777,
+      "row": 16,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [40, 24, 55, 98, 84]
+    },
+    {
+      "type": "Energy2",
+      "class": "Production",
+      "deserializeID": 1780,
+      "row": 16,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [41, 46, 57, 90]
+    },
+    {
+      "type": "Radio",
+      "class": "Facility",
+      "deserializeID": 1785,
+      "row": 1,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [63, 67, 10, 85, 30]
+    },
+    {
+      "type": "Radio",
+      "class": "Facility",
+      "deserializeID": 1790,
+      "row": 2,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [12, 25, 47, 76]
+    },
+    {
+      "type": "Radio",
+      "class": "Facility",
+      "deserializeID": 1795,
+      "row": 3,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [26, 9, 7, 89]
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1796,
+      "row": 17,
+      "col": 9,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Elevator",
+      "class": "Utility",
+      "deserializeID": 1797,
+      "row": 17,
+      "col": 19,
+      "level": 1,
+      "mergeLevel": 1,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Energy2",
+      "class": "Production",
+      "deserializeID": 1802,
+      "row": 17,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [60, 27, 72, 109]
+    },
+    {
+      "type": "Energy2",
+      "class": "Production",
+      "deserializeID": 1807,
+      "row": 17,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [45, 32, 5, 56]
+    },
+    {
+      "type": "Energy2",
+      "class": "Production",
+      "deserializeID": 1810,
+      "row": 17,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [6, 61, 82]
+    },
+    {
+      "type": "WeaponFactory",
+      "class": "Crafting",
+      "deserializeID": 1832,
+      "row": 5,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [33]
+    },
+    {
+      "type": "OutfitFactory",
+      "class": "Crafting",
+      "deserializeID": 1833,
+      "row": 6,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [35]
+    },
+    {
+      "type": "DesignFactory",
+      "class": "Crafting",
+      "deserializeID": 1838,
+      "row": 7,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [43]
+    },
+    {
+      "type": "MedBay",
+      "class": "Consumable",
+      "deserializeID": 1843,
+      "row": 8,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [58, 18]
+    },
+    {
+      "type": "ScienceLab",
+      "class": "Consumable",
+      "deserializeID": 1848,
+      "row": 8,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [8, 22]
+    },
+    {
+      "type": "Hydroponic",
+      "class": "Production",
+      "deserializeID": 2015,
+      "row": 15,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [36, 83]
+    },
+    {
+      "type": "Hydroponic",
+      "class": "Production",
+      "deserializeID": 2020,
+      "row": 15,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [14, 44, 13]
+    },
+    {
+      "type": "Hydroponic",
+      "class": "Production",
+      "deserializeID": 2023,
+      "row": 15,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [3, 71, 94]
+    },
+    {
+      "type": "Water2",
+      "class": "Production",
+      "deserializeID": 2109,
+      "row": 14,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [4, 28, 69, 81]
+    },
+    {
+      "type": "Water2",
+      "class": "Production",
+      "deserializeID": 2114,
+      "row": 14,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [54, 62, 112]
+    },
+    {
+      "type": "Water2",
+      "class": "Production",
+      "deserializeID": 2117,
+      "row": 14,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [19, 42, 38, 93]
+    },
+    {
+      "type": "NukaCola",
+      "class": "Production",
+      "deserializeID": 3661,
+      "row": 13,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [77, 75, 78]
+    },
+    {
+      "type": "NukaCola",
+      "class": "Production",
+      "deserializeID": 3666,
+      "row": 13,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [95, 70, 97]
+    },
+    {
+      "type": "NukaCola",
+      "class": "Production",
+      "deserializeID": 3669,
+      "row": 13,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Working",
+      "dwellers": [96, 86]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 5522,
+      "row": 12,
+      "col": 0,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": [102]
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 5527,
+      "row": 12,
+      "col": 10,
+      "level": 3,
+      "mergeLevel": 3,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    },
+    {
+      "type": "Storage",
+      "class": "Facility",
+      "deserializeID": 5530,
+      "row": 12,
+      "col": 20,
+      "level": 3,
+      "mergeLevel": 2,
+      "power": true,
+      "currentStateName": "Idle",
+      "dwellers": []
+    }
+  ],
+  "rocks": [
+    {
+      "r": 18,
+      "c": 23
+    },
+    {
+      "r": 18,
+      "c": 10
+    },
+    {
+      "r": 18,
+      "c": 14
+    },
+    {
+      "r": 18,
+      "c": 2
+    },
+    {
+      "r": 18,
+      "c": 21
+    },
+    {
+      "r": 19,
+      "c": 1
+    },
+    {
+      "r": 19,
+      "c": 5
+    },
+    {
+      "r": 19,
+      "c": 21
+    },
+    {
+      "r": 20,
+      "c": 7
+    },
+    {
+      "r": 20,
+      "c": 4
+    },
+    {
+      "r": 20,
+      "c": 9
+    },
+    {
+      "r": 20,
+      "c": 0
+    },
+    {
+      "r": 20,
+      "c": 23
+    },
+    {
+      "r": 21,
+      "c": 8
+    },
+    {
+      "r": 21,
+      "c": 1
+    },
+    {
+      "r": 21,
+      "c": 13
+    },
+    {
+      "r": 21,
+      "c": 16
+    },
+    {
+      "r": 21,
+      "c": 22
+    },
+    {
+      "r": 21,
+      "c": 5
+    },
+    {
+      "r": 22,
+      "c": 19
+    },
+    {
+      "r": 22,
+      "c": 11
+    },
+    {
+      "r": 22,
+      "c": 3
+    },
+    {
+      "r": 22,
+      "c": 21
+    },
+    {
+      "r": 23,
+      "c": 8
+    },
+    {
+      "r": 23,
+      "c": 14
+    },
+    {
+      "r": 23,
+      "c": 0
+    },
+    {
+      "r": 23,
+      "c": 3
+    },
+    {
+      "r": 23,
+      "c": 24
+    },
+    {
+      "r": 23,
+      "c": 11
+    },
+    {
+      "r": 24,
+      "c": 10
+    },
+    {
+      "r": 24,
+      "c": 20
+    },
+    {
+      "r": 24,
+      "c": 6
+    },
+    {
+      "r": 24,
+      "c": 4
+    },
+    {
+      "r": 24,
+      "c": 18
+    }
+  ]
+}

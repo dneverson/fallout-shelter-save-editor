@@ -1,0 +1,101 @@
+name: Release
+
+# Traditional flow: merging a PR into main pushes a commit here, which bumps
+# package.json (the single source of truth - vite.config.ts injects it into the
+# app), commits the bump back to main, tags the release, and deploys the built
+# site to GitHub Pages. The bump level is derived from Conventional Commit types
+# on the merged commits:
+#   feat!/fix!/BREAKING CHANGE -> major, feat -> minor, everything else -> patch.
+#
+# Pages deployment lives HERE (not a push-triggered workflow) on purpose: the
+# bump commit is pushed with GITHUB_TOKEN, which never triggers other workflows,
+# so a separate on-push deploy would always build the PRE-bump version.
+on:
+  push:
+    branches: [main]
+
+# contents to push the bump commit and tag; pages + id-token to deploy Pages.
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    # Skip the commit this workflow itself pushes, so it never bumps in a loop.
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history + tags so we can scan commits since the last release.
+          fetch-depth: 0
+
+      - name: Determine bump level from commits
+        id: level
+        run: |
+          last_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -n "$last_tag" ]; then
+            range="$last_tag..HEAD"
+          else
+            range="HEAD"
+          fi
+          msgs=$(git log "$range" --format=%B)
+          level=patch
+          if echo "$msgs" | grep -qE '^[a-z]+(\(.+\))?!:|BREAKING CHANGE'; then
+            level=major
+          elif echo "$msgs" | grep -qE '^feat(\(.+\))?:'; then
+            level=minor
+          fi
+          echo "level=$level" >> "$GITHUB_OUTPUT"
+
+      - name: Bump package.json
+        id: bump
+        run: |
+          new_version=$(npm version "${{ steps.level.outputs.level }}" --no-git-tag-version)
+          echo "version=$new_version" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore(release): ${{ steps.bump.outputs.version }} [skip ci]"
+          git tag "${{ steps.bump.outputs.version }}"
+          git push origin HEAD:main
+          git push origin "${{ steps.bump.outputs.version }}"
+
+  deploy:
+    needs: bump
+    runs-on: ubuntu-latest
+    # One Pages deployment at a time; a newer push supersedes an in-flight one.
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # main as of AFTER the bump job's push, so the build carries the new version.
+          ref: main
+
+      - name: Enable Corepack (pnpm)
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

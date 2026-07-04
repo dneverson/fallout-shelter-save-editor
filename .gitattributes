@@ -1,0 +1,9 @@
+# Normalize line endings to LF in the repo (the project standard), regardless of
+# the contributor's OS. Prevents CRLF/LF churn in diffs on Windows.
+* text=auto eol=lf
+
+# Binary assets must never be normalized.
+*.png binary
+*.sav binary
+*.bkp binary
+*.dat binary

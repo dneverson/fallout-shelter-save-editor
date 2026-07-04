@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable Corepack (pnpm)
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Fixture-dependent tests (real Vault1.sav) self-skip when the gitignored
+      # save is absent, so the suite is fully green in CI.
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+
+      # Guard the committed game-data: schema-valid, meta.json counts self-consistent
+      # (catches hand-edits), and every gamedata id a real save references still resolves
+      # (against the sanitized tests/fixtures/vault1-ids.json - no game files needed).
+      - run: pnpm gamedata:verify --ci

@@ -1,0 +1,22 @@
+{
+  "gameVersion": "2.4.1",
+  "unityVersion": "6000.0.58f2",
+  "generatedAt": "2026-07-04T03:24:24.169Z",
+  "counts": {
+    "weapons": 254,
+    "outfits": 215,
+    "junk": 22,
+    "hair": 224,
+    "pets": 130,
+    "handies": 4,
+    "enums": 13,
+    "recipes": 403,
+    "roomUnlocks": 23,
+    "roomCapacityTypes": 43,
+    "roomMetadataTypes": 43,
+    "roomProductionTypes": 43,
+    "uniqueDwellers": 109,
+    "seasons": 5,
+    "spriteAtlases": 39
+  }
+}
