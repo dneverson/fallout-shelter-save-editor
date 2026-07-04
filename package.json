@@ -1,6 +1,6 @@
 {
   "name": "fallout-shelter-save-editor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "type": "module",
   "description": "Client-only web app to view and edit Fallout Shelter save files. Not affiliated with Bethesda.",
