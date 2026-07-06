@@ -53,6 +53,23 @@ Other behavior:
 
 ---
 
+## Screenshots
+
+The Family Tree, with vault-wide genetics stats derived from each dweller's lineage data:
+
+[![Family Tree - relationship graph with vault genetics stats](docs/screenshots/family-tree.png)](docs/screenshots/family-tree.png)
+
+|                                                                                                     |                                                                                                   |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Dwellers** - full roster with SPECIAL, gear, and appearance editing                               | **Vault** - resources, consumables, game mode, and the Mysterious Stranger                        |
+| [![Dwellers roster and editor panel](docs/screenshots/dwellers.png)](docs/screenshots/dwellers.png) | [![Vault settings and overview](docs/screenshots/vault.png)](docs/screenshots/vault.png)          |
+| **Rooms** - grid with per-room staffing, themes, and repair                                         | **Season Pass** - reward tracks for every season, claim or unclaim anything                       |
+| [![Room grid with side panel](docs/screenshots/rooms.png)](docs/screenshots/rooms.png)              | [![Season pass reward board](docs/screenshots/season-pass.png)](docs/screenshots/season-pass.png) |
+| **Bulk** - vault-wide presets, unlocks, and location loadouts                                       | **Advanced** - JSON editor with explorer tree and live diff                                       |
+| [![Bulk operations view](docs/screenshots/bulk.png)](docs/screenshots/bulk.png)                     | [![Advanced JSON editor](docs/screenshots/advanced.png)](docs/screenshots/advanced.png)           |
+
+---
+
 ## Using the editor
 
 1. Open the **[live app](https://dneverson.github.io/fallout-shelter-save-editor/)**.
