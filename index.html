@@ -4,14 +4,131 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <title>Fallout Shelter Save Editor - Free Browser-Based Vault Editor</title>
     <meta
       name="description"
-      content="Client-only Fallout Shelter save editor - view and edit dwellers, rooms, storage, and vault settings entirely in your browser. Your save never leaves your machine."
+      content="Free, open-source Fallout Shelter save editor that runs entirely in your browser - no download. Edit dwellers, rooms, resources, storage, and season passes, or view your vault's family tree. Your save is never uploaded."
     />
-    <title>Fallout Shelter Save Editor</title>
+    <link rel="canonical" href="https://dneverson.github.io/fallout-shelter-save-editor/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fallout Shelter Save Editor" />
+    <meta
+      property="og:title"
+      content="Fallout Shelter Save Editor - Free Browser-Based Vault Editor"
+    />
+    <meta
+      property="og:description"
+      content="Edit dwellers, rooms, resources, and season passes - or view your vault's family tree. Free, open source, runs entirely in your browser. Nothing is uploaded."
+    />
+    <meta property="og:url" content="https://dneverson.github.io/fallout-shelter-save-editor/" />
+    <meta
+      property="og:image"
+      content="https://dneverson.github.io/fallout-shelter-save-editor/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Fallout Shelter Save Editor - free, open source, runs in your browser"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Fallout Shelter Save Editor - Free Browser-Based Vault Editor"
+    />
+    <meta
+      name="twitter:description"
+      content="Edit dwellers, rooms, resources, and season passes - or view your vault's family tree. Free, open source, runs entirely in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dneverson.github.io/fallout-shelter-save-editor/og-image.png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fallout Shelter Save Editor",
+        "url": "https://dneverson.github.io/fallout-shelter-save-editor/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any (web browser)",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Free, open-source Fallout Shelter save editor that runs entirely in your browser. Edit dwellers, rooms, resources, storage, and season passes, or view your vault's family tree. Your save is never uploaded to a server.",
+        "image": "https://dneverson.github.io/fallout-shelter-save-editor/og-image.png",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Person", "name": "dneverson" },
+        "license": "https://opensource.org/licenses/MIT",
+        "isAccessibleForFree": true
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      Static content below is rendered as the raw HTML for search engines and
+      non-JavaScript crawlers. React replaces the contents of #root when the app
+      mounts, so users never see it; it exists purely so the page has real,
+      indexable text describing the tool.
+    -->
+    <div id="root">
+      <main
+        style="
+          max-width: 48rem;
+          margin: 0 auto;
+          padding: 2rem 1.5rem;
+          font-family: system-ui, sans-serif;
+          color: #e5e5e5;
+          background: #0a0a0a;
+        "
+      >
+        <h1>Fallout Shelter Save Editor</h1>
+        <p>
+          A free, open-source save editor for Fallout Shelter that runs entirely in your browser.
+          Load your <code>Vault1.sav</code> file, edit your vault, and export it back to the game.
+          Your save is decrypted, edited, and re-encrypted locally - it is never uploaded to a
+          server.
+        </p>
+        <h2>What you can do</h2>
+        <ul>
+          <li>
+            Edit dwellers: SPECIAL stats, level, happiness, health, equipped weapon, outfit and pet,
+            appearance, and revive dead dwellers.
+          </li>
+          <li>Edit your vault: caps, resources, food, water, power, Nuka-Cola, and lunchboxes.</li>
+          <li>
+            Manage rooms: rearrange the layout, upgrade, apply themes, clear rocks, and repair.
+          </li>
+          <li>
+            Season passes: view every season's full reward track, including past seasons, and claim
+            rewards you missed.
+          </li>
+          <li>
+            View your vault's family tree with relationship and genetics stats the game never shows
+            you.
+          </li>
+          <li>
+            Browse full catalogs of every weapon, outfit, pet, junk item, and recipe in the game.
+          </li>
+          <li>Repair corrupted saves with a built-in save health check.</li>
+        </ul>
+        <p>
+          Works with saves from PC, Android, iOS, and Switch. Free and open source (MIT). No
+          accounts, no ads, no telemetry.
+        </p>
+        <p>
+          <a href="https://github.com/dneverson/fallout-shelter-save-editor"
+            >Source code on GitHub</a
+          >
+        </p>
+        <noscript>This app requires JavaScript to run.</noscript>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

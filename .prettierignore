@@ -9,3 +9,6 @@ tools
 # Codec fixture: must stay byte-for-byte the compact form stringifyLossless emits
 # (losslessJson.test.ts asserts re-encode === source). Prettifying it breaks that gate.
 tests/fixtures/season-sample.json
+
+# Google Search Console verification file: must be served byte-exact as issued.
+public/googleff13f58d975999b9.html
