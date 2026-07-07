@@ -109,6 +109,20 @@ export function removeStoredItemAt(save: SaveData, index: number): SaveData {
 }
 
 /**
+ * Remove every stored item whose array index is in `indices` (used for multi-select pet
+ * removal). Filters them all out in a single pass, so unlike chaining {@link removeStoredItemAt}
+ * the shifting of later indices never mis-targets a row. No-op if `indices` is empty.
+ */
+export function removeStoredItemsAt(save: SaveData, indices: readonly number[]): SaveData {
+  if (indices.length === 0) return save;
+  const drop = new Set(indices);
+  return withInventoryItems(
+    save,
+    inventoryItems(save).filter((_, i) => !drop.has(i)),
+  );
+}
+
+/**
  * Grant a newly-created pet instance directly into storage (unequipped). The locked
  * bonus + value-range clamp are applied by the UI call site, same as the
  * equip-from-create flow; storage just receives the finished instance.

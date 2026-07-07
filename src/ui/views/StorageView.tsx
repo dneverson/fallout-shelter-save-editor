@@ -1,22 +1,24 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSaveStore } from '../../state/saveStore.ts';
 import { useUIStore } from '../../state/uiStore.ts';
+import { pushToast } from '../../state/toastStore.ts';
 import { useGameData } from '../hooks/useGameData.ts';
 import type { NewPet } from '../../domain/ops/dwellerOps.ts';
 import {
   addPet,
   grantItems,
   removeStoredItemAt,
+  removeStoredItemsAt,
   setItemCount,
   type StackableType,
 } from '../../domain/ops/storageOps.ts';
 import type { Item } from '../../domain/model/saveSchema.ts';
 import type { GameData } from '../../domain/gamedata/gameData.ts';
 import { computeItemCapacity } from '../../domain/selectors/vaultSelectors.ts';
-import type { ColumnDef } from '@tanstack/react-table';
+import type { ColumnDef, RowSelectionState } from '@tanstack/react-table';
 import { UnifiedTable } from '../components/table/UnifiedTable.tsx';
-import { actionsColumn } from '../components/table/columnKit.tsx';
+import { actionsColumn, selectColumn } from '../components/table/columnKit.tsx';
 import { InfoTooltip } from '../components/InfoTooltip.tsx';
 import { fieldHelp } from '../lib/fieldHelp.ts';
 import { AddItemsDialog, type AddSegment } from '../components/storage/AddItemsDialog.tsx';
@@ -121,6 +123,20 @@ export function StorageView({ virtualized = true }: { virtualized?: boolean } = 
   }
   const [addOpen, setAddOpen] = useState(false);
 
+  // Multi-select for bulk removal. One selection map at a time; because group rows key on
+  // item id and pet rows key on inventory index (disjoint id spaces), switching segments
+  // clears it (render-time "adjust state on prop change", matching the URL-segment adopt above).
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+  const [selSegment, setSelSegment] = useState(segment);
+  if (selSegment !== segment) {
+    setSelSegment(segment);
+    setRowSelection({});
+  }
+  const selectedKeys = useMemo(
+    () => Object.keys(rowSelection).filter((k) => rowSelection[k]),
+    [rowSelection],
+  );
+
   const items = useMemo<Item[]>(() => save?.vault?.inventory?.items ?? [], [save]);
 
   // Composition counts (item-count accurate; no capacity denominator yet).
@@ -197,6 +213,47 @@ export function StorageView({ virtualized = true }: { virtualized?: boolean } = 
     ],
     [applyEdit],
   );
+
+  const groupLeading = useMemo<ColumnDef<StorageGroupRow>[]>(
+    () => [selectColumn<StorageGroupRow>((r) => r.name)],
+    [],
+  );
+  const petLeading = useMemo<ColumnDef<StoragePetRow>[]>(
+    () => [selectColumn<StoragePetRow>((r) => r.name)],
+    [],
+  );
+
+  // Bulk remove of the current selection, in ONE applyEdit = one undo step. Groups zero out
+  // each selected id; pets drop all selected inventory indices in a single pass (per-index
+  // removal would shift later indices). Selection is cleared afterward.
+  const removeSelectedGroups = (): void => {
+    const type = segment === 'Pet' ? 'Weapon' : segment;
+    applyEdit(
+      (s) => selectedKeys.reduce((acc, id) => setItemCount(acc, type, id, 0), s),
+      'Remove selected items',
+    );
+    setRowSelection({});
+    pushToast(
+      `Removed ${selectedKeys.length} selected stack${selectedKeys.length === 1 ? '' : 's'}`,
+    );
+  };
+  const removeSelectedPets = (): void => {
+    const indices = selectedKeys.map(Number);
+    applyEdit((s) => removeStoredItemsAt(s, indices), 'Remove selected pets');
+    setRowSelection({});
+    pushToast(`Removed ${indices.length} pet${indices.length === 1 ? '' : 's'}`);
+  };
+
+  const removeSelectedButton = (onRemove: () => void): ReactNode =>
+    selectedKeys.length > 0 ? (
+      <button
+        type="button"
+        onClick={onRemove}
+        className="rounded border border-red-700 px-3 py-1.5 text-sm text-red-300 hover:bg-red-900/40"
+      >
+        Remove selected ({selectedKeys.length})
+      </button>
+    ) : null;
 
   // Bulk grant: every picked catalog item lands in ONE applyEdit = one undo step.
   const onGrant = (picked: CatalogAddItem[]): void => {
@@ -310,10 +367,15 @@ export function StorageView({ virtualized = true }: { virtualized?: boolean } = 
           virtualized={virtualized}
           schema={petSchema}
           persistKey="storage.pet"
+          leading={petLeading}
           trailing={petTrailing}
           data={petRowsData}
           getRowId={(r) => String(r.index)}
           enableGlobalFilter
+          enableRowSelection
+          rowSelection={rowSelection}
+          onRowSelectionChange={setRowSelection}
+          toolbarExtras={removeSelectedButton(removeSelectedPets)}
           initialSorting={[{ id: 'name', desc: false }]}
           emptyState="No pets in storage. Use “Add items” to grant one."
         />
@@ -323,10 +385,15 @@ export function StorageView({ virtualized = true }: { virtualized?: boolean } = 
           virtualized={virtualized}
           schema={groupSchema}
           persistKey={`storage.${segment}`}
+          leading={groupLeading}
           trailing={groupTrailing}
           data={groupRowsData}
           getRowId={(r) => r.id}
           enableGlobalFilter
+          enableRowSelection
+          rowSelection={rowSelection}
+          onRowSelectionChange={setRowSelection}
+          toolbarExtras={removeSelectedButton(removeSelectedGroups)}
           initialSorting={[{ id: 'name', desc: false }]}
           emptyState="Nothing of this type in storage. Use “Add items” to grant some."
         />
