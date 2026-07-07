@@ -264,10 +264,17 @@ export function RoomSidePanel({
 
           <div className={SECTION}>
             <div className="flex items-center justify-between">
-              <span className="text-xs text-neutral-400">
+              <span className="flex items-center gap-1.5 text-xs text-neutral-400">
                 Health: {damaged ? <span className="text-amber-400">damaged</span> : 'healthy'}
+                <InfoTooltip text={fieldHelp.roomRepair} />
               </span>
-              <button type="button" className={BTN} disabled={!damaged} onClick={onRepair}>
+              <button
+                type="button"
+                className={BTN}
+                disabled={!damaged}
+                title={fieldHelp.roomRepair}
+                onClick={onRepair}
+              >
                 Repair
               </button>
             </div>

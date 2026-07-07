@@ -53,7 +53,7 @@ export const fieldHelp = {
   roomPower:
     'Whether the room is powered. Unpowered rooms stop producing. The game powers rooms down automatically when energy runs short.',
   roomRepair:
-    'Clears accumulated damage (from incidents) back to full. A broken room produces nothing until repaired.',
+    'Clears a room’s accumulated incident damage (the scorch left by fires, radroaches, raiders, and other incidents) back to zero. Rooms only take this damage while an incident is actively burning and normally heal it on their own once the incident is cleared, so leftover damage in a saved game is cosmetic and does not stop production. Useful mainly for a save captured mid-incident, or a room whose scorch got stuck.',
   roomMerge:
     'Merging joins two identical adjacent rooms of the same level into a wider one with more capacity and output. Only valid merges are allowed.',
   roomDecoration:

@@ -740,9 +740,13 @@ export function RoomsView() {
     : [];
 
   // Below md the header buttons/banners/palette stack tall enough to push the grid off
-  // screen, so the PANE scrolls on phones; on md+ the grid keeps its own internal scroll.
+  // screen, so the PANE scrolls on phones. On md+ the grid keeps its own internal scroll,
+  // but the pane stays `overflow-y-auto` (not `visible`) so that on SHORT desktop viewports
+  // - laptops, or a browser bloated by bookmark/translate bars - the pre-grid content
+  // (header, advisor + economy banners, build palette) can still be scrolled into view
+  // instead of being clipped behind the bottom edge with no scrollbar.
   const gridPane = (
-    <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-3 overflow-y-auto p-4 md:overflow-y-visible">
+    <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-3 overflow-y-auto p-4">
       <div className="flex items-baseline gap-3">
         <h2 className="text-lg font-semibold">Rooms</h2>
         <span className="text-sm text-neutral-400">{layout.nodes.length} rooms</span>
@@ -760,7 +764,9 @@ export function RoomsView() {
             title={
               damagedCount === 0
                 ? 'No damaged rooms'
-                : `Repair ${damagedCount} damaged room${damagedCount === 1 ? '' : 's'}`
+                : `Clears accumulated incident (scorch) damage back to zero on all ${damagedCount} ` +
+                  `damaged room${damagedCount === 1 ? '' : 's'}. This damage is cosmetic in a saved ` +
+                  `game and does not stop production; mainly fixes saves captured mid-incident.`
             }
             className={HEADER_BTN}
           >
@@ -921,8 +927,12 @@ export function RoomsView() {
         onToggleCollapsed={() => setBuildCollapsed(!buildCollapsed)}
       />
 
-      {/* On phones (scrolling pane) guarantee the grid a real height; md+ lets flex size it. */}
-      <div className="flex min-h-[65vh] flex-1 flex-col md:min-h-0">
+      {/* Guarantee the grid a real height on EVERY viewport. flex-1 lets it grow to fill on
+          tall screens; the min-height floor stops it collapsing on short ones - without it the
+          palette + banners eat the whole pane and the flex-1 wrapper shrinks to ~0, leaving the
+          vault map as an unusable sliver (the map's own scroll then hides all the rooms). With
+          the floor the map stays usable and the pane scrolls to bring it into view. */}
+      <div className="flex min-h-[65vh] flex-1 flex-col">
         <RoomGrid
           layout={layout}
           selectedId={selectedId}

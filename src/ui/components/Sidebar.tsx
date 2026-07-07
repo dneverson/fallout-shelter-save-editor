@@ -52,7 +52,7 @@ export function Sidebar() {
   return (
     <nav
       aria-label="Sections"
-      className="w-full shrink-0 border-b border-neutral-800 p-2 md:w-44 md:border-b-0 md:border-r"
+      className="w-full shrink-0 border-b border-neutral-800 p-2 md:min-h-0 md:w-44 md:overflow-y-auto md:border-b-0 md:border-r"
     >
       <ul className="flex gap-1 overflow-x-auto md:flex-col md:space-y-1 md:overflow-visible">
         {SECTION_NAV.map(({ id, label }) => {

@@ -342,7 +342,13 @@ export function BulkView() {
             className={BTN}
             disabled={damagedCount === 0}
             onClick={repairAllRooms_}
-            title={damagedCount === 0 ? 'No damaged rooms' : `Repair ${damagedCount} rooms`}
+            title={
+              damagedCount === 0
+                ? 'No damaged rooms'
+                : `Clears accumulated incident (scorch) damage back to zero on all ${damagedCount} ` +
+                  `damaged room${damagedCount === 1 ? '' : 's'}. This damage is cosmetic in a saved ` +
+                  `game and does not stop production; mainly fixes saves captured mid-incident.`
+            }
           >
             Repair all{damagedCount > 0 ? ` (${damagedCount})` : ''}
           </button>
