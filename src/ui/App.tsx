@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useSaveStore } from '../state/saveStore.ts';
 import { isSection, rememberSection } from './routing/sections.ts';
 import { DisclaimerDialog } from './components/DisclaimerDialog.tsx';
+import { LandingIntro } from './components/LandingIntro.tsx';
 import { Sidebar } from './components/Sidebar.tsx';
 import { TopBar } from './components/TopBar.tsx';
 import { ToastHost } from './components/ToastHost.tsx';
@@ -42,19 +43,22 @@ export function App() {
       </a>
       <TopBar />
 
-      {accepted &&
-        (hasSave ? (
-          <div className="flex min-h-0 flex-1 flex-col md:flex-row">
-            <Sidebar />
-            <main id="main-content" className="min-h-0 flex-1 overflow-hidden">
-              <Outlet />
-            </main>
-          </div>
-        ) : (
-          <main id="main-content" className="min-h-0 flex-1 overflow-auto">
-            <ImportView />
+      {accepted && hasSave ? (
+        <div className="flex min-h-0 flex-1 flex-col md:flex-row">
+          <Sidebar />
+          <main id="main-content" className="min-h-0 flex-1 overflow-hidden">
+            <Outlet />
           </main>
-        ))}
+        </div>
+      ) : (
+        // No-save landing. LandingIntro renders regardless of `accepted` so the descriptive
+        // content is in the rendered DOM for crawlers (which never dismiss the disclaimer);
+        // the interactive picker stays gated behind acceptance.
+        <main id="main-content" className="min-h-0 flex-1 overflow-auto">
+          {accepted && <ImportView />}
+          <LandingIntro />
+        </main>
+      )}
 
       <DisclaimerDialog open={!accepted} onAccept={acceptDisclaimer} />
       <ToastHost />
