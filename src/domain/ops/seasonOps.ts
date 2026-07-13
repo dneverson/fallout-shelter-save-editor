@@ -781,3 +781,54 @@ export function loadSeasonSave(spd: SeasonSave): SeasonSave {
   }
   return changed ? { ...spd, seasonsData: nextData } : spd;
 }
+
+// --- Season clock (the game's own debug time offset) ------------------------------
+
+/** .NET ticks in one day. */
+const TICKS_PER_DAY = 86_400 * 10_000_000;
+
+/**
+ * Advance the season clock by `days` (`spd.debugTimeOffset`, .NET ticks the game adds
+ * to "now" for ALL season timing - weekly unlocks, event windows, season end). Mirrors
+ * the game's own AddGlobalTimeOffsetDays: += days worth of ticks + 1. A realistic
+ * offset stays far inside Number.MAX_SAFE_INTEGER, so plain number math is exact;
+ * a hand-edited out-of-range value (parsed as LosslessInt fails the schema's number
+ * type) is replaced wholesale via the ?? 0 fallback.
+ */
+export function advanceSeasonClock(ws: SeasonWorkspace, days: number): SeasonWorkspace {
+  const d = Math.trunc(days);
+  if (!Number.isFinite(d) || d <= 0) return ws;
+  const current = typeof ws.spd.debugTimeOffset === 'number' ? ws.spd.debugTimeOffset : 0;
+  return { ...ws, spd: { ...ws.spd, debugTimeOffset: current + d * TICKS_PER_DAY + 1 } };
+}
+
+/** Reset the season clock to real time (`debugTimeOffset = 0`). */
+export function resetSeasonClock(ws: SeasonWorkspace): SeasonWorkspace {
+  if ((ws.spd.debugTimeOffset ?? 0) === 0) return ws;
+  return { ...ws, spd: { ...ws.spd, debugTimeOffset: 0 } };
+}
+
+/**
+ * Jump the season clock past the active season's end - the game's own
+ * SkipToEndOfCurrentSeason cheat: offset = endDate - now + 1 tick. The caller
+ * computes both tick values (catalog endDate / Date.now via taskLookup.ticksFromUnixMs)
+ * so the op stays pure. No-op when the season already ended (offset would be <= 0).
+ */
+export function skipToSeasonEnd(
+  ws: SeasonWorkspace,
+  endDateTicks: bigint,
+  nowTicks: bigint,
+): SeasonWorkspace {
+  const offset = endDateTicks - nowTicks + 1n;
+  if (offset <= 0n) return ws;
+  const value = Number(offset);
+  if (!Number.isSafeInteger(value)) return ws; // > ~28 years out - malformed input
+  if (ws.spd.debugTimeOffset === value) return ws;
+  return { ...ws, spd: { ...ws.spd, debugTimeOffset: value } };
+}
+
+/** Current season-clock offset in whole days (0 = real time). */
+export function seasonClockOffsetDays(spd: SeasonSave): number {
+  const offset = typeof spd.debugTimeOffset === 'number' ? spd.debugTimeOffset : 0;
+  return Math.floor(offset / TICKS_PER_DAY);
+}

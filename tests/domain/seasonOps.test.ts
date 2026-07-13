@@ -20,6 +20,10 @@ import {
   unclaimReward,
   type RewardResolverData,
   type SeasonWorkspace,
+  advanceSeasonClock,
+  resetSeasonClock,
+  seasonClockOffsetDays,
+  skipToSeasonEnd,
 } from '../../src/domain/ops/seasonOps.ts';
 
 // --- fixtures -------------------------------------------------------------------
@@ -603,5 +607,47 @@ describe('seasonOps fresh model', () => {
     const maxed = maxSeason(ws, data, 'S1');
     expect(maxed.spd.seasonsData!.S1.freeRewardsList!.every(isRewardClaimed)).toBe(true);
     expect(maxed.save.vault?.storage?.resources?.Nuka).toBe(800);
+  });
+});
+
+describe('seasonOps - season clock (debugTimeOffset)', () => {
+  const TICKS_PER_DAY = 86_400 * 10_000_000;
+
+  it('advanceSeasonClock adds whole days of ticks + 1 (game AddGlobalTimeOffsetDays)', () => {
+    const ws = makeWorkspace();
+    const next = advanceSeasonClock(ws, 7);
+    expect(next.spd.debugTimeOffset).toBe(7 * TICKS_PER_DAY + 1);
+    const again = advanceSeasonClock(next, 1);
+    expect(again.spd.debugTimeOffset).toBe(8 * TICKS_PER_DAY + 2);
+    // Untouched subtrees shared; non-positive days is a no-op.
+    expect(next.save).toBe(ws.save);
+    expect(advanceSeasonClock(ws, 0)).toBe(ws);
+    expect(advanceSeasonClock(ws, -3)).toBe(ws);
+  });
+
+  it('resetSeasonClock zeroes the offset and no-ops at zero', () => {
+    const ws = makeWorkspace();
+    expect(resetSeasonClock(ws)).toBe(ws);
+    const moved = advanceSeasonClock(ws, 2);
+    const reset = resetSeasonClock(moved);
+    expect(reset.spd.debugTimeOffset).toBe(0);
+    expect(seasonClockOffsetDays(reset.spd)).toBe(0);
+  });
+
+  it('skipToSeasonEnd sets offset = end - now + 1 and refuses past/absurd inputs', () => {
+    const ws = makeWorkspace();
+    const now = 638_000_000_000_000_000n;
+    const end = now + 5n * BigInt(TICKS_PER_DAY);
+    const next = skipToSeasonEnd(ws, end, now);
+    expect(next.spd.debugTimeOffset).toBe(Number(5n * BigInt(TICKS_PER_DAY) + 1n));
+    expect(seasonClockOffsetDays(next.spd)).toBe(5);
+    expect(skipToSeasonEnd(ws, now - 1n, now)).toBe(ws); // season already over
+    expect(skipToSeasonEnd(ws, now + 40n * 365n * 24n * 3_600n * 10_000_000n, now)).toBe(ws); // unsafe range
+  });
+
+  it('seasonClockOffsetDays floors partial days', () => {
+    const ws = advanceSeasonClock(makeWorkspace(), 1);
+    expect(seasonClockOffsetDays(ws.spd)).toBe(1);
+    expect(seasonClockOffsetDays({} as SeasonSave)).toBe(0);
   });
 });
