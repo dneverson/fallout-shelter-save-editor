@@ -645,3 +645,144 @@ export function remove(save: SaveData, serializeId: number): SaveData {
 /** True if a dweller with this `serializeId` exists (handy for UI guards). */
 export const hasDweller = (save: SaveData, serializeId: number): boolean =>
   indexOf(save, serializeId) !== -1;
+
+/** The game's own empty-training-slot sentinel (TrainingSlot.Serialize writes -2/-2). */
+const EMPTY_TRAINING_SLOT = -2;
+
+/**
+ * Delete multiple dwellers AND scrub every save reference to them, mirroring the state
+ * the game itself re-serializes after DwellerManager.RemoveDweller:
+ *
+ * - room `dwellers` / `deadDwellers` rosters: ids dropped (a ghost roster id is tolerated
+ *   on load but flagged by our own health check, so it must not be left behind);
+ * - training `slots[]`: reset to the game's empty sentinels (-2/-2). Left dangling, a
+ *   slot with `needLvUp` NPEs in TrainingSlot.Deserialize (ShowDwellerIcon on null);
+ * - `partners[]`: entries whose FEMALE (`f`, the validity anchor - IsValid() is
+ *   `m_female != null`) is removed are dropped; male-only removals keep the entry,
+ *   exactly like the game (names survive for the family tree). On surviving entries a
+ *   removed `fatherId` resets to -1 (what DwellerPartnership.OnDwellerRemoved does) and
+ *   a removed `templateID` (first-born of a multi-birth, copied by its siblings) resets
+ *   to -1 - CreateChild dereferences that id WITHOUT a null check, so leaving it
+ *   dangling would crash the game when the next sibling is born;
+ * - `children[]`: entries for a removed child dweller are dropped;
+ * - wasteland `teams[]`: removed members leave the team; a team with nobody left is
+ *   dropped whole (teams are a dynamic list of active trips);
+ * - `taskMgr`: tasks owned solely by dropped entries (birth `t`, grow-up `taskID`,
+ *   training `taskID`) are deleted - TaskMgr re-serializes every queued task, so an
+ *   unclaimed orphan would linger in the save forever.
+ *
+ * Other dwellers' relation ids (ascendants/partner history) are deliberately kept: the
+ * game null-checks and preserves them (dead ancestors are routinely absent from saves).
+ * Unknown ids are skipped; removing nothing returns the SAME reference (store no-op).
+ */
+export function removeDwellers(save: SaveData, serializeIds: readonly number[]): SaveData {
+  const block = save.dwellers;
+  const list = block?.dwellers;
+  if (!list || serializeIds.length === 0) return save;
+  const requested = new Set(serializeIds);
+  const removing = new Set<number>();
+  for (const d of list) {
+    if (typeof d.serializeId === 'number' && requested.has(d.serializeId)) {
+      removing.add(d.serializeId);
+    }
+  }
+  if (removing.size === 0) return save;
+  const hits = (id: number | undefined): boolean => typeof id === 'number' && removing.has(id);
+
+  let next: SaveData = {
+    ...save,
+    dwellers: { ...block, dwellers: list.filter((d) => !hits(d.serializeId)) },
+  };
+
+  // Task ids that only the dropped entries referenced; scrubbed from taskMgr below.
+  const orphanTasks = new Set<number>();
+  const claimTask = (id: number | undefined): void => {
+    if (typeof id === 'number' && id > 0) orphanTasks.add(id);
+  };
+
+  const rooms = save.vault?.rooms;
+  if (rooms) {
+    let roomsChanged = false;
+    const nextRooms = rooms.map((room) => {
+      let r = room;
+      if (r.dwellers?.some(hits)) {
+        r = { ...r, dwellers: r.dwellers.filter((id) => !hits(id)) };
+      }
+      if (r.deadDwellers?.some(hits)) {
+        r = { ...r, deadDwellers: r.deadDwellers.filter((id) => !hits(id)) };
+      }
+      if (r.slots?.some((s) => hits(s.dwellerID))) {
+        r = {
+          ...r,
+          slots: r.slots.map((s) => {
+            if (!hits(s.dwellerID)) return s;
+            claimTask(s.taskID);
+            return { ...s, dwellerID: EMPTY_TRAINING_SLOT, taskID: EMPTY_TRAINING_SLOT };
+          }),
+        };
+      }
+      if (r.partners?.some((p) => hits(p.f) || hits(p.fatherId) || hits(p.templateID))) {
+        for (const p of r.partners) if (hits(p.f)) claimTask(p.t);
+        r = {
+          ...r,
+          partners: r.partners
+            .filter((p) => !hits(p.f))
+            .map((p) => {
+              if (!hits(p.fatherId) && !hits(p.templateID)) return p;
+              const patched = { ...p };
+              // Mirror DwellerPartnership.OnDwellerRemoved: a removed father becomes -1
+              // (name strings carry the family tree).
+              if (hits(patched.fatherId)) patched.fatherId = -1;
+              // A dangling child template CRASHES CreateChild at the next multi-birth
+              // (unchecked GetDwellerById(templateID).m_gender); -1 rolls a random child.
+              if (hits(patched.templateID)) patched.templateID = -1;
+              return patched;
+            }),
+        };
+      }
+      if (r.children?.some((c) => hits(c.dwellerID))) {
+        for (const c of r.children) if (hits(c.dwellerID)) claimTask(c.taskID);
+        r = { ...r, children: r.children.filter((c) => !hits(c.dwellerID)) };
+      }
+      if (r !== room) roomsChanged = true;
+      return r;
+    });
+    if (roomsChanged) {
+      next = { ...next, vault: { ...next.vault, rooms: nextRooms } };
+    }
+  }
+
+  const wasteland = save.vault?.wasteland;
+  if (wasteland?.teams?.some((t) => t.dwellers?.some(hits))) {
+    const nextTeams = wasteland.teams
+      .map((t) =>
+        t.dwellers?.some(hits) ? { ...t, dwellers: t.dwellers.filter((id) => !hits(id)) } : t,
+      )
+      .filter((t) => t.dwellers === undefined || t.dwellers.length > 0);
+    next = { ...next, vault: { ...next.vault, wasteland: { ...wasteland, teams: nextTeams } } };
+  }
+
+  const mgr = save.taskMgr;
+  if (orphanTasks.size > 0 && mgr) {
+    const dropTasks = <T extends { id?: number | undefined }>(
+      tasks: T[] | undefined,
+    ): T[] | undefined =>
+      tasks?.some((t) => typeof t.id === 'number' && orphanTasks.has(t.id))
+        ? tasks.filter((t) => !(typeof t.id === 'number' && orphanTasks.has(t.id)))
+        : tasks;
+    const tasks = dropTasks(mgr.tasks);
+    const pausedTasks = dropTasks(mgr.pausedTasks);
+    if (tasks !== mgr.tasks || pausedTasks !== mgr.pausedTasks) {
+      next = {
+        ...next,
+        taskMgr: {
+          ...mgr,
+          ...(tasks !== undefined ? { tasks } : {}),
+          ...(pausedTasks !== undefined ? { pausedTasks } : {}),
+        },
+      };
+    }
+  }
+
+  return next;
+}

@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import type { Dweller, SaveData } from '../../../domain/model/saveSchema.ts';
 import { useSaveStore } from '../../../state/saveStore.ts';
+import { pushToast } from '../../../state/toastStore.ts';
 import { useGameData } from '../../hooks/useGameData.ts';
 import { outfitEnduranceBonus } from '../../../domain/gamedata/gameData.ts';
+import { removeDwellers } from '../../../domain/ops/dwellerOps.ts';
+import { fieldHelp } from '../../lib/fieldHelp.ts';
+import { ConfirmDialog } from '../ConfirmDialog.tsx';
 import {
   makeLegendaryAll,
   maxHappinessAll,
@@ -35,6 +39,20 @@ export function BulkActionBar({
   const applyEdit = useSaveStore((s) => s.applyEdit);
   const { data: gameData } = useGameData();
   const [level, setLevel] = useState(50);
+  const [confirmRemove, setConfirmRemove] = useState(false);
+
+  // Destructive, so it confirms first. One applyEdit = one undo step; the op scrubs
+  // room rosters, training slots, partner/child entries and wasteland teams with the ids.
+  const removeSelected = (): void => {
+    const count = selectedIds.length;
+    applyEdit(
+      (s) => removeDwellers(s, selectedIds),
+      `Remove ${count} dweller${count === 1 ? '' : 's'}`,
+    );
+    setConfirmRemove(false);
+    onClear();
+    pushToast(`Removed ${count} dweller${count === 1 ? '' : 's'}.`, 'success');
+  };
 
   const run = (op: (save: SaveData, ids: readonly number[]) => SaveData, label: string) => () =>
     applyEdit((s) => op(s, selectedIds), label);
@@ -129,6 +147,16 @@ export function BulkActionBar({
         Baby ready
       </button>
 
+      <span className="mx-1 h-4 w-px bg-neutral-700" />
+      <button
+        type="button"
+        onClick={() => setConfirmRemove(true)}
+        title={fieldHelp.removeDweller}
+        className="rounded border border-red-700 px-2 py-1 text-xs text-red-300 hover:bg-red-900/40"
+      >
+        Remove ({selectedIds.length})
+      </button>
+
       <button
         type="button"
         onClick={onClear}
@@ -136,6 +164,22 @@ export function BulkActionBar({
       >
         Clear selection
       </button>
+
+      <ConfirmDialog
+        open={confirmRemove}
+        title="Remove selected dwellers"
+        message={
+          <>
+            Remove {selectedIds.length} dweller{selectedIds.length === 1 ? '' : 's'} from the save?
+            Anything they have equipped goes with them, and they leave their rooms and exploration
+            teams. You can undo this while the editor is open.
+          </>
+        }
+        confirmLabel={`Remove ${selectedIds.length} dweller${selectedIds.length === 1 ? '' : 's'}`}
+        destructive
+        onConfirm={removeSelected}
+        onCancel={() => setConfirmRemove(false)}
+      />
     </div>
   );
 }

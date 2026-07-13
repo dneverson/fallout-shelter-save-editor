@@ -23,6 +23,8 @@ export const fieldHelp = {
   pregnancy:
     'Pregnancy flags for female dwellers. "Pregnant" starts the timer; "Baby ready" means the child is due. Ticking "Baby ready" also completes the due timer (the pair the game writes together); unticking it restores the timer to what the imported save recorded. Charisma (Radio room) speeds pregnancies.',
   hair: 'Hairstyle / facial-hair piece. Cosmetic only; pieces are filtered to the dweller’s gender like the in-game barbershop.',
+  removeDweller:
+    'Removes the dweller and cleans up every trace, the way the game itself does: they leave room work rosters, their training slot is emptied (its timer deleted), they exit exploration teams (a team left empty disbands), and pregnancy/family records are patched so nothing breaks at the next birth. Names stay on the family tree. Their equipped weapon, outfit and pet are deleted with them - unequip to storage first to keep the items. Undo restores everything while the editor is open.',
 
   // --- Equipment -------------------------------------------------------------------
   weapon:

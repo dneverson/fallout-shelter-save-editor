@@ -20,6 +20,7 @@ import {
   hasDweller,
   maxOutHealth,
   remove,
+  removeDwellers,
   setColors,
   setFaceMask,
   setGender,
@@ -348,6 +349,157 @@ describe('dwellerOps - remove', () => {
     expect(after.dwellers?.dwellers[0].serializeId).toBe(2);
     expect(after.dwellers?.dwellers[0]).toBe(before.dwellers?.dwellers[1]);
     expect(snap(before)).toBe(snap(makeSave())); // input untouched
+  });
+});
+
+describe('dwellerOps - removeDwellers (bulk + reference scrub)', () => {
+  // A save exercising every reference kind the op must scrub: work/dead rosters,
+  // a training slot, a female-anchored partnership with a birth task, a child entry
+  // with a grow-up task, a wasteland team, and the tasks those entries own.
+  function makeReferencedSave(): SaveData {
+    return {
+      dwellers: {
+        dwellers: [
+          { serializeId: 1, name: 'Worker' },
+          { serializeId: 2, name: 'Mother', gender: 1 },
+          { serializeId: 3, name: 'Father', gender: 2 },
+          { serializeId: 4, name: 'Child' },
+          { serializeId: 5, name: 'Explorer' },
+          { serializeId: 6, name: 'Survivor' },
+        ],
+      },
+      vault: {
+        rooms: [
+          { type: 'Energy', deserializeID: 10, dwellers: [1, 6], deadDwellers: [1] },
+          {
+            type: 'TrainingRoomS',
+            deserializeID: 11,
+            slots: [
+              { dwellerID: 1, taskID: 501 },
+              { dwellerID: 6, taskID: 502 },
+            ],
+          },
+          {
+            type: 'LivingQuarters',
+            deserializeID: 12,
+            partners: [
+              { m: 3, f: 2, s: 'RaisingBaby', t: 503 },
+              { m: 1, f: 6, s: 'Partners' },
+            ],
+            children: [{ taskID: 504, dwellerID: 4, notificationID: -1 }],
+          },
+        ],
+        wasteland: {
+          teams: [
+            { dwellers: [5], status: 'Exploring', elapsedTimeAliveExploring: 100 },
+            { dwellers: [5, 6], status: 'Exploring' },
+          ],
+        },
+      },
+      taskMgr: {
+        id: 600,
+        time: 1000,
+        tasks: [
+          { id: 501, startTime: 0, endTime: 2000 },
+          { id: 503, startTime: 0, endTime: 3000 },
+          { id: 504, startTime: 0, endTime: 4000 },
+          { id: 599, startTime: 0, endTime: 5000 }, // unrelated - must survive
+        ],
+        pausedTasks: [{ id: 502, startTime: 0, endTime: 2500 }],
+      },
+      someManagerWeNeverTouch: { nested: true },
+    } as unknown as SaveData;
+  }
+
+  it('scrubs rosters, training slots, partner/child entries, teams and their tasks', () => {
+    const before = makeReferencedSave();
+    const beforeJson = snap(before);
+    const after = removeDwellers(before, [1, 2, 4, 5]);
+
+    // Dweller list: only 3 (Father) and 6 (Survivor) remain, survivors by reference.
+    expect(after.dwellers?.dwellers.map((d) => d.serializeId)).toEqual([3, 6]);
+    expect(after.dwellers?.dwellers[1]).toBe(before.dwellers?.dwellers[5]);
+
+    const rooms = after.vault?.rooms ?? [];
+    // Work + dead rosters scrubbed.
+    expect(rooms[0]?.dwellers).toEqual([6]);
+    expect(rooms[0]?.deadDwellers).toEqual([]);
+    // Removed dweller's training slot reset to the game's empty sentinels; the
+    // other slot untouched by reference.
+    expect(rooms[1]?.slots?.[0]).toEqual({ dwellerID: -2, taskID: -2 });
+    expect(rooms[1]?.slots?.[1]).toBe(before.vault?.rooms?.[1]?.slots?.[1]);
+    // Mother removed -> her partnership entry dropped; the male-only entry stays
+    // (the game keeps it - IsValid() only needs the female).
+    expect(rooms[2]?.partners).toHaveLength(1);
+    expect(rooms[2]?.partners?.[0]).toBe(before.vault?.rooms?.[2]?.partners?.[1]);
+    // Child removed -> child entry dropped.
+    expect(rooms[2]?.children).toEqual([]);
+
+    // Solo team dropped whole; mixed team keeps the survivor.
+    expect(after.vault?.wasteland?.teams).toHaveLength(1);
+    expect(after.vault?.wasteland?.teams?.[0]?.dwellers).toEqual([6]);
+
+    // Orphaned tasks (training 501, birth 503, grow-up 504) deleted; the unrelated
+    // task and the surviving dweller's paused training task (502) are kept.
+    expect(after.taskMgr?.tasks?.map((t) => t.id)).toEqual([599]);
+    expect(after.taskMgr?.pausedTasks?.map((t) => t.id)).toEqual([502]);
+
+    // Input never mutated; untouched sibling manager shared by reference.
+    expect(snap(before)).toBe(beforeJson);
+    expect((after as Record<string, unknown>).someManagerWeNeverTouch).toBe(
+      (before as Record<string, unknown>).someManagerWeNeverTouch,
+    );
+  });
+
+  it('is a same-reference no-op when no requested id exists', () => {
+    const before = makeReferencedSave();
+    expect(removeDwellers(before, [999])).toBe(before);
+    expect(removeDwellers(before, [])).toBe(before);
+  });
+
+  it("resets a surviving partnership's dangling fatherId and child templateID to -1", () => {
+    // Mother (2) survives; the removed dweller (4) is both the recorded father and the
+    // first-born template of a multi-birth. The game resets fatherId itself on removal
+    // (OnDwellerRemoved); templateID left dangling would NPE in CreateChild at the next
+    // sibling's birth (unchecked GetDwellerById(templateID).m_gender).
+    const before = {
+      dwellers: { dwellers: [{ serializeId: 2 }, { serializeId: 4 }] },
+      vault: {
+        rooms: [
+          {
+            type: 'LivingQuarters',
+            deserializeID: 12,
+            partners: [
+              { m: 4, f: 2, s: 'RaisingBaby', t: 503, fatherId: 4, templateID: 4 },
+              { m: 9, f: 2, s: 'Partners', fatherId: 9, templateID: -1 },
+            ],
+          },
+        ],
+      },
+    } as unknown as SaveData;
+
+    const after = removeDwellers(before, [4]);
+    const partners = after.vault?.rooms?.[0]?.partners ?? [];
+    expect(partners[0]).toMatchObject({ m: 4, f: 2, t: 503, fatherId: -1, templateID: -1 });
+    // Entry with no dangling ids untouched by reference; the birth task survives with
+    // the partnership (only female-removal orphans it).
+    expect(partners[1]).toBe(before.vault?.rooms?.[0]?.partners?.[1]);
+  });
+
+  it('skips unknown ids and leaves untouched subtrees shared', () => {
+    const before = makeReferencedSave();
+    const after = removeDwellers(before, [6, 999]);
+    expect(after.dwellers?.dwellers.map((d) => d.serializeId)).toEqual([1, 2, 3, 4, 5]);
+    // 6 was on room 10's roster, slot 502, a partnership (as female f=6) and a team.
+    expect(after.vault?.rooms?.[0]?.dwellers).toEqual([1]);
+    expect(after.vault?.rooms?.[1]?.slots?.[1]).toEqual({ dwellerID: -2, taskID: -2 });
+    // 6's training task lived in pausedTasks - the paused list is scrubbed too.
+    expect(after.taskMgr?.pausedTasks).toEqual([]);
+    expect(after.taskMgr?.tasks?.map((t) => t.id)).toEqual([501, 503, 504, 599]);
+    expect(after.vault?.rooms?.[2]?.partners).toHaveLength(1);
+    // Untouched room kept by reference? Room 12 changed (partner f=6 dropped); room 10 changed;
+    // the living quarters children array is untouched by reference.
+    expect(after.vault?.rooms?.[2]?.children).toBe(before.vault?.rooms?.[2]?.children);
   });
 });
 

@@ -64,3 +64,32 @@ describe('BulkActionBar - heal / cure', () => {
     expect(dwellerById(1)?.health?.radiationValue).toBe(30);
   });
 });
+
+describe('BulkActionBar - remove selected', () => {
+  it('shows the count on the button and only removes after confirming', async () => {
+    const user = userEvent.setup();
+    const onClear = vi.fn();
+    render(<BulkActionBar selectedIds={[1, 2]} onClear={onClear} />);
+
+    // Count rendered on the red button; nothing removed before the dialog confirm.
+    await user.click(screen.getByRole('button', { name: 'Remove (2)' }));
+    expect(useSaveStore.getState().save?.dwellers?.dwellers).toHaveLength(2);
+
+    await user.click(screen.getByRole('button', { name: 'Remove 2 dwellers' }));
+    expect(useSaveStore.getState().save?.dwellers?.dwellers).toHaveLength(0);
+    expect(onClear).toHaveBeenCalled();
+    // One undo step for the whole batch.
+    expect(useSaveStore.getState().past).toHaveLength(1);
+  });
+
+  it('cancelling the confirmation removes nothing', async () => {
+    const user = userEvent.setup();
+    render(<BulkActionBar selectedIds={[1]} onClear={vi.fn()} />);
+
+    await user.click(screen.getByRole('button', { name: 'Remove (1)' }));
+    await user.click(screen.getByRole('button', { name: 'Cancel' }));
+
+    expect(useSaveStore.getState().save?.dwellers?.dwellers).toHaveLength(2);
+    expect(useSaveStore.getState().past).toHaveLength(0);
+  });
+});

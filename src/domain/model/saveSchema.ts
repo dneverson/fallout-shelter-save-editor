@@ -169,6 +169,13 @@ const partnerSchema = z.looseObject({
   f: z.number().optional(),
   s: z.string().optional(),
   t: z.number().optional(),
+  // Father serializeId for the family tree; the game resets it to -1 when that dweller
+  // is removed (DwellerPartnership.OnDwellerRemoved) - names ride through separately.
+  fatherId: z.number().optional(),
+  // Child template: during multi-births the FIRST-BORN's serializeId, copied by the
+  // siblings. CreateChild dereferences it WITHOUT a null check, so a dangling id here
+  // crashes the game at the next birth; -1 = "no template, roll a random child".
+  templateID: z.number().optional(),
 });
 
 // A LivingQuarters child (DwellerChild): `taskID` is the one-shot grow-up task. The game
@@ -202,6 +209,9 @@ const roomSchema = z.looseObject({
   currentStateName: z.string().optional(),
   currentState: roomStateSchema.optional(),
   dwellers: z.array(z.number()).optional(),
+  // Dwellers that died while assigned here (Room.Serialize "deadDwellers"); resolved with
+  // the same null-tolerant GetDwellerById lookup as the work roster on load.
+  deadDwellers: z.array(z.number()).optional(),
   // Mr. Handy actor serializeIds attached to this room. On load the game only places a
   // Mr. Handy if SOME room's mrHandyList references it (Room.DeserializeDwellers), so
   // structural ops must never drop these ids or the robot disappears in-game.

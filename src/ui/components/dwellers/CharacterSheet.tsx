@@ -19,7 +19,7 @@ import {
   editEquippedPet,
   equipOutfit,
   equipWeapon,
-  remove,
+  removeDwellers,
   setColors,
   setFaceMask,
   setGender,
@@ -778,11 +778,13 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
       {/* Family / relationship viewer - read-only, click to walk. */}
       <FamilyBlock serializeId={id} />
 
-      {/* Delete (confirm; undoable) --------------------------- */}
+      {/* Delete (confirm; undoable). Same scrubbing op as the bulk Remove - a plain
+          list splice would leave dangling references (see removeDwellers). */}
       <div className="mt-6 border-t border-neutral-800 pt-3">
         <button
           type="button"
           onClick={() => setConfirmDelete(true)}
+          title={fieldHelp.removeDweller}
           className="w-full rounded border border-red-800 px-3 py-1.5 text-sm text-red-300 hover:bg-red-900/30"
         >
           Delete dweller
@@ -798,13 +800,14 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
             <span className="text-neutral-100">
               {[dweller.name, dweller.lastName].filter(Boolean).join(' ') || `#${id}`}
             </span>
-            ? You can undo this.
+            ? Anything they have equipped goes with them, and they leave their room and exploration
+            team. You can undo this while the editor is open.
           </>
         }
         confirmLabel="Delete"
         destructive
         onConfirm={() => {
-          applyEdit((s) => remove(s, id), 'Delete dweller');
+          applyEdit((s) => removeDwellers(s, [id]), 'Delete dweller');
           setConfirmDelete(false);
           onClose();
         }}
