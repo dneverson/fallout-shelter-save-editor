@@ -9,6 +9,7 @@ import {
   selectDwellerRows,
   type DwellerRow,
 } from '../../domain/selectors/dwellerSelectors.ts';
+import { computePopulationCap } from '../../domain/selectors/vaultSelectors.ts';
 import { reviveAll } from '../../domain/ops/bulkOps.ts';
 import {
   addSpecialDweller,
@@ -92,36 +93,46 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
     [applyEdit, goTo],
   );
 
-  // Add a named special dweller from the catalog, then open it in the sheet (read-back
-  // for its id, like handleCreate). safety net: the extracted catalog ids are all
-  // real game ids, but if one were ever unknown we substitute the default + warn rather
-  // than write an id the game would silently swap for a default item.
+  // Add the selected named special dwellers from the catalog in ONE undo step, then open
+  // the last one in the sheet (read-back for its id, like handleCreate). Safety net: the
+  // extracted catalog ids are all real game ids, but if one were ever unknown we
+  // substitute the default + warn rather than write an id the game would silently swap
+  // for a default item.
   const handleAddSpecial = useCallback(
-    (uniqueId: string) => {
-      const entry = gameData?.uniqueDwellers[uniqueId];
-      if (!entry) return;
+    (uniqueIds: string[]) => {
+      if (!gameData) return;
       const fixes: string[] = [];
-      let safe = entry;
-      if (gameData && !gameData.outfitById.has(entry.outfitId)) {
-        fixes.push(`outfit "${entry.outfitId}"`);
-        safe = { ...safe, outfitId: DEFAULT_OUTFIT_ID };
-      }
-      if (gameData && entry.weaponId && !gameData.weaponById.has(entry.weaponId)) {
-        fixes.push(`weapon "${entry.weaponId}"`);
-        safe = { ...safe, weaponId: DEFAULT_WEAPON_ID };
-      }
-      // Special/legendary dwellers have no preset level in the game data (the level is
-      // assigned at spawn time, not baked into UniqueDwellerData). Spawn them at a random
-      // level 30..50 so they arrive battle-ready; editable afterward in the sheet.
-      const level = 30 + Math.floor(Math.random() * 21);
+      // Per-dweller prep OUTSIDE the op: gear substitutions + spawn level. Special/
+      // legendary dwellers have no preset level in the game data (it's assigned at spawn
+      // time, not baked into UniqueDwellerData), so each rolls a random 30..50 to arrive
+      // battle-ready; editable afterward in the sheet.
+      const preps = uniqueIds.flatMap((uniqueId) => {
+        const entry = gameData.uniqueDwellers[uniqueId];
+        if (!entry) return [];
+        let safe = entry;
+        if (!gameData.outfitById.has(entry.outfitId)) {
+          fixes.push(`outfit "${entry.outfitId}"`);
+          safe = { ...safe, outfitId: DEFAULT_OUTFIT_ID };
+        }
+        if (entry.weaponId && !gameData.weaponById.has(entry.weaponId)) {
+          fixes.push(`weapon "${entry.weaponId}"`);
+          safe = { ...safe, weaponId: DEFAULT_WEAPON_ID };
+        }
+        return [{ uniqueId, safe, level: 30 + Math.floor(Math.random() * 21) }];
+      });
+      const first = preps[0];
+      if (!first) return;
       applyEdit(
-        (s) => {
-          const next = addSpecialDweller(s, uniqueId, safe);
-          const added = next.dwellers?.dwellers ?? [];
-          const newDweller = added[added.length - 1];
-          return newDweller ? setLevel(next, newDweller.serializeId, level) : next;
-        },
-        `Add ${entry.name || uniqueId}`,
+        (s) =>
+          preps.reduce((acc, p) => {
+            const next = addSpecialDweller(acc, p.uniqueId, p.safe);
+            const added = next.dwellers?.dwellers ?? [];
+            const newDweller = added[added.length - 1];
+            return newDweller ? setLevel(next, newDweller.serializeId, p.level) : next;
+          }, s),
+        preps.length === 1
+          ? `Add ${first.safe.name || first.uniqueId}`
+          : `Add ${preps.length} special dwellers`,
       );
       if (fixes.length) {
         pushToast(`Unknown ${fixes.join(' & ')} replaced with the default.`, 'info');
@@ -147,6 +158,13 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
   const visibleRows = useMemo(
     () => rows.filter((r) => passesQuickFilters(r, quickFilters)),
     [rows, quickFilters],
+  );
+  // Header count mirrors the game's own dweller list ("X/Y"): dwellers in the save vs the
+  // living-quarters-derived capacity. Needs the room-capacity catalog, so it's count-only
+  // until game data resolves.
+  const populationCap = useMemo(
+    () => (save && gameData ? computePopulationCap(save, gameData.roomCapacity) : null),
+    [save, gameData],
   );
 
   const selectedIds = useMemo(
@@ -228,11 +246,13 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
     <div className="flex min-w-0 flex-1 flex-col p-4">
       <div className="flex items-baseline gap-3">
         <h2 className="text-lg font-semibold">Dwellers</h2>
-        <span className="text-sm text-neutral-400">
+        <span
+          className="text-sm text-neutral-400"
+          title="Dwellers in the save vs the vault's capacity from living quarters"
+        >
           {visibleRows.length === rows.length
-            ? `${rows.length}`
-            : `${visibleRows.length} / ${rows.length}`}{' '}
-          shown
+            ? `${rows.length}${populationCap !== null ? `/${populationCap}` : ''}`
+            : `${visibleRows.length} of ${rows.length}${populationCap !== null ? `/${populationCap}` : ''}`}
         </span>
         {gameDataStatus === 'loading' && (
           <span className="text-xs text-neutral-400">loading game data…</span>

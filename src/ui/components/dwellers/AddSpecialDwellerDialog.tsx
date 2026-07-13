@@ -1,22 +1,25 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
+import type { ColumnDef, RowSelectionState } from '@tanstack/react-table';
 import type { GameData } from '../../../domain/gamedata/gameData.ts';
 import type { Special, UniqueDweller } from '../../../domain/gamedata/schemas.ts';
 import { UnifiedTable } from '../table/UnifiedTable.tsx';
+import { selectColumn } from '../table/columnKit.tsx';
 import { specialDwellerSchema, type SpecialRow } from '../table/schemas/specialDwellerSchema.tsx';
 import { MODAL_LARGE } from '../../lib/modalClasses.ts';
 
-// Add special/legendary NAMED dweller. The full catalog of unique
-// characters in a searchable/sortable modal table; clicking a row adds that named dweller
-// (with its baked-in customization) and closes. Mirrors the EquipPickerDialog layout.
-// `virtualized` defaults true; tests pass false since jsdom has no layout.
+// Add special/legendary NAMED dwellers. The full catalog of unique characters in a
+// searchable/sortable modal table with multi-select: tick any number of rows (row click
+// toggles too), then "Add N selected" adds them all in one undo step. Mirrors the
+// EquipOnDwellersDialog selection layout. Mounted only while open, so the selection
+// resets each time. `virtualized` defaults true; tests pass false since jsdom has no layout.
 
 interface AddSpecialDwellerDialogProps {
   open: boolean;
   onClose: () => void;
   catalog: Record<string, UniqueDweller>;
   gameData: GameData | null;
-  onAdd: (uniqueId: string) => void;
+  onAdd: (uniqueIds: string[]) => void;
   virtualized?: boolean;
 }
 
@@ -67,6 +70,16 @@ export function AddSpecialDwellerDialog({
 }: AddSpecialDwellerDialogProps) {
   const rows = useMemo(() => buildRows(catalog, gameData), [catalog, gameData]);
   const schema = useMemo(() => specialDwellerSchema(), []);
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+  const leading = useMemo<ColumnDef<SpecialRow>[]>(
+    () => [selectColumn<SpecialRow>((r) => r.fullName)],
+    [],
+  );
+
+  const selectedIds = useMemo(
+    () => Object.keys(rowSelection).filter((id) => rowSelection[id]),
+    [rowSelection],
+  );
 
   return (
     <Dialog.Root open={open} onOpenChange={(o) => !o && onClose()}>
@@ -76,11 +89,12 @@ export function AddSpecialDwellerDialog({
           <div className="flex items-start justify-between gap-3">
             <div>
               <Dialog.Title className="text-base font-semibold">
-                Add special / legendary dweller
+                Add special / legendary dwellers
               </Dialog.Title>
               <Dialog.Description className="mt-0.5 text-xs text-neutral-400">
-                {rows.length} named characters. Click one to add it (with its outfit, weapon,
-                SPECIAL, and look). Edit the rest in the character sheet.
+                {rows.length} named characters. Select any number (click a row or its checkbox),
+                then add them all at once - each arrives with its outfit, weapon, SPECIAL, and look.
+                Edit the rest in the character sheet.
               </Dialog.Description>
             </div>
             <Dialog.Close
@@ -96,25 +110,42 @@ export function AddSpecialDwellerDialog({
             virtualized={virtualized}
             schema={schema}
             persistKey="addSpecialDweller"
+            leading={leading}
             data={rows}
             getRowId={(r) => r.uniqueId}
             enableGlobalFilter
+            enableRowSelection
+            rowSelection={rowSelection}
+            onRowSelectionChange={setRowSelection}
             initialSorting={[{ id: 'fullName', desc: false }]}
-            onRowClick={(r) => {
-              onAdd(r.uniqueId);
-              onClose();
-            }}
+            onRowClick={(r) =>
+              setRowSelection((prev) => ({ ...prev, [r.uniqueId]: !prev[r.uniqueId] }))
+            }
             emptyState="No special characters in the catalog."
           />
 
-          <div className="mt-4 flex justify-end">
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded px-3 py-1.5 text-sm text-neutral-400 hover:text-neutral-100"
-            >
-              Close
-            </button>
+          <div className="mt-4 flex items-center justify-between">
+            <span className="text-xs text-neutral-400">{selectedIds.length} selected</span>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded px-3 py-1.5 text-sm text-neutral-400 hover:text-neutral-100"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                disabled={selectedIds.length === 0}
+                onClick={() => {
+                  onAdd(selectedIds);
+                  onClose();
+                }}
+                className="rounded border border-emerald-700 px-3 py-1.5 text-sm text-emerald-300 hover:bg-emerald-900/40 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Add {selectedIds.length === 1 ? '1 dweller' : `${selectedIds.length} dwellers`}
+              </button>
+            </div>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
