@@ -5,7 +5,7 @@ import type { NewDwellerOpts } from '../../../domain/ops/dwellerOps.ts';
 import { randomName } from '../../lib/randomName.ts';
 import { MODAL_SMALL } from '../../lib/modalClasses.ts';
 
-// Add-dweller modal: a new dweller at the door, level 1, optional random name.
+// Add-dweller modal: a new level-1 dweller, optional random name.
 // Collects first/last name + gender, with a one-click Randomize. The
 // op fills in the full base shape; the new dweller opens in the character sheet for any
 // further edits. Mounted only while open, so its state resets each time.
@@ -14,9 +14,16 @@ interface AddDwellerDialogProps {
   open: boolean;
   onClose: () => void;
   onCreate: (opts: NewDwellerOpts) => void;
+  /** Vault at living-quarters capacity: the new dweller will wait at the door instead. */
+  willWait?: boolean;
 }
 
-export function AddDwellerDialog({ open, onClose, onCreate }: AddDwellerDialogProps) {
+export function AddDwellerDialog({
+  open,
+  onClose,
+  onCreate,
+  willWait = false,
+}: AddDwellerDialogProps) {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState<Gender>(2);
@@ -39,7 +46,9 @@ export function AddDwellerDialog({ open, onClose, onCreate }: AddDwellerDialogPr
         <Dialog.Content className={`${MODAL_SMALL} p-6`}>
           <Dialog.Title className="text-base font-semibold">Add dweller</Dialog.Title>
           <Dialog.Description className="mt-0.5 text-xs text-neutral-400">
-            Created at the vault door, level 1. Edit the rest in the character sheet.
+            {willWait
+              ? 'Vault at capacity - the new dweller will wait at the door (accept them at the door in-game).'
+              : 'Joins the vault unassigned, level 1. Edit the rest in the character sheet.'}
           </Dialog.Description>
 
           <div className="mt-4 flex gap-2">

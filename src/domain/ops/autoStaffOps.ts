@@ -9,6 +9,7 @@ import {
   suggestWeapon,
   type StatKey,
 } from '../selectors/loadoutSuggest.ts';
+import { dwellerCapacity } from '../selectors/vaultSelectors.ts';
 import { createDwellerAtDoor, setHappiness, setLevel, setStat } from './dwellerOps.ts';
 import { randomDwellerName } from './dwellerNames.ts';
 import { applyLoadout } from './loadoutOps.ts';
@@ -130,7 +131,8 @@ export interface AutoStaffPlan {
   idle: number;
   /** Slots that will be filled from existing idle dwellers. */
   toAssign: number;
-  /** Slots that would require generating new dwellers. */
+  /** Slots that will be filled by generating new dwellers - capped by the vault's free
+   *  population slots (living-quarters capacity), matching what the run will do. */
   toGenerate: number;
 }
 
@@ -147,7 +149,8 @@ export function autoStaffPlan(
   const freeSlots = openRooms(save, gameData, mode, onlyRoomId).reduce((n, r) => n + r.free, 0);
   const idle = idleDwellers(save).length;
   const toAssign = Math.min(freeSlots, idle);
-  return { freeSlots, idle, toAssign, toGenerate: freeSlots - toAssign };
+  const vaultFree = dwellerCapacity(save, gameData.roomCapacity).vaultFree;
+  return { freeSlots, idle, toAssign, toGenerate: Math.min(freeSlots - toAssign, vaultFree) };
 }
 
 /** Round to an int and clamp into [lo, hi]. */
@@ -291,13 +294,18 @@ export function autoStaff(save: SaveData, gameData: GameData, opts: AutoStaffOpt
     }
   }
 
-  // Phase B - generate recruits for whatever slots remain (baselines from the original save).
+  // Phase B - generate recruits for whatever slots remain (baselines from the original
+  // save). Generation is budgeted by the vault's free population slots (living-quarters
+  // cap): recruits are staffed into rooms, so unlike the add-dweller flows they can never
+  // overflow into the door queue.
   if (opts.generate) {
     const base = computeBaselines(save);
+    let budget = dwellerCapacity(save, gameData.roomCapacity).vaultFree;
     for (const room of rooms) {
-      while (room.free > 0) {
+      while (room.free > 0 && budget > 0) {
         next = generateAndAssign(next, gameData, room, base, rng);
         room.free -= 1;
+        budget -= 1;
       }
     }
   }

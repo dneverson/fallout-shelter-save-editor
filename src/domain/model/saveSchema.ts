@@ -93,6 +93,9 @@ const dwellerSchema = z.looseObject({
   hairColor: z.number().optional(),
   outfitColor: z.number().optional(),
   savedRoom: z.number().optional(),
+  // Mid-eviction marker; such dwellers don't count against the population cap
+  // (DwellerManager.GetDwellersNonEvictedCount skips them).
+  IsEvictedWaitingForFollowers: z.boolean().optional(),
   happiness: happinessSchema.optional(),
   health: healthSchema.optional(),
   experience: experienceSchema.optional(),
@@ -255,8 +258,11 @@ const storageSchema = z.looseObject({
 // diffs raw second counters against the task clock. `elapsedTimeAliveExploring` runs
 // while exploring / travelling to a quest (arrival at CachedQuest.TimeToReachInSecond);
 // `elapsedReturningTime` runs on the way home and completes at `returnTripDuration`.
+// Members are split by kind: `dwellers` holds dweller serializeIds; `actors` holds
+// robot serializeIds (a Mr. Handy sent to collect gets its own one-robot team).
 const wastelandTeamSchema = z.looseObject({
   dwellers: z.array(z.number()).optional(),
+  actors: z.array(z.number()).optional(),
   status: z.string().optional(),
   elapsedTimeAliveExploring: z.number().optional(),
   elapsedReturningTime: z.number().optional(),
@@ -311,8 +317,18 @@ const survivalWSchema = z.looseObject({
   collectedThemes: z.looseObject({ themeList: z.array(themeItemSchema).optional() }).optional(),
 });
 
+// One character waiting at the vault door (uninvited). The id key differs by kind:
+// a human (radio arrival) is `charType: "Dweller"` + `dwellerId`; a robot is
+// `charType: "MrHandy"` + `serializeId`. Both reference an existing entry in
+// `dwellers.dwellers[]` / `dwellers.actors[]` (verified against a real save).
+const waitingCharacterSchema = z.looseObject({
+  charType: z.string().optional(),
+  dwellerId: z.number().optional(),
+  serializeId: z.number().optional(),
+});
+
 const dwellerSpawnerSchema = z.looseObject({
-  dwellersWaiting: z.array(z.unknown()).optional(),
+  dwellersWaiting: z.array(waitingCharacterSchema).optional(),
 });
 
 // In-game store state. `isStarterPackPurchased` is the only field we edit: setting it true

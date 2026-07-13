@@ -21,6 +21,10 @@ interface AddSpecialDwellerDialogProps {
   gameData: GameData | null;
   onAdd: (uniqueIds: string[]) => void;
   virtualized?: boolean;
+  /** Total addable: free vault slots + free door-queue places. Selecting more disables Add. */
+  maxAdd?: number;
+  /** Free in-vault slots; picks beyond this wait at the door. */
+  vaultFree?: number;
 }
 
 const SPECIAL_LABELS = ['S', 'P', 'E', 'C', 'I', 'A', 'L'] as const;
@@ -67,6 +71,8 @@ export function AddSpecialDwellerDialog({
   gameData,
   onAdd,
   virtualized = true,
+  maxAdd,
+  vaultFree,
 }: AddSpecialDwellerDialogProps) {
   const rows = useMemo(() => buildRows(catalog, gameData), [catalog, gameData]);
   const schema = useMemo(() => specialDwellerSchema(), []);
@@ -80,6 +86,8 @@ export function AddSpecialDwellerDialog({
     () => Object.keys(rowSelection).filter((id) => rowSelection[id]),
     [rowSelection],
   );
+  const overCap = maxAdd !== undefined && selectedIds.length > maxAdd;
+  const toDoorCount = vaultFree !== undefined ? Math.max(0, selectedIds.length - vaultFree) : 0;
 
   return (
     <Dialog.Root open={open} onOpenChange={(o) => !o && onClose()}>
@@ -125,7 +133,20 @@ export function AddSpecialDwellerDialog({
           />
 
           <div className="mt-4 flex items-center justify-between">
-            <span className="text-xs text-neutral-400">{selectedIds.length} selected</span>
+            <span className="text-xs text-neutral-400">
+              {selectedIds.length} selected
+              {overCap && (
+                <span className="ml-2 text-amber-400">
+                  only {maxAdd} slot{maxAdd === 1 ? '' : 's'} free (vault + door queue)
+                </span>
+              )}
+              {!overCap && toDoorCount > 0 && (
+                <span className="ml-2 text-amber-400">
+                  vault at capacity - {toDoorCount === selectedIds.length ? 'all' : toDoorCount}{' '}
+                  will wait at the door
+                </span>
+              )}
+            </span>
             <div className="flex gap-2">
               <button
                 type="button"
@@ -136,7 +157,8 @@ export function AddSpecialDwellerDialog({
               </button>
               <button
                 type="button"
-                disabled={selectedIds.length === 0}
+                disabled={selectedIds.length === 0 || overCap}
+                title={overCap ? `Only ${maxAdd} can be added - deselect some first` : undefined}
                 onClick={() => {
                   onAdd(selectedIds);
                   onClose();

@@ -4,6 +4,8 @@ import type { SaveData } from '../../src/domain/model/saveSchema.ts';
 import { parseGameData, type GameData } from '../../src/domain/gamedata/gameData.ts';
 import {
   buildRoomIndex,
+  buildWaitingDwellerIds,
+  buildWastelandIndex,
   projectDwellerRow,
   readSpecial,
   selectDwellerById,
@@ -160,15 +162,67 @@ describe('projectDwellerRow', () => {
     });
   });
 
-  it('labels a door-standing dweller "At Door"', () => {
+  it('labels an unassigned in-vault dweller "Coffee Break"', () => {
     const row = projectDwellerRow(makeSave().dwellers!.dwellers[1]);
-    expect(row.location.label).toBe('At Door');
+    expect(row.location.label).toBe('Coffee Break');
     expect(row.location.savedRoom).toBe(-1);
+  });
+
+  it('labels a dweller referenced by dwellersWaiting "At Door"', () => {
+    const row = projectDwellerRow(makeSave().dwellers!.dwellers[1], {
+      waitingIds: new Set([2]),
+    });
+    expect(row.location.label).toBe('At Door');
+  });
+
+  it('lets wasteland membership override a stale savedRoom', () => {
+    const save = makeSave();
+    const row = projectDwellerRow(save.dwellers!.dwellers[0], {
+      roomById: buildRoomIndex(save),
+      wastelandById: new Map([[1, 'Exploring']]),
+    });
+    expect(row.location.label).toBe('Exploring');
+    expect(row.location.roomType).toBeNull();
   });
 
   it('labels an unresolved room "Room <id>"', () => {
     const d = { serializeId: 5, savedRoom: 999 } as never;
     expect(projectDwellerRow(d, { roomById: new Map() }).location.label).toBe('Room 999');
+  });
+});
+
+describe('buildWastelandIndex / buildWaitingDwellerIds', () => {
+  it('maps team members to a label derived from the team state', () => {
+    const save = {
+      vault: {
+        wasteland: {
+          teams: [
+            { dwellers: [1, 2], status: 'Exploring' },
+            { dwellers: [3], status: 'GoingToQuest' },
+            { dwellers: [4], status: 'Exploring', elapsedReturningTime: 10 },
+            { dwellers: [5], isDoingQuest: true },
+          ],
+        },
+      },
+    } as SaveData;
+    const index = buildWastelandIndex(save);
+    expect(index.get(1)).toBe('Exploring');
+    expect(index.get(2)).toBe('Exploring');
+    expect(index.get(3)).toBe('On Quest');
+    expect(index.get(4)).toBe('Returning');
+    expect(index.get(5)).toBe('On Quest');
+  });
+
+  it('reads only human dwellerId entries - robot serializeIds share the id space', () => {
+    const save = {
+      dwellerSpawner: {
+        dwellersWaiting: [
+          { newDweller: true, charType: 'Dweller', dwellerId: 59 },
+          { newDweller: true, charType: 'MrHandy', serializeId: 2 },
+        ],
+      },
+    } as SaveData;
+    expect(buildWaitingDwellerIds(save)).toEqual(new Set([59]));
   });
 });
 
@@ -178,7 +232,28 @@ describe('selectDwellerRows / selectDwellerById', () => {
     expect(rows).toHaveLength(2);
     expect(rows[0].location.label).toBe('LivingQuarters');
     expect(rows[0].weapon?.name).toBe('Laser Pistol');
+    expect(rows[1].location.label).toBe('Coffee Break');
+  });
+
+  it('resolves wasteland and at-door states from the save', () => {
+    const save = makeSave();
+    save.vault!.wasteland = { teams: [{ dwellers: [1], status: 'Exploring' }] };
+    save.dwellerSpawner = {
+      dwellersWaiting: [{ newDweller: true, charType: 'Dweller', dwellerId: 2 }],
+    };
+    const rows = selectDwellerRows(save);
+    expect(rows[0].location.label).toBe('Exploring');
     expect(rows[1].location.label).toBe('At Door');
+  });
+
+  it('keeps a robot at the door from flagging the same-id dweller', () => {
+    const save = makeSave();
+    // Robot serializeId 2 waiting at the door; dweller 2 (Bob) is just off duty.
+    save.dwellerSpawner = {
+      dwellersWaiting: [{ newDweller: true, charType: 'MrHandy', serializeId: 2 }],
+    };
+    const rows = selectDwellerRows(save);
+    expect(rows[1].location.label).toBe('Coffee Break');
   });
 
   it('finds a dweller by serializeId or returns undefined', () => {

@@ -82,6 +82,45 @@ export function computePopulationCap(save: SaveData, catalog: RoomCapacity): num
   return Math.min(cap, VAULT_DWELLER_CAP);
 }
 
+/**
+ * The game's cap on the vault-door waiting line (DwellerSpawner.m_dwellersWaitingQueueSize).
+ * Dwellers and Mr. Handies share the ONE queue; past it the game refuses arrivals with a
+ * "hack to protect the savegame" warning.
+ */
+export const DOOR_QUEUE_CAP = 10;
+
+/** How full the vault and its door queue are - the add-dweller flows' legality check. */
+export interface DwellerCapacity {
+  /** Dwellers who count against the cap: non-evicted entries minus new arrivals still
+   *  waiting at the door (DwellerManager.ValidDwellers). */
+  population: number;
+  /** Living-quarters-derived capacity (200-ceiling fallback without the catalog). */
+  populationCap: number;
+  /** Characters in the door queue - dwellers AND robots (the game caps the line). */
+  waiting: number;
+  /** Open in-vault slots (0 when at or over cap - over-cap saves exist in the wild). */
+  vaultFree: number;
+  /** Open door-queue slots. */
+  doorFree: number;
+}
+
+/** Compute the vault + door-queue occupancy exactly as the game counts it. */
+export function dwellerCapacity(save: SaveData, catalog?: RoomCapacity): DwellerCapacity {
+  const dwellers = save.dwellers?.dwellers ?? [];
+  const waitingList = save.dwellerSpawner?.dwellersWaiting ?? [];
+  const waitingHumans = waitingList.filter((w) => typeof w?.dwellerId === 'number').length;
+  const nonEvicted = dwellers.filter((d) => d.IsEvictedWaitingForFollowers !== true).length;
+  const population = nonEvicted - waitingHumans;
+  const populationCap = catalog ? computePopulationCap(save, catalog) : VAULT_DWELLER_CAP;
+  return {
+    population,
+    populationCap,
+    waiting: waitingList.length,
+    vaultFree: Math.max(0, populationCap - population),
+    doorFree: Math.max(0, DOOR_QUEUE_CAP - waitingList.length),
+  };
+}
+
 /** At-a-glance vault metrics surfaced on the Vault overview tiles. Save-derivable except
  *  populationCap (needs the room-capacity catalog; falls back to the 200 ceiling);
  *  vacant work slots (needs room capacity) are computed by the caller from the advisor. */

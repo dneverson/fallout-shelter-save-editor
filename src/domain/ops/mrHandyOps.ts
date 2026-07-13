@@ -33,6 +33,9 @@ export interface MrHandyRow {
   /** Label of the room whose mrHandyList references it ("MedBay #1843"), or null. */
   roomLabel: string | null;
   roomId: number | null;
+  /** Out collecting in the wasteland (`vault.wasteland.teams[].actors`); unplaced but
+   *  NOT waiting at the door. */
+  inWasteland: boolean;
 }
 
 function actorList(save: SaveData): Actor[] {
@@ -68,6 +71,12 @@ export function selectMrHandyRows(save: SaveData): MrHandyRow[] {
       if (!byActor.has(id)) byActor.set(id, r);
     }
   }
+  // A robot sent to collect in the wasteland gets its own team entry with its
+  // serializeId in `actors` (dweller teams use `dwellers` instead).
+  const inWasteland = new Set<number>();
+  for (const team of save.vault?.wasteland?.teams ?? []) {
+    for (const id of team.actors ?? []) inWasteland.add(id);
+  }
   return actorList(save)
     .filter(isMrHandy)
     .map((a) => {
@@ -82,6 +91,7 @@ export function selectMrHandyRows(save: SaveData): MrHandyRow[] {
         floor: typeof room?.row === 'number' ? room.row : null,
         roomLabel: room ? `${room.type} #${room.deserializeID}` : null,
         roomId: room?.deserializeID ?? null,
+        inWasteland: inWasteland.has(id),
       };
     });
 }

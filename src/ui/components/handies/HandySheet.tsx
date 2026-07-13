@@ -80,9 +80,11 @@ export function HandySheet({
             <dd className={handy.dead ? 'text-red-400' : 'text-neutral-200'}>
               {handy.dead
                 ? 'Destroyed'
-                : handy.floor === null
-                  ? 'Waiting outside the vault'
-                  : 'Placed'}
+                : handy.inWasteland
+                  ? 'Collecting in the wasteland'
+                  : handy.floor === null
+                    ? 'Waiting at the vault door'
+                    : 'Placed'}
             </dd>
           </div>
           <div className="mt-1 flex justify-between gap-2">
@@ -155,7 +157,11 @@ export function HandySheet({
         <div className="text-sm">
           <span className="text-neutral-400">Placed: </span>
           <span className="text-neutral-200">
-            {handy.floor === null ? 'Outside the vault' : `Floor ${displayFloor(handy.floor)}`}
+            {handy.inWasteland
+              ? 'In the wasteland'
+              : handy.floor === null
+                ? 'Outside the vault'
+                : `Floor ${displayFloor(handy.floor)}`}
           </span>
         </div>
         <label className="mt-2 flex flex-col gap-0.5">

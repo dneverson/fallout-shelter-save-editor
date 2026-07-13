@@ -18,6 +18,7 @@ import {
   equipOutfit,
   equipWeapon,
   hasDweller,
+  markDwellerWaiting,
   maxOutHealth,
   remove,
   removeDwellers,
@@ -407,6 +408,13 @@ describe('dwellerOps - removeDwellers (bulk + reference scrub)', () => {
         ],
         pausedTasks: [{ id: 502, startTime: 0, endTime: 2500 }],
       },
+      dwellerSpawner: {
+        dwellersWaiting: [
+          { newDweller: true, charType: 'Dweller', dwellerId: 4 }, // removed → scrubbed
+          { newDweller: true, charType: 'Dweller', dwellerId: 6 }, // survivor → kept
+          { newDweller: true, charType: 'MrHandy', serializeId: 4 }, // robot id space → kept
+        ],
+      },
       someManagerWeNeverTouch: { nested: true },
     } as unknown as SaveData;
   }
@@ -438,6 +446,13 @@ describe('dwellerOps - removeDwellers (bulk + reference scrub)', () => {
     // Solo team dropped whole; mixed team keeps the survivor.
     expect(after.vault?.wasteland?.teams).toHaveLength(1);
     expect(after.vault?.wasteland?.teams?.[0]?.dwellers).toEqual([6]);
+
+    // Door-queue ref for removed dweller 4 scrubbed; the survivor's ref and the robot
+    // entry (serializeId keys the ACTOR id space, not dwellers) are kept.
+    expect(after.dwellerSpawner?.dwellersWaiting).toEqual([
+      { newDweller: true, charType: 'Dweller', dwellerId: 6 },
+      { newDweller: true, charType: 'MrHandy', serializeId: 4 },
+    ]);
 
     // Orphaned tasks (training 501, birth 503, grow-up 504) deleted; the unrelated
     // task and the surviving dweller's paused training task (502) are kept.
@@ -551,6 +566,35 @@ describe('dwellerOps - createDwellerAtDoor', () => {
     const list = after.dwellers?.dwellers ?? [];
     expect(list).toHaveLength(1);
     expect(list[0].serializeId).toBe(1);
+  });
+});
+
+describe('dwellerOps - markDwellerWaiting', () => {
+  it("appends the game's waiting ref, constructing the spawner block when absent", () => {
+    const before = makeSave(); // no dwellerSpawner key
+    const json = snap(before);
+    const after = markDwellerWaiting(before, 2);
+    expect(after.dwellerSpawner?.dwellersWaiting).toEqual([
+      { newDweller: true, charType: 'Dweller', dwellerId: 2 },
+    ]);
+    // Input untouched; unrelated subtrees shared by reference.
+    expect(snap(before)).toBe(json);
+    expect(after.dwellers).toBe(before.dwellers);
+  });
+
+  it('appends after existing queue entries and is a same-reference no-op when already queued', () => {
+    const start = {
+      ...makeSave(),
+      dwellerSpawner: {
+        dwellersWaiting: [{ newDweller: true, charType: 'MrHandy', serializeId: 7 }],
+      },
+    } as SaveData;
+    const after = markDwellerWaiting(start, 1);
+    expect(after.dwellerSpawner?.dwellersWaiting).toEqual([
+      { newDweller: true, charType: 'MrHandy', serializeId: 7 },
+      { newDweller: true, charType: 'Dweller', dwellerId: 1 },
+    ]);
+    expect(markDwellerWaiting(after, 1)).toBe(after);
   });
 });
 

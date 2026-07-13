@@ -1,4 +1,4 @@
-import type { Dweller, Room, SaveData } from '../model/saveSchema.ts';
+import type { Dweller, Room, SaveData, WastelandTeam } from '../model/saveSchema.ts';
 import type { GameData } from '../gamedata/gameData.ts';
 import type { Special } from '../gamedata/schemas.ts';
 
@@ -47,12 +47,15 @@ export interface DwellerPetRef {
 }
 
 export interface DwellerLocation {
-  /** Room `deserializeID`, or -1 for "at the vault door". */
+  /** Room `deserializeID`, or -1 for "not assigned to any room". Stale for explorers:
+   *  the game keeps the pre-departure room id while a dweller is in the wasteland. */
   savedRoom: number;
   roomType: string | null;
   row: number | null;
   col: number | null;
-  /** Human-facing label: "At Door", the room type, or "Room <id>" if unresolved. */
+  /** Human-facing label: a wasteland state ("Exploring" / "Returning" / "On Quest"),
+   *  "At Door" (uninvited, referenced by `dwellerSpawner.dwellersWaiting`),
+   *  "Coffee Break" (in the vault, no job), the room type, or "Room <id>" if unresolved. */
   label: string;
 }
 
@@ -81,6 +84,11 @@ export interface ProjectionContext {
   gameData?: GameData;
   /** Room index keyed by `deserializeID` (built by `buildRoomIndex`). */
   roomById?: ReadonlyMap<number, Room>;
+  /** Dweller serializeId → wasteland label (built by `buildWastelandIndex`). Membership
+   *  overrides `savedRoom`, which stays stale while a dweller is out exploring. */
+  wastelandById?: ReadonlyMap<number, string>;
+  /** Ids of dwellers waiting at the door (built by `buildWaitingDwellerIds`). */
+  waitingIds?: ReadonlySet<number>;
 }
 
 const SPECIAL_KEYS = ['S', 'P', 'E', 'C', 'I', 'A', 'L'] as const;
@@ -134,12 +142,17 @@ function projectPet(dweller: Dweller): DwellerPetRef | null {
   };
 }
 
-function resolveLocation(dweller: Dweller, roomById?: ReadonlyMap<number, Room>): DwellerLocation {
+function resolveLocation(dweller: Dweller, ctx: ProjectionContext): DwellerLocation {
   const savedRoom = dweller.savedRoom ?? -1;
-  if (savedRoom === -1) {
-    return { savedRoom: -1, roomType: null, row: null, col: null, label: 'At Door' };
+  const wasteland = ctx.wastelandById?.get(dweller.serializeId);
+  if (wasteland !== undefined) {
+    return { savedRoom, roomType: null, row: null, col: null, label: wasteland };
   }
-  const room = roomById?.get(savedRoom);
+  if (savedRoom === -1) {
+    const label = ctx.waitingIds?.has(dweller.serializeId) ? 'At Door' : 'Coffee Break';
+    return { savedRoom: -1, roomType: null, row: null, col: null, label };
+  }
+  const room = ctx.roomById?.get(savedRoom);
   if (!room) {
     return { savedRoom, roomType: null, row: null, col: null, label: `Room ${savedRoom}` };
   }
@@ -157,6 +170,39 @@ export function buildRoomIndex(save: SaveData): Map<number, Room> {
   const index = new Map<number, Room>();
   for (const room of save.vault?.rooms ?? []) index.set(room.deserializeID, room);
   return index;
+}
+
+// Known `team.status` values: 'Exploring', 'GoingToQuest'; the returning leg is
+// detected by its elapsed counter so an unrecognized status string still labels sanely.
+function wastelandTeamLabel(team: WastelandTeam): string {
+  if (team.isDoingQuest === true || team.status === 'GoingToQuest') return 'On Quest';
+  if ((team.elapsedReturningTime ?? 0) > 0 || team.status?.startsWith('Returning')) {
+    return 'Returning';
+  }
+  return 'Exploring';
+}
+
+/** Dweller serializeId → wasteland label, from `vault.wasteland.teams[].dwellers`. */
+export function buildWastelandIndex(save: SaveData): Map<number, string> {
+  const index = new Map<number, string>();
+  for (const team of save.vault?.wasteland?.teams ?? []) {
+    const label = wastelandTeamLabel(team);
+    for (const id of team.dwellers ?? []) index.set(id, label);
+  }
+  return index;
+}
+
+/**
+ * Ids of dwellers waiting at the vault door (`dwellerSpawner.dwellersWaiting`). Humans
+ * key their id as `dwellerId`; `serializeId` entries are robots (`charType: "MrHandy"`)
+ * whose ids share the dweller id space, so only `dwellerId` may be read here.
+ */
+export function buildWaitingDwellerIds(save: SaveData): Set<number> {
+  const ids = new Set<number>();
+  for (const entry of save.dwellerSpawner?.dwellersWaiting ?? []) {
+    if (typeof entry?.dwellerId === 'number') ids.add(entry.dwellerId);
+  }
+  return ids;
 }
 
 /** Project one dweller into a table row. Pass game data + a room index to enrich. */
@@ -180,14 +226,17 @@ export function projectDwellerRow(dweller: Dweller, ctx: ProjectionContext = {})
     weapon: projectWeapon(dweller, ctx.gameData),
     outfit: projectOutfit(dweller, ctx.gameData),
     pet: projectPet(dweller),
-    location: resolveLocation(dweller, ctx.roomById),
+    location: resolveLocation(dweller, ctx),
   };
 }
 
 /** Project every dweller into table rows, resolving rooms from the save once. */
 export function selectDwellerRows(save: SaveData, gameData?: GameData): DwellerRow[] {
-  const roomById = buildRoomIndex(save);
-  const ctx: ProjectionContext = { roomById };
+  const ctx: ProjectionContext = {
+    roomById: buildRoomIndex(save),
+    wastelandById: buildWastelandIndex(save),
+    waitingIds: buildWaitingDwellerIds(save),
+  };
   if (gameData) ctx.gameData = gameData;
   return dwellersOf(save).map((d) => projectDwellerRow(d, ctx));
 }

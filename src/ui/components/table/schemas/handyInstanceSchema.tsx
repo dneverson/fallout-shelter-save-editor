@@ -70,7 +70,14 @@ export function handyInstanceSchema(fullHealth: number): TableSchema<HandyTableR
       },
       {
         id: 'status',
-        accessorFn: (h) => (h.dead ? 'Destroyed' : h.floor === null ? 'Outside' : 'Placed'),
+        accessorFn: (h) =>
+          h.dead
+            ? 'Destroyed'
+            : h.inWasteland
+              ? 'In Wasteland'
+              : h.floor === null
+                ? 'At Door'
+                : 'Placed',
         header: 'Status',
         size: 110,
         filterFn: inSelectedSet<HandyTableRow>(),
@@ -79,16 +86,21 @@ export function handyInstanceSchema(fullHealth: number): TableSchema<HandyTableR
       {
         id: 'location',
         accessorFn: (h) =>
-          h.floor === null ? 'Outside the vault' : `Floor ${displayFloor(h.floor)}`,
+          h.inWasteland
+            ? 'Wasteland'
+            : h.floor === null
+              ? 'At the door'
+              : `Floor ${displayFloor(h.floor)}`,
         header: 'Location',
         cell: ({ row }) => {
           const h = row.original;
-          // Outside the vault is a NORMAL state (the robot waits at the door until placed),
-          // so it renders neutrally - no warning glyph.
+          // Both unplaced states are NORMAL (collecting out in the wasteland, or waiting
+          // at the door until placed), so they render neutrally - no warning glyph.
+          if (h.inWasteland) {
+            return <span title="Out collecting in the wasteland">Wasteland</span>;
+          }
           return h.floor === null ? (
-            <span title="Waits at the vault door until you place it on a floor">
-              Outside the vault
-            </span>
+            <span title="Waits at the vault door until you place it on a floor">At the door</span>
           ) : (
             <span title={h.roomLabel ?? undefined}>Floor {displayFloor(h.floor)}</span>
           );

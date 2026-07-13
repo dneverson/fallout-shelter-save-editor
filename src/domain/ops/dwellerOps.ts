@@ -569,6 +569,26 @@ export function createDwellerAtDoor(save: SaveData, opts: NewDwellerOpts = {}): 
 }
 
 /**
+ * Put an existing dweller in the vault-door waiting line: append the game's reference
+ * shape (`{ newDweller: true, charType: "Dweller", dwellerId }`) to
+ * `dwellerSpawner.dwellersWaiting`. The dweller entry itself stays in `dwellers.dwellers`
+ * with `savedRoom: -1`, exactly like a real radio arrival (verified against a real save).
+ * No-op if already queued. Callers enforce the game's 10-place queue cap.
+ */
+export function markDwellerWaiting(save: SaveData, dwellerId: number): SaveData {
+  const spawner = save.dwellerSpawner ?? {};
+  const waiting = Array.isArray(spawner.dwellersWaiting) ? spawner.dwellersWaiting : [];
+  if (waiting.some((w) => w?.dwellerId === dwellerId)) return save;
+  return {
+    ...save,
+    dwellerSpawner: {
+      ...spawner,
+      dwellersWaiting: [...waiting, { newDweller: true, charType: 'Dweller', dwellerId }],
+    },
+  };
+}
+
+/**
  * Add a special/legendary NAMED dweller. Unlike a generic at-door
  * dweller, a special dweller carries a `uniqueData` string (e.g. "L_Max") and the
  * customization baked into its UniqueDwellerData catalog entry - it is a regular entry
@@ -667,6 +687,8 @@ const EMPTY_TRAINING_SLOT = -2;
  * - `children[]`: entries for a removed child dweller are dropped;
  * - wasteland `teams[]`: removed members leave the team; a team with nobody left is
  *   dropped whole (teams are a dynamic list of active trips);
+ * - `dwellerSpawner.dwellersWaiting`: door-queue refs (`dwellerId`) to removed dwellers
+ *   are dropped so the game never resolves a deleted dweller at the door;
  * - `taskMgr`: tasks owned solely by dropped entries (birth `t`, grow-up `taskID`,
  *   training `taskID`) are deleted - TaskMgr re-serializes every queued task, so an
  *   unclaimed orphan would linger in the save forever.
@@ -760,6 +782,20 @@ export function removeDwellers(save: SaveData, serializeIds: readonly number[]):
       )
       .filter((t) => t.dwellers === undefined || t.dwellers.length > 0);
     next = { ...next, vault: { ...next.vault, wasteland: { ...wasteland, teams: nextTeams } } };
+  }
+
+  // Door-queue refs (dwellersWaiting) point at dwellers by `dwellerId`; a dangling ref
+  // would make the game resolve a deleted dweller on load. Robot entries key by
+  // `serializeId` instead and are untouched here.
+  const spawner = save.dwellerSpawner;
+  if (spawner?.dwellersWaiting?.some((w) => hits(w?.dwellerId))) {
+    next = {
+      ...next,
+      dwellerSpawner: {
+        ...spawner,
+        dwellersWaiting: spawner.dwellersWaiting.filter((w) => !hits(w?.dwellerId)),
+      },
+    };
   }
 
   const mgr = save.taskMgr;

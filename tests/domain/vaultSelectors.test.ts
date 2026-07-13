@@ -6,6 +6,7 @@ import {
   computeItemCapacity,
   computePopulationCap,
   computeResourceCaps,
+  dwellerCapacity,
   dwellerCount,
   vaultMetrics,
 } from '../../src/domain/selectors/vaultSelectors.ts';
@@ -110,6 +111,52 @@ describe('vaultSelectors', () => {
       },
     } as SaveData;
     expect(computePopulationCap(maxed, catalog)).toBe(200);
+  });
+
+  it('dwellerCapacity counts like the game: evicted and waiting humans do not occupy the vault', () => {
+    const save = {
+      dwellers: {
+        dwellers: [
+          { serializeId: 1 },
+          { serializeId: 2 },
+          { serializeId: 3, IsEvictedWaitingForFollowers: true }, // mid-eviction: not counted
+          { serializeId: 4 }, // waiting at the door: not counted (still outside)
+        ],
+      },
+      dwellerSpawner: {
+        dwellersWaiting: [
+          { newDweller: true, charType: 'Dweller', dwellerId: 4 },
+          { newDweller: true, charType: 'MrHandy', serializeId: 9 }, // robots fill the SAME queue
+        ],
+      },
+      vault: {
+        rooms: [{ type: 'LivingQuarters', deserializeID: 1, mergeLevel: 1, level: 1 }], // cap 8
+      },
+    } as SaveData;
+    expect(dwellerCapacity(save, catalog)).toEqual({
+      population: 2,
+      populationCap: 8,
+      waiting: 2,
+      vaultFree: 6,
+      doorFree: 8,
+    });
+  });
+
+  it('dwellerCapacity clamps free slots at 0 for over-cap saves and falls back to 200', () => {
+    const over = {
+      dwellers: {
+        dwellers: Array.from({ length: 10 }, (_, i) => ({ serializeId: i + 1 })),
+      },
+      vault: {
+        rooms: [{ type: 'LivingQuarters', deserializeID: 1, mergeLevel: 1, level: 1 }], // cap 8
+      },
+    } as SaveData;
+    const c = dwellerCapacity(over, catalog);
+    expect(c.population).toBe(10);
+    expect(c.vaultFree).toBe(0); // 10 > cap 8, never negative
+    expect(c.doorFree).toBe(10);
+    // Without the catalog the cap falls back to the game's hard 200 ceiling.
+    expect(dwellerCapacity(over).populationCap).toBe(200);
   });
 
   it('vaultMetrics uses the catalog-derived cap, falling back to 200 without one', () => {

@@ -44,6 +44,10 @@ function makeGameData(): GameData {
       rooms: {
         Diner: { '1': { '1': { maxDwellers: 2, storage: {}, storageItems: 0 } } },
         WeightRoom: { '1': { '1': { maxDwellers: 2, storage: {}, storageItems: 0 } } },
+        // Population capacity source: generation is budgeted by the living-quarters cap.
+        LivingQuarters: {
+          '1': { '1': { maxDwellers: 0, storage: {}, storageItems: 0, populationIncrease: 50 } },
+        },
       },
     },
     roomMetadata: {
@@ -134,7 +138,12 @@ const weightRoom = (deserializeID = 2, dwellers: number[] = []) =>
   room('WeightRoom', deserializeID, dwellers);
 
 function makeSave(dwellers: ReturnType<typeof dweller>[], rooms: unknown[]): SaveData {
-  return { dwellers: { dwellers, id: dwellers.length }, vault: { rooms } } as unknown as SaveData;
+  // Every save carries one living quarters (population cap 50, not staffable - no
+  // primaryStat metadata) so recruit generation has capacity headroom by default.
+  return {
+    dwellers: { dwellers, id: dwellers.length },
+    vault: { rooms: [...rooms, room('LivingQuarters', 1000)] },
+  } as unknown as SaveData;
 }
 
 describe('autoStaffPlan', () => {
@@ -255,6 +264,26 @@ describe('autoStaff - generating recruits', () => {
     expect(filled?.dwellers).not.toContain(1); // idle dweller was not assigned
     const idleStill = next.dwellers?.dwellers?.find((d) => d.serializeId === 1);
     expect(idleStill?.savedRoom).toBe(-1);
+  });
+
+  it('stops generating at the vault population cap and predicts it in the plan', () => {
+    // Cap 50, 49 dwellers already in the vault (rostered elsewhere), a 2-slot empty
+    // Diner and no idle pool: only ONE recruit fits before the vault is full.
+    const residents = Array.from({ length: 49 }, (_, i) => dweller(i + 1, 5, 10, 99));
+    const save = makeSave(residents, [
+      diner(1, []),
+      room(
+        'Diner',
+        99,
+        residents.map((d) => d.serializeId),
+      ),
+    ]);
+    const plan = autoStaffPlan(save, makeGameData(), 'all');
+    expect(plan.toGenerate).toBe(1); // 2 free slots, but only 1 population slot left
+
+    const next = autoStaff(save, makeGameData(), { mode: 'all', generate: true, rng: () => 0.5 });
+    expect(next.dwellers?.dwellers?.length).toBe(50); // capped, not 51
+    expect(next.vault?.rooms?.[0]?.dwellers?.length).toBe(1);
   });
 });
 

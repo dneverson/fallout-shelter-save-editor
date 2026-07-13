@@ -59,6 +59,15 @@ describe('selectMrHandyRows', () => {
     const rows = selectMrHandyRows(save);
     expect(rows[0]?.floor).toBeNull();
     expect(rows[0]?.roomId).toBeNull();
+    expect(rows[0]?.inWasteland).toBe(false);
+  });
+
+  it('flags a robot listed in a wasteland team as collecting, not at the door', () => {
+    const save = unassignMrHandy(baseSave(), 5);
+    save.vault!.wasteland = { teams: [{ actors: [5], status: 'Exploring' }] };
+    const rows = selectMrHandyRows(save);
+    expect(rows[0]?.inWasteland).toBe(true);
+    expect(rows[0]?.floor).toBeNull();
   });
 });
 

@@ -9,13 +9,19 @@ import {
   selectDwellerRows,
   type DwellerRow,
 } from '../../domain/selectors/dwellerSelectors.ts';
-import { computePopulationCap } from '../../domain/selectors/vaultSelectors.ts';
+import {
+  computePopulationCap,
+  dwellerCapacity,
+  DOOR_QUEUE_CAP,
+  type DwellerCapacity,
+} from '../../domain/selectors/vaultSelectors.ts';
 import { reviveAll } from '../../domain/ops/bulkOps.ts';
 import {
   addSpecialDweller,
   createDwellerAtDoor,
   DEFAULT_OUTFIT_ID,
   DEFAULT_WEAPON_ID,
+  markDwellerWaiting,
   setLevel,
   type NewDwellerOpts,
 } from '../../domain/ops/dwellerOps.ts';
@@ -45,6 +51,10 @@ function passesQuickFilters(row: DwellerRow, q: DwellerQuickFilters): boolean {
   if (q.deadOnly && !row.isDead) return false;
   return true;
 }
+
+/** Disabled-button tooltip when the vault and the door queue are both at their caps. */
+const fullTitle = (c: DwellerCapacity): string =>
+  `Vault full (${c.population}/${c.populationCap}) and door queue full (${c.waiting}/${DOOR_QUEUE_CAP})`;
 
 const QUICK_CHIPS: ReadonlyArray<{ key: keyof DwellerQuickFilters; label: string }> = [
   { key: 'fistOnly', label: 'Fist only' },
@@ -81,16 +91,41 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
   const [addOpen, setAddOpen] = useState(false);
   const [addSpecialOpen, setAddSpecialOpen] = useState(false);
 
+  // Vault + door-queue occupancy, enforced by every add flow: new dwellers fill the
+  // living-quarters capacity first, overflow into the 10-place door queue, and are
+  // blocked when both are full (the game's own legality rules).
+  const capacity = useMemo(
+    () => (save ? dwellerCapacity(save, gameData?.roomCapacity) : null),
+    [save, gameData],
+  );
+  const addBlocked = capacity !== null && capacity.vaultFree <= 0 && capacity.doorFree <= 0;
+
   // Create a dweller, then open it in the sheet. The op appends it, so the new dweller
   // is the last in the (post-edit) list - read it back from the store to get its id.
   const handleCreate = useCallback(
     (opts: NewDwellerOpts) => {
-      applyEdit((s) => createDwellerAtDoor(s, opts), 'Add dweller');
+      const current = useSaveStore.getState().save;
+      if (!current) return;
+      const cap = dwellerCapacity(current, gameData?.roomCapacity);
+      if (cap.vaultFree <= 0 && cap.doorFree <= 0) {
+        pushToast('Vault and door queue are both full.', 'info');
+        return;
+      }
+      const toDoor = cap.vaultFree <= 0;
+      applyEdit(
+        (s) => {
+          const next = createDwellerAtDoor(s, opts);
+          const id = next.dwellers?.id;
+          return toDoor && typeof id === 'number' ? markDwellerWaiting(next, id) : next;
+        },
+        toDoor ? 'Add dweller (waiting at door)' : 'Add dweller',
+      );
+      if (toDoor) pushToast('Vault at capacity - the new dweller waits at the door.', 'info');
       const list = useSaveStore.getState().save?.dwellers?.dwellers ?? [];
       const created = list[list.length - 1];
       if (created) goTo('dwellers', created.serializeId);
     },
-    [applyEdit, goTo],
+    [applyEdit, gameData, goTo],
   );
 
   // Add the selected named special dwellers from the catalog in ONE undo step, then open
@@ -122,20 +157,45 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
       });
       const first = preps[0];
       if (!first) return;
+      // Capacity routing: the first `vaultFree` picks join the vault, the rest wait at
+      // the door; anything past both caps is dropped (the dialog blocks over-selection,
+      // this is the safety net).
+      const current = useSaveStore.getState().save;
+      if (!current) return;
+      const cap = dwellerCapacity(current, gameData.roomCapacity);
+      const totalFree = cap.vaultFree + cap.doorFree;
+      if (totalFree <= 0) {
+        pushToast('Vault and door queue are both full.', 'info');
+        return;
+      }
+      const picks = preps.slice(0, totalFree);
+      const toDoorCount = Math.max(0, picks.length - cap.vaultFree);
       applyEdit(
         (s) =>
-          preps.reduce((acc, p) => {
-            const next = addSpecialDweller(acc, p.uniqueId, p.safe);
+          picks.reduce((acc, p, i) => {
+            let next = addSpecialDweller(acc, p.uniqueId, p.safe);
             const added = next.dwellers?.dwellers ?? [];
             const newDweller = added[added.length - 1];
-            return newDweller ? setLevel(next, newDweller.serializeId, p.level) : next;
+            if (!newDweller) return next;
+            next = setLevel(next, newDweller.serializeId, p.level);
+            if (i >= cap.vaultFree) next = markDwellerWaiting(next, newDweller.serializeId);
+            return next;
           }, s),
-        preps.length === 1
+        picks.length === 1
           ? `Add ${first.safe.name || first.uniqueId}`
-          : `Add ${preps.length} special dwellers`,
+          : `Add ${picks.length} special dwellers`,
       );
       if (fixes.length) {
         pushToast(`Unknown ${fixes.join(' & ')} replaced with the default.`, 'info');
+      }
+      if (toDoorCount > 0) {
+        pushToast(
+          `Vault at capacity - ${toDoorCount === picks.length ? (toDoorCount === 1 ? 'the new dweller waits' : `all ${toDoorCount} wait`) : `${toDoorCount} of them wait`} at the door.`,
+          'info',
+        );
+      }
+      if (picks.length < preps.length) {
+        pushToast(`${preps.length - picks.length} skipped - vault and door queue full.`, 'info');
       }
       const list = useSaveStore.getState().save?.dwellers?.dwellers ?? [];
       const created = list[list.length - 1];
@@ -220,15 +280,23 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
           <button
             type="button"
             onClick={() => setAddOpen(true)}
-            className="rounded border border-emerald-700 px-3 py-1 text-xs text-emerald-300 hover:bg-emerald-900/40"
+            disabled={addBlocked}
+            title={addBlocked && capacity !== null ? fullTitle(capacity) : undefined}
+            className="rounded border border-emerald-700 px-3 py-1 text-xs text-emerald-300 hover:bg-emerald-900/40 disabled:cursor-not-allowed disabled:opacity-40"
           >
             + Add dweller
           </button>
           <button
             type="button"
             onClick={() => setAddSpecialOpen(true)}
-            disabled={!gameData}
-            title={gameData ? undefined : 'Loading game data…'}
+            disabled={!gameData || addBlocked}
+            title={
+              !gameData
+                ? 'Loading game data…'
+                : addBlocked && capacity !== null
+                  ? fullTitle(capacity)
+                  : undefined
+            }
             className="rounded border border-amber-700 px-3 py-1 text-xs text-amber-300 hover:bg-amber-900/40 disabled:cursor-not-allowed disabled:opacity-40"
           >
             + Add special
@@ -301,10 +369,15 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
       />
 
       {addOpen && (
-        <AddDwellerDialog open onClose={() => setAddOpen(false)} onCreate={handleCreate} />
+        <AddDwellerDialog
+          open
+          onClose={() => setAddOpen(false)}
+          onCreate={handleCreate}
+          willWait={capacity !== null && capacity.vaultFree <= 0}
+        />
       )}
 
-      {addSpecialOpen && gameData && (
+      {addSpecialOpen && gameData && capacity && (
         <AddSpecialDwellerDialog
           open
           onClose={() => setAddSpecialOpen(false)}
@@ -312,6 +385,8 @@ export function DwellersView({ virtualized = true }: { virtualized?: boolean } =
           gameData={gameData}
           onAdd={handleAddSpecial}
           virtualized={virtualized}
+          maxAdd={capacity.vaultFree + capacity.doorFree}
+          vaultFree={capacity.vaultFree}
         />
       )}
     </div>
