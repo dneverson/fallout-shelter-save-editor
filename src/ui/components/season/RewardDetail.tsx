@@ -37,9 +37,12 @@ export function RewardDetail({
   premiumLocked,
   onToggle,
 }: RewardDetailProps) {
+  // Both variants share a min height so hovering board cells never resizes the
+  // card. A hover-driven height change shifts the page under the cursor, which
+  // flips the hovered cell and flickers the panel in an endless loop.
   if (!reward || !track) {
     return (
-      <div className="rounded-lg border border-neutral-800 bg-neutral-900/40 p-4 text-sm text-neutral-500">
+      <div className="flex min-h-44 items-center justify-center rounded-lg border border-neutral-800 bg-neutral-900/40 p-4 text-sm text-neutral-500">
         Hover or focus a reward on the board to see its details.
       </div>
     );
@@ -50,7 +53,7 @@ export function RewardDetail({
   const claimBlocked = track === 'premium' && premiumLocked && !claimed;
 
   return (
-    <div className="rounded-lg border border-neutral-800 bg-neutral-900/40 p-4">
+    <div className="min-h-44 rounded-lg border border-neutral-800 bg-neutral-900/40 p-4">
       <div className="flex items-start gap-3">
         {icon ? (
           <ItemIcon
@@ -111,11 +114,13 @@ export function RewardDetail({
         </button>
       </div>
 
-      {claimBlocked && (
-        <p className="mt-2 text-xs text-neutral-500">
-          Premium rewards require the premium track unlocked (Status → Premium, or Claim all).
-        </p>
-      )}
+      {/* Constant-height footnote: the slot is always rendered and only the text
+          swaps, so premium-locked and free cells produce identical card heights. */}
+      <p className="mt-2 min-h-8 text-xs text-neutral-500">
+        {claimBlocked
+          ? 'Premium rewards require the premium track unlocked (Status → Premium, or Claim all).'
+          : 'Claim / Unclaim edits the claimed list; the game hands out rewards the next time the save loads.'}
+      </p>
     </div>
   );
 }
