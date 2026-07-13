@@ -7,6 +7,7 @@ import { outfitEnduranceBonus } from '../../../domain/gamedata/gameData.ts';
 import { removeDwellers } from '../../../domain/ops/dwellerOps.ts';
 import { fieldHelp } from '../../lib/fieldHelp.ts';
 import { ConfirmDialog } from '../ConfirmDialog.tsx';
+import { HoverTooltip } from '../InfoTooltip.tsx';
 import {
   makeLegendaryAll,
   maxHappinessAll,
@@ -148,14 +149,15 @@ export function BulkActionBar({
       </button>
 
       <span className="mx-1 h-4 w-px bg-neutral-700" />
-      <button
-        type="button"
-        onClick={() => setConfirmRemove(true)}
-        title={fieldHelp.removeDweller}
-        className="rounded border border-red-700 px-2 py-1 text-xs text-red-300 hover:bg-red-900/40"
-      >
-        Remove ({selectedIds.length})
-      </button>
+      <HoverTooltip text={fieldHelp.removeDweller}>
+        <button
+          type="button"
+          onClick={() => setConfirmRemove(true)}
+          className="rounded border border-red-700 px-2 py-1 text-xs text-red-300 hover:bg-red-900/40"
+        >
+          Remove ({selectedIds.length})
+        </button>
+      </HoverTooltip>
 
       <button
         type="button"

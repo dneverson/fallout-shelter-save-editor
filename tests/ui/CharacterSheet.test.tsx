@@ -109,6 +109,16 @@ describe('CharacterSheet - delete', () => {
     expect(onClose).toHaveBeenCalled();
   });
 
+  it('hovering Delete dweller shows the full scrubbing help as an on-screen tooltip', async () => {
+    const user = userEvent.setup();
+    renderSheet(1);
+    // Viewport-clamped bubble, not a native `title` (which the page cannot keep on screen).
+    await user.hover(screen.getByRole('button', { name: 'Delete dweller' }));
+    expect(screen.getByRole('tooltip')).toHaveTextContent(/cleans up every trace/i);
+    await user.unhover(screen.getByRole('button', { name: 'Delete dweller' }));
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+  });
+
   it('does not delete when the confirmation is cancelled', async () => {
     const user = userEvent.setup();
     render(<CharacterSheet dweller={dwellerById(1)!} onClose={() => {}} />, {

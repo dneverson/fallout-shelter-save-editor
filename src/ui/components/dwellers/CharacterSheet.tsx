@@ -47,7 +47,7 @@ import { ConfirmDialog } from '../ConfirmDialog.tsx';
 import { FamilyBlock } from './FamilyBlock.tsx';
 import { HairPicker } from './HairPicker.tsx';
 import { AppearanceGridDialog } from './AppearanceGridDialog.tsx';
-import { InfoTooltip } from '../InfoTooltip.tsx';
+import { HoverTooltip, InfoTooltip } from '../InfoTooltip.tsx';
 import { fieldHelp } from '../../lib/fieldHelp.ts';
 import { EquipPickerDialog } from './EquipPickerDialog.tsx';
 import { outfitSchema, weaponSchema } from '../table/schemas/itemSchemas.tsx';
@@ -814,14 +814,15 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
       {/* Delete (confirm; undoable). Same scrubbing op as the bulk Remove - a plain
           list splice would leave dangling references (see removeDwellers). */}
       <div className="mt-6 border-t border-neutral-800 pt-3">
-        <button
-          type="button"
-          onClick={() => setConfirmDelete(true)}
-          title={fieldHelp.removeDweller}
-          className="w-full rounded border border-red-800 px-3 py-1.5 text-sm text-red-300 hover:bg-red-900/30"
-        >
-          Delete dweller
-        </button>
+        <HoverTooltip text={fieldHelp.removeDweller} className="block">
+          <button
+            type="button"
+            onClick={() => setConfirmDelete(true)}
+            className="w-full rounded border border-red-800 px-3 py-1.5 text-sm text-red-300 hover:bg-red-900/30"
+          >
+            Delete dweller
+          </button>
+        </HoverTooltip>
       </div>
 
       <ConfirmDialog

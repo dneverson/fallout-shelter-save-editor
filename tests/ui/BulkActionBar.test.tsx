@@ -66,6 +66,14 @@ describe('BulkActionBar - heal / cure', () => {
 });
 
 describe('BulkActionBar - remove selected', () => {
+  it('hovering Remove shows the full scrubbing help as an on-screen tooltip', async () => {
+    const user = userEvent.setup();
+    render(<BulkActionBar selectedIds={[1, 2]} onClear={vi.fn()} />);
+    // Viewport-clamped bubble, not a native `title` (which the page cannot keep on screen).
+    await user.hover(screen.getByRole('button', { name: 'Remove (2)' }));
+    expect(screen.getByRole('tooltip')).toHaveTextContent(/cleans up every trace/i);
+  });
+
   it('shows the count on the button and only removes after confirming', async () => {
     const user = userEvent.setup();
     const onClear = vi.fn();
