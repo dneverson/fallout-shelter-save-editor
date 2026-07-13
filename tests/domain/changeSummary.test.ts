@@ -3,6 +3,12 @@ import { describe, it, expect } from 'vitest';
 import type { SaveData } from '../../src/domain/model/saveSchema.ts';
 import { summarizeChanges } from '../../src/domain/diff/changeSummary.ts';
 import { createDwellerAtDoor, remove, setLevel, setStat } from '../../src/domain/ops/dwellerOps.ts';
+import { LosslessInt } from '../../src/domain/codec/losslessJson.ts';
+import {
+  completeRoomTimersNow,
+  fastForwardVault,
+  setDeathclawEnabled,
+} from '../../src/domain/ops/timerOps.ts';
 
 function makeSave(): SaveData {
   return {
@@ -89,5 +95,61 @@ describe('summarizeChanges', () => {
     const after = { ...before, appVersion: '2.0' } as SaveData;
     const summary = summarizeChanges(before, after);
     expect(summary.otherSectionsChanged).toContain('appVersion');
+  });
+});
+
+describe('timer edits in the change review', () => {
+  it('surfaces a deathclaw toggle as manager leaves + a new task entry', () => {
+    const original: SaveData = {
+      taskMgr: { id: 100, time: 5_000, tasks: [] },
+      DeathclawManager: { canDeathclawEmergencyOccurs: true, deathclawCooldownID: -1 },
+    } as SaveData;
+    const edited = setDeathclawEnabled(original, false);
+    const summary = summarizeChanges(original, edited);
+    const paths = summary.otherChanges.map((c) => c.path);
+    expect(paths).toContain('DeathclawManager.canDeathclawEmergencyOccurs');
+    expect(paths).toContain('DeathclawManager.deathclawCooldownID');
+    expect(paths.some((p) => p.startsWith('taskMgr.tasks[0]'))).toBe(true);
+  });
+
+  it('surfaces a global fast-forward with exact tick literals', () => {
+    const original: SaveData = {
+      timeMgr: { timeSaveDate: new LosslessInt('639162074156879513') },
+    } as SaveData;
+    const edited = fastForwardVault(original, 86_400);
+    const summary = summarizeChanges(original, edited);
+    const change = summary.otherChanges.find((c) => c.path === 'timeMgr.timeSaveDate');
+    expect(change).toBeDefined();
+    expect(change?.before).toBe('639162074156879513');
+    expect(change?.after).toBe((639162074156879513n - 864_000_000_000n).toString());
+  });
+
+  it('surfaces a crafting finish via the room extractor', () => {
+    const original: SaveData = {
+      taskMgr: {
+        id: 100,
+        time: 5_000,
+        tasks: [{ startTime: 4_000, endTime: 9_000, id: 50, paused: false }],
+      },
+      vault: {
+        rooms: [
+          {
+            type: 'WeaponFactory',
+            deserializeID: 12,
+            class: 'Crafting',
+            currentState: { taskId: 50 },
+            CompletedTime: 120,
+          },
+        ],
+      },
+    } as SaveData;
+    const edited = completeRoomTimersNow(original, 12);
+    const summary = summarizeChanges(original, edited);
+    const room = summary.roomsModified.find((r) => r.label === 'WeaponFactory #12');
+    expect(room?.fields).toContainEqual({
+      label: 'Crafting progress (s)',
+      before: '120',
+      after: '1000000000',
+    });
   });
 });

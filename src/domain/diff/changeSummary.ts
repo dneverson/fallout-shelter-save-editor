@@ -169,6 +169,11 @@ const ROOM_EXTRACTORS: ReadonlyArray<{
     label: 'Position',
     get: (r) => (r.row !== undefined || r.col !== undefined ? `row ${r.row}, col ${r.col}` : '–'),
   },
+  // Room-side timer fields (timerOps). The timers themselves live in taskMgr.tasks
+  // (auto-surfaced by the generic walker); these are the two fields kept in sync on
+  // the room: crafting's elapsed-seconds progress and the radio's display countdown.
+  { label: 'Crafting progress (s)', get: (r) => num(r.CompletedTime) },
+  { label: 'Radio countdown (s)', get: (r) => num(r.currentState?.remainingTime) },
 ];
 
 const roomKey = (r: Room): string => `${r.type} #${r.deserializeID}`;
