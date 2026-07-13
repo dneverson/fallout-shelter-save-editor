@@ -5,7 +5,7 @@ import { useGameData } from '../hooks/useGameData.ts';
 import { useSectionNavigate } from '../routing/useSectionNavigate.ts';
 import { diagnose, repairAll, type Diagnosis } from '../../domain/health/diagnostics.ts';
 import { computeAdvisor } from '../../domain/selectors/advisorSelectors.ts';
-import { vaultMetrics } from '../../domain/selectors/vaultSelectors.ts';
+import { computePopulationCap, vaultMetrics } from '../../domain/selectors/vaultSelectors.ts';
 
 // Vault overview (the "Vault" section): save metadata + vault sustainability stats, plus the
 // full structural-health diagnostics - the issue list with per-issue Fix + Fix-all (moved here
@@ -36,10 +36,21 @@ export function SaveOverview() {
     () => (save && gameData ? computeAdvisor(save, gameData) : null),
     [save, gameData],
   );
-  // Save-derivable overview tiles (rooms / population / pets / storage). Vacant work slots
-  // need room capacity, so they're folded in from the advisor's per-room analysis: empty
-  // slots across stat-driven rooms (statKey !== null skips elevators / no-stat facilities).
-  const metrics = useMemo(() => (save ? vaultMetrics(save) : null), [save]);
+  // Overview tiles (rooms / population / pets / storage). The population cap is derived
+  // from living quarters via the room-capacity catalog (200-ceiling fallback until game
+  // data resolves). Vacant work slots need room capacity, so they're folded in from the
+  // advisor's per-room analysis: empty slots across stat-driven rooms (statKey !== null
+  // skips elevators / no-stat facilities).
+  const metrics = useMemo(
+    () => (save ? vaultMetrics(save, gameData?.roomCapacity) : null),
+    [save, gameData],
+  );
+  // Dweller counts render as "X/cap" wherever they appear; count-only until the
+  // room-capacity catalog resolves (no 200 fallback here - it would flash a wrong cap).
+  const populationCap = useMemo(
+    () => (save && gameData ? computePopulationCap(save, gameData.roomCapacity) : null),
+    [save, gameData],
+  );
   const vacantSlots = useMemo(
     () =>
       (advisor?.rooms ?? []).reduce(
@@ -71,7 +82,13 @@ export function SaveOverview() {
         />
         <Stat
           label="Dwellers"
-          value={metadata?.dwellerCount ?? '–'}
+          value={
+            metadata?.dwellerCount != null
+              ? populationCap !== null
+                ? `${metadata.dwellerCount}/${populationCap}`
+                : metadata.dwellerCount
+              : '–'
+          }
           onClick={() => goToSection('dwellers')}
         />
         <Stat
@@ -105,7 +122,7 @@ export function SaveOverview() {
             <Stat label="Vacant slots" value={vacantSlots} onClick={() => goToSection('rooms')} />
             <Stat
               label="Population"
-              value={`${metrics.population}/${metrics.populationCap}`}
+              value={`${metrics.population}${populationCap !== null ? `/${populationCap}` : ''}`}
               onClick={() => goToSection('dwellers')}
             />
             <Stat

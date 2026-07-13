@@ -1041,51 +1041,60 @@
         "1": {
           "maxDwellers": 2,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 8
         },
         "2": {
           "maxDwellers": 2,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 10
         },
         "3": {
           "maxDwellers": 2,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 12
         }
       },
       "2": {
         "1": {
           "maxDwellers": 4,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 18
         },
         "2": {
           "maxDwellers": 4,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 22
         },
         "3": {
           "maxDwellers": 4,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 26
         }
       },
       "3": {
         "1": {
           "maxDwellers": 6,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 28
         },
         "2": {
           "maxDwellers": 6,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 34
         },
         "3": {
           "maxDwellers": 6,
           "storage": {},
-          "storageItems": 0
+          "storageItems": 0,
+          "populationIncrease": 40
         }
       }
     },

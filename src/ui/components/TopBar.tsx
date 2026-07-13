@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   selectCanRedo,
   selectCanUndo,
@@ -7,6 +7,8 @@ import {
   useSaveStore,
 } from '../../state/saveStore.ts';
 import { useUIStore } from '../../state/uiStore.ts';
+import { useGameData } from '../hooks/useGameData.ts';
+import { computePopulationCap } from '../../domain/selectors/vaultSelectors.ts';
 import { ExportDialog } from './ExportDialog.tsx';
 import { HistoryPanel } from './HistoryPanel.tsx';
 import { CreditsDialog } from './CreditsDialog.tsx';
@@ -46,6 +48,14 @@ export function TopBar() {
   const status = useSaveStore((s) => s.status);
   const fileName = useSaveStore((s) => s.fileName);
   const metadata = useSaveStore((s) => s.health?.metadata ?? null);
+  const save = useSaveStore((s) => s.save);
+  const { data: gameData } = useGameData();
+  // Dweller counts render as "X/cap" (living-quarters-derived capacity, like the game's
+  // own dweller list); count-only until the room-capacity catalog resolves.
+  const populationCap = useMemo(
+    () => (save && gameData ? computePopulationCap(save, gameData.roomCapacity) : null),
+    [save, gameData],
+  );
   const edited = useSaveStore((s) => s.past.length > 0);
   const canUndo = useSaveStore(selectCanUndo);
   const canRedo = useSaveStore(selectCanRedo);
@@ -94,7 +104,8 @@ export function TopBar() {
           <span className="hidden text-neutral-200 sm:inline">{fileName}</span>
           {metadata && (
             <span className="hidden text-neutral-400 lg:inline">
-              · Vault {metadata.vaultName} · {metadata.dwellerCount} dwellers
+              · Vault {metadata.vaultName} · {metadata.dwellerCount}
+              {populationCap !== null && `/${populationCap}`} dwellers
             </span>
           )}
           {edited && <span className="text-amber-400">● unsaved changes</span>}

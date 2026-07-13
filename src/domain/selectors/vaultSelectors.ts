@@ -60,17 +60,37 @@ export function computeItemCapacity(save: SaveData, catalog: RoomCapacity): numb
   return cap;
 }
 
-/** In-game hard ceiling on living dwellers (Vault.MAX_DWELLERS); not stored in the save. */
+/**
+ * The game's hard ceiling on dwellers (DwellerManager.m_maximumDwellerCount, a code
+ * constant - not stored in the save or any prefab). ClampedMaxDwellers clamps to it.
+ */
 const VAULT_DWELLER_CAP = 200;
 
-/** At-a-glance vault metrics surfaced on the Vault overview tiles. Save-derivable only;
+/**
+ * The vault's dweller capacity, exactly as the game derives it: the sum of every
+ * living quarters room's `populationIncrease` at its current (mergeLevel, level)
+ * (LivingQuartersRoom.UpdateAddedPopulation), clamped to the hard 200 ceiling
+ * (Vault.ClampedMaxDwellers). Nothing else contributes - a vault with no living
+ * quarters has capacity 0.
+ */
+export function computePopulationCap(save: SaveData, catalog: RoomCapacity): number {
+  let cap = 0;
+  for (const room of save.vault?.rooms ?? []) {
+    const contribution = roomContribution(catalog, room.type, room.mergeLevel, room.level);
+    cap += contribution?.populationIncrease ?? 0;
+  }
+  return Math.min(cap, VAULT_DWELLER_CAP);
+}
+
+/** At-a-glance vault metrics surfaced on the Vault overview tiles. Save-derivable except
+ *  populationCap (needs the room-capacity catalog; falls back to the 200 ceiling);
  *  vacant work slots (needs room capacity) are computed by the caller from the advisor. */
 export interface VaultMetrics {
   /** Total rooms placed (includes elevators). */
   roomCount: number;
   /** Alive dwellers (the population that counts against the cap). */
   population: number;
-  /** In-game dweller ceiling (200). */
+  /** Living-quarters-derived dweller capacity (200 ceiling fallback without catalog). */
   populationCap: number;
   /** Mean currentLevel of alive dwellers (0 when none). */
   avgLevel: number;
@@ -86,8 +106,12 @@ export interface VaultMetrics {
 
 const isAliveDweller = (h: number | undefined): boolean => (h ?? 1) > 0;
 
-/** Compute the overview metric tiles from the save alone (no game data required). */
-export function vaultMetrics(save: SaveData): VaultMetrics {
+/**
+ * Compute the overview metric tiles. The room-capacity catalog is optional (tiles
+ * render before game data resolves); without it populationCap falls back to the
+ * 200 ceiling rather than showing a wrong living-quarters sum.
+ */
+export function vaultMetrics(save: SaveData, catalog?: RoomCapacity): VaultMetrics {
   const dwellers = save.dwellers?.dwellers ?? [];
   const alive = dwellers.filter((d) => isAliveDweller(d.health?.healthValue));
   const levelSum = alive.reduce((n, d) => n + (d.experience?.currentLevel ?? 1), 0);
@@ -108,7 +132,7 @@ export function vaultMetrics(save: SaveData): VaultMetrics {
   return {
     roomCount: save.vault?.rooms?.length ?? 0,
     population: alive.length,
-    populationCap: VAULT_DWELLER_CAP,
+    populationCap: catalog ? computePopulationCap(save, catalog) : VAULT_DWELLER_CAP,
     avgLevel: alive.length ? levelSum / alive.length : 0,
     petsOwned: storedPets + equippedPets,
     weapons,

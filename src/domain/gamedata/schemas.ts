@@ -126,6 +126,8 @@ const roomLevelCapacitySchema = z.object({
   storage: z.record(z.string(), z.number()),
   /** Item-storage (weapon/outfit/junk count) contribution. */
   storageItems: z.number(),
+  /** Dweller-cap contribution (living quarters only; absent on every other room). */
+  populationIncrease: z.number().optional(),
 });
 
 export const roomCapacitySchema = z.object({

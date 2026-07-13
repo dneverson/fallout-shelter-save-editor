@@ -5,6 +5,9 @@
 //   ResourceMax(R) = base[R] + Σ room.storage[R] at each room's (mergeLevel, level)
 //   ItemMax        = baseItems + Σ storage-room.storageItems at its (mergeLevel, level)
 //   StimPack/RadAway max = base + perDweller × dwellerCount
+//   DwellerMax     = Σ living-quarters populationIncrease at its (mergeLevel, level),
+//                    clamped to the game's hard 200 ceiling (DwellerManager
+//                    m_maximumDwellerCount, a code constant - not in any prefab)
 //
 // Sources (our own v2.4.1 export - version-correct, not hardcoded):
 //  - one GameObject/<Room>.prefab per ERoomType holds a RoomInfo MonoBehaviour with
@@ -132,10 +135,15 @@ function parseRoomPrefab(text, roomTypeName) {
     refList(controller, 'm_roomLevels').forEach((rId, ri) => {
       const roomLevel = docs.get(rId);
       if (!roomLevel) return;
+      // m_populationIncrease only exists on LivingQuartersLevel documents (the
+      // dweller-cap contribution the game adds via LivingQuartersRoom); omitted
+      // elsewhere so non-quarters rooms stay compact.
+      const populationIncrease = numField(roomLevel, 'm_populationIncrease');
       perLevel[ri + 1] = {
         maxDwellers: numField(roomLevel, 'm_maxDwellerCount') ?? 0,
         storage: resourceBlock(roomLevel, 'm_storageModifier'),
         storageItems: numField(roomLevel, 'm_storageWeaponModifier') ?? 0,
+        ...(populationIncrease !== null ? { populationIncrease } : {}),
       };
     });
     if (Object.keys(perLevel).length) levels[mergeLevel] = perLevel;
