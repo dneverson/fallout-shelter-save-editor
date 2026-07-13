@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { LosslessInt } from '../codec/losslessJson.ts';
 
 // Typed-permissive save model. We validate ONLY the fields
 // we actually read/write and let every other key pass through untouched - this is
@@ -148,6 +149,44 @@ const roomHealthSchema = z.looseObject({
   initialValue: z.number().optional(),
 });
 
+// The per-state sub-dict where a room's work-cycle task id lives (WorkBaseRoomWorking:
+// production/crafting/radio all serialize `taskId` here). `remainingTime`/`estimatedTime`
+// are the RADIO room's display pair (RadioStationRoom.Serialize) - crafting progress is
+// the room-level `CompletedTime` instead. Unknown per-state keys ride through.
+const roomStateSchema = z.looseObject({
+  taskId: z.number().optional(),
+  remainingTime: z.number().optional(),
+  estimatedTime: z.number().optional(),
+  breedingTaskId: z.number().optional(),
+});
+
+// A LivingQuarters relationship (DwellerPartnership): `m`/`f` = partner serializeIds,
+// `s` = status (EDwellerDwellerPartnershipType, e.g. "RaisingBaby"), `t` = the single
+// status-scoped task id (RaisingBaby -> the pregnancy/birth task). Names, child template
+// and the rest ride through.
+const partnerSchema = z.looseObject({
+  m: z.number().optional(),
+  f: z.number().optional(),
+  s: z.string().optional(),
+  t: z.number().optional(),
+});
+
+// A LivingQuarters child (DwellerChild): `taskID` is the one-shot grow-up task. The game
+// DISCARDS children whose task is missing on load, so ops must never delete these entries
+// or null the id - only the referenced task's endTime may change.
+const childSchema = z.looseObject({
+  taskID: z.number().optional(),
+  dwellerID: z.number().optional(),
+  notificationID: z.number().optional(),
+});
+
+// A training-room slot (TrainingSlot): `taskID` is the recurrent stat-training task
+// (idle sentinels -2 / -32768).
+const trainingSlotSchema = z.looseObject({
+  dwellerID: z.number().optional(),
+  taskID: z.number().optional(),
+});
+
 const roomSchema = z.looseObject({
   type: z.string(),
   deserializeID: z.number(),
@@ -161,11 +200,26 @@ const roomSchema = z.looseObject({
   roomHealth: roomHealthSchema.optional(),
   assignedDecoration: z.string().optional(),
   currentStateName: z.string().optional(),
+  currentState: roomStateSchema.optional(),
   dwellers: z.array(z.number()).optional(),
   // Mr. Handy actor serializeIds attached to this room. On load the game only places a
   // Mr. Handy if SOME room's mrHandyList references it (Room.DeserializeDwellers), so
   // structural ops must never drop these ids or the robot disappears in-game.
   mrHandyList: z.array(z.number()).optional(),
+  // --- Timer surface (timerOps) ---
+  // Production rooms serialize their per-room output buffer here (ProductionRoom.Serialize).
+  // A staffed production room with output but NO cycle task is full and waiting to be
+  // collected in game - that's why not every reactor carries a timer.
+  storage: z.looseObject({ resources: z.record(z.string(), z.number()).optional() }).optional(),
+  // Crafting rooms: elapsed crafting seconds (game clamps to the recipe's required time
+  // on load, so a huge value means "done") + the recipe being crafted.
+  CompletedTime: z.number().optional(),
+  CraftingItemId: z.string().optional(),
+  // Rush-cost decay task id (Room.Serialize `rushTask`; -1 when none).
+  rushTask: z.number().optional(),
+  partners: z.array(partnerSchema).optional(),
+  children: z.array(childSchema).optional(),
+  slots: z.array(trainingSlotSchema).optional(),
 });
 
 // --- Vault inventory (storage) - pet attach "from storage" reads stored pets, and
@@ -182,10 +236,29 @@ const storageSchema = z.looseObject({
   resources: z.record(z.string(), z.number()).optional(),
 });
 
+// A wasteland exploration team (WastelandTeam). Travel is NOT task-based: the game
+// diffs raw second counters against the task clock. `elapsedTimeAliveExploring` runs
+// while exploring / travelling to a quest (arrival at CachedQuest.TimeToReachInSecond);
+// `elapsedReturningTime` runs on the way home and completes at `returnTripDuration`.
+const wastelandTeamSchema = z.looseObject({
+  dwellers: z.array(z.number()).optional(),
+  status: z.string().optional(),
+  elapsedTimeAliveExploring: z.number().optional(),
+  elapsedReturningTime: z.number().optional(),
+  returnTripDuration: z.number().optional(),
+  isDoingQuest: z.boolean().optional(),
+  questName: z.string().optional(),
+});
+
+const wastelandSchema = z.looseObject({
+  teams: z.array(wastelandTeamSchema).optional(),
+});
+
 const vaultSchema = z.looseObject({
   rooms: z.array(roomSchema).optional(),
   inventory: inventorySchema.optional(),
   storage: storageSchema.optional(),
+  wasteland: wastelandSchema.optional(),
   VaultName: z.string().optional(),
   VaultMode: z.string().optional(),
   VaultTheme: z.number().optional(),
@@ -235,6 +308,63 @@ const shopWindowSchema = z.looseObject({
   hasStarterPackPopupShown: z.boolean().optional(),
 });
 
+// --- Time & task managers (timerOps edit surface) --------------------------------
+// `timeMgr.timeSaveDate`/`timeGameBegin` are .NET DateTime ticks (~6.4e17) - ABOVE
+// Number.MAX_SAFE_INTEGER, so they arrive from the codec boxed as LosslessInt. All
+// tick arithmetic goes through taskLookup's BigInt helpers; never Number() these.
+const int64Schema = z.union([z.number(), z.instanceof(LosslessInt)]);
+
+const timeMgrSchema = z.looseObject({
+  time: z.number().optional(), // elapsed vault seconds (the master task clock)
+  gameTime: z.number().optional(),
+  questTime: z.number().optional(),
+  timeSaveDate: int64Schema.optional(),
+  timeGameBegin: int64Schema.optional(),
+});
+
+// One scheduled timer (Task.Serialize). Times are elapsed vault seconds measured
+// against `taskMgr.time`; a task whose endTime has passed fires during on-load catch-up.
+const taskEntrySchema = z.looseObject({
+  startTime: z.number().optional(),
+  endTime: z.number().optional(),
+  id: z.number().optional(),
+  paused: z.boolean().optional(),
+  rescheduleToOldest: z.boolean().optional(),
+});
+
+const taskMgrSchema = z.looseObject({
+  id: z.number().optional(), // last-used task id (NewTask pre-increments)
+  time: z.number().optional(), // mirrors timeMgr.time
+  tasks: z.array(taskEntrySchema).optional(),
+  pausedTasks: z.array(taskEntrySchema).optional(),
+});
+
+// DeathclawIncidentsMgr. `canDeathclawEmergencyOccurs` is a cooldown LATCH, not an off
+// switch: when false the game loads `deathclawCooldownID` and, if that task is missing,
+// RE-CREATES a ~30 min cooldown that re-enables attacks. A durable "off" therefore
+// needs the flag false PLUS a far-future blocker task injected into taskMgr (timerOps).
+const deathclawManagerSchema = z.looseObject({
+  deathclawTotalExtraChance: z.number().optional(),
+  canDeathclawEmergencyOccurs: z.boolean().optional(),
+  deathclawCooldownID: z.number().optional(),
+});
+
+// BottleAndCappyMgr. `SerializeLocked: true` with NO `SerializeUnlockTask` key means the
+// appearance cycle never starts on load - a clean, fully reversible "off".
+const bottleAndCappySchema = z.looseObject({
+  SerializeAccumulatedTriggerChance: z.number().optional(),
+  SerializeLocked: z.boolean().optional(),
+  SerializeUnlockTask: z.number().optional(),
+});
+
+// Daily login rewards (DayToDayRewardManager). `next` is a wall-clock Unix-milliseconds
+// timestamp; any past value makes the reward claimable.
+const dayToDayRewardSchema = z.looseObject({
+  states: z
+    .array(z.looseObject({ type: z.number().optional(), next: int64Schema.optional() }))
+    .optional(),
+});
+
 // Per-room-TYPE visual themes (the in-game room "decoration"/skin). `themeByRoomType`
 // maps an ERoomType name → an ESpecialTheme name ({ "Cafeteria": "Institute", … });
 // `eventsThemes`/`lastOverallTheme` ride through untouched. See src/domain/rooms/themes.ts.
@@ -251,6 +381,11 @@ export const saveSchema = z.looseObject({
   survivalW: survivalWSchema.optional(),
   dwellerSpawner: dwellerSpawnerSchema.optional(),
   ShopWindow: shopWindowSchema.optional(),
+  timeMgr: timeMgrSchema.optional(),
+  taskMgr: taskMgrSchema.optional(),
+  DeathclawManager: deathclawManagerSchema.optional(),
+  BottleAndCappyMgrSerializeKey: bottleAndCappySchema.optional(),
+  dayToDayRewardMgr: dayToDayRewardSchema.optional(),
   // Cosmetic device string (SystemInfo.deviceName). Randomized on sandbox loads so the
   // bundled baseline is not traceable to one device across every user's exports.
   deviceName: z.string().optional(),
@@ -267,6 +402,18 @@ export type Item = z.infer<typeof itemSchema>;
 
 /** Pet instance data carried in an item's `extraData`. */
 export type PetExtraData = z.infer<typeof petExtraDataSchema>;
+
+/** One scheduled timer inside `taskMgr.tasks[]` / `taskMgr.pausedTasks[]`. */
+export type TaskEntry = z.infer<typeof taskEntrySchema>;
+
+/** A LivingQuarters relationship entry (`room.partners[]`). */
+export type Partner = z.infer<typeof partnerSchema>;
+
+/** A LivingQuarters child entry (`room.children[]`). */
+export type Child = z.infer<typeof childSchema>;
+
+/** A wasteland exploration team (`vault.wasteland.teams[]`). */
+export type WastelandTeam = z.infer<typeof wastelandTeamSchema>;
 
 /** The decoded save JSON. Edit-surface typing is layered on phase by phase. */
 export type SaveData = z.infer<typeof saveSchema>;

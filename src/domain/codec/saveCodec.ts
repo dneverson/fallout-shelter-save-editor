@@ -9,9 +9,10 @@ import type { NvfData, SeasonSave } from '../model/seasonSchema.ts';
 //
 // ONE container implementation is shared by `.sav`, `spd.dat` and `nvf.dat` - they
 // use the identical base64 + AES-256-CBC (same KEY/IV) + UTF-8 + JSON envelope.
-// The inner JSON step is big-int lossless (losslessJson.ts) so `spd.dat`'s 64-bit
-// .NET tick fields survive verbatim; for the main `.sav` (no out-of-range ints)
-// this is a no-op and output stays byte-identical to plain JSON.stringify.
+// The inner JSON step is big-int lossless (losslessJson.ts) so 64-bit .NET tick
+// fields survive verbatim - `spd.dat`'s saveTime AND the main `.sav`'s
+// `timeMgr.timeSaveDate`/`timeGameBegin` all exceed Number.MAX_SAFE_INTEGER and
+// arrive boxed as LosslessInt.
 //
 // We intentionally do NOT run the save through Zod here - codec preserves the raw
 // JSON structure verbatim so untouched keys round-trip. Validation happens

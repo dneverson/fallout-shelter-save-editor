@@ -1,16 +1,17 @@
 // Big-int-lossless JSON.
 //
 // Plain JSON.parse/JSON.stringify is exact only within ±Number.MAX_SAFE_INTEGER
-// (2^53-1 ≈ 9.0e15). The season file `spd.dat` carries .NET DateTime ticks far
-// above that (e.g. saveTime 639162074157166331 ≈ 6.4e17), and plain JSON.parse
-// silently corrupts them (…166331 → …166300). This module replaces the inner
-// JSON step of the shared container codec so those literals survive verbatim.
+// (2^53-1 ≈ 9.0e15). Both save files carry .NET DateTime ticks far above that -
+// `spd.dat`'s saveTime and the main `.sav`'s `timeMgr.timeSaveDate`/`timeGameBegin`
+// (e.g. 639162074157166331 ≈ 6.4e17) - and plain JSON.parse silently corrupts them
+// (…166331 → …166300). This module replaces the inner JSON step of the shared
+// container codec so those literals survive verbatim.
 //
 // Sentinel-containment rule (saveCodec / saveSchema depend on this): ONLY integer
 // literals whose magnitude EXCEEDS MAX_SAFE_INTEGER are boxed into a `LosslessInt`.
-// Every in-range number - including every value in the main `.sav` - stays a native
-// `number`, so this layer is a no-op for the main save and `stringifyLossless`
-// produces byte-identical output to `JSON.stringify` there.
+// Every in-range number stays a native `number`, and for any value containing no
+// LosslessInt, `stringifyLossless` produces byte-identical output to `JSON.stringify`.
+// Tick arithmetic on boxed values lives in src/domain/tasks/taskLookup.ts (BigInt).
 //
 // Pure domain code: no React/DOM imports.
 
