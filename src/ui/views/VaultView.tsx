@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useSaveStore } from '../../state/saveStore.ts';
 import { useUIStore } from '../../state/uiStore.ts';
 import { useToastStore } from '../../state/toastStore.ts';
@@ -21,10 +21,23 @@ import {
   setVaultTheme,
   type VaultMode,
 } from '../../domain/ops/vaultOps.ts';
+import {
+  dailyRewardStatus,
+  deathclawState,
+  fastForwardVault,
+  isBottleAndCappyEnabled,
+  makeDailyRewardsClaimable,
+  setBottleAndCappyEnabled,
+  setDeathclawEnabled,
+  vaultClockAheadSeconds,
+} from '../../domain/ops/timerOps.ts';
+import { toTicks } from '../../domain/tasks/taskLookup.ts';
 import { ResourcesCard } from '../components/vault/ResourcesCard.tsx';
 import { ConsumablesCard } from '../components/vault/ConsumablesCard.tsx';
 import { VaultConfigCard } from '../components/vault/VaultConfigCard.tsx';
 import { MiscCard } from '../components/vault/MiscCard.tsx';
+import { DisastersCard } from '../components/vault/DisastersCard.tsx';
+import { VaultTimeCard } from '../components/vault/VaultTimeCard.tsx';
 import { SaveOverview } from './SaveOverview.tsx';
 
 // Vault settings: a grid of grouped cards over the
@@ -35,10 +48,14 @@ import { SaveOverview } from './SaveOverview.tsx';
 
 export function VaultView() {
   const save = useSaveStore((s) => s.save);
+  const originalSave = useSaveStore((s) => s.originalSave);
   const applyEdit = useSaveStore((s) => s.applyEdit);
   const allowOutOfRange = useUIStore((s) => s.allowOutOfRange);
   const pushToast = useToastStore((s) => s.push);
   const { data: gameData, status: gameDataStatus } = useGameData();
+  // Wall-clock "now" for the daily-reward countdown, captured once on mount (render
+  // purity); the countdown is a coarse day-scale estimate, no live ticking needed.
+  const [nowMs] = useState(() => Date.now());
 
   const caps = useMemo(
     () => (save && gameData ? computeResourceCaps(save, gameData.roomCapacity) : null),
@@ -57,8 +74,15 @@ export function VaultView() {
       strangerTimeToAppear: save.MysteriousStranger?.timeToAppear ?? 180,
       strangerRemaining: save.MysteriousStranger?.remainingTimeToAppear ?? 0,
       starterPackPurchased: isStarterPackPurchased(save),
+      deathclaw: deathclawState(save),
+      canToggleDeathclaw: Array.isArray(save.taskMgr?.tasks),
+      bottleAndCappy: isBottleAndCappyEnabled(save),
+      canFastForward: toTicks(save.timeMgr?.timeSaveDate) !== null,
+      // Cumulative fast-forward vs the imported file - the card's persistent feedback.
+      clockAheadSeconds: originalSave ? vaultClockAheadSeconds(originalSave, save) : null,
+      dailyRewards: dailyRewardStatus(save, nowMs),
     };
-  }, [save]);
+  }, [save, originalSave, nowMs]);
 
   if (!save || !view) {
     return <div className="p-8 text-sm text-neutral-400">No save loaded.</div>;
@@ -129,6 +153,35 @@ export function VaultView() {
             onSetTimers={(timers) =>
               applyEdit((s) => setStrangerTimers(s, timers), 'Stranger timers')
             }
+          />
+
+          <DisastersCard
+            deathclaw={view.deathclaw.state}
+            deathclawRemaining={view.deathclaw.remainingSeconds}
+            canToggleDeathclaw={view.canToggleDeathclaw}
+            onSetDeathclaw={(enabled) => {
+              applyEdit((s) => setDeathclawEnabled(s, enabled), 'Deathclaw attacks');
+              pushToast(`Deathclaw attacks ${enabled ? 'enabled' : 'blocked'}`);
+            }}
+            bottleAndCappy={view.bottleAndCappy}
+            onSetBottleAndCappy={(enabled) => {
+              applyEdit((s) => setBottleAndCappyEnabled(s, enabled), 'Bottle & Cappy');
+              pushToast(`Bottle & Cappy visits ${enabled ? 'allowed' : 'prevented'}`);
+            }}
+          />
+
+          <VaultTimeCard
+            canFastForward={view.canFastForward}
+            clockAheadSeconds={view.clockAheadSeconds}
+            onFastForward={(seconds, label) => {
+              applyEdit((s) => fastForwardVault(s, seconds), label);
+              pushToast(`${label} - applies when the save is loaded in game`);
+            }}
+            dailyRewards={view.dailyRewards}
+            onMakeDailyRewardsClaimable={() => {
+              applyEdit((s) => makeDailyRewardsClaimable(s), 'Daily reward claimable');
+              pushToast('Daily reward will be claimable on next load');
+            }}
           />
         </div>
 

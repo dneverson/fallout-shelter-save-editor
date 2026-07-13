@@ -21,7 +21,7 @@ export const fieldHelp = {
   colors:
     'Raw ARGB colors the game renders as a tint. The barbershop only offers presets, but the save accepts any color - pick from swatches or enter a custom value.',
   pregnancy:
-    'Pregnancy flags for female dwellers. "Pregnant" starts the timer; "Baby ready" means the child is due. Charisma (Radio room) speeds pregnancies.',
+    'Pregnancy flags for female dwellers. "Pregnant" starts the timer; "Baby ready" means the child is due. Ticking "Baby ready" also completes the due timer (the pair the game writes together); unticking it restores the timer to what the imported save recorded. Charisma (Radio room) speeds pregnancies.',
   hair: 'Hairstyle / facial-hair piece. Cosmetic only; pieces are filtered to the dweller’s gender like the in-game barbershop.',
 
   // --- Equipment -------------------------------------------------------------------
@@ -58,6 +58,34 @@ export const fieldHelp = {
     'Merging joins two identical adjacent rooms of the same level into a wider one with more capacity and output. Only valid merges are allowed.',
   roomDecoration:
     'An optional decoration object placed in the room (cosmetic / small happiness effect depending on theme).',
+
+  // --- Timers ------------------------------------------------------------------------
+  // Shared semantics: task timers are stored as elapsed-play-time deadlines; the game
+  // "catches up" on load, so edits apply the next time the save is loaded in game.
+  vaultTime:
+    'Fast-forwards every timer in the vault at once by backdating the save timestamp. On the next load the game believes you were away that long and advances production, crafting, training, pregnancies, exploration and cooldowns together. Takes effect the next time the save is loaded in the game. Independent of the Season clock: vault time is stored in this save, season timing in the season file.',
+  deathclawToggle:
+    'Whether deathclaw attacks can trigger (they roll when the vault door opens or the radio pulls dwellers, once your vault passes 60 dwellers). Off stores a far-future blocker in the save’s timer list - without it the game would re-enable attacks after about 30 minutes. Toggle back on to remove the blocker completely.',
+  bottleAndCappy:
+    'Bottle & Cappy are the mascot pair that wander in for a dance visit after you complete their unlock quest; tapping them pays caps or Quantum, and while they are inside they block other incidents. Off prevents visits entirely (fully reversible); On only re-allows them, it does not summon the pair.',
+  dailyRewards:
+    'The daily reward timer (in season vaults: one Spin-to-Win poker chip per day) resets at midnight on a real-world clock. "Make claimable now" marks it elapsed so the reward lands as soon as the save is loaded in the game. When no timer is recorded there is nothing to do - the game creates it already claimable on load.',
+  pregnancyTimer:
+    'Time until the baby is due. "Deliver now" completes the due timer and ticks "Baby ready" - the same pair the game sets when a pregnancy finishes naturally. The birth still needs free vault space, exactly like in game, and takes effect the next time the save is loaded.',
+  childGrowUp:
+    'Time until this child grows into an adult dweller. "Grow up now" completes the timer on the next load in game.',
+  exploringTimer:
+    'Wasteland trips track elapsed travel time in the save. Adding hours to an exploring dweller advances loot finds and quest arrival; a returning dweller can be brought home instantly. Applies the next time the save is loaded in the game.',
+  roomTimers:
+    'Timers running in this room. Completing one makes it finish during the next load in game. Repeating timers (production, training) complete one cycle and then continue at their normal pace.',
+  craftingTimer:
+    'The item being crafted. "Finish now" marks the work complete so the item is ready to collect the next time the save is loaded in the game.',
+  trainingTimer:
+    'Each training slot levels one SPECIAL point per cycle. "Finish now" completes the current cycle for that dweller on the next load; training then continues at its normal pace.',
+  rushTimer:
+    'Each rush raises the next rush’s incident risk for a while; this timer is that penalty cooling back down. "Reset now" clears the escalated risk on the next load in game.',
+  seasonClock:
+    'The game’s own season debug clock (stored in the season file). Advancing it shifts ALL season timing forward - weekly challenge unlocks, event windows, and the season end - without touching your vault. Fully reversible with "Reset to real time". Independent of the Vault time card: this never advances vault production, crafting or other .sav timers.',
 
   // --- Storage ---------------------------------------------------------------------
   storageCapacity:

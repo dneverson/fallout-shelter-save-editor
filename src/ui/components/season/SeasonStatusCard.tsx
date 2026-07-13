@@ -1,4 +1,5 @@
 import { NumberField } from '../forms/NumberField.tsx';
+import { Toggle } from '../forms/Toggle.tsx';
 import { VaultCard } from '../vault/VaultCard.tsx';
 
 // Season status editors. Split into two groups because the underlying
@@ -34,36 +35,6 @@ interface SeasonStatusCardProps {
 }
 
 const TOKENS_FALLBACK_MAX = 9_999_999;
-
-function Toggle({
-  label,
-  on,
-  onChange,
-}: {
-  label: string;
-  on: boolean;
-  onChange: (on: boolean) => void;
-}) {
-  return (
-    <div className="flex items-center justify-between gap-3">
-      <span className="text-sm text-neutral-300">{label}</span>
-      <button
-        type="button"
-        role="switch"
-        aria-checked={on}
-        aria-label={label}
-        onClick={() => onChange(!on)}
-        className={`rounded border px-3 py-1 text-xs font-medium transition-colors ${
-          on
-            ? 'border-emerald-600/60 bg-emerald-500/15 text-emerald-300'
-            : 'border-neutral-700 text-neutral-400 hover:bg-neutral-800'
-        }`}
-      >
-        {on ? 'Unlocked' : 'Locked'}
-      </button>
-    </div>
-  );
-}
 
 export function SeasonStatusCard({
   viewedLabel,
@@ -103,8 +74,20 @@ export function SeasonStatusCard({
       }
     >
       <div className="flex flex-col gap-3">
-        <Toggle label="Premium track" on={isPremium} onChange={onSetPremium} />
-        <Toggle label="Premium+ track" on={isPremiumPlus} onChange={onSetPremiumPlus} />
+        <Toggle
+          label="Premium track"
+          on={isPremium}
+          onChange={onSetPremium}
+          onLabel="Unlocked"
+          offLabel="Locked"
+        />
+        <Toggle
+          label="Premium+ track"
+          on={isPremiumPlus}
+          onChange={onSetPremiumPlus}
+          onLabel="Unlocked"
+          offLabel="Locked"
+        />
 
         {/* What each paid tier does, verified against the v2.4.1 game files (ShopWindow /
             SeasonPassTokenManager / Vault.GrantEligibleSeasonalLunchboxes). */}

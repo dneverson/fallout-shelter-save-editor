@@ -1,17 +1,10 @@
 import { VaultCard } from './VaultCard.tsx';
 import { NumberField } from '../forms/NumberField.tsx';
 import { fieldHelp } from '../../lib/fieldHelp.ts';
+import { formatDuration } from '../../../domain/tasks/taskLookup.ts';
 
 // Misc card: Mysterious Stranger show/hide + appearance timers. (Casino
 // is a normal room, added via the Rooms Map's generic build-room flow; no button here.)
-
-/** "185" → "3m 5s"; sub-minute values stay plain seconds ("45s"). */
-function formatDuration(totalSeconds: number): string {
-  const s = Math.max(0, Math.round(totalSeconds));
-  const minutes = Math.floor(s / 60);
-  const seconds = s % 60;
-  return minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
-}
 
 export function MiscCard({
   strangerShown,
