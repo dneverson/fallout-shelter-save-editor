@@ -28,7 +28,10 @@ import {
   dailyRewardStatus,
   makeDailyRewardsClaimable,
   MAX_FAST_FORWARD_SECONDS,
+  MAX_PENDING_CHILDREN,
+  pregnancyPendingChildren,
   roomTimers,
+  setPendingChildren,
   setBottleAndCappyEnabled,
   setDeathclawEnabled,
   vaultClockAheadSeconds,
@@ -499,6 +502,48 @@ describe('timerOps - dweller timers', () => {
     expect(next.vault).toBe(save.vault);
     expect(next.vault?.rooms?.[0]?.children).toHaveLength(1);
     expect(growUpChildNow(save, 999)).toBe(save);
+  });
+
+  it('pregnancyPendingChildren reads the RaisingBaby entry (absent key = 0, no entry = null)', () => {
+    const save = makeSave();
+    expect(pregnancyPendingChildren(save, 111)).toBe(0);
+    // Married (not RaisingBaby) entries and unknown dwellers have nothing to write to.
+    expect(pregnancyPendingChildren(save, 112)).toBeNull();
+    expect(pregnancyPendingChildren(save, 999)).toBeNull();
+  });
+
+  it('setPendingChildren writes only the RaisingBaby entry and leaves siblings shared', () => {
+    const save = makeSave();
+    const next = setPendingChildren(save, 111, 2);
+    expect(pregnancyPendingChildren(next, 111)).toBe(2);
+    const [raising, married] = next.vault?.rooms?.[0]?.partners ?? [];
+    expect(raising?.pendingChildren).toBe(2);
+    // The Married entry and unrelated rooms keep their original references.
+    expect(married).toBe(save.vault?.rooms?.[0]?.partners?.[1]);
+    expect(next.vault?.rooms?.[1]).toBe(save.vault?.rooms?.[1]);
+    expect(next.taskMgr).toBe(save.taskMgr);
+  });
+
+  it('setPendingChildren caps at the natural triplets maximum and floors at 0', () => {
+    const save = makeSave();
+    expect(pregnancyPendingChildren(setPendingChildren(save, 111, 7), 111)).toBe(
+      MAX_PENDING_CHILDREN,
+    );
+    const forced = setPendingChildren(save, 111, 3);
+    expect(pregnancyPendingChildren(setPendingChildren(forced, 111, -5), 111)).toBe(0);
+    expect(setPendingChildren(save, 111, Number.NaN)).toBe(save);
+  });
+
+  it('setPendingChildren is a same-reference no-op when nothing would change', () => {
+    const save = makeSave();
+    // No RaisingBaby entry for this dweller.
+    expect(setPendingChildren(save, 112, 2)).toBe(save);
+    // Clearing to 0 never ADDS the key to an entry imported without one.
+    expect(setPendingChildren(save, 111, 0)).toBe(save);
+    expect('pendingChildren' in (save.vault?.rooms?.[0]?.partners?.[0] ?? {})).toBe(false);
+    // Writing the value already stored changes nothing either.
+    const forced = setPendingChildren(save, 111, 2);
+    expect(setPendingChildren(forced, 111, 2)).toBe(forced);
   });
 });
 

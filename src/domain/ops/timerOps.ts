@@ -323,6 +323,48 @@ export function cancelBabyDelivery(
   return next;
 }
 
+/** Natural maximum babies per birth (triplets) - the game never rolls higher. */
+export const MAX_PENDING_CHILDREN = 3;
+
+/**
+ * Babies the current pregnancy delivers (`partners[].pendingChildren` on the
+ * RaisingBaby entry). 0 = the game rolls at birth (breeding-pet ChildMultiplier
+ * decides twins/triplets, else a single baby); nonzero makes OnBabyBirthEvent skip
+ * the roll and birth exactly that many. `null` when the dweller has no RaisingBaby
+ * partnership entry to write to.
+ */
+export function pregnancyPendingChildren(save: SaveData, dwellerId: number): number | null {
+  const hit = findPartnerEntry(save, dwellerId);
+  return hit ? (hit.partner.pendingChildren ?? 0) : null;
+}
+
+/**
+ * Force twins/triplets: write `pendingChildren` on the mother's RaisingBaby entry
+ * (2/3 = deliver exactly that many, no breeding pet needed; 0 = back to the natural
+ * birth-time roll). Capped at 3, the natural maximum - the birth loop would accept
+ * more but no real save ever holds it. The birth still checks vault space for the
+ * full count, as in game. No-op without a partnership entry, and 0 never ADDS the
+ * key to an entry that came in without one.
+ */
+export function setPendingChildren(save: SaveData, dwellerId: number, count: number): SaveData {
+  if (!Number.isFinite(count)) return save;
+  const hit = findPartnerEntry(save, dwellerId);
+  if (!hit) return save;
+  const value = Math.max(0, Math.min(MAX_PENDING_CHILDREN, Math.trunc(count)));
+  if ((hit.partner.pendingChildren ?? 0) === value) return save;
+  const rooms = (save.vault?.rooms ?? []).map((room) =>
+    room === hit.room
+      ? {
+          ...room,
+          partners: (room.partners ?? []).map((p) =>
+            p === hit.partner ? { ...p, pendingChildren: value } : p,
+          ),
+        }
+      : room,
+  );
+  return { ...save, vault: { ...save.vault, rooms } };
+}
+
 /**
  * Finish a child's grow-up timer (becomes an adult on next load). Only the task's
  * endTime changes - the child entry itself must NEVER be removed or re-pointed

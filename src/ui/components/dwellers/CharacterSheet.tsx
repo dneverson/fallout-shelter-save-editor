@@ -61,6 +61,8 @@ import {
   dwellerTimers,
   fastForwardTeam,
   growUpChildNow,
+  pregnancyPendingChildren,
+  setPendingChildren,
   wastelandTeams,
 } from '../../../domain/ops/timerOps.ts';
 import { formatDuration } from '../../../domain/tasks/taskLookup.ts';
@@ -177,6 +179,12 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
   );
   const team = useMemo(
     () => (save ? (wastelandTeams(save).find((t) => t.dwellers.includes(id)) ?? null) : null),
+    [save, id],
+  );
+  // Babies the current pregnancy delivers (partnership `pendingChildren`); null hides
+  // the selector when there is no RaisingBaby entry to write to.
+  const pendingChildren = useMemo(
+    () => (save ? pregnancyPendingChildren(save, id) : null),
     [save, id],
   );
 
@@ -634,6 +642,31 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
                   </option>
                 ))}
               </select>
+            </label>
+          )}
+          {/* Baby count (`partners[].pendingChildren`): the game only rolls twins/triplets
+              when this is 0, so a stored 2/3 forces the multi-birth - no breeding pet
+              needed. Only shown when a RaisingBaby entry exists to write to. */}
+          {pendingChildren !== null && (
+            <label className="mt-2 flex items-center gap-2 text-sm text-neutral-300">
+              <span className="text-[11px] uppercase tracking-wide text-neutral-400">
+                Babies expected
+              </span>
+              <select
+                value={pendingChildren === 2 || pendingChildren === 3 ? pendingChildren : 0}
+                onChange={(e) =>
+                  applyEdit(
+                    (s) => setPendingChildren(s, id, Number(e.target.value)),
+                    'Set babies expected',
+                  )
+                }
+                className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-sm text-neutral-100"
+              >
+                <option value={0}>1 (default roll)</option>
+                <option value={2}>2 - twins</option>
+                <option value={3}>3 - triplets</option>
+              </select>
+              <InfoTooltip text={fieldHelp.pendingChildren} />
             </label>
           )}
           {dweller.babyReady === true ? (

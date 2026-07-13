@@ -303,6 +303,23 @@ describe('CharacterSheet - timers', () => {
     expect(task?.startTime).toBe(900);
   });
 
+  it('Babies expected forces twins via the partnership pendingChildren field', async () => {
+    const user = userEvent.setup();
+    seedTimers();
+    renderSheet(1);
+    const select = screen.getByRole('combobox', { name: /babies expected/i });
+    // Absent key reads as the natural birth-time roll.
+    expect(select).toHaveValue('0');
+    await user.selectOptions(select, '2');
+    const partner = useSaveStore.getState().save?.vault?.rooms?.[0]?.partners?.[0];
+    expect(partner?.pendingChildren).toBe(2);
+  });
+
+  it('hides Babies expected when there is no RaisingBaby partnership entry', () => {
+    renderSheet(1); // base fixture: no vault rooms at all
+    expect(screen.queryByRole('combobox', { name: /babies expected/i })).not.toBeInTheDocument();
+  });
+
   it('shows the grow-up timer for a child and completes it', async () => {
     const user = userEvent.setup();
     seedTimers();

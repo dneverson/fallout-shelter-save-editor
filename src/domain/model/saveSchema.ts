@@ -176,6 +176,11 @@ const partnerSchema = z.looseObject({
   // siblings. CreateChild dereferences it WITHOUT a null check, so a dangling id here
   // crashes the game at the next birth; -1 = "no template, roll a random child".
   templateID: z.number().optional(),
+  // Babies delivered when the due timer fires (OnBabyBirthEvent): 0 = roll at birth
+  // (breeding-pet ChildMultiplier decides twins/triplets, else 1); a stored nonzero
+  // value SKIPS the roll and births exactly that many in a loop. 3 is the natural
+  // maximum, so ops cap writes there.
+  pendingChildren: z.number().optional(),
 });
 
 // A LivingQuarters child (DwellerChild): `taskID` is the one-shot grow-up task. The game

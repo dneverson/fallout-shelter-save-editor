@@ -74,6 +74,8 @@ export const fieldHelp = {
     'The daily reward timer (in season vaults: one Spin-to-Win poker chip per day) resets at midnight on a real-world clock. "Make claimable now" marks it elapsed so the reward lands as soon as the save is loaded in the game. When no timer is recorded there is nothing to do - the game creates it already claimable on load.',
   pregnancyTimer:
     'Time until the baby is due. "Deliver now" completes the due timer and ticks "Baby ready" - the same pair the game sets when a pregnancy finishes naturally. The birth still needs free vault space, exactly like in game, and takes effect the next time the save is loaded.',
+  pendingChildren:
+    'How many babies this pregnancy delivers. On "1 (default roll)" the game decides at birth: normally one baby, or twins/triplets when the mother carries a breeding pet with a Multiple Children bonus. Picking 2 or 3 skips that roll and delivers exactly that many - no pet needed. The birth still requires free vault space for the full count.',
   childGrowUp:
     'Time until this child grows into an adult dweller. "Grow up now" completes the timer on the next load in game.',
   exploringTimer:
