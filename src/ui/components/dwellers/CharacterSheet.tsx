@@ -55,6 +55,15 @@ import { outfitAllowedForGender } from '../../../domain/gamedata/itemStats.ts';
 import { PetAttachDialog, type CurrentPet } from './PetAttachDialog.tsx';
 import { selectPetRows, type PetRow } from '../../../domain/selectors/petSelectors.ts';
 import { assignPet } from '../../../domain/ops/petOps.ts';
+import {
+  cancelBabyDelivery,
+  deliverBabyNow,
+  dwellerTimers,
+  fastForwardTeam,
+  growUpChildNow,
+  wastelandTeams,
+} from '../../../domain/ops/timerOps.ts';
+import { formatDuration } from '../../../domain/tasks/taskLookup.ts';
 
 // Lazy so the PixiJS renderer (the bulk of the bundle) loads only when a character sheet
 // with a preview is first opened - not on the import/landing screens (perf).
@@ -110,6 +119,7 @@ function Section({
 
 export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
   const save = useSaveStore((s) => s.save);
+  const originalSave = useSaveStore((s) => s.originalSave);
   const applyEdit = useSaveStore((s) => s.applyEdit);
   const { data: gameData } = useGameData();
   const { assets: visualAssets } = useVisualAssets();
@@ -159,6 +169,17 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
   // Partner choices for the pregnancy section: OPPOSITE-gender dwellers only (two men or
   // two women cannot have a child in this game), name-sorted. The recorded partner stays
   // listed even if same-gender (a broken save link) so the select never shows a blank.
+  // Living-Quarters timers attached to this dweller (pregnancy due / child grow-up)
+  // and the wasteland team they are travelling with, if any.
+  const timers = useMemo(
+    () => (save ? dwellerTimers(save, id) : { pregnancy: null, childGrowUp: null }),
+    [save, id],
+  );
+  const team = useMemo(
+    () => (save ? (wastelandTeams(save).find((t) => t.dwellers.includes(id)) ?? null) : null),
+    [save, id],
+  );
+
   const partnerOptions = useMemo(
     () =>
       (save?.dwellers?.dwellers ?? [])
@@ -574,9 +595,18 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
                 type="checkbox"
                 checked={dweller.babyReady === true}
                 onChange={(e) =>
+                  // Flag and due timer travel as a pair, both directions: ticking
+                  // delivers (flag + timer complete, what the game writes itself);
+                  // unticking cancels AND restores the timer from the imported save
+                  // instead of leaving it stranded at 0s.
                   applyEdit(
-                    (s) => setPregnancy(s, id, { babyReady: e.target.checked }),
-                    'Set baby ready',
+                    (s) =>
+                      e.target.checked
+                        ? deliverBabyNow(s, id)
+                        : originalSave
+                          ? cancelBabyDelivery(s, originalSave, id)
+                          : setPregnancy(s, id, { babyReady: false }),
+                    e.target.checked ? 'Deliver baby now' : 'Cancel baby delivery',
                   )
                 }
               />
@@ -606,6 +636,142 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
               </select>
             </label>
           )}
+          {dweller.babyReady === true ? (
+            <p className="mt-2 text-[11px] text-neutral-500">
+              Baby is due now ("Baby ready" above) - in game, tap the mother to deliver; the birth
+              needs free vault space.
+            </p>
+          ) : timers.pregnancy ? (
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-neutral-300">
+              <span>
+                {(timers.pregnancy.remainingSeconds ?? 0) > 0 ? (
+                  <>
+                    Baby due in{' '}
+                    <span className="text-neutral-100">
+                      {formatDuration(timers.pregnancy.remainingSeconds ?? 0)}
+                    </span>
+                  </>
+                ) : (
+                  'Baby due now'
+                )}
+              </span>
+              <InfoTooltip text={fieldHelp.pregnancyTimer} />
+              <button
+                type="button"
+                onClick={() => {
+                  // Completes the due timer AND ticks "Baby ready" - the same pair
+                  // the game writes when the pregnancy finishes on its own.
+                  applyEdit((s) => deliverBabyNow(s, id), 'Deliver baby now');
+                  pushToast('Baby marked ready - delivery on next load in game');
+                }}
+                className="rounded border border-neutral-700 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-800"
+              >
+                Deliver now
+              </button>
+            </div>
+          ) : (
+            dweller.pregnant === true && (
+              <p className="mt-2 text-[11px] text-neutral-500">
+                No due timer recorded yet - it runs while the mother is inside a Living Quarters.
+              </p>
+            )
+          )}
+        </Section>
+      )}
+
+      {/* Growing up (only when this dweller IS a child with a grow-up timer). A due
+          timer (0s) shows its state instead of a button that would change nothing. */}
+      {timers.childGrowUp && (
+        <Section title="Growing up" help={fieldHelp.childGrowUp}>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-300">
+            {(timers.childGrowUp.remainingSeconds ?? 0) > 0 ? (
+              <>
+                <span>
+                  Adult in{' '}
+                  <span className="text-neutral-100">
+                    {formatDuration(timers.childGrowUp.remainingSeconds ?? 0)}
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    applyEdit((s) => growUpChildNow(s, id), 'Grow up now');
+                    pushToast('Child grows up on next load in game');
+                  }}
+                  className="rounded border border-neutral-700 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-800"
+                >
+                  Grow up now
+                </button>
+              </>
+            ) : (
+              <span className="text-emerald-300/90">Becomes an adult on next load</span>
+            )}
+          </div>
+        </Section>
+      )}
+
+      {/* Exploring (only when this dweller is on a travelling wasteland team) ------- */}
+      {team && (
+        <Section title="Exploring" help={fieldHelp.exploringTimer}>
+          <p className="text-sm text-neutral-300">
+            {team.phase === 'exploring' ? (
+              <>
+                Out in the wasteland for{' '}
+                <span className="text-neutral-100">{formatDuration(team.elapsedSeconds)}</span>
+                {team.dwellers.length > 1 && ` (team of ${team.dwellers.length})`}
+              </>
+            ) : (
+              <>
+                Returning home,{' '}
+                <span className="text-neutral-100">
+                  {formatDuration(
+                    Math.max(0, (team.returnTripDuration ?? 0) - team.elapsedSeconds),
+                  )}
+                </span>{' '}
+                left{team.dwellers.length > 1 && ` (team of ${team.dwellers.length})`}
+              </>
+            )}
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {team.phase === 'exploring' ? (
+              <>
+                {[
+                  { label: '+1 h', seconds: 3_600 },
+                  { label: '+8 h', seconds: 8 * 3_600 },
+                  { label: '+1 d', seconds: 86_400 },
+                ].map(({ label, seconds }) => (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={() => {
+                      applyEdit(
+                        (s) => fastForwardTeam(s, team.index, seconds),
+                        `Explore ${label} longer`,
+                      );
+                      pushToast(`Exploration advanced ${label}`);
+                    }}
+                    className="rounded border border-neutral-700 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-800"
+                  >
+                    {label}
+                  </button>
+                ))}
+              </>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  applyEdit(
+                    (s) => fastForwardTeam(s, team.index, team.returnTripDuration ?? 0),
+                    'Return to vault now',
+                  );
+                  pushToast('Team arrives home on next load in game');
+                }}
+                className="rounded border border-neutral-700 px-3 py-1 text-sm text-neutral-200 hover:bg-neutral-800"
+              >
+                Return now
+              </button>
+            )}
+          </div>
         </Section>
       )}
 

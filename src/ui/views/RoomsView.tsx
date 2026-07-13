@@ -79,11 +79,17 @@ import {
 import type { GameData } from '../../domain/gamedata/gameData.ts';
 import { computeAdvisor, type Recommendation } from '../../domain/selectors/advisorSelectors.ts';
 import { autoStaff, autoStaffPlan, type StaffMode } from '../../domain/ops/autoStaffOps.ts';
+import {
+  completeRoomTimersNow,
+  completeTrainingSlotNow,
+  roomTimers,
+  isProductionAwaitingCollect,
+} from '../../domain/ops/timerOps.ts';
 import { diagnose } from '../../domain/health/diagnostics.ts';
 import { RoomGrid } from '../components/rooms/RoomGrid.tsx';
 import { cellFromClient } from '../components/rooms/roomVisuals.ts';
 import { ResourceEconomyPanel } from '../components/rooms/ResourceEconomyPanel.tsx';
-import { RoomSidePanel } from '../components/rooms/RoomSidePanel.tsx';
+import { RoomSidePanel, type RoomTimerRow } from '../components/rooms/RoomSidePanel.tsx';
 import { ResizableSplit } from '../components/ResizableSplit.tsx';
 import { BuildPalette, type BuildableRoom } from '../components/rooms/BuildPalette.tsx';
 import { SectionToggle } from '../components/rooms/SectionToggle.tsx';
@@ -463,6 +469,35 @@ export function RoomsView() {
     [layout, buildType, buildMerge],
   );
   const buildWidth = buildType ? roomCellWidth(buildType, buildMerge) : 3;
+
+  // Running timers in the selected room, resolved for display (trainee names, the
+  // crafted item's catalog name). Each side-panel action completes the timer(s) so
+  // they finish during the game's on-load catch-up (timerOps). Computed before the
+  // no-save early return (hooks must run unconditionally); re-derives the node itself.
+  const nodeTimers = useMemo((): RoomTimerRow[] => {
+    const timerNode = layout && selectedId !== null ? (layout.byId.get(selectedId) ?? null) : null;
+    if (!save || !timerNode) return [];
+    return roomTimers(save, timerNode.deserializeID).map((t) => {
+      const craftedId = t.kind === 'crafting' ? timerNode.room.CraftingItemId : undefined;
+      const itemName =
+        craftedId !== undefined && craftedId !== ''
+          ? (gameData?.weapons.find((w) => w.id === craftedId)?.name ??
+            gameData?.outfits.find((o) => o.id === craftedId)?.name ??
+            craftedId)
+          : undefined;
+      return {
+        kind: t.kind,
+        remainingSeconds: t.remainingSeconds,
+        ...(t.slotDwellerId !== undefined
+          ? {
+              slotDwellerId: t.slotDwellerId,
+              slotDwellerName: nameById.get(t.slotDwellerId) ?? `#${t.slotDwellerId}`,
+            }
+          : {}),
+        ...(itemName !== undefined ? { itemName } : {}),
+      };
+    });
+  }, [save, layout, selectedId, gameData, nameById]);
 
   if (!save || !layout) {
     return <div className="p-6 text-sm text-neutral-400">No save loaded.</div>;
@@ -1073,6 +1108,22 @@ export function RoomsView() {
               onUnassignHandy={(actorId) => {
                 applyEdit((s) => unassignMrHandy(s, actorId), 'Unassign Mr. Handy');
                 pushToast('Mr. Handy sent outside the vault (it waits at the door).');
+              }}
+              timers={nodeTimers}
+              productionAwaitingCollect={isProductionAwaitingCollect(save, node.deserializeID)}
+              onCompleteTimers={(kinds) => {
+                applyEdit(
+                  (s) => completeRoomTimersNow(s, node.deserializeID, kinds),
+                  kinds.length === 1 ? `Finish ${kinds[0]} timer` : 'Finish room timers',
+                );
+                pushToast('Timer finishes the next time the save is loaded in game');
+              }}
+              onCompleteTrainingSlot={(dwellerId) => {
+                applyEdit(
+                  (s) => completeTrainingSlotNow(s, node.deserializeID, dwellerId),
+                  'Finish training cycle',
+                );
+                pushToast('Training cycle completes on next load in game');
               }}
               onDelete={() => setDeleteTargetId(node.deserializeID)}
               {...(applyRoomLoadout

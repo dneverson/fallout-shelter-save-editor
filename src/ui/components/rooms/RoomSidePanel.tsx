@@ -7,6 +7,8 @@ import type { Recommendation } from '../../../domain/selectors/advisorSelectors.
 import { InfoTooltip } from '../InfoTooltip.tsx';
 import { fieldHelp } from '../../lib/fieldHelp.ts';
 import { useHoldRepeat } from '../../hooks/useHoldRepeat.ts';
+import { formatDuration } from '../../../domain/tasks/taskLookup.ts';
+import type { RoomTimerKind } from '../../../domain/ops/timerOps.ts';
 
 // Selected-room detail panel (master-detail): level (±/max), repair, power,
 // theme, occupants (assign/unassign), merge, delete - each gated by the layout
@@ -16,6 +18,17 @@ import { useHoldRepeat } from '../../hooks/useHoldRepeat.ts';
 export interface RoomOccupant {
   id: number;
   name: string;
+}
+
+/** One running timer row, pre-resolved by RoomsView (names / crafted item). */
+export interface RoomTimerRow {
+  kind: RoomTimerKind;
+  remainingSeconds: number | null;
+  /** Training only: the dweller in this slot. */
+  slotDwellerId?: number;
+  slotDwellerName?: string;
+  /** Crafting only: display name of the item being crafted. */
+  itemName?: string;
 }
 
 interface RoomSidePanelProps {
@@ -71,7 +84,24 @@ interface RoomSidePanelProps {
   onCreateHandy?: () => void;
   /** Detach the floor's robot (it goes outside the vault). */
   onUnassignHandy?: (actorId: number) => void;
+  /** Running timers in this room (production/crafting/training/radio/rush). */
+  timers?: RoomTimerRow[];
+  /** Complete the room's timers of the given kinds (one applyEdit). */
+  onCompleteTimers?: (kinds: RoomTimerKind[]) => void;
+  /** Complete one training slot's cycle by its dweller id. */
+  onCompleteTrainingSlot?: (dwellerId: number) => void;
+  /** Staffed production room whose output is full: no cycle timer exists in the save. */
+  productionAwaitingCollect?: boolean;
 }
+
+/** Row label + tooltip + action label per timer kind. */
+const TIMER_COPY: Record<RoomTimerKind, { label: string; help: string; action: string }> = {
+  production: { label: 'Production cycle', help: fieldHelp.roomTimers, action: 'Finish now' },
+  crafting: { label: 'Crafting', help: fieldHelp.craftingTimer, action: 'Finish now' },
+  radio: { label: 'Broadcast cycle', help: fieldHelp.roomTimers, action: 'Finish now' },
+  training: { label: 'Training', help: fieldHelp.trainingTimer, action: 'Finish now' },
+  rush: { label: 'Rush cost cooldown', help: fieldHelp.rushTimer, action: 'Reset now' },
+};
 
 const SECTION = 'border-t border-neutral-800 pt-3 mt-3';
 const BTN =
@@ -123,6 +153,10 @@ export function RoomSidePanel({
   onAssignHandy,
   onCreateHandy,
   onUnassignHandy,
+  timers = [],
+  onCompleteTimers,
+  onCompleteTrainingSlot,
+  productionAwaitingCollect = false,
 }: RoomSidePanelProps) {
   // Which unassigned robot the "Assign Mr. Handy" select currently points at.
   const [handyPick, setHandyPick] = useState<string>('');
@@ -298,6 +332,95 @@ export function RoomSidePanel({
               Merge with neighbour
             </button>
           </div>
+
+          {/* Running timers (production / crafting / training / radio / rush). Rows are
+              pre-resolved by RoomsView; each action completes the timer so it finishes
+              during the game's on-load catch-up. A finished row (0s) shows its state
+              instead of a dead button. Staffed production rooms with NO stored cycle
+              are full and waiting to be collected in game - explained, not hidden. */}
+          {(timers.length > 0 || productionAwaitingCollect) && (
+            <div className={SECTION}>
+              <div className="mb-1 flex items-center gap-1.5 text-xs text-neutral-400">
+                <span>Timers</span>
+                <InfoTooltip text={fieldHelp.roomTimers} />
+              </div>
+              <ul className="flex flex-col gap-1.5">
+                {timers.map((timer, i) => {
+                  const copy = TIMER_COPY[timer.kind];
+                  const done = timer.remainingSeconds !== null && timer.remainingSeconds <= 0;
+                  const what =
+                    timer.kind === 'training'
+                      ? `${timer.slotDwellerName ?? 'Dweller'} training`
+                      : timer.kind === 'crafting' && timer.itemName
+                        ? `Crafting ${timer.itemName}`
+                        : copy.label;
+                  return (
+                    <li
+                      key={`${timer.kind}-${timer.slotDwellerId ?? i}`}
+                      className="flex items-center justify-between gap-2 text-xs text-neutral-300"
+                    >
+                      <span className="flex min-w-0 items-center gap-1.5">
+                        <span className="truncate">
+                          {what}
+                          {timer.remainingSeconds !== null && !done && (
+                            <span className="text-neutral-500">
+                              {' '}
+                              - {formatDuration(timer.remainingSeconds)} left
+                            </span>
+                          )}
+                        </span>
+                        <InfoTooltip text={copy.help} />
+                      </span>
+                      {done ? (
+                        <span className="shrink-0 text-[11px] text-emerald-300/90">
+                          Finishes on next load
+                        </span>
+                      ) : (
+                        <button
+                          type="button"
+                          className={BTN}
+                          onClick={() =>
+                            timer.kind === 'training' && timer.slotDwellerId !== undefined
+                              ? onCompleteTrainingSlot?.(timer.slotDwellerId)
+                              : onCompleteTimers?.([timer.kind])
+                          }
+                        >
+                          {copy.action}
+                        </button>
+                      )}
+                    </li>
+                  );
+                })}
+                {productionAwaitingCollect && (
+                  <li className="flex items-center justify-between gap-2 text-xs text-neutral-300">
+                    <span className="flex min-w-0 items-center gap-1.5">
+                      <span className="truncate">Production cycle</span>
+                      <InfoTooltip text={fieldHelp.roomTimers} />
+                    </span>
+                    <span className="shrink-0 text-[11px] text-emerald-300/90">
+                      Output full - collect in game
+                    </span>
+                  </li>
+                )}
+              </ul>
+              {productionAwaitingCollect && (
+                <p className="mt-1.5 text-[11px] text-neutral-500">
+                  This room holds finished output, so no cycle timer is stored in the save. A new
+                  cycle starts after collecting the resources in game.
+                </p>
+              )}
+              {timers.filter((t) => t.kind === 'training' && (t.remainingSeconds ?? 1) > 0).length >
+                1 && (
+                <button
+                  type="button"
+                  className={`${BTN} mt-2 w-full`}
+                  onClick={() => onCompleteTimers?.(['training'])}
+                >
+                  Finish all training
+                </button>
+              )}
+            </div>
+          )}
 
           <div className={SECTION}>
             <div className="mb-1 flex items-center justify-between text-xs text-neutral-400">

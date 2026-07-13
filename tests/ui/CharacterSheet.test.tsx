@@ -55,7 +55,13 @@ const dwellerById = (id: number): Dweller | undefined =>
 beforeEach(() => {
   localStorage.clear();
   useUIStore.setState({ allowOutOfRange: false });
-  useSaveStore.setState({ save: makeSave(), status: 'loaded', past: [], future: [] });
+  useSaveStore.setState({
+    save: makeSave(),
+    originalSave: null,
+    status: 'loaded',
+    past: [],
+    future: [],
+  });
 });
 
 // Re-derive the dweller from the store on each render, as DwellersView does, so
@@ -197,5 +203,133 @@ describe('CharacterSheet - equipment pickers', () => {
     renderSheet(2); // Bob has no pet
     await user.click(screen.getByRole('button', { name: 'Attach a pet…' }));
     expect(screen.getByRole('button', { name: 'Catalog' })).toBeInTheDocument();
+  });
+});
+
+describe('CharacterSheet - timers', () => {
+  function seedTimers() {
+    const base = makeSave();
+    // Seeded as BOTH save and originalSave (an import's initial state): unticking
+    // "Baby ready" restores timers from originalSave.
+    const seeded = {
+      ...base,
+      dwellers: {
+        dwellers: [
+          ...(base.dwellers?.dwellers ?? []),
+          { serializeId: 3, name: 'Kid', gender: 2, stats: { stats: [stat(0), stat(1)] } },
+          { serializeId: 4, name: 'Scout', gender: 2, stats: { stats: [stat(0), stat(1)] } },
+        ],
+      },
+      taskMgr: {
+        id: 600,
+        time: 1_000,
+        tasks: [
+          { startTime: 900, endTime: 4_600, id: 501, paused: false },
+          { startTime: 900, endTime: 8_200, id: 502, paused: false },
+        ],
+      },
+      vault: {
+        rooms: [
+          {
+            type: 'LivingQuarters',
+            deserializeID: 10,
+            partners: [{ m: 2, f: 1, s: 'RaisingBaby', t: 501 }],
+            children: [{ taskID: 502, dwellerID: 3, notificationID: -1 }],
+          },
+        ],
+        wasteland: {
+          teams: [
+            {
+              dwellers: [4],
+              status: 'ReturningToVault',
+              elapsedReturningTime: 100,
+              returnTripDuration: 400,
+            },
+          ],
+        },
+      },
+    } as SaveData;
+    useSaveStore.setState({
+      save: seeded,
+      originalSave: seeded,
+      status: 'loaded',
+      past: [],
+      future: [],
+    });
+  }
+
+  it('Deliver now completes the timer AND ticks the Baby ready checkbox (kept in sync)', async () => {
+    const user = userEvent.setup();
+    seedTimers();
+    // Alice must read as pregnant for the section to make sense in-game terms.
+    renderSheet(1);
+    expect(screen.getByText(/baby due in/i)).toBeInTheDocument();
+    expect(screen.getByText('1h 0m')).toBeInTheDocument();
+    expect(screen.getByRole('checkbox', { name: /baby ready/i })).not.toBeChecked();
+    await user.click(screen.getByRole('button', { name: /deliver now/i }));
+    const task = useSaveStore.getState().save?.taskMgr?.tasks?.find((t) => t.id === 501);
+    expect(task?.endTime).toBe(1_000);
+    // The checkbox reflects the delivered state, and the row swaps to "due now" copy
+    // instead of a dead "due in 0s" button.
+    expect(screen.getByRole('checkbox', { name: /baby ready/i })).toBeChecked();
+    expect(screen.getByText(/baby is due now/i)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /deliver now/i })).not.toBeInTheDocument();
+  });
+
+  it('ticking Baby ready delivers: flag and due timer complete together', async () => {
+    const user = userEvent.setup();
+    seedTimers();
+    renderSheet(1);
+    await user.click(screen.getByRole('checkbox', { name: /baby ready/i }));
+    const task = useSaveStore.getState().save?.taskMgr?.tasks?.find((t) => t.id === 501);
+    expect(task?.endTime).toBe(1_000);
+    expect(screen.getByText(/baby is due now/i)).toBeInTheDocument();
+  });
+
+  it('unticking Baby ready cancels the delivery and restores the original due timer', async () => {
+    const user = userEvent.setup();
+    seedTimers();
+    renderSheet(1);
+    await user.click(screen.getByRole('button', { name: /deliver now/i }));
+    expect(screen.getByText(/baby is due now/i)).toBeInTheDocument();
+    await user.click(screen.getByRole('checkbox', { name: /baby ready/i }));
+    // The flag clears and the countdown returns to the imported 1h - the timer is
+    // NOT left stranded at 0s.
+    expect(screen.getByRole('checkbox', { name: /baby ready/i })).not.toBeChecked();
+    expect(screen.getByText(/baby due in/i)).toBeInTheDocument();
+    expect(screen.getByText('1h 0m')).toBeInTheDocument();
+    const task = useSaveStore.getState().save?.taskMgr?.tasks?.find((t) => t.id === 501);
+    expect(task?.endTime).toBe(4_600);
+    expect(task?.startTime).toBe(900);
+  });
+
+  it('shows the grow-up timer for a child and completes it', async () => {
+    const user = userEvent.setup();
+    seedTimers();
+    renderSheet(3);
+    expect(screen.getByText(/adult in/i)).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /grow up now/i }));
+    const task = useSaveStore.getState().save?.taskMgr?.tasks?.find((t) => t.id === 502);
+    expect(task?.endTime).toBe(1_000);
+    // The completed timer swaps to a status line - never a dead 0s button.
+    expect(screen.getByText(/becomes an adult on next load/i)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /grow up now/i })).not.toBeInTheDocument();
+  });
+
+  it('shows a returning explorer and brings them home', async () => {
+    const user = userEvent.setup();
+    seedTimers();
+    renderSheet(4);
+    expect(screen.getByText(/returning home/i)).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /return now/i }));
+    const team = useSaveStore.getState().save?.vault?.wasteland?.teams?.[0];
+    expect(team?.elapsedReturningTime).toBe(400);
+  });
+
+  it('renders no timer sections for a dweller without timers', () => {
+    seedTimers();
+    renderSheet(2);
+    expect(screen.queryByText(/growing up/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/exploring/i)).not.toBeInTheDocument();
   });
 });
