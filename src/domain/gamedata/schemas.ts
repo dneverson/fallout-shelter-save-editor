@@ -278,6 +278,9 @@ const seasonCatalogEntrySchema = z.object({
   /** Tokens granted by the in-game Premium Plus purchase (25 in every shipped season -
    *  levels a fresh pass straight to rank 5 against `tokenRequirements`). */
   premiumPassTokens: z.number().default(0),
+  /** Scheduled season end date ("YYYY-MM-DD", from SeasonPassDataManager.prefab); the game
+   *  compares it against local time + the spd.dat debugTimeOffset. Absent when unknown. */
+  endDate: z.string().optional(),
   freeRewards: z.array(catalogRewardSchema),
   premiumRewards: z.array(catalogRewardSchema),
 });

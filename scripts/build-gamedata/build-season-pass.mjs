@@ -85,6 +85,31 @@ function parseTokenRequirements() {
 }
 
 /**
+ * Per-season scheduled end dates from SeasonPassDataManager.prefab
+ * (`m_endDateString: 2026-07-13`, a couple of lines after the season's `m_id:`).
+ * The game compares them against local DateTime.Now (+ the spd.dat debugTimeOffset)
+ * to decide when a season ends - the Season tab's "skip past end of season" needs them.
+ */
+function parseSeasonEndDates() {
+  const text = readSource(join(PATHS.gameObjectDir, 'SeasonPassDataManager.prefab'));
+  const out = new Map();
+  let seasonId = null;
+  for (const line of text.split('\n')) {
+    const id = line.match(/^\s*m_id:\s*([A-Za-z]\w*)\s*$/);
+    if (id) {
+      seasonId = id[1];
+      continue;
+    }
+    const end = line.match(/^\s*m_endDateString:\s*(\d{4}-\d{2}-\d{2})\s*$/);
+    if (end && seasonId) {
+      out.set(seasonId, end[1]);
+      seasonId = null;
+    }
+  }
+  return out;
+}
+
+/**
  * Per-season pass-purchase token grants from GameParameters.prefab
  * (Shop.SeasonPassPurchaseRewardsCollection). Verified v2.4.1: every season grants
  * 0 tokens on the base (Premium) purchase and 25 on Premium Plus - which, against the
@@ -132,6 +157,7 @@ export function buildSeasonPass() {
   const seasonsData = spd.seasonsData ?? {};
   const tokenRequirements = parseTokenRequirements();
   const passTokens = parsePassTokens();
+  const endDates = parseSeasonEndDates();
 
   // The inert ncqReward placeholder is identical across all seasons; emit one template
   // (claim state stripped) for the fresh-model builder to attach per season.
@@ -148,12 +174,14 @@ export function buildSeasonPass() {
       0,
     );
     const tokens = passTokens.get(id) ?? { basePassTokens: 0, premiumPassTokens: 0 };
+    const endDate = endDates.get(id);
     return {
       id,
       maxRank,
       tokenRequirements: tokenRequirements.get(id) ?? [],
       basePassTokens: tokens.basePassTokens,
       premiumPassTokens: tokens.premiumPassTokens,
+      ...(endDate !== undefined ? { endDate } : {}),
       freeRewards,
       premiumRewards,
     };

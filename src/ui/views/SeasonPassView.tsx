@@ -6,6 +6,7 @@ import { useGameData } from '../hooks/useGameData.ts';
 import { useSeasonCatalog } from '../hooks/useSeasonCatalog.ts';
 import type { SeasonReward } from '../../domain/model/seasonSchema.ts';
 import {
+  advanceSeasonClock,
   areAllSeasonsMaxed,
   claimAll,
   claimUnclaimed,
@@ -15,19 +16,24 @@ import {
   isSeasonMaxed,
   maxAllSeasons,
   maxSeason,
+  resetSeasonClock,
+  seasonClockOffsetDays,
   setLevel,
   setMaxRank,
   setPremium,
   setPremiumPlus,
   setTokens,
+  skipToSeasonEnd,
   switchSeason,
   toggleReward,
   type SeasonTrack,
 } from '../../domain/ops/seasonOps.ts';
+import { ticksFromUnixMs } from '../../domain/tasks/taskLookup.ts';
 import { SeasonOnboarding } from '../components/season/SeasonOnboarding.tsx';
 import { SeasonSwitcher } from '../components/season/SeasonSwitcher.tsx';
 import { SeasonStatusCard } from '../components/season/SeasonStatusCard.tsx';
 import { SeasonQuickActions } from '../components/season/SeasonQuickActions.tsx';
+import { SeasonClockCard } from '../components/season/SeasonClockCard.tsx';
 import { SeasonBoard } from '../components/season/SeasonBoard.tsx';
 import { RewardDetail } from '../components/season/RewardDetail.tsx';
 import { SeasonExportBar } from '../components/season/SeasonExportBar.tsx';
@@ -282,18 +288,48 @@ export function SeasonPassView() {
             }
           />
 
-          <SeasonQuickActions
-            viewedLabel={viewedLabel}
-            ready={gameDataReady}
-            claimUnclaimedSpent={isEntitledClaimed(seasonSave, effectiveViewed)}
-            claimAllSpent={isSeasonFullyClaimed(seasonSave, effectiveViewed)}
-            maxSeasonSpent={isSeasonMaxed(seasonSave, effectiveViewed)}
-            maxAllSeasonsSpent={areAllSeasonsMaxed(seasonSave)}
-            onClaimUnclaimed={onClaimUnclaimed}
-            onClaimAll={onClaimAll}
-            onMaxSeason={onMaxSeason}
-            onMaxAllSeasons={onMaxAllSeasons}
-          />
+          {/* Right column: the two short cards stack beside the tall Status card
+              instead of wasting a grid row each (single column on small screens). */}
+          <div className="flex flex-col gap-4">
+            <SeasonQuickActions
+              viewedLabel={viewedLabel}
+              ready={gameDataReady}
+              claimUnclaimedSpent={isEntitledClaimed(seasonSave, effectiveViewed)}
+              claimAllSpent={isSeasonFullyClaimed(seasonSave, effectiveViewed)}
+              maxSeasonSpent={isSeasonMaxed(seasonSave, effectiveViewed)}
+              maxAllSeasonsSpent={areAllSeasonsMaxed(seasonSave)}
+              onClaimUnclaimed={onClaimUnclaimed}
+              onClaimAll={onClaimAll}
+              onMaxSeason={onMaxSeason}
+              onMaxAllSeasons={onMaxAllSeasons}
+            />
+
+            <SeasonClockCard
+              offsetDays={seasonClockOffsetDays(seasonSave)}
+              activeLabel={activeLabel}
+              endDate={catalog?.seasonById.get(activeSeason)?.endDate ?? null}
+              onAdvanceDays={(days) => {
+                applySeasonEdit((ws) => advanceSeasonClock(ws, days), `Season clock +${days}d`);
+                pushToast(`Season clock moved ${days} day${days === 1 ? '' : 's'} ahead`);
+              }}
+              onSkipToEnd={() => {
+                const end = catalog?.seasonById.get(activeSeason)?.endDate;
+                if (!end) return;
+                // The game compares local DateTime.Now, so local midnight AFTER the end
+                // date (+1 day) guarantees we land past the boundary.
+                const endMs = new Date(`${end}T00:00:00`).getTime() + 86_400_000;
+                applySeasonEdit(
+                  (ws) => skipToSeasonEnd(ws, ticksFromUnixMs(endMs), ticksFromUnixMs(Date.now())),
+                  'Skip past end of season',
+                );
+                pushToast('Season clock jumped past the season end');
+              }}
+              onReset={() => {
+                applySeasonEdit((ws) => resetSeasonClock(ws), 'Season clock reset');
+                pushToast('Season clock back to real time');
+              }}
+            />
+          </div>
         </div>
 
         <div className="mt-5">
