@@ -23,6 +23,12 @@ export interface CollectionRow {
   category: CollectionKey;
   /** Save code (`survivalW` entry minus its N/O prefix). */
   code: string;
+  /**
+   * Game asset id, e.g. "EnclaveSecurityOutfit_Helmetless" - disambiguates same-named
+   * duplicates the game ships as distinct items. Equals `code` for dwellers (whose code
+   * is already their asset id) and for breeds (no distinct asset id; the code stands in).
+   */
+  id: string;
   name: string;
   /** Item rarity; null for breeds (a breed has no rarity of its own). */
   rarity: Rarity | null;
@@ -97,23 +103,24 @@ export function buildCollectionRows(
   const row = (
     category: CollectionKey,
     code: string,
+    id: string,
     name: string,
     rarity: Rarity | null,
     icon: CollectionRow['icon'],
-  ): CollectionRow => ({ key: `${category}:${code}`, category, code, name, rarity, icon });
+  ): CollectionRow => ({ key: `${category}:${code}`, category, code, id, name, rarity, icon });
 
   const weapons = gameData.weapons
     .filter((w) => w.rarity !== 'None' && w.id !== DEFAULT_WEAPON_ID && w.codeId !== '')
-    .map((w) => row('weapons', w.codeId, w.name, w.rarity, { type: 'weapons', id: w.id }));
+    .map((w) => row('weapons', w.codeId, w.id, w.name, w.rarity, { type: 'weapons', id: w.id }));
 
   const outfits = gameData.outfits
     .filter((o) => o.category === PREMIUM_OUTFIT_CATEGORY && o.rarity !== 'None' && o.codeId !== '')
-    .map((o) => row('outfits', o.codeId, o.name, o.rarity, { type: 'outfits', id: o.id }));
+    .map((o) => row('outfits', o.codeId, o.id, o.name, o.rarity, { type: 'outfits', id: o.id }));
 
   const dwellers = Object.entries(gameData.uniqueDwellers)
     .filter(([id]) => id.startsWith('L_') && !NON_DWELLER_UNIQUE_IDS.has(id))
     .map(([id, d]) =>
-      row('dwellers', id, [d.name, d.lastName].filter(Boolean).join(' '), 'Legendary', null),
+      row('dwellers', id, id, [d.name, d.lastName].filter(Boolean).join(' '), 'Legendary', null),
     );
 
   const pets = gameData.pets
@@ -122,6 +129,7 @@ export function buildCollectionRows(
       row(
         'pets',
         String(p.codeId),
+        p.id,
         // Legendary pets carry a special name (e.g. "Dogmeat") in baseName; keep the
         // breed name alongside so the row stays searchable by either.
         p.baseName && p.baseName !== p.name ? `${p.baseName} (${p.name})` : p.name,
@@ -144,6 +152,7 @@ export function buildCollectionRows(
       return row(
         'breeds',
         String(value),
+        String(value),
         pet?.name ?? humanize(enumName),
         null,
         pet ? { type: 'pets', id: pet.id } : null,
@@ -152,7 +161,7 @@ export function buildCollectionRows(
 
   const junk = gameData.junk
     .filter((j) => j.rarity !== 'None' && j.codeId !== '')
-    .map((j) => row('junk', j.codeId, j.name, j.rarity, { type: 'junk', id: j.id }));
+    .map((j) => row('junk', j.codeId, j.id, j.name, j.rarity, { type: 'junk', id: j.id }));
 
   return [
     ...weapons.sort(byName),

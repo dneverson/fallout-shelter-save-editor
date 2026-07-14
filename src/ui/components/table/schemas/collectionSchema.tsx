@@ -6,8 +6,10 @@ import type { CollectionStatus } from '../../../../domain/ops/collectionOps.ts';
 import { iconColumn, inSelectedSet, nameCell } from '../columnKit.tsx';
 import type { TableSchema } from '../tableSchema.ts';
 
-// Source-of-truth schema for the SURVIVAL GUIDE catalog: icon · name · category
-// (Weapon/Outfit/Dweller/Pet/Pet Breed/Junk) · rarity · guide status. Weapon/outfit/
+// Source-of-truth schema for the SURVIVAL GUIDE catalog: icon · name · asset id · category
+// (Weapon/Outfit/Dweller/Pet/Pet Breed/Junk) · rarity · guide status. The asset id column
+// disambiguates same-named duplicates the game ships as distinct items (e.g.
+// EnclaveSecurityOutfit vs EnclaveSecurityOutfit_Helmetless). Weapon/outfit/
 // pet/junk rows reuse the item sprite; legendary dwellers have no item sprite and show
 // a neutral chip (same fallback as theme recipes). The select column and the per-row
 // Collect/Mark seen/Remove actions are supplied by SurvivalGuideView (store callbacks).
@@ -44,6 +46,7 @@ export function collectionSchema(): TableSchema<CollectionViewRow> {
     name: 'collection',
     hideable: [
       { id: 'name', label: 'Name' },
+      { id: 'id', label: 'Asset ID' },
       { id: 'category', label: 'Category' },
       { id: 'rarity', label: 'Rarity' },
       { id: 'status', label: 'Status' },
@@ -64,6 +67,22 @@ export function collectionSchema(): TableSchema<CollectionViewRow> {
         size: 240,
         filterFn: 'includesString',
         meta: { filterVariant: 'text', headerLabel: 'Name' },
+      },
+      {
+        id: 'id',
+        accessorFn: (r) => r.id,
+        header: 'Asset ID',
+        cell: ({ getValue }) => {
+          const id = getValue<string>();
+          return (
+            <span title={id} className="font-mono text-xs text-neutral-400">
+              {id}
+            </span>
+          );
+        },
+        size: 220,
+        filterFn: 'includesString',
+        meta: { filterVariant: 'text', headerLabel: 'Asset ID' },
       },
       {
         id: 'category',
