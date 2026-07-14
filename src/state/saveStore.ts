@@ -19,6 +19,8 @@ import {
 } from '../domain/ops/seasonOps.ts';
 import type { SeasonCatalog } from '../domain/gamedata/seasonCatalog.ts';
 import { pushToast } from './toastStore.ts';
+import { autoCollectNewObjects } from '../domain/ops/guideAutoCollect.ts';
+import type { GuideCodeIndex } from '../domain/items/collectionCatalog.ts';
 import type { SaveData } from '../domain/model/saveSchema.ts';
 import type { NvfData, SeasonSave } from '../domain/model/seasonSchema.ts';
 
@@ -178,6 +180,23 @@ const initialState = {
   currentLabel: IMPORT_LABEL,
 };
 
+// --- Survival Guide auto-collect ------------------------------------------------
+// Registered once game data loads (useGameData). When set, every applyEdit /
+// applySeasonEdit result is post-processed: objects the edit INTRODUCED (items,
+// pets, special dwellers) get their guide entry marked collected in the same undo
+// step (domain/ops/guideAutoCollect.ts). Null (e.g. before game data loads, or in
+// tests that never register) disables the pass - edits then behave exactly as before.
+let guideCodeIndex: GuideCodeIndex | null = null;
+
+export function setGuideCodeIndex(index: GuideCodeIndex | null): void {
+  guideCodeIndex = index;
+}
+
+/** Apply the guide auto-collect pass to an edit result (identity when unregistered). */
+function withAutoCollected(prev: SaveData, next: SaveData): SaveData {
+  return guideCodeIndex ? autoCollectNewObjects(prev, next, guideCodeIndex) : next;
+}
+
 /** The season half of the CURRENT state, for snapshotting onto a history stack. */
 function seasonSnapshotOf(s: SaveState): SeasonSnapshot {
   return {
@@ -280,8 +299,9 @@ export const useSaveStore = create<SaveState>((set, get) => ({
   applyEdit: (recipe, label = 'Edit') => {
     const s = get();
     if (!s.save) return;
-    const next = recipe(s.save);
+    let next = recipe(s.save);
     if (next === s.save) return; // op was a no-op - don't grow history
+    next = withAutoCollected(s.save, next);
     set({
       ...pushHistory(s),
       save: next,
@@ -308,15 +328,16 @@ export const useSaveStore = create<SaveState>((set, get) => ({
     ) {
       return; // op was a no-op - don't grow history
     }
+    const nextSave = withAutoCollected(ws.save, next.save);
     set({
       ...pushHistory(s),
-      save: next.save,
+      save: nextSave,
       seasonSave: next.spd,
       nvf: next.nvf,
       seasonHandles: next.handles,
       seasonEdited: true,
       currentLabel: label,
-      health: checkSaveHealth(next.save),
+      health: checkSaveHealth(nextSave),
     });
   },
 

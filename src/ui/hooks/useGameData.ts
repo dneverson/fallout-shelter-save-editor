@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { loadGameData, type GameData } from '../../domain/gamedata/gameData.ts';
+import { buildGuideCodeIndex } from '../../domain/items/collectionCatalog.ts';
+import { setGuideCodeIndex } from '../../state/saveStore.ts';
 
 // Loads the committed game data (weapons/outfits/junk/…) once and caches it at
 // module scope so every view shares a single parsed copy. Game data is static
@@ -30,6 +32,9 @@ export function useGameData(): UseGameDataResult {
     inflight
       .then((loaded) => {
         cache = loaded;
+        // Enable Survival Guide auto-collect: from here on, edits that introduce
+        // objects (items/pets/special dwellers) also mark their guide entries.
+        setGuideCodeIndex(buildGuideCodeIndex(loaded));
         if (active) {
           setData(loaded);
           setStatus('ready');

@@ -10,10 +10,14 @@ import {
   selectHistory,
   selectRedoLabel,
   selectUndoLabel,
+  setGuideCodeIndex,
   useSaveStore,
 } from '../../src/state/saveStore.ts';
 import { decode, encode, decodeSeason } from '../../src/domain/codec/saveCodec.ts';
 import { remove, setName } from '../../src/domain/ops/dwellerOps.ts';
+import { grantItems } from '../../src/domain/ops/storageOps.ts';
+import { buildGuideCodeIndex } from '../../src/domain/items/collectionCatalog.ts';
+import { collectionStatus } from '../../src/domain/ops/collectionOps.ts';
 import {
   claimReward,
   isRewardClaimed,
@@ -293,6 +297,57 @@ describe('saveStore history timeline', () => {
     const view = selectHistory(useSaveStore.getState());
     expect(view.entries.map((e) => e.label)).toEqual([IMPORT_LABEL, 'Edit 1', 'Edit 3']);
     expect(useSaveStore.getState().future).toHaveLength(0);
+  });
+});
+
+describe('saveStore Survival Guide auto-collect', () => {
+  const index = buildGuideCodeIndex({
+    weapons: [{ id: 'LaserPistol', name: 'Laser Pistol', rarity: 'Rare', codeId: '24' }],
+    outfits: [],
+    junk: [],
+    pets: [],
+    uniqueDwellers: {},
+    enums: { EPetBreed: {} },
+  });
+
+  async function importOne(): Promise<void> {
+    await useSaveStore.getState().importFromText(
+      await encode({
+        dwellers: { dwellers: [{ serializeId: 1, name: 'A' }] },
+        vault: { inventory: { items: [] } },
+        appVersion: '1.0',
+      }),
+      'Vault1.sav',
+    );
+  }
+
+  beforeEach(() => {
+    useSaveStore.getState().clear();
+    setGuideCodeIndex(null);
+  });
+
+  afterEach(() => {
+    setGuideCodeIndex(null); // module-global; don't leak into other suites
+  });
+
+  it('marks an object added by an edit as collected, in the same undo step', async () => {
+    setGuideCodeIndex(index);
+    await importOne();
+
+    useSaveStore.getState().applyEdit((s) => grantItems(s, 'Weapon', 'LaserPistol', 1), 'Grant');
+    const state = useSaveStore.getState();
+
+    expect(collectionStatus(state.save!, 'weapons', '24')).toBe('new');
+    // Auto-collect folds into the SAME edit - one undo reverts both the grant and the mark.
+    expect(state.past).toHaveLength(1);
+    useSaveStore.getState().undo();
+    expect(collectionStatus(useSaveStore.getState().save!, 'weapons', '24')).toBe('missing');
+  });
+
+  it('does nothing when no guide index is registered (default behaviour)', async () => {
+    await importOne(); // index left null
+    useSaveStore.getState().applyEdit((s) => grantItems(s, 'Weapon', 'LaserPistol', 1));
+    expect(useSaveStore.getState().save?.survivalW).toBeUndefined();
   });
 });
 
