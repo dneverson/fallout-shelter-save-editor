@@ -534,6 +534,36 @@ describe('timerOps - dweller timers', () => {
     expect(setPendingChildren(save, 111, Number.NaN)).toBe(save);
   });
 
+  it('setPendingChildren creates a minimal RaisingBaby entry for flag-only pregnancies', () => {
+    const base = makeSave();
+    // Editor-forced pregnancy: flag set, no partnership recorded anywhere.
+    const rooms = (base.vault?.rooms ?? []).map((r) =>
+      r.deserializeID === 10 ? { ...r, partners: [] } : r,
+    );
+    const save: SaveData = { ...base, vault: { ...base.vault, rooms } };
+    const next = setPendingChildren(save, 111, 3);
+    expect(next.vault?.rooms?.[0]?.partners).toEqual([
+      { m: -1, f: 111, s: 'RaisingBaby', t: -1, fatherId: -1, templateID: -1, pendingChildren: 3 },
+    ]);
+    expect(pregnancyPendingChildren(next, 111)).toBe(3);
+    // The created entry is then edited in place, not duplicated.
+    const cleared = setPendingChildren(next, 111, 0);
+    expect(cleared.vault?.rooms?.[0]?.partners).toHaveLength(1);
+    expect(pregnancyPendingChildren(cleared, 111)).toBe(0);
+  });
+
+  it('setPendingChildren never creates an entry for non-pregnant dwellers, 0, or no quarters', () => {
+    const base = makeSave();
+    const rooms = (base.vault?.rooms ?? []).map((r) =>
+      r.deserializeID === 10 ? { ...r, partners: [] } : r,
+    );
+    const save: SaveData = { ...base, vault: { ...base.vault, rooms } };
+    expect(setPendingChildren(save, 130, 2)).toBe(save); // Kid: not pregnant
+    expect(setPendingChildren(save, 111, 0)).toBe(save); // default roll: nothing to store
+    const noQuarters: SaveData = { ...base, vault: { ...base.vault, rooms: [] } };
+    expect(setPendingChildren(noQuarters, 111, 2)).toBe(noQuarters);
+  });
+
   it('setPendingChildren is a same-reference no-op when nothing would change', () => {
     const save = makeSave();
     // No RaisingBaby entry for this dweller.

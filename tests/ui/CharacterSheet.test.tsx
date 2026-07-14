@@ -191,6 +191,34 @@ describe('CharacterSheet - pregnancy gating', () => {
     renderSheet(2);
     expect(screen.queryByRole('checkbox', { name: 'Pregnant' })).not.toBeInTheDocument();
   });
+
+  it('Babies expected appears for an editor-forced pregnancy and creates the partnership', async () => {
+    const user = userEvent.setup();
+    const base = makeSave();
+    // A living quarters with no partnership recorded: ticking Pregnant is flag-only.
+    useSaveStore.setState({
+      save: {
+        ...base,
+        vault: { rooms: [{ type: 'LivingQuarters', deserializeID: 10, partners: [] }] },
+      } as SaveData,
+      originalSave: null,
+      status: 'loaded',
+      past: [],
+      future: [],
+    });
+    renderSheet(1);
+    expect(screen.queryByRole('combobox', { name: /babies expected/i })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('checkbox', { name: 'Pregnant' }));
+    // The selector shows immediately - no round trip through the game to get the entry.
+    const select = screen.getByRole('combobox', { name: /babies expected/i });
+    await user.selectOptions(select, '3');
+    const partner = useSaveStore.getState().save?.vault?.rooms?.[0]?.partners?.[0];
+    expect(partner?.s).toBe('RaisingBaby');
+    expect(partner?.f).toBe(1);
+    expect(partner?.pendingChildren).toBe(3);
+    // Ticking Pregnant auto-picked Bob, so the created entry records him as the father.
+    expect(partner?.m).toBe(2);
+  });
 });
 
 describe('CharacterSheet - equipment pickers', () => {

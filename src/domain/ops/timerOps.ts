@@ -343,24 +343,50 @@ export function pregnancyPendingChildren(save: SaveData, dwellerId: number): num
  * (2/3 = deliver exactly that many, no breeding pet needed; 0 = back to the natural
  * birth-time roll). Capped at 3, the natural maximum - the birth loop would accept
  * more but no real save ever holds it. The birth still checks vault space for the
- * full count, as in game. No-op without a partnership entry, and 0 never ADDS the
- * key to an entry that came in without one.
+ * full count, as in game.
+ *
+ * Editor-forced pregnancies (flag only, no partnership recorded) get a minimal
+ * RaisingBaby entry created in the first Living Quarters so the forced count has
+ * somewhere to live - `t: -1` (the game starts the due timer while the mother is
+ * housed, same as a flag-only pregnancy) and `templateID: -1` (each baby rolls a
+ * random child). 0 never creates the entry or ADDS the key to an entry imported
+ * without one, so untouched saves round-trip unchanged.
  */
 export function setPendingChildren(save: SaveData, dwellerId: number, count: number): SaveData {
   if (!Number.isFinite(count)) return save;
-  const hit = findPartnerEntry(save, dwellerId);
-  if (!hit) return save;
   const value = Math.max(0, Math.min(MAX_PENDING_CHILDREN, Math.trunc(count)));
-  if ((hit.partner.pendingChildren ?? 0) === value) return save;
-  const rooms = (save.vault?.rooms ?? []).map((room) =>
-    room === hit.room
-      ? {
-          ...room,
-          partners: (room.partners ?? []).map((p) =>
-            p === hit.partner ? { ...p, pendingChildren: value } : p,
-          ),
-        }
-      : room,
+  const hit = findPartnerEntry(save, dwellerId);
+  if (hit) {
+    if ((hit.partner.pendingChildren ?? 0) === value) return save;
+    const rooms = (save.vault?.rooms ?? []).map((room) =>
+      room === hit.room
+        ? {
+            ...room,
+            partners: (room.partners ?? []).map((p) =>
+              p === hit.partner ? { ...p, pendingChildren: value } : p,
+            ),
+          }
+        : room,
+    );
+    return { ...save, vault: { ...save.vault, rooms } };
+  }
+  if (value === 0) return save; // nothing to clear
+  const mother = save.dwellers?.dwellers?.find((d) => d.serializeId === dwellerId);
+  if (!mother || mother.pregnant !== true) return save;
+  const home = save.vault?.rooms?.find((r) => r.type === 'LivingQuarters');
+  if (!home) return save; // pregnancies cannot progress without one anyway
+  const partnerId = mother.relations?.partner ?? -1;
+  const entry: Partner = {
+    m: partnerId,
+    f: dwellerId,
+    s: PREGNANCY_STATUS,
+    t: -1,
+    fatherId: partnerId,
+    templateID: -1,
+    pendingChildren: value,
+  };
+  const rooms = (save.vault?.rooms ?? []).map((r) =>
+    r === home ? { ...r, partners: [...(r.partners ?? []), entry] } : r,
   );
   return { ...save, vault: { ...save.vault, rooms } };
 }

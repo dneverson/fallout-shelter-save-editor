@@ -646,8 +646,9 @@ export function CharacterSheet({ dweller, onClose }: CharacterSheetProps) {
           )}
           {/* Baby count (`partners[].pendingChildren`): the game only rolls twins/triplets
               when this is 0, so a stored 2/3 forces the multi-birth - no breeding pet
-              needed. Only shown when a RaisingBaby entry exists to write to. */}
-          {pendingChildren !== null && (
+              needed. Shown for every pregnancy: editor-forced ones (flag only, no
+              partnership recorded) get the entry created on the first 2/3 pick. */}
+          {(pendingChildren !== null || dweller.pregnant === true) && (
             <label className="mt-2 flex items-center gap-2 text-sm text-neutral-300">
               <span className="text-[11px] uppercase tracking-wide text-neutral-400">
                 Babies expected
