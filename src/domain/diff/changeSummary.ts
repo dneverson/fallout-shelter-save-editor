@@ -1,5 +1,6 @@
 import type { Dweller, Room, SaveData } from '../model/saveSchema.ts';
 import { isLosslessInt } from '../codec/losslessJson.ts';
+import { COLLECTION_KEYS, collectionCodes } from '../ops/collectionOps.ts';
 
 // Pre-export change summary. A pure
 // snapshot diff of the decoded ORIGINAL save against the current working save - no edit
@@ -32,6 +33,16 @@ export interface RoomModification {
   fields: FieldChange[];
 }
 
+/** One Survival Guide collection list that changed (survivalW weapons/outfits/…). */
+export interface GuideListChange {
+  /** Save list key, e.g. "weapons". */
+  list: string;
+  added: number;
+  removed: number;
+  /** Entries whose new/seen ("N"/"O") state flipped without being added or removed. */
+  stateFlipped: number;
+}
+
 /** A generic leaf-level change anywhere in the save (the granular safety net). */
 export interface PathChange {
   /** JSONPath-ish location, e.g. `MysteriousStranger.timeToAppear`. */
@@ -57,6 +68,8 @@ export interface ChangeSummary {
   /** Recipe ids unlocked / removed (survivalW.recipes). */
   recipesAdded: string[];
   recipesRemoved: string[];
+  /** Survival Guide collection lists that changed (survivalW weapons/outfits/…). */
+  guideChanged: GuideListChange[];
   /** Set when the stored inventory item count changed (e.g. a pet attached/detached). */
   inventoryDelta: { before: number; after: number } | null;
   /**
@@ -249,6 +262,7 @@ const WALKER_EXCLUDED = new Set([
   'vault.LunchBoxesByType',
   'vault.LunchBoxesCount',
   'survivalW.recipes',
+  ...COLLECTION_KEYS.map((key) => `survivalW.${key}`),
 ]);
 
 /** Display cap for the generic leaf changes (the walker stops collecting past 3×). */
@@ -416,6 +430,26 @@ export function summarizeChanges(original: SaveData, current: SaveData): ChangeS
     for (const id of rb) if (!ra.has(id)) recipesRemoved.push(id);
   }
 
+  // Survival Guide collection lists (survivalW weapons/outfits/dwellers/pets/breeds/junk):
+  // per-list added/removed code counts, plus entries whose N/O (new/seen) prefix flipped.
+  const guideChanged: GuideListChange[] = [];
+  for (const key of COLLECTION_KEYS) {
+    const before = collectionCodes(original, key);
+    const after = collectionCodes(current, key);
+    let added = 0;
+    let removed = 0;
+    let stateFlipped = 0;
+    for (const [code, isNew] of after) {
+      const wasNew = before.get(code);
+      if (wasNew === undefined) added++;
+      else if (wasNew !== isNew) stateFlipped++;
+    }
+    for (const code of before.keys()) if (!after.has(code)) removed++;
+    if (added > 0 || removed > 0 || stateFlipped > 0) {
+      guideChanged.push({ list: key, added, removed, stateFlipped });
+    }
+  }
+
   // Generic leaf changes for everything else (managers, actors, vault name/theme, …).
   const allOther: PathChange[] = [];
   walkOther(original, current, '', allOther);
@@ -443,6 +477,7 @@ export function summarizeChanges(original: SaveData, current: SaveData): ChangeS
     boxesChanged.length > 0 ||
     recipesAdded.length > 0 ||
     recipesRemoved.length > 0 ||
+    guideChanged.length > 0 ||
     inventoryDelta !== null ||
     otherChanges.length > 0 ||
     otherSectionsChanged.length > 0;
@@ -459,6 +494,7 @@ export function summarizeChanges(original: SaveData, current: SaveData): ChangeS
     boxesChanged,
     recipesAdded,
     recipesRemoved,
+    guideChanged,
     inventoryDelta,
     otherChanges,
     otherChangesTruncated,

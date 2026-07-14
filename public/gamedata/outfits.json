@@ -15,7 +15,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Abraham_Washington",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "0"
   },
   {
     "id": "ActionWeddingDress",
@@ -33,7 +34,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "ActionWeddingDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "180"
   },
   {
     "id": "AlienSpaceSuit",
@@ -51,7 +53,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "AlienSpaceSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "166"
   },
   {
     "id": "AlienSpaceSuitEnemy",
@@ -69,7 +72,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "AlienSpaceSuit",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "169"
   },
   {
     "id": "AlistairSpecial",
@@ -87,7 +91,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Alistair_Tempenny",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "1"
   },
   {
     "id": "AllNightware",
@@ -105,7 +110,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "Nightwear",
-    "gender": null
+    "gender": null,
+    "codeId": "2"
   },
   {
     "id": "AllNightware_Lucky",
@@ -123,7 +129,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Nightwear",
-    "gender": null
+    "gender": null,
+    "codeId": "3"
   },
   {
     "id": "AllNightware_Naughty",
@@ -141,7 +148,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Nightwear",
-    "gender": null
+    "gender": null,
+    "codeId": "4"
   },
   {
     "id": "AmataSpecial",
@@ -159,7 +167,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "Normal",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "5"
   },
   {
     "id": "ArgyleSweater",
@@ -177,7 +186,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "M_ArgyleSweater",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "146"
   },
   {
     "id": "BaseballUniform",
@@ -195,7 +205,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "BaseballUniform",
-    "gender": null
+    "gender": null,
+    "codeId": "137"
   },
   {
     "id": "BattleArmor",
@@ -213,7 +224,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "BattleArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "6"
   },
   {
     "id": "BattleArmor_Heavy",
@@ -231,7 +243,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "BattleArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "7"
   },
   {
     "id": "BattleArmor_Sturdy",
@@ -249,7 +262,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "BattleArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "8"
   },
   {
     "id": "BishopSpecial",
@@ -267,7 +281,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Cleric",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "9"
   },
   {
     "id": "BittercupSpecial",
@@ -285,7 +300,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Bittercup",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "10"
   },
   {
     "id": "BOSCasual",
@@ -303,7 +319,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "BOSCasual",
-    "gender": null
+    "gender": null,
+    "codeId": "176"
   },
   {
     "id": "BOSUniform",
@@ -321,7 +338,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "BOS_Orange",
-    "gender": null
+    "gender": null,
+    "codeId": "134"
   },
   {
     "id": "BOSUniform_Advanced",
@@ -339,7 +357,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "BOS_Olive",
-    "gender": null
+    "gender": null,
+    "codeId": "135"
   },
   {
     "id": "BOSUniform_Expert",
@@ -357,7 +376,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "BOS_JetBlack",
-    "gender": null
+    "gender": null,
+    "codeId": "136"
   },
   {
     "id": "BowlingShirt",
@@ -375,7 +395,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "M_BowlingShirt",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "139"
   },
   {
     "id": "BusinessDress",
@@ -393,7 +414,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "F_BusinessDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "152"
   },
   {
     "id": "BusinessSuit",
@@ -411,7 +433,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "M_BusinessSuit",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "148"
   },
   {
     "id": "ButchSpecial",
@@ -429,7 +452,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Butch",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "11"
   },
   {
     "id": "CaitsCorset",
@@ -447,7 +471,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "Cait Corset",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "188"
   },
   {
     "id": "CheckeredShirt",
@@ -465,7 +490,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "M_CheckeredShirt",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "128"
   },
   {
     "id": "ColonelSpecial",
@@ -483,7 +509,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Colonel_Autumn",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "12"
   },
   {
     "id": "CombatArmor",
@@ -501,7 +528,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "CombatArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "13"
   },
   {
     "id": "CombatArmor_Heavy",
@@ -519,7 +547,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "CombatArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "14"
   },
   {
     "id": "CombatArmor_Sturdy",
@@ -537,7 +566,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "CombatArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "15"
   },
   {
     "id": "ComedianSpecial",
@@ -555,7 +585,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "comedian",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "16"
   },
   {
     "id": "costume_01",
@@ -573,7 +604,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "17"
   },
   {
     "id": "costume_02",
@@ -591,7 +623,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "18"
   },
   {
     "id": "costume_03",
@@ -609,7 +642,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "19"
   },
   {
     "id": "costume_04",
@@ -627,7 +661,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "20"
   },
   {
     "id": "costume_05",
@@ -645,7 +680,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "21"
   },
   {
     "id": "costume_06",
@@ -663,7 +699,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "22"
   },
   {
     "id": "costume_07",
@@ -681,7 +718,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "23"
   },
   {
     "id": "costume_08",
@@ -699,7 +737,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "24"
   },
   {
     "id": "costume_09",
@@ -717,7 +756,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "25"
   },
   {
     "id": "costume_10",
@@ -735,7 +775,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "",
-    "gender": null
+    "gender": null,
+    "codeId": "26"
   },
   {
     "id": "CourserUniform",
@@ -753,7 +794,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Courser",
-    "gender": null
+    "gender": null,
+    "codeId": "211"
   },
   {
     "id": "CromwellSpecial",
@@ -771,7 +813,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Confessor_Cromwell",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "27"
   },
   {
     "id": "Detective",
@@ -789,7 +832,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Colonel_Autumn",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "158"
   },
   {
     "id": "DooWopOutfit",
@@ -807,7 +851,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "F_DooWopOutfit",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "145"
   },
   {
     "id": "DrLiSpecial",
@@ -825,7 +870,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "LabCoat",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "28"
   },
   {
     "id": "ElderLyonsSpecial",
@@ -843,7 +889,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "Elder_Lyons",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "29"
   },
   {
     "id": "EmpressSpecial",
@@ -861,7 +908,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "empress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "30"
   },
   {
     "id": "EnclaveOfficerUniform",
@@ -879,7 +927,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "EnclaveOfficerUniform",
-    "gender": null
+    "gender": null,
+    "codeId": "201"
   },
   {
     "id": "EnclaveOfficerUniform_Helmetless",
@@ -897,7 +946,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "EnclaveOfficerUniform",
-    "gender": null
+    "gender": null,
+    "codeId": "206"
   },
   {
     "id": "EnclavePowerArmor",
@@ -915,7 +965,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "EnclavePowerArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "199"
   },
   {
     "id": "EnclaveSecurityOutfit",
@@ -933,7 +984,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "EnclaveSecurityOutfit",
-    "gender": null
+    "gender": null,
+    "codeId": "184"
   },
   {
     "id": "EnclaveSecurityOutfit_Helmetless",
@@ -951,7 +1003,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "EnclaveSecurityOutfit",
-    "gender": null
+    "gender": null,
+    "codeId": "205"
   },
   {
     "id": "EngineerSpecial",
@@ -969,7 +1022,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Engineer",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "31"
   },
   {
     "id": "EulogyJonesSpecial",
@@ -987,7 +1041,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Eulogy_Jones",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "32"
   },
   {
     "id": "FarHarborSpecial",
@@ -1005,7 +1060,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "OldLongFellow",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "155"
   },
   {
     "id": "FlightSuit",
@@ -1023,7 +1079,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "FlightSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "122"
   },
   {
     "id": "FlightSuit_Advanced",
@@ -1041,7 +1098,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "FlightSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "123"
   },
   {
     "id": "FlightSuit_Expert",
@@ -1059,7 +1117,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "FlightSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "124"
   },
   {
     "id": "FormalWear",
@@ -1077,7 +1136,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "GamblerSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "33"
   },
   {
     "id": "FormalWear_Fancy",
@@ -1095,7 +1155,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "GamblerSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "34"
   },
   {
     "id": "FormalWear_Lucky",
@@ -1113,7 +1174,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "GamblerSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "35"
   },
   {
     "id": "Gen1Synth",
@@ -1131,7 +1193,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Gen1Synth",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "209"
   },
   {
     "id": "Gen2SynthEnemy",
@@ -1149,7 +1212,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "Gen2Synth",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "210"
   },
   {
     "id": "GreaserSpecial",
@@ -1167,7 +1231,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Greaser",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "36"
   },
   {
     "id": "HandymanJumpsuit",
@@ -1185,7 +1250,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "HandymanJumpsuit",
-    "gender": null
+    "gender": null,
+    "codeId": "37"
   },
   {
     "id": "HandymanJumpsuit_Advanced",
@@ -1203,7 +1269,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "HandymanJumpsuit",
-    "gender": null
+    "gender": null,
+    "codeId": "38"
   },
   {
     "id": "HandymanJumpsuit_Expert",
@@ -1221,7 +1288,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "HandymanJumpsuit",
-    "gender": null
+    "gender": null,
+    "codeId": "39"
   },
   {
     "id": "HanksPowerArmor",
@@ -1239,7 +1307,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "PA_60",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "190"
   },
   {
     "id": "HarknessSpecial",
@@ -1257,7 +1326,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "BattleArmor",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "40"
   },
   {
     "id": "HazmatSuit",
@@ -1275,7 +1345,8 @@
     "hasHelmet": true,
     "rarity": "Normal",
     "sprite": "HazmatSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "41"
   },
   {
     "id": "HazmatSuit_Heavy",
@@ -1293,7 +1364,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "HazmatSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "42"
   },
   {
     "id": "HazmatSuit_Sturdy",
@@ -1311,7 +1383,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "HazmatSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "43"
   },
   {
     "id": "Horseman_DeathJacket",
@@ -1329,7 +1402,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "M&F_JacketTshirt",
-    "gender": null
+    "gender": null,
+    "codeId": "163"
   },
   {
     "id": "Horseman_FamineVestment",
@@ -1347,7 +1421,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Elder_Lyons",
-    "gender": null
+    "gender": null,
+    "codeId": "160"
   },
   {
     "id": "Horseman_PestilencePlating",
@@ -1365,7 +1440,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "SynthArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "161"
   },
   {
     "id": "Horseman_WarArmor",
@@ -1383,7 +1459,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_60",
-    "gender": null
+    "gender": null,
+    "codeId": "162"
   },
   {
     "id": "HunterGear_Bounty",
@@ -1401,7 +1478,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "TreasureHunter",
-    "gender": null
+    "gender": null,
+    "codeId": "120"
   },
   {
     "id": "HunterGear_Mutant",
@@ -1419,7 +1497,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "TreasureHunter",
-    "gender": null
+    "gender": null,
+    "codeId": "121"
   },
   {
     "id": "HunterGear_Treasure",
@@ -1437,7 +1516,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "TreasureHunter",
-    "gender": null
+    "gender": null,
+    "codeId": "119"
   },
   {
     "id": "Incognito",
@@ -1455,7 +1535,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Incognito_Leisureware",
-    "gender": null
+    "gender": null,
+    "codeId": "170"
   },
   {
     "id": "InstituteJumper_Advanced",
@@ -1473,7 +1554,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "InstituteJumper",
-    "gender": null
+    "gender": null,
+    "codeId": "132"
   },
   {
     "id": "InstituteJumper_Expert",
@@ -1491,7 +1573,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "InstituteJumper",
-    "gender": null
+    "gender": null,
+    "codeId": "133"
   },
   {
     "id": "JacketTshirt",
@@ -1509,7 +1592,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "M&F_JacketTshirt",
-    "gender": null
+    "gender": null,
+    "codeId": "150"
   },
   {
     "id": "JailhouseRocker",
@@ -1527,7 +1611,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "GhoulKing",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "194"
   },
   {
     "id": "JamesSpecial",
@@ -1545,7 +1630,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "LabCoat",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "44"
   },
   {
     "id": "JerichoSpecial",
@@ -1563,7 +1649,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "WandrersArmor",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "45"
   },
   {
     "id": "JobinsonsJersey",
@@ -1581,7 +1668,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "BaseballUniform",
-    "gender": null
+    "gender": null,
+    "codeId": "157"
   },
   {
     "id": "jumpsuit",
@@ -1599,7 +1687,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "Normal",
-    "gender": null
+    "gender": null,
+    "codeId": "46"
   },
   {
     "id": "KelloggsOutfit",
@@ -1617,7 +1706,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Kellogg_Armor",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "213"
   },
   {
     "id": "KingSpecial",
@@ -1635,7 +1725,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "King",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "47"
   },
   {
     "id": "KnightSpecial",
@@ -1653,7 +1744,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Knight",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "48"
   },
   {
     "id": "LabCoat",
@@ -1671,7 +1763,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "LabCoat",
-    "gender": null
+    "gender": null,
+    "codeId": "49"
   },
   {
     "id": "LabCoat_Advanced",
@@ -1689,7 +1782,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "LabCoat",
-    "gender": null
+    "gender": null,
+    "codeId": "50"
   },
   {
     "id": "LabCoat_Expert",
@@ -1707,7 +1801,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "LabCoat",
-    "gender": null
+    "gender": null,
+    "codeId": "51"
   },
   {
     "id": "LegatesArmor",
@@ -1725,7 +1820,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "Legate",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "195"
   },
   {
     "id": "LibrarianSpecial",
@@ -1743,7 +1839,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Librarian",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "52"
   },
   {
     "id": "LifeguardOutfit",
@@ -1761,7 +1858,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Lifeguard",
-    "gender": null
+    "gender": null,
+    "codeId": "138"
   },
   {
     "id": "LoungeShirt",
@@ -1779,7 +1877,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "M_LoungeShirt",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "149"
   },
   {
     "id": "LucasSpecial",
@@ -1797,7 +1896,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Lucas_Simms",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "53"
   },
   {
     "id": "LucysVaultSuit",
@@ -1815,7 +1915,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "LucysVaultSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "172"
   },
   {
     "id": "LucysYellowDress",
@@ -1833,7 +1934,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "LucyYellowDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "197"
   },
   {
     "id": "MaJuneJacket",
@@ -1851,7 +1953,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "MaJuneJacket",
-    "gender": null
+    "gender": null,
+    "codeId": "174"
   },
   {
     "id": "MaximusJacket",
@@ -1869,7 +1972,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Maximus Coat",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "193"
   },
   {
     "id": "MayorSpecial",
@@ -1887,7 +1991,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Mayor",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "54"
   },
   {
     "id": "MechanicJumpsuit",
@@ -1905,7 +2010,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "M_MechanicJumpSuit",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "129"
   },
   {
     "id": "MetalArmor_Heavy",
@@ -1923,7 +2029,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "MetalArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "127"
   },
   {
     "id": "MetalArmor_Sturdy",
@@ -1941,7 +2048,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "MetalArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "126"
   },
   {
     "id": "MetalArmorRaiderBoss",
@@ -1959,7 +2067,8 @@
     "hasHelmet": false,
     "rarity": "Common",
     "sprite": "MetalArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "143"
   },
   {
     "id": "MilitaryJumpsuit",
@@ -1977,7 +2086,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "Military",
-    "gender": null
+    "gender": null,
+    "codeId": "55"
   },
   {
     "id": "MilitaryJumpsuit_Commander",
@@ -1995,7 +2105,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Military",
-    "gender": null
+    "gender": null,
+    "codeId": "56"
   },
   {
     "id": "MilitaryJumpsuit_Officer",
@@ -2013,7 +2124,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Military",
-    "gender": null
+    "gender": null,
+    "codeId": "57"
   },
   {
     "id": "MoiraSpecial",
@@ -2031,7 +2143,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "Moira_Brown",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "58"
   },
   {
     "id": "MojaveWastelandSurvivor",
@@ -2049,7 +2162,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "LucyNewVegas",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "100"
   },
   {
     "id": "MoldaversArmor",
@@ -2067,7 +2181,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "MoldaversArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "181"
   },
   {
     "id": "MoviefanSpecial",
@@ -2085,7 +2200,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Movie_Fan",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "59"
   },
   {
     "id": "MrBurkeSpecial",
@@ -2103,7 +2219,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "Mr_Burque",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "60"
   },
   {
     "id": "MrHousesSuit",
@@ -2121,7 +2238,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Mr House",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "192"
   },
   {
     "id": "NCR_Ranger",
@@ -2139,7 +2257,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "ncr_ranger",
-    "gender": null
+    "gender": null,
+    "codeId": "168"
   },
   {
     "id": "NCR_Ranger_Helmetless",
@@ -2157,7 +2276,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "ncr_ranger",
-    "gender": null
+    "gender": null,
+    "codeId": "204"
   },
   {
     "id": "NCRPowerArmor",
@@ -2175,7 +2295,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "NCRPowerArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "196"
   },
   {
     "id": "NinjaSuit",
@@ -2193,7 +2314,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Ninja",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "61"
   },
   {
     "id": "NormalClothing",
@@ -2211,7 +2333,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "NormalClothing",
-    "gender": null
+    "gender": null,
+    "codeId": "62"
   },
   {
     "id": "OrionsExplorerGear",
@@ -2229,7 +2352,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "OrionMoreno_Outfit",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "203"
   },
   {
     "id": "OverseerClaffsJumpsuit",
@@ -2247,7 +2371,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Claff_Armor",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "200"
   },
   {
     "id": "PaladinDansesPowerArmor",
@@ -2265,7 +2390,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "PaladinDanse_T60",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "208"
   },
   {
     "id": "PaladinDansesPowerArmorWithHelmet",
@@ -2283,7 +2409,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PaladinDanse_T60",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "214"
   },
   {
     "id": "PaladinJacket",
@@ -2301,7 +2428,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "BOS Paladin",
-    "gender": null
+    "gender": null,
+    "codeId": "191"
   },
   {
     "id": "PiperSpecial",
@@ -2319,7 +2447,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "Piper",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "116"
   },
   {
     "id": "PolkaDotDress",
@@ -2337,7 +2466,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "F_PolkaDot",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "142"
   },
   {
     "id": "PowerArmor",
@@ -2355,7 +2485,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PowerArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "63"
   },
   {
     "id": "PowerArmor_51a",
@@ -2373,7 +2504,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_51",
-    "gender": null
+    "gender": null,
+    "codeId": "64"
   },
   {
     "id": "PowerArmor_51d",
@@ -2391,7 +2523,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_51",
-    "gender": null
+    "gender": null,
+    "codeId": "65"
   },
   {
     "id": "PowerArmor_51f",
@@ -2409,7 +2542,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_51",
-    "gender": null
+    "gender": null,
+    "codeId": "66"
   },
   {
     "id": "PowerArmor_MkI",
@@ -2427,7 +2561,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_X1",
-    "gender": null
+    "gender": null,
+    "codeId": "67"
   },
   {
     "id": "PowerArmor_MkIV",
@@ -2445,7 +2580,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_X1",
-    "gender": null
+    "gender": null,
+    "codeId": "68"
   },
   {
     "id": "PowerArmor_MkVI",
@@ -2463,7 +2599,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_X1",
-    "gender": null
+    "gender": null,
+    "codeId": "69"
   },
   {
     "id": "PowerArmor_T45d",
@@ -2481,7 +2618,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PowerArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "70"
   },
   {
     "id": "PowerArmor_T45f",
@@ -2499,7 +2637,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PowerArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "71"
   },
   {
     "id": "PowerArmor_T60a",
@@ -2517,7 +2656,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_60",
-    "gender": null
+    "gender": null,
+    "codeId": "72"
   },
   {
     "id": "PowerArmor_T60d",
@@ -2535,7 +2675,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_60",
-    "gender": null
+    "gender": null,
+    "codeId": "73"
   },
   {
     "id": "PowerArmor_T60f",
@@ -2553,7 +2694,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "PA_60",
-    "gender": null
+    "gender": null,
+    "codeId": "74"
   },
   {
     "id": "PrestonSpecial",
@@ -2571,7 +2713,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Preston",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "75"
   },
   {
     "id": "PrewarCowboy",
@@ -2589,7 +2732,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "PrewarCowboy",
-    "gender": null
+    "gender": null,
+    "codeId": "178"
   },
   {
     "id": "PrinceSpecial",
@@ -2607,7 +2751,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Prince",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "76"
   },
   {
     "id": "ProfessorSpecial",
@@ -2625,7 +2770,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Professor",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "77"
   },
   {
     "id": "RadiationSuit",
@@ -2643,7 +2789,8 @@
     "hasHelmet": true,
     "rarity": "Normal",
     "sprite": "EnvironmentSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "78"
   },
   {
     "id": "RadiationSuit_Advanced",
@@ -2661,7 +2808,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "EnvironmentSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "79"
   },
   {
     "id": "RadiationSuit_Expert",
@@ -2679,7 +2827,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "EnvironmentSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "80"
   },
   {
     "id": "RaiderArmor",
@@ -2697,7 +2846,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "RaidersArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "81"
   },
   {
     "id": "RaiderArmor_Heavy",
@@ -2715,7 +2865,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "RaidersArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "82"
   },
   {
     "id": "RaiderArmor_Sturdy",
@@ -2733,7 +2884,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "RaidersArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "83"
   },
   {
     "id": "RegsDirtyBlackSuit",
@@ -2751,7 +2903,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "SleekSuit",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "202"
   },
   {
     "id": "RiotGear",
@@ -2769,7 +2922,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "RiotGear",
-    "gender": null
+    "gender": null,
+    "codeId": "84"
   },
   {
     "id": "RiotGear_Heavy",
@@ -2787,7 +2941,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "RiotGear",
-    "gender": null
+    "gender": null,
+    "codeId": "85"
   },
   {
     "id": "RiotGear_Sturdy",
@@ -2805,7 +2960,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "RiotGear",
-    "gender": null
+    "gender": null,
+    "codeId": "86"
   },
   {
     "id": "RobCoFactoryUniform",
@@ -2823,7 +2979,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "RobCoFactoryUniform",
-    "gender": null
+    "gender": null,
+    "codeId": "165"
   },
   {
     "id": "RobCoRdSuit",
@@ -2841,7 +2998,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "RobCoRdSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "164"
   },
   {
     "id": "RobCoRdSuit_Helmetless",
@@ -2859,7 +3017,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "RobCoRdSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "207"
   },
   {
     "id": "RobotArmor",
@@ -2877,7 +3036,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "RobotArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "167"
   },
   {
     "id": "RothchildSpecial",
@@ -2895,7 +3055,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "ScribeRobe",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "87"
   },
   {
     "id": "RottedDuster",
@@ -2913,7 +3074,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "RottedDuster",
-    "gender": null
+    "gender": null,
+    "codeId": "171"
   },
   {
     "id": "SantaSuit_Original",
@@ -2931,7 +3093,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Santa",
-    "gender": null
+    "gender": null,
+    "codeId": "159"
   },
   {
     "id": "SarahSpecial",
@@ -2949,7 +3112,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "PowerArmor",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "88"
   },
   {
     "id": "ScarredPowerArmor",
@@ -2967,7 +3131,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "ScarredPowerArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "177"
   },
   {
     "id": "ScientistScrubs",
@@ -2985,7 +3150,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "ScientistScrubs",
-    "gender": null
+    "gender": null,
+    "codeId": "89"
   },
   {
     "id": "ScientistScrubs_Commander",
@@ -3003,7 +3169,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "ScientistScrubs",
-    "gender": null
+    "gender": null,
+    "codeId": "90"
   },
   {
     "id": "ScientistScrubs_Officer",
@@ -3021,7 +3188,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "ScientistScrubs",
-    "gender": null
+    "gender": null,
+    "codeId": "91"
   },
   {
     "id": "ScifiSpecial",
@@ -3039,7 +3207,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Scifi_Fan",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "92"
   },
   {
     "id": "Scorched",
@@ -3057,7 +3226,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Scorched",
-    "gender": null
+    "gender": null,
+    "codeId": "187"
   },
   {
     "id": "ScorchedHeavy",
@@ -3075,7 +3245,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Scorched 2",
-    "gender": null
+    "gender": null,
+    "codeId": "186"
   },
   {
     "id": "ScribeRobe",
@@ -3093,7 +3264,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "ScribeRobe",
-    "gender": null
+    "gender": null,
+    "codeId": "93"
   },
   {
     "id": "ScribeRobe_Elder",
@@ -3111,7 +3283,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Elder_Lyons",
-    "gender": null
+    "gender": null,
+    "codeId": "94"
   },
   {
     "id": "ScribeRobe_Initiate",
@@ -3129,7 +3302,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "ScribeRobe",
-    "gender": null
+    "gender": null,
+    "codeId": "95"
   },
   {
     "id": "SequinDress",
@@ -3147,7 +3321,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "F_SequinDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "140"
   },
   {
     "id": "SlasherSpecial",
@@ -3165,7 +3340,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Horror",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "96"
   },
   {
     "id": "SleazySuit",
@@ -3183,7 +3359,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "SleazySuit",
-    "gender": null
+    "gender": null,
+    "codeId": "175"
   },
   {
     "id": "SleekSuit",
@@ -3201,7 +3378,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "SleekSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "183"
   },
   {
     "id": "SodaFountainDress",
@@ -3219,7 +3397,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "F_SodaFountainDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "144"
   },
   {
     "id": "SoldierSpecial",
@@ -3237,7 +3416,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Soldier",
-    "gender": null
+    "gender": null,
+    "codeId": "97"
   },
   {
     "id": "SpecialThemeHalloween",
@@ -3255,7 +3435,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Ghost",
-    "gender": null
+    "gender": null,
+    "codeId": "113"
   },
   {
     "id": "SpecialThemeHalloween2",
@@ -3273,7 +3454,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Skeleton",
-    "gender": null
+    "gender": null,
+    "codeId": "117"
   },
   {
     "id": "SpecialThemeThanksGiving",
@@ -3291,7 +3473,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Pilgrim",
-    "gender": null
+    "gender": null,
+    "codeId": "115"
   },
   {
     "id": "SpecialThemeXmas",
@@ -3309,7 +3492,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Santa",
-    "gender": null
+    "gender": null,
+    "codeId": "114"
   },
   {
     "id": "SpecialThemeXmas2",
@@ -3327,7 +3511,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Elf",
-    "gender": null
+    "gender": null,
+    "codeId": "118"
   },
   {
     "id": "SportsfanSpecial",
@@ -3345,7 +3530,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Sports_Fan",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "98"
   },
   {
     "id": "StarPaladinSpecial",
@@ -3363,7 +3549,8 @@
     "hasHelmet": false,
     "rarity": "None",
     "sprite": "PowerArmor",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "99"
   },
   {
     "id": "SurgeonSpecial",
@@ -3381,7 +3568,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Surgeon",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "198"
   },
   {
     "id": "SurvivorSpecial",
@@ -3399,7 +3587,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Survivor",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "101"
   },
   {
     "id": "Suspenders",
@@ -3417,7 +3606,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "M_Suspenders",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "147"
   },
   {
     "id": "SweaterVest",
@@ -3435,7 +3625,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "M_SweaterVest",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "112"
   },
   {
     "id": "Swimsuit",
@@ -3453,7 +3644,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Swimsuit",
-    "gender": null
+    "gender": null,
+    "codeId": "125"
   },
   {
     "id": "SwingDress",
@@ -3471,7 +3663,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "F_SwingDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "153"
   },
   {
     "id": "SynthArmor_Heavy",
@@ -3489,7 +3682,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "SynthArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "130"
   },
   {
     "id": "ThreedogSpecial",
@@ -3507,7 +3701,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Three_Dog",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "102"
   },
   {
     "id": "TiedBlouse",
@@ -3525,7 +3720,8 @@
     "hasHelmet": true,
     "rarity": "Normal",
     "sprite": "F_TiedBlouse",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "154"
   },
   {
     "id": "UtilityJumpsuit",
@@ -3543,7 +3739,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "UtilityJumpSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "103"
   },
   {
     "id": "UtilityJumpsuit_Heavy",
@@ -3561,7 +3758,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "UtilityJumpSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "104"
   },
   {
     "id": "UtilityJumpsuit_Sturdy",
@@ -3579,7 +3777,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "UtilityJumpSuit",
-    "gender": null
+    "gender": null,
+    "codeId": "105"
   },
   {
     "id": "ValentinesTrenchCoat",
@@ -3597,7 +3796,8 @@
     "hasHelmet": true,
     "rarity": "Legendary",
     "sprite": "NickValentine_TrenchCoat",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "212"
   },
   {
     "id": "Vault33Suit",
@@ -3615,7 +3815,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "Vault33Suit",
-    "gender": null
+    "gender": null,
+    "codeId": "173"
   },
   {
     "id": "VaultSecurityOutfit",
@@ -3633,7 +3834,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "VaultSecurityOutfit",
-    "gender": null
+    "gender": null,
+    "codeId": "185"
   },
   {
     "id": "Vest",
@@ -3651,7 +3853,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "M_Vest",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "131"
   },
   {
     "id": "WaitressUniform",
@@ -3669,7 +3872,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "F_WaitressUniform",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "151"
   },
   {
     "id": "WandererArmor",
@@ -3687,7 +3891,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "WandrersArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "106"
   },
   {
     "id": "WandererArmor_Heavy",
@@ -3705,7 +3910,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "WandrersArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "107"
   },
   {
     "id": "WandererArmor_Sturdy",
@@ -3723,7 +3929,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "WandrersArmor",
-    "gender": null
+    "gender": null,
+    "codeId": "108"
   },
   {
     "id": "WastelandSurgeon",
@@ -3741,7 +3948,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "WastelandSurgeon",
-    "gender": null
+    "gender": null,
+    "codeId": "109"
   },
   {
     "id": "WastelandSurgeon_Doctor",
@@ -3759,7 +3967,8 @@
     "hasHelmet": false,
     "rarity": "Rare",
     "sprite": "WastelandSurgeon",
-    "gender": null
+    "gender": null,
+    "codeId": "110"
   },
   {
     "id": "WastelandSurgeon_Settler",
@@ -3777,7 +3986,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "WastelandSurgeon",
-    "gender": null
+    "gender": null,
+    "codeId": "111"
   },
   {
     "id": "WeddingDress",
@@ -3795,7 +4005,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "WeddingDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "179"
   },
   {
     "id": "WilzigsTravelwear",
@@ -3813,7 +4024,8 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "WilzigsTravelwear",
-    "gender": null
+    "gender": null,
+    "codeId": "182"
   },
   {
     "id": "WorkDress",
@@ -3831,7 +4043,8 @@
     "hasHelmet": false,
     "rarity": "Normal",
     "sprite": "F_WorkDress",
-    "gender": "female"
+    "gender": "female",
+    "codeId": "141"
   },
   {
     "id": "WrestlerSpecial",
@@ -3849,7 +4062,8 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Wrestler",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "156"
   },
   {
     "id": "ZekesJacketAndJeans",
@@ -3867,6 +4081,7 @@
     "hasHelmet": false,
     "rarity": "Legendary",
     "sprite": "Zeke jacket and jeans",
-    "gender": "male"
+    "gender": "male",
+    "codeId": "189"
   }
 ]

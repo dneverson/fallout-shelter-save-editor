@@ -28,6 +28,7 @@ export type Section =
   | 'weapons'
   | 'outfits'
   | 'recipes'
+  | 'survival-guide'
   | 'pets'
   | 'handies'
   | 'junk'

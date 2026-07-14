@@ -76,11 +76,23 @@ function SummaryBody({ summary }: { summary: ChangeSummary | null }) {
     boxesChanged,
     recipesAdded,
     recipesRemoved,
+    guideChanged,
     inventoryDelta,
     otherChanges,
     otherChangesTruncated,
     otherSectionsChanged,
   } = summary;
+
+  // "weapons +122 −1 · 3 seen" per changed Survival Guide list.
+  const guideLine = (g: (typeof guideChanged)[number]): string =>
+    [
+      g.list,
+      g.added > 0 ? `+${g.added}` : null,
+      g.removed > 0 ? `−${g.removed}` : null,
+      g.stateFlipped > 0 ? `${g.stateFlipped} new/seen` : null,
+    ]
+      .filter((s): s is string => s !== null)
+      .join(' ');
 
   // Condensed headline: dweller/room counts, resources, storage delta, other sections.
   const dwellerCounts = [
@@ -107,6 +119,7 @@ function SummaryBody({ summary }: { summary: ChangeSummary | null }) {
     boxesChanged.length > 0 ||
     recipesAdded.length > 0 ||
     recipesRemoved.length > 0 ||
+    guideChanged.length > 0 ||
     otherChanges.length > 0;
 
   const CAP = 25;
@@ -147,6 +160,11 @@ function SummaryBody({ summary }: { summary: ChangeSummary | null }) {
           )}
           {recipesRemoved.length > 0 && (
             <p className="text-neutral-300">Recipes removed: {recipesRemoved.length}</p>
+          )}
+          {guideChanged.length > 0 && (
+            <p className="text-neutral-300">
+              Survival Guide: {guideChanged.map(guideLine).join(', ')}
+            </p>
           )}
           {inventoryDelta && (
             <p className="text-neutral-300">
@@ -266,6 +284,12 @@ function SummaryBody({ summary }: { summary: ChangeSummary | null }) {
             <div>
               <p className="font-medium text-red-300">{recipesRemoved.length} recipe(s) removed</p>
               <p className="text-xs text-neutral-400">{capped(recipesRemoved)}</p>
+            </div>
+          )}
+          {guideChanged.length > 0 && (
+            <div>
+              <p className="font-medium text-amber-300">Survival Guide collections changed</p>
+              <p className="text-xs text-neutral-400">{guideChanged.map(guideLine).join(', ')}</p>
             </div>
           )}
           {otherChanges.length > 0 && (

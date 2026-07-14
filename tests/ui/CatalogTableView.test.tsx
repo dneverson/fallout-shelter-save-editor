@@ -17,6 +17,7 @@ const weapon = (id: string, name: string): Weapon => ({
   tier: 1,
   rarity: 'Rare',
   sprite: 'x',
+  codeId: '0',
 });
 
 const WEAPONS: Weapon[] = [weapon('Laser', 'Laser Pistol'), weapon('Plasma', 'Plasma Rifle')];

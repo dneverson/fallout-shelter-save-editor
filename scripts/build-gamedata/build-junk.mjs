@@ -1,10 +1,12 @@
-// junk.json - id, name, rarity, value, sprite. Verified fields: m_JunkId,
-// m_NameLocalizationId, m_JunkSprite. Rarity + value (m_sellPrice)
+// junk.json - id, name, rarity, value, sprite, codeId. Verified fields: m_JunkId,
+// m_NameLocalizationId, m_JunkSprite. Rarity + value (m_sellPrice) + codeId (the
+// Survival Guide `survivalW.junk` code - equals the id for every junk item)
 // join the card list.
 import { pathToFileURL } from 'node:url';
 import { PATHS, readSource, writeOutput } from './lib/io.mjs';
 import {
   field,
+  parseCodeIdById,
   parseLocalization,
   parseRarityById,
   parseSellPriceById,
@@ -17,6 +19,7 @@ export function buildJunk() {
   const loc = parseLocalization(readSource(PATHS.i2));
   const rarityById = parseRarityById(text);
   const priceById = parseSellPriceById(text);
+  const codeById = parseCodeIdById(text);
 
   const junk = [];
   let cur = null;
@@ -51,6 +54,7 @@ export function buildJunk() {
       rarity: rarityById.get(j.id) ?? 'Normal',
       value: priceById.get(j.id) ?? 0,
       sprite: j.sprite,
+      codeId: codeById.get(j.id) ?? '',
     });
   }
   out.sort((a, b) => a.id.localeCompare(b.id));

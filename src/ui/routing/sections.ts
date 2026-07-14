@@ -13,6 +13,7 @@ export const SECTION_NAV: ReadonlyArray<{ id: Section; label: string }> = [
   { id: 'weapons', label: 'Weapons' },
   { id: 'outfits', label: 'Outfits' },
   { id: 'recipes', label: 'Recipes' },
+  { id: 'survival-guide', label: 'Survival Guide' },
   { id: 'pets', label: 'Pets' },
   { id: 'handies', label: 'Mr. Handies' },
   { id: 'junk', label: 'Junk' },

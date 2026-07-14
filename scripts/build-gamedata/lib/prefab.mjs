@@ -71,6 +71,31 @@ export function parseSellPriceById(text) {
   return map;
 }
 
+/**
+ * Build id → Survival Guide code from the same card entries. `m_codeId` is the string
+ * a `survivalW` collection list stores after its N/O (new/seen) prefix - numeric strings
+ * for weapons/outfits ("24"), the item id itself for junk ("AlarmClock"). Covers
+ * weapons/outfits/junk uniformly; first card per id wins (same rule as rarity/price).
+ */
+export function parseCodeIdById(text) {
+  const lines = splitLines(text);
+  const cardRe = new RegExp(`^\\s*- name:\\s*'(.+) \\((${RARITY_WORDS.join('|')})\\)\\s*'\\s*$`);
+  const map = new Map();
+  for (let i = 0; i < lines.length; i++) {
+    const card = lines[i].match(cardRe);
+    if (!card || map.has(card[1])) continue;
+    for (let j = i + 1; j < lines.length && j < i + 20; j++) {
+      if (/^\s*- name:/.test(lines[j])) break; // next list item
+      const c = field(lines[j], 'm_codeId');
+      if (c !== null) {
+        map.set(card[1], c);
+        break;
+      }
+    }
+  }
+  return map;
+}
+
 /** Parse I2Languages: localization Term → first (English) Languages value. */
 export function parseLocalization(text) {
   const lines = splitLines(text);

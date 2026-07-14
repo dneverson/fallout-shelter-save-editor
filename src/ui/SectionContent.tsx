@@ -3,7 +3,7 @@ import type { Section } from '../state/uiStore.ts';
 
 // Route-based code splitting keeps the initial bundle small. Each section view is its own
 // lazy chunk, so the initial bundle is just the app shell (TopBar/Sidebar/Import) + the
-// framework - not all 14 sections with their tables, dialogs, and canvas code. A view's
+// framework - not all 15 sections with their tables, dialogs, and canvas code. A view's
 // chunk is fetched on first navigation to its section; <Suspense> shows a light placeholder
 // (the section list lives in ui/routing/sections.ts - the single source of nav order).
 // during the (local, fast) load. Named exports are mapped to `default` for React.lazy.
@@ -30,6 +30,9 @@ const OutfitsView = lazy(() =>
 );
 const RecipesView = lazy(() =>
   import('./views/RecipesView.tsx').then((m) => ({ default: m.RecipesView })),
+);
+const SurvivalGuideView = lazy(() =>
+  import('./views/SurvivalGuideView.tsx').then((m) => ({ default: m.SurvivalGuideView })),
 );
 const PetsView = lazy(() => import('./views/PetsView.tsx').then((m) => ({ default: m.PetsView })));
 const HandiesView = lazy(() =>
@@ -60,6 +63,7 @@ function renderSection(section: Section) {
   if (section === 'weapons') return <WeaponsView />;
   if (section === 'outfits') return <OutfitsView />;
   if (section === 'recipes') return <RecipesView />;
+  if (section === 'survival-guide') return <SurvivalGuideView />;
   if (section === 'pets') return <PetsView />;
   if (section === 'handies') return <HandiesView />;
   if (section === 'junk') return <JunkView />;

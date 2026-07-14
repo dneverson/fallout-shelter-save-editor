@@ -17,6 +17,7 @@ const weapon = (id: string, name: string, damageMin: number, damageMax: number):
   tier: 1,
   rarity: 'Rare',
   sprite: 'x',
+  codeId: '0',
 });
 
 const WEAPONS: Weapon[] = [

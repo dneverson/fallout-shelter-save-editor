@@ -1,15 +1,24 @@
-// weapons.json - id, display name, damage range, type, tier, rarity, sprite.
+// weapons.json - id, display name, damage range, type, tier, rarity, sprite, codeId.
 // Source: GameParameters.prefab (stats) + I2Languages.prefab (names). Verified
 // field names: m_WeaponId, m_DamageMin/Max, m_weaponType, m_tier, m_NameLocalizationId,
-// m_WeaponSprite. Rarity is joined from the prefab card list.
+// m_WeaponSprite. Rarity + codeId (the Survival Guide `survivalW.weapons` code)
+// join the prefab card list.
 import { pathToFileURL } from 'node:url';
 import { PATHS, readSource, writeOutput } from './lib/io.mjs';
-import { field, parseLocalization, parseRarityById, prettify, splitLines } from './lib/prefab.mjs';
+import {
+  field,
+  parseCodeIdById,
+  parseLocalization,
+  parseRarityById,
+  prettify,
+  splitLines,
+} from './lib/prefab.mjs';
 
 export function buildWeapons() {
   const text = readSource(PATHS.gameParams);
   const loc = parseLocalization(readSource(PATHS.i2));
   const rarityById = parseRarityById(text);
+  const codeById = parseCodeIdById(text);
 
   const weapons = [];
   let cur = null;
@@ -56,6 +65,7 @@ export function buildWeapons() {
       tier: w.tier,
       rarity: rarityById.get(w.id) ?? 'Normal',
       sprite: w.sprite,
+      codeId: codeById.get(w.id) ?? '',
     });
   }
   out.sort((a, b) => a.id.localeCompare(b.id));

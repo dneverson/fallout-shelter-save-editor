@@ -25,6 +25,8 @@ export const weaponSchema = z.object({
   tier: z.number(),
   rarity: raritySchema,
   sprite: z.string(),
+  /** Survival Guide code: `survivalW.weapons` stores "N"/"O" + this ('' = pre-codeId fixture). */
+  codeId: z.string().default(''),
 });
 
 export const outfitSchema = z.object({
@@ -37,6 +39,8 @@ export const outfitSchema = z.object({
   sprite: z.string(),
   /** Gender the outfit is locked to (no mesh for the other gender), or null when unisex. */
   gender: z.enum(['male', 'female']).nullable().default(null),
+  /** Survival Guide code: `survivalW.outfits` stores "N"/"O" + this ('' = pre-codeId fixture). */
+  codeId: z.string().default(''),
 });
 
 export const junkSchema = z.object({
@@ -46,6 +50,8 @@ export const junkSchema = z.object({
   /** Sell price (caps), joined from the prefab card list's m_sellPrice; 0 if none. */
   value: z.number(),
   sprite: z.string(),
+  /** Survival Guide code (== id for junk): `survivalW.junk` stores "N"/"O" + this. */
+  codeId: z.string().default(''),
 });
 
 // One pet item = a breed+rarity entry from PetsCustomizationData (130 total). The

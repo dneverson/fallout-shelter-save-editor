@@ -16,6 +16,7 @@ const outfit = (id: string, name: string, special: Partial<Outfit['special']>): 
   rarity: 'Rare',
   sprite: 'x',
   gender: null,
+  codeId: '0',
 });
 
 const weapon = (id: string, name: string, damageMin: number, damageMax: number): Weapon => ({
@@ -27,6 +28,7 @@ const weapon = (id: string, name: string, damageMin: number, damageMax: number):
   tier: 1,
   rarity: 'Rare',
   sprite: 'x',
+  codeId: '0',
 });
 
 const pet = (id: string, name: string, bonus: string): Pet =>

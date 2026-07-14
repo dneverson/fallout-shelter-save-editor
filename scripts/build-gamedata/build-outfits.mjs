@@ -1,4 +1,5 @@
-// outfits.json - id, name, category, SPECIAL bonuses, helmet flag, rarity, sprite, gender.
+// outfits.json - id, name, category, SPECIAL bonuses, helmet flag, rarity, sprite, gender,
+// codeId (the Survival Guide `survivalW.outfits` code, joined from the prefab card list).
 // SPECIAL is nested under m_specialStats (Strength..Luck → Value). Verified fields:
 // m_outfitId, m_category, m_specialStats, m_HasHelmet, m_outfitNameLocalizationId,
 // m_OutfitSprite.
@@ -10,7 +11,14 @@
 // stash them as pending and attach them when the id line opens the entry.
 import { pathToFileURL } from 'node:url';
 import { PATHS, readSource, writeOutput } from './lib/io.mjs';
-import { field, parseLocalization, parseRarityById, prettify, splitLines } from './lib/prefab.mjs';
+import {
+  field,
+  parseCodeIdById,
+  parseLocalization,
+  parseRarityById,
+  prettify,
+  splitLines,
+} from './lib/prefab.mjs';
 
 const STAT_LETTER = {
   Strength: 'S',
@@ -26,6 +34,7 @@ export function buildOutfits() {
   const text = readSource(PATHS.gameParams);
   const loc = parseLocalization(readSource(PATHS.i2));
   const rarityById = parseRarityById(text);
+  const codeById = parseCodeIdById(text);
 
   const emptySpecial = () => ({ S: 0, P: 0, E: 0, C: 0, I: 0, A: 0, L: 0 });
   const outfits = [];
@@ -117,6 +126,7 @@ export function buildOutfits() {
       rarity: rarityById.get(o.id) ?? 'Normal',
       sprite: o.sprite,
       gender: o.gender,
+      codeId: codeById.get(o.id) ?? '',
     });
   }
   out.sort((a, b) => a.id.localeCompare(b.id));

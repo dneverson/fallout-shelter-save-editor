@@ -312,7 +312,17 @@ const themeItemSchema = z.looseObject({
   extraData: z.looseObject({ partsCollectedCount: z.number().optional() }).optional(),
 });
 
+// Survival Guide collection lists (SurvivalWindow.Serialize). Each entry is
+// "N" (new - shows the in-game NEW badge) or "O" (seen) + a code: weapons/outfits/pets use
+// the item's numeric-string CodeId, junk its item id, dwellers the legendary character's
+// asset name (already "L_"-prefixed, e.g. "NL_NickValentine"), breeds the EPetBreed int.
 const survivalWSchema = z.looseObject({
+  weapons: z.array(z.string()).optional(),
+  outfits: z.array(z.string()).optional(),
+  dwellers: z.array(z.string()).optional(),
+  pets: z.array(z.string()).optional(),
+  breeds: z.array(z.string()).optional(),
+  junk: z.array(z.string()).optional(),
   recipes: z.array(z.string()).optional(),
   collectedThemes: z.looseObject({ themeList: z.array(themeItemSchema).optional() }).optional(),
 });
