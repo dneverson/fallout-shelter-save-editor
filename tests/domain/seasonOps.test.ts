@@ -24,6 +24,8 @@ import {
   resetSeasonClock,
   seasonClockOffsetDays,
   skipToSeasonEnd,
+  isUltraciteSeasonActive,
+  ULTRACITE_SEASON_ID,
 } from '../../src/domain/ops/seasonOps.ts';
 
 // --- fixtures -------------------------------------------------------------------
@@ -649,5 +651,26 @@ describe('seasonOps - season clock (debugTimeOffset)', () => {
     const ws = advanceSeasonClock(makeWorkspace(), 1);
     expect(seasonClockOffsetDays(ws.spd)).toBe(1);
     expect(seasonClockOffsetDays({} as SeasonSave)).toBe(0);
+  });
+});
+
+describe('seasonOps - Ultracite season gate (room functionality)', () => {
+  it('is active only when Ultracite Fever is the current season', () => {
+    expect(isUltraciteSeasonActive({ currentSeason: ULTRACITE_SEASON_ID } as SeasonSave)).toBe(
+      true,
+    );
+    expect(isUltraciteSeasonActive({ currentSeason: 'Institute' } as SeasonSave)).toBe(false);
+    // A different active season with UltraciteFever merely present in seasonsData is still inert.
+    expect(
+      isUltraciteSeasonActive({
+        currentSeason: 'Institute',
+        seasonsData: { UltraciteFever: {} },
+      } as SeasonSave),
+    ).toBe(false);
+  });
+
+  it('treats a missing season model / current season as not active', () => {
+    expect(isUltraciteSeasonActive(null)).toBe(false);
+    expect(isUltraciteSeasonActive({} as SeasonSave)).toBe(false);
   });
 });

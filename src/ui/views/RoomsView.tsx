@@ -58,6 +58,7 @@ import {
   unassignDweller,
 } from '../../domain/ops/roomOps.ts';
 import { VAULT_HELPER_CHARACTER_TYPES } from '../../domain/model/saveSchema.ts';
+import { isUltraciteSeasonActive } from '../../domain/ops/seasonOps.ts';
 import {
   assignMrHandyToRoom,
   createMrHandy,
@@ -140,7 +141,22 @@ const PRODUCED_RESOURCES = ['Food', 'Water', 'Energy'] as const;
 /** Advisory severity → sort rank (higher = more urgent), for picking a room's top badge. */
 const SEVERITY_RANK: Record<Recommendation['severity'], number> = { high: 3, medium: 2, low: 1 };
 
-function buildableRooms(gameData: GameData | null, claimed: ReadonlySet<string>): BuildableRoom[] {
+// Ultracite rooms are Ultracite Fever season rooms: they can be built, staffed, levelled and
+// rushed in any vault, but the Mine yields no ultracite and the Workshop won't craft unless
+// Ultracite Fever is the ACTIVE season (isUltraciteSeasonActive). The note is surfaced on the
+// Build tile (tooltip + ⚠) and in the selected-room side panel, but only when it doesn't apply.
+const ULTRACITE_ROOM_NOTE: Record<string, string> = {
+  UltraciteMining:
+    'Ultracite Fever season room. Assigned dwellers still train and you can rush cycles, but it produces no ultracite outside an active Ultracite Fever season.',
+  UltraciteWeaponFactory:
+    'Ultracite Fever season room. You can assign dwellers, but it will not craft outside an active Ultracite Fever season.',
+};
+
+function buildableRooms(
+  gameData: GameData | null,
+  claimed: ReadonlySet<string>,
+  ultraciteActive: boolean,
+): BuildableRoom[] {
   if (!gameData) return [];
   const out: BuildableRoom[] = [];
   for (const [type, meta] of gameData.roomMetadataByType) {
@@ -152,6 +168,7 @@ function buildableRooms(gameData: GameData | null, claimed: ReadonlySet<string>)
     // rooms (no objective) are never locked. Locked rooms stay buildable: placing one claims
     // its unlock in the same edit (see onPlace).
     const unlockId = unlockIdForRoomType(type);
+    const note = ultraciteActive ? undefined : ULTRACITE_ROOM_NOTE[type];
     out.push({
       type,
       name: meta.name,
@@ -162,6 +179,7 @@ function buildableRooms(gameData: GameData | null, claimed: ReadonlySet<string>)
       produces: PRODUCED_RESOURCES.filter((r) => (produced[r] ?? 0) > 0),
       locked: unlockId !== null && !claimed.has(unlockId),
       roomClass: meta.class,
+      ...(note ? { note } : {}),
     });
   }
   return out.sort((a, b) => a.name.localeCompare(b.name));
@@ -169,6 +187,7 @@ function buildableRooms(gameData: GameData | null, claimed: ReadonlySet<string>)
 
 export function RoomsView() {
   const save = useSaveStore((s) => s.save);
+  const seasonSave = useSaveStore((s) => s.seasonSave);
   const applyEdit = useSaveStore((s) => s.applyEdit);
   const goToSection = useSectionNavigate();
   // Selected room lives in the URL (#/rooms/:deserializeID) - deep-linkable + back-forward.
@@ -456,9 +475,12 @@ export function RoomsView() {
   // `claimed` only changes when a room is unlocked (structural sharing), so the palette's
   // locked flags refresh on build without recomputing on unrelated save edits.
   const claimed = save?.unlockableMgr?.claimed;
+  // Ultracite rooms only function while Ultracite Fever is the active season; otherwise the
+  // Build tiles + side panel carry a "won't function here" note (see ULTRACITE_ROOM_NOTE).
+  const ultraciteActive = isUltraciteSeasonActive(seasonSave);
   const palette = useMemo(
-    () => buildableRooms(gameData, new Set(claimed ?? [])),
-    [gameData, claimed],
+    () => buildableRooms(gameData, new Set(claimed ?? []), ultraciteActive),
+    [gameData, claimed, ultraciteActive],
   );
 
   const buildMerge = buildType
@@ -1111,6 +1133,9 @@ export function RoomsView() {
               }}
               timers={nodeTimers}
               productionAwaitingCollect={isProductionAwaitingCollect(save, node.deserializeID)}
+              {...(!ultraciteActive && ULTRACITE_ROOM_NOTE[node.type]
+                ? { seasonNote: ULTRACITE_ROOM_NOTE[node.type] }
+                : {})}
               onCompleteTimers={(kinds) => {
                 applyEdit(
                   (s) => completeRoomTimersNow(s, node.deserializeID, kinds),

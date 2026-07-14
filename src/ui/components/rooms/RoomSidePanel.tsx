@@ -92,6 +92,9 @@ interface RoomSidePanelProps {
   onCompleteTrainingSlot?: (dwellerId: number) => void;
   /** Staffed production room whose output is full: no cycle timer exists in the save. */
   productionAwaitingCollect?: boolean;
+  /** Advisory note for a season-only room that won't function in this vault (Ultracite rooms
+   *  outside an active Ultracite Fever season). Absent = the room functions normally here. */
+  seasonNote?: string;
 }
 
 /** Row label + tooltip + action label per timer kind. */
@@ -157,6 +160,7 @@ export function RoomSidePanel({
   onCompleteTimers,
   onCompleteTrainingSlot,
   productionAwaitingCollect = false,
+  seasonNote,
 }: RoomSidePanelProps) {
   // Which unassigned robot the "Assign Mr. Handy" select currently points at.
   const [handyPick, setHandyPick] = useState<string>('');
@@ -193,6 +197,17 @@ export function RoomSidePanel({
           ✕
         </button>
       </div>
+
+      {seasonNote && (
+        <div className={`${SECTION}`}>
+          <div className="flex items-start gap-2 rounded border border-amber-500/40 bg-amber-500/10 px-2.5 py-2">
+            <span aria-hidden="true" className="mt-px text-sm leading-none text-amber-400">
+              ⚠
+            </span>
+            <p className="min-w-0 flex-1 text-[11px] text-neutral-300">{seasonNote}</p>
+          </div>
+        </div>
+      )}
 
       {advisories.length > 0 && (
         <div className={SECTION}>

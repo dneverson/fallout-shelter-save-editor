@@ -310,6 +310,19 @@ export function isRewardClaimed(reward: SeasonReward): boolean {
   return reward.claimedList.includes(VAULT_INDEX);
 }
 
+/** The season id under which the Ultracite Mine / Ultracite Weapon Workshop function. */
+export const ULTRACITE_SEASON_ID = 'UltraciteFever';
+
+/**
+ * True when Ultracite Fever is the ACTIVE season (`spd.currentSeason`). The game only lets the
+ * Ultracite Mine produce ultracite and the Ultracite Weapon Workshop craft while this season is
+ * running; in any other vault (no season loaded, or a different active season) those rooms are
+ * inert. Null spd (no season model loaded) is not active.
+ */
+export function isUltraciteSeasonActive(spd: SeasonSave | null): boolean {
+  return spd?.currentSeason === ULTRACITE_SEASON_ID;
+}
+
 // --- claim / unclaim ---------------------------------------------------
 
 /**

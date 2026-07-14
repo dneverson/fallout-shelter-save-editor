@@ -33,6 +33,9 @@ export interface BuildableRoom {
   /** Room category from metadata ("Production", "Training", "Utility", …) - the Filter/
    *  Sort "type". */
   roomClass: string;
+  /** Advisory note (e.g. a season-only room that won't function in this vault). Surfaces as
+   *  a ⚠ marker on the tile and the tail of the hover tooltip. Absent = no note. */
+  note?: string;
 }
 
 type SortKey = 'name' | 'special' | 'price' | 'type' | 'size';
@@ -263,6 +266,7 @@ export function BuildPalette({
               `${room.size}× wide`,
               room.produces.length > 0 ? `produces ${room.produces.join(' + ')}` : null,
               room.locked ? 'locked (building it claims the unlock)' : null,
+              room.note ?? null,
             ]
               .filter((s) => s !== null)
               .join(' · ');
@@ -292,6 +296,11 @@ export function BuildPalette({
                   {room.locked && (
                     <span aria-label="Locked" className="shrink-0 text-[10px]">
                       🔒
+                    </span>
+                  )}
+                  {room.note && (
+                    <span aria-label="Season-only room" className="shrink-0 text-[10px]">
+                      ⚠️
                     </span>
                   )}
                 </span>
