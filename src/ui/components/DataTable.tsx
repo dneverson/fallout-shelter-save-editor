@@ -87,6 +87,14 @@ export interface DataTableProps<T> {
    * belongs to.
    */
   activeRowId?: string;
+  /**
+   * Row id (matches `getRowId`) to scroll into view and briefly FLASH when it changes -
+   * the arrival cue for a cross-tab jump (e.g. the Outfits "Craftable" cell → the Recipes
+   * tab, or a recipe's "View in tab" → the item catalog). Distinct from `activeRowId`
+   * (a persistent open-detail highlight): the flash fades on its own after ~1.8s and does
+   * not depend on the row staying selected. Typically fed from the URL `:detail` param.
+   */
+  focusRowId?: string | null;
   virtualized?: boolean;
   estimateRowHeight?: number;
   overscan?: number;
@@ -138,6 +146,7 @@ export function DataTable<T>({
   onRowSelectionChange: controlledOnRowSelectionChange,
   onRowClick,
   activeRowId,
+  focusRowId,
   virtualized = true,
   estimateRowHeight,
   overscan = 8,
@@ -265,16 +274,25 @@ export function DataTable<T>({
       );
     });
 
-  // Rows that open a detail are interactive: clickable AND keyboard-navigable.
-  // The grid uses a roving tabindex - exactly one row is in the tab order at a time and
-  // the arrow keys move focus between rows (the standard ARIA grid pattern), so the
-  // table is one Tab stop rather than hundreds.
-  const interactive = !!onRowClick;
-  const activateRow = (row: Row<T>): void => onRowClick?.(row.original);
+  // Every row is interactive: clickable AND keyboard-navigable, so the user can always pick
+  // the row they're reading to keep their place (less visual overload). A row with an
+  // `onRowClick` opens its detail (the URL-driven master-detail `activeRowId` is then the
+  // highlight); every other table falls back to an INTERNAL picked-row highlight - the same
+  // amber selection styling, minus any side effect. The grid uses a roving tabindex - exactly
+  // one row is in the tab order at a time and the arrow keys move focus between rows (the
+  // standard ARIA grid pattern), so the table is one Tab stop rather than hundreds.
+  const [pickedRowId, setPickedRowId] = useState<string | null>(null);
+  const activateRow = (row: Row<T>): void => {
+    if (onRowClick) onRowClick(row.original);
+    else setPickedRowId(row.id);
+  };
+  // The highlighted row: the controlled master-detail selection when present, else the
+  // internally picked row. One concept everywhere so every table highlights consistently.
+  const highlightId = activeRowId ?? pickedRowId;
 
   const [focusedIndex, setFocusedIndex] = useState(-1);
-  // Tab enters on the focused row if there is one, else the open-detail row, else the top.
-  const activeIndex = activeRowId != null ? rows.findIndex((r) => r.id === activeRowId) : -1;
+  // Tab enters on the focused row if there is one, else the highlighted row, else the top.
+  const activeIndex = highlightId != null ? rows.findIndex((r) => r.id === highlightId) : -1;
   const rovingIndex = focusedIndex >= 0 ? focusedIndex : activeIndex >= 0 ? activeIndex : 0;
 
   // Focusing a virtualized row that isn't mounted yet can't happen synchronously, so the
@@ -291,6 +309,64 @@ export function DataTable<T>({
   useEffect(() => {
     if (pendingFocusRef.current != null) focusRow(pendingFocusRef.current);
   });
+
+  // Cross-tab jump arrival: when `focusRowId` changes to a row that exists in the current
+  // (filtered/sorted) rows, scroll it into view and pick it (a persistent highlight that stays
+  // until the user clicks another row).
+  //
+  // Two things fight a naive one-shot scroll here:
+  //  1. React StrictMode double-invokes effects (setup → cleanup → setup) in dev. So we must
+  //     NOT record "handled" synchronously in setup - that makes the 2nd setup skip while the
+  //     1st cleanup has already cancelled the scroll's rAF, and nothing ever scrolls. We mark
+  //     it handled only once the rAF loop actually starts running (`markedRef`), so whichever
+  //     setup survives does the work; a later re-run for the SAME id (e.g. a filter changing
+  //     `rows.length`) is then skipped so we don't yank the user back mid-search.
+  //  2. On a fresh section mount the virtualizer resets the scroll offset to 0 a frame or two
+  //     after we set it, swallowing the scroll. Rows are uniform height, so we PIN `scrollTop`
+  //     to the exact estimated centered offset for a short window (re-applying each frame),
+  //     which overrides that reset, then a final `scrollToIndex` refines for any dynamic-height
+  //     table (`align: 'auto'` no-ops once the row is on screen).
+  const handledFocusRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (focusRowId == null || focusRowId === handledFocusRef.current) return;
+    const index = rows.findIndex((r) => r.id === focusRowId);
+    if (index < 0) return; // not present yet (data still loading) - retries when rows arrive
+    const targetId = focusRowId;
+    setPickedRowId(targetId);
+    if (!virtualized) {
+      handledFocusRef.current = targetId;
+      const rowEl = scrollRef.current?.querySelector(`[role="row"][data-index="${index}"]`);
+      // scrollIntoView is absent in jsdom (and some non-DOM environments); guard it.
+      if (rowEl instanceof HTMLElement && typeof rowEl.scrollIntoView === 'function') {
+        rowEl.scrollIntoView({ block: 'center' });
+      }
+      return;
+    }
+    const want = (e: HTMLElement): number =>
+      Math.max(0, index * rowHeight - e.clientHeight / 2 + rowHeight / 2);
+    let raf = 0;
+    let frames = 0;
+    const PIN_FRAMES = 20;
+    const step = (): void => {
+      frames += 1;
+      // Mark handled only now (inside the rAF, past StrictMode's synchronous cleanup+re-setup),
+      // so the surviving setup is the one that owns the scroll.
+      handledFocusRef.current = targetId;
+      const e = scrollRef.current;
+      if (e) {
+        if (frames <= PIN_FRAMES) {
+          e.scrollTop = want(e); // pin through the virtualizer's mount-time offset reset
+        } else {
+          virtualizer.scrollToIndex(index, { align: 'auto' }); // refine to measured position
+        }
+      }
+      if (frames <= PIN_FRAMES) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+    // rows.length (not the unstable rows array) re-runs this when data first loads.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusRowId, rows.length, virtualized]);
 
   const moveFocus = (target: number): void => {
     if (rows.length === 0) return;
@@ -331,14 +407,13 @@ export function DataTable<T>({
       }
     };
 
-  // The active (open-detail) row gets a distinct highlight + ring, kept visually separate
-  // from the checkbox bulk-selection. The ring is inset so it never shifts the grid layout.
+  // The highlighted row gets a distinct amber highlight + inset ring, kept visually separate
+  // from the checkbox bulk-selection. The ring is inset so it never shifts the grid layout;
+  // `transition-colors` makes the highlight move smoothly as the user picks a different row.
   const rowStateClass = (isActive: boolean): string =>
-    `border-t border-neutral-800 hover:bg-neutral-800/50${
-      interactive
-        ? ' cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400'
-        : ''
-    }${isActive ? ' bg-amber-500/10 ring-1 ring-inset ring-amber-500/40' : ''}`;
+    `border-t border-neutral-800 transition-colors hover:bg-neutral-800/50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400${
+      isActive ? ' bg-amber-500/10 ring-1 ring-inset ring-amber-500/40' : ''
+    }`;
 
   // Shared row markup so the virtualized + non-virtualized branches can't drift on the
   // interactive/active/focus behaviour. `positioned` rows are absolutely placed by the
@@ -352,18 +427,18 @@ export function DataTable<T>({
       measureRef?: (node: Element | null) => void;
     },
   ): ReactNode => {
-    const isActive = activeRowId != null && row.id === activeRowId;
+    const isActive = highlightId != null && row.id === highlightId;
     return (
       <div
         role="row"
         key={row.id}
         ref={opts.measureRef}
         data-index={index}
-        tabIndex={interactive ? (index === rovingIndex ? 0 : -1) : undefined}
-        aria-selected={interactive ? isActive : undefined}
-        onClick={interactive ? () => activateRow(row) : undefined}
-        onKeyDown={interactive ? handleRowKeyDown(row, index) : undefined}
-        onFocus={interactive ? () => setFocusedIndex(index) : undefined}
+        tabIndex={index === rovingIndex ? 0 : -1}
+        aria-selected={isActive}
+        onClick={() => activateRow(row)}
+        onKeyDown={handleRowKeyDown(row, index)}
+        onFocus={() => setFocusedIndex(index)}
         className={`${opts.positioned ? 'absolute left-0 ' : ''}grid ${rowStateClass(isActive)}`}
         style={{ ...opts.style, width: totalColumnsWidth, minWidth: '100%' }}
       >

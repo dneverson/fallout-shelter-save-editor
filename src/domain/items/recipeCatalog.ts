@@ -15,6 +15,8 @@ export interface RecipeRow {
   /** Display name (joined weapon/outfit name, or "<Room>: <Theme>" for themes). */
   name: string;
   kind: RecipeKind;
+  /** Weapon/outfit recipes: the joined item's rarity (theme recipes have none). */
+  rarity?: string;
   /** Theme recipes only: the ERoomType the theme applies to. */
   roomType?: string;
   /** Theme recipes only: the ESpecialTheme enum value written to themeByRoomType. */
@@ -28,8 +30,8 @@ export interface RecipeRow {
  */
 export interface RecipeCatalogSource {
   unlockables: { recipes: readonly string[] };
-  weaponById: ReadonlyMap<string, { name: string }>;
-  outfitById: ReadonlyMap<string, { name: string }>;
+  weaponById: ReadonlyMap<string, { name: string; rarity?: string }>;
+  outfitById: ReadonlyMap<string, { name: string; rarity?: string }>;
 }
 
 /** Humanize an enum-style id for display (e.g. "LivingQuarters" → "Living Quarters"). */
@@ -58,12 +60,22 @@ export function buildRecipeRows(gameData: RecipeCatalogSource | undefined): Reci
     }
     const weapon = gameData.weaponById.get(id);
     if (weapon) {
-      rows.push({ id, kind: 'Weapon', name: weapon.name });
+      rows.push({
+        id,
+        kind: 'Weapon',
+        name: weapon.name,
+        ...(weapon.rarity ? { rarity: weapon.rarity } : {}),
+      });
       continue;
     }
     const outfit = gameData.outfitById.get(id);
     if (outfit) {
-      rows.push({ id, kind: 'Outfit', name: outfit.name });
+      rows.push({
+        id,
+        kind: 'Outfit',
+        name: outfit.name,
+        ...(outfit.rarity ? { rarity: outfit.rarity } : {}),
+      });
       continue;
     }
     // Unmatched id (e.g. ESpecialTheme.None) - not a craftable item; skip.

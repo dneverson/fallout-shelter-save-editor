@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { renderInSectionRoute } from './routerTestUtils.tsx';
 import { WeaponsView } from '../../src/ui/views/WeaponsView.tsx';
 import { useSaveStore } from '../../src/state/saveStore.ts';
 import type { SaveData } from '../../src/domain/model/saveSchema.ts';
@@ -36,6 +37,8 @@ vi.mock('../../src/ui/hooks/useGameData.ts', () => ({
     data: {
       enums: {},
       weapons: WEAPONS,
+      // Only Laser has a recipe, so Plasma stays non-craftable.
+      unlockables: { recipes: ['Laser'] },
       weaponById: new Map(WEAPONS.map((w) => [w.id, w])),
       outfitById: new Map(),
       petById: new Map(),
@@ -99,7 +102,8 @@ beforeEach(() => {
   });
 });
 
-const renderView = () => render(<WeaponsView virtualized={false} />);
+const renderView = () =>
+  renderInSectionRoute(<WeaponsView virtualized={false} />, { initialPath: '/weapons' });
 
 describe('WeaponsView', () => {
   it('renders the full weapon catalog', () => {
@@ -132,5 +136,35 @@ describe('WeaponsView', () => {
 
     expect(dwellerById(1)?.equipedWeapon?.id).toBe('Laser');
     expect(dwellerById(2)?.equipedWeapon?.id).toBe('Laser');
+  });
+
+  describe('Craftable column', () => {
+    const laserRow = () => bodyRows().find((r) => within(r).queryByText('Laser Pistol'))!;
+    const plasmaRow = () => bodyRows().find((r) => within(r).queryByText('Plasma Rifle'))!;
+
+    it('shows a Craftable link on craftable items and none on the rest', () => {
+      renderView();
+      // Laser has a recipe; the save doesn't own it yet -> plain "Craftable".
+      expect(within(laserRow()).getByRole('button', { name: 'Craftable' })).toBeInTheDocument();
+      // Plasma has no recipe -> no craftable control at all.
+      expect(
+        within(plasmaRow()).queryByRole('button', { name: /Craftable|In collection/ }),
+      ).toBeNull();
+    });
+
+    it('reflects collection status when the save owns the recipe', () => {
+      useSaveStore.setState({
+        save: { ...(makeSave() as SaveData), survivalW: { recipes: ['Laser'] } } as SaveData,
+      });
+      renderView();
+      expect(within(laserRow()).getByRole('button', { name: /In collection/ })).toBeInTheDocument();
+    });
+
+    it('clicking Craftable jumps to that recipe in the Recipes tab', async () => {
+      const user = userEvent.setup();
+      renderView();
+      await user.click(within(laserRow()).getByRole('button', { name: 'Craftable' }));
+      expect(screen.getByTestId('location')).toHaveTextContent('/recipes/Laser');
+    });
   });
 });

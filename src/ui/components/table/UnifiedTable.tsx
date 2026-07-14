@@ -39,6 +39,8 @@ export interface UnifiedTableProps<T> {
   onRowSelectionChange?: (selection: RowSelectionState) => void;
   onRowClick?: (row: T) => void;
   activeRowId?: string;
+  /** Row id to scroll into view + briefly flash (cross-tab jump arrival cue). */
+  focusRowId?: string | null;
 
   enableGlobalFilter?: boolean;
   globalFilter?: string;
@@ -72,6 +74,7 @@ export function UnifiedTable<T>({
   onRowSelectionChange,
   onRowClick,
   activeRowId,
+  focusRowId,
   enableGlobalFilter = false,
   globalFilter,
   onGlobalFilterChange,
@@ -187,6 +190,7 @@ export function UnifiedTable<T>({
       {...(onRowSelectionChange ? { onRowSelectionChange } : {})}
       {...(onRowClick ? { onRowClick } : {})}
       {...(activeRowId != null ? { activeRowId } : {})}
+      {...(focusRowId != null ? { focusRowId } : {})}
       {...(emptyState != null ? { emptyState } : {})}
     />
   );

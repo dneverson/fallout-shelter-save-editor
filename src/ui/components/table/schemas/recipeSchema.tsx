@@ -61,6 +61,7 @@ export function recipeSchema(): TableSchema<RecipeViewRow> {
     hideable: [
       { id: 'name', label: 'Name' },
       { id: 'kind', label: 'Type' },
+      { id: 'rarity', label: 'Rarity' },
       { id: 'status', label: 'Status' },
     ],
     columns: [
@@ -95,6 +96,19 @@ export function recipeSchema(): TableSchema<RecipeViewRow> {
         size: 110,
         filterFn: inSelectedSet<RecipeViewRow>(),
         meta: { filterVariant: 'select', headerLabel: 'Type' },
+      },
+      {
+        // Weapon/outfit recipes carry the item's rarity; theme recipes have none (muted dot).
+        id: 'rarity',
+        accessorFn: (r) => r.rarity ?? '',
+        header: 'Rarity',
+        cell: ({ getValue }) => {
+          const rarity = getValue<string>();
+          return rarity ? rarity : <span className="text-neutral-600">·</span>;
+        },
+        size: 110,
+        filterFn: inSelectedSet<RecipeViewRow>(),
+        meta: { filterVariant: 'select', headerLabel: 'Rarity' },
       },
       {
         id: 'status',

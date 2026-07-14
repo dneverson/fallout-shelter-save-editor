@@ -43,6 +43,8 @@ interface ItemCatalogSectionProps<T extends StackableItem> {
   preset?: readonly string[];
   searchLabel: string;
   searchPlaceholder: string;
+  /** Row id to scroll into view + briefly flash (arrival cue from a cross-tab jump). */
+  focusRowId?: string | null;
   virtualized?: boolean;
 }
 
@@ -57,6 +59,7 @@ export function ItemCatalogSection<T extends StackableItem>({
   preset,
   searchLabel,
   searchPlaceholder,
+  focusRowId,
   virtualized = true,
 }: ItemCatalogSectionProps<T>) {
   const save = useSaveStore((s) => s.save);
@@ -135,6 +138,7 @@ export function ItemCatalogSection<T extends StackableItem>({
         addDisabledReason="Storage is maxed. Tick the bypass checkbox in the notice above to add anyway."
         notice={notice}
         {...(slot !== null ? { onEquip: (id: string) => setEquipId(id) } : {})}
+        {...(focusRowId != null ? { focusRowId } : {})}
         virtualized={virtualized}
       />
 

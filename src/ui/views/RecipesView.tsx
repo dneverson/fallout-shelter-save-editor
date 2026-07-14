@@ -1,9 +1,14 @@
 import { useMemo, useState, type ReactNode } from 'react';
+import { useParams } from 'react-router-dom';
 import type { ColumnDef, RowSelectionState } from '@tanstack/react-table';
 import { useSaveStore } from '../../state/saveStore.ts';
+import { useUIStore } from '../../state/uiStore.ts';
 import { useGameData } from '../hooks/useGameData.ts';
+import { useSectionNavigate } from '../routing/useSectionNavigate.ts';
 import { pushToast } from '../../state/toastStore.ts';
 import { UnifiedTable } from '../components/table/UnifiedTable.tsx';
+import { ResizableSplit } from '../components/ResizableSplit.tsx';
+import { RecipeSidePanel } from '../components/recipes/RecipeSidePanel.tsx';
 import { selectColumn } from '../components/table/columnKit.tsx';
 import { buildRecipeRows } from '../../domain/items/recipeCatalog.ts';
 import { recipeSchema, type RecipeViewRow } from '../components/table/schemas/recipeSchema.tsx';
@@ -30,6 +35,14 @@ export function RecipesView({ virtualized = true }: { virtualized?: boolean } = 
   const save = useSaveStore((s) => s.save);
   const applyEdit = useSaveStore((s) => s.applyEdit);
   const { data: gameData, status: gameDataStatus } = useGameData();
+  const goTo = useSectionNavigate();
+  const panelWidth = useUIStore((s) => s.detailPanelWidth);
+  const setPanelWidth = useUIStore((s) => s.setDetailPanelWidth);
+
+  // The selected recipe (its detail panel is open) lives in the URL `:detail` param, so the
+  // selection is deep-linkable and the Outfits/Weapons "Craftable" jump lands here already
+  // open + highlighted. Clicking a row toggles it; the panel's close button clears it.
+  const { detail } = useParams();
 
   const [globalFilter, setGlobalFilter] = useState('');
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
@@ -110,6 +123,23 @@ export function RecipesView({ virtualized = true }: { virtualized?: boolean } = 
     );
     pushToast(`Built ${unbuiltThemeIds.length} theme${unbuiltThemeIds.length === 1 ? '' : 's'}.`);
   };
+
+  // Master-detail: resolve the selected row + its joined catalog item for the side panel.
+  const selectedRow = useMemo(
+    () => (detail != null ? (rows.find((r) => r.id === detail) ?? null) : null),
+    [detail, rows],
+  );
+  const selWeapon =
+    selectedRow?.kind === 'Weapon' ? (gameData?.weaponById.get(selectedRow.id) ?? null) : null;
+  const selOutfit =
+    selectedRow?.kind === 'Outfit' ? (gameData?.outfitById.get(selectedRow.id) ?? null) : null;
+  // Clicking a row opens its panel; clicking the open row again closes it.
+  const onRowClick = (r: RecipeViewRow): void => goTo('recipes', detail === r.id ? null : r.id);
+  // Reverse jump: only weapon/outfit recipes have a catalog item to view.
+  const onViewInTab =
+    selectedRow && selectedRow.kind !== 'Theme'
+      ? () => goTo(selectedRow.kind === 'Weapon' ? 'weapons' : 'outfits', selectedRow.id)
+      : undefined;
 
   const schema = useMemo(() => recipeSchema(), []);
   const leading = useMemo(() => [selectColumn<RecipeViewRow>((r) => r.name)], []);
@@ -245,8 +275,8 @@ export function RecipesView({ virtualized = true }: { virtualized?: boolean } = 
     </div>
   );
 
-  return (
-    <div className="flex h-full min-h-0 flex-col p-4">
+  const leftPane = (
+    <div className="flex min-h-0 min-w-0 flex-1 flex-col p-4">
       <div className="flex items-baseline gap-3">
         <h2 className="text-lg font-semibold">Recipes</h2>
         <span className="text-sm text-neutral-400">{rows.length} recipes</span>
@@ -275,7 +305,34 @@ export function RecipesView({ virtualized = true }: { virtualized?: boolean } = 
         enableRowSelection
         rowSelection={rowSelection}
         onRowSelectionChange={setRowSelection}
+        onRowClick={onRowClick}
+        {...(detail != null ? { activeRowId: detail } : {})}
+        focusRowId={detail ?? null}
         emptyState="No recipes match the search."
+      />
+    </div>
+  );
+
+  return (
+    <div className="flex h-full min-h-0">
+      <ResizableSplit
+        ariaLabel="Resize recipe detail panel"
+        width={panelWidth}
+        onWidthChange={setPanelWidth}
+        left={leftPane}
+        right={
+          selectedRow ? (
+            <RecipeSidePanel
+              row={selectedRow}
+              weapon={selWeapon}
+              outfit={selOutfit}
+              canEdit={!!save}
+              onToggleCollection={() => onToggleCollection(selectedRow)}
+              onClose={() => goTo('recipes', null)}
+              {...(onViewInTab ? { onViewInTab } : {})}
+            />
+          ) : null
+        }
       />
     </div>
   );

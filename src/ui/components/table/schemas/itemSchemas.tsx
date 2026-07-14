@@ -29,6 +29,73 @@ function statCell(value: number) {
   );
 }
 
+// The three craft-status labels, doubling as the select-filter options and the sort keys.
+const CRAFT_OWNED = 'In collection';
+const CRAFT_YES = 'Craftable';
+const CRAFT_NONE = 'Not craftable';
+
+/**
+ * Wiring for the optional "Craftable" column on the standalone weapon/outfit catalogs.
+ * `craftableIds` are the item ids that have a recipe (recipe id == item id); `knownIds` are
+ * the recipe ids already in the loaded save's collection (null when no save is loaded, so
+ * we can only say craftable / not). `onOpen` jumps to the Recipes tab focused on that recipe.
+ */
+export interface CraftableColumnOptions {
+  craftableIds: ReadonlySet<string>;
+  knownIds: ReadonlySet<string> | null;
+  onOpen: (id: string) => void;
+}
+
+function craftStatus(id: string, c: CraftableColumnOptions): string {
+  if (!c.craftableIds.has(id)) return CRAFT_NONE;
+  if (c.knownIds?.has(id)) return CRAFT_OWNED;
+  return CRAFT_YES;
+}
+
+/**
+ * The tri-state "Craftable" column shown only on the standalone catalog views: a muted dot
+ * for non-craftable items, otherwise a clickable link that opens the recipe in the Recipes
+ * tab - emerald "In collection" when the save already owns the recipe, amber "Craftable"
+ * when it doesn't, and neutral "Craftable" when no save is loaded (collection unknown).
+ */
+function craftableColumn<T extends { id: string }>(c: CraftableColumnOptions): ColumnDef<T> {
+  return {
+    id: 'craftable',
+    accessorFn: (row) => craftStatus((row as { id: string }).id, c),
+    header: 'Craftable',
+    size: 130,
+    cell: ({ row }) => {
+      const id = (row.original as { id: string }).id;
+      if (!c.craftableIds.has(id)) return <span className="text-neutral-600">·</span>;
+      const owned = !!c.knownIds?.has(id);
+      const tone = owned
+        ? 'text-emerald-300 hover:text-emerald-200'
+        : c.knownIds
+          ? 'text-amber-300 hover:text-amber-200'
+          : 'text-sky-300 hover:text-sky-200';
+      return (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            c.onOpen(id);
+          }}
+          title={
+            owned
+              ? 'Recipe is in your collection. Open in the Recipes tab.'
+              : 'Craftable. Open the recipe in the Recipes tab.'
+          }
+          className={`underline decoration-dotted underline-offset-2 ${tone}`}
+        >
+          {owned ? 'In collection ✓' : 'Craftable'}
+        </button>
+      );
+    },
+    filterFn: inSelectedSet<T>(),
+    meta: { filterVariant: 'select', headerLabel: 'Craftable' },
+  };
+}
+
 /** Invert an enum (name → value) into value → name for label display. */
 function enumLabels(enums: GameEnums | undefined, name: string): Map<number, string> {
   const map = new Map<number, string>();
@@ -37,7 +104,10 @@ function enumLabels(enums: GameEnums | undefined, name: string): Map<number, str
   return map;
 }
 
-export function weaponSchema(enums?: GameEnums): TableSchema<Weapon> {
+export function weaponSchema(
+  enums?: GameEnums,
+  craft?: CraftableColumnOptions,
+): TableSchema<Weapon> {
   const types = enumLabels(enums, 'EWeaponType');
   return {
     name: 'weapon',
@@ -47,6 +117,7 @@ export function weaponSchema(enums?: GameEnums): TableSchema<Weapon> {
       { id: 'avgDamage', label: 'Avg dmg' },
       { id: 'type', label: 'Type' },
       { id: 'rarity', label: 'Rarity' },
+      ...(craft ? [{ id: 'craftable', label: 'Craftable' }] : []),
     ],
     columns: [
       iconColumn<Weapon>((w) => ({ type: 'weapons', id: w.id })),
@@ -91,6 +162,7 @@ export function weaponSchema(enums?: GameEnums): TableSchema<Weapon> {
         filterFn: inSelectedSet<Weapon>(),
         meta: { filterVariant: 'select', headerLabel: 'Rarity' },
       },
+      ...(craft ? [craftableColumn<Weapon>(craft)] : []),
     ],
   };
 }
@@ -147,7 +219,10 @@ function outfitStatColumns(): ColumnDef<Outfit>[] {
   }));
 }
 
-export function outfitSchema(enums?: GameEnums): TableSchema<Outfit> {
+export function outfitSchema(
+  enums?: GameEnums,
+  craft?: CraftableColumnOptions,
+): TableSchema<Outfit> {
   const categories = enumLabels(enums, 'EOutfitCategory');
   return {
     name: 'outfit',
@@ -157,6 +232,7 @@ export function outfitSchema(enums?: GameEnums): TableSchema<Outfit> {
       ...SPECIAL_KEYS.map((k) => ({ id: `special_${k}`, label: k })),
       { id: 'type', label: 'Type' },
       { id: 'rarity', label: 'Rarity' },
+      ...(craft ? [{ id: 'craftable', label: 'Craftable' }] : []),
     ],
     columns: [
       iconColumn<Outfit>((o) => ({ type: 'outfits', id: o.id })),
@@ -196,6 +272,7 @@ export function outfitSchema(enums?: GameEnums): TableSchema<Outfit> {
         filterFn: inSelectedSet<Outfit>(),
         meta: { filterVariant: 'select', headerLabel: 'Rarity' },
       },
+      ...(craft ? [craftableColumn<Outfit>(craft)] : []),
     ],
   };
 }

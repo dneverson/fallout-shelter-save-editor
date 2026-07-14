@@ -8,8 +8,8 @@ import { buildRecipeRows, type RecipeCatalogSource } from '../../src/domain/item
 
 const source: RecipeCatalogSource = {
   unlockables: { recipes: ['Laser', 'BOSUniform', 'CafeteriaInstitute', 'None'] },
-  weaponById: new Map([['Laser', { name: 'Laser Pistol' }]]),
-  outfitById: new Map([['BOSUniform', { name: 'BOS Uniform' }]]),
+  weaponById: new Map([['Laser', { name: 'Laser Pistol', rarity: 'Rare' }]]),
+  outfitById: new Map([['BOSUniform', { name: 'BOS Uniform', rarity: 'Legendary' }]]),
 };
 
 describe('buildRecipeRows', () => {
@@ -22,10 +22,10 @@ describe('buildRecipeRows', () => {
     expect(rows).toHaveLength(3); // "None" dropped
 
     const laser = rows.find((r) => r.id === 'Laser');
-    expect(laser).toMatchObject({ kind: 'Weapon', name: 'Laser Pistol' });
+    expect(laser).toMatchObject({ kind: 'Weapon', name: 'Laser Pistol', rarity: 'Rare' });
 
     const outfit = rows.find((r) => r.id === 'BOSUniform');
-    expect(outfit).toMatchObject({ kind: 'Outfit', name: 'BOS Uniform' });
+    expect(outfit).toMatchObject({ kind: 'Outfit', name: 'BOS Uniform', rarity: 'Legendary' });
 
     const theme = rows.find((r) => r.id === 'CafeteriaInstitute');
     expect(theme).toMatchObject({
@@ -34,5 +34,7 @@ describe('buildRecipeRows', () => {
       roomType: 'Cafeteria',
       themeValue: 'Institute',
     });
+    // Theme recipes have no joined item, so no rarity.
+    expect(theme?.rarity).toBeUndefined();
   });
 });

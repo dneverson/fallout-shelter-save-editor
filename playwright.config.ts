@@ -22,7 +22,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      testMatch: ['importExport.spec.ts', 'seasonPass.spec.ts'],
+      testMatch: ['importExport.spec.ts', 'seasonPass.spec.ts', 'recipeScroll.spec.ts'],
       use: { ...devices['Desktop Chrome'], baseURL: 'http://localhost:5173' },
     },
     {

@@ -215,7 +215,8 @@ describe('DataTable', () => {
     expect(document.activeElement).toBe(bodyRows()[0]);
   });
 
-  it('leaves rows non-focusable when not interactive', () => {
+  it('highlights the clicked row even without an onRowClick handler', async () => {
+    const user = userEvent.setup();
     render(
       <DataTable
         data={DATA}
@@ -224,7 +225,12 @@ describe('DataTable', () => {
         virtualized={false}
       />,
     );
-    expect(bodyRows()[0]).not.toHaveAttribute('tabindex');
+    // Every table is now navigable so the user can keep their place: the entry row is tabbable.
+    expect(bodyRows()[0]).toHaveAttribute('tabindex', '0');
+    // Clicking a row picks it (internal highlight) with no handler wired.
+    await user.click(bodyRows()[1]);
+    expect(bodyRows()[1]).toHaveAttribute('aria-selected', 'true');
+    expect(bodyRows()[0]).toHaveAttribute('aria-selected', 'false');
   });
 
   it('reports a column width change from the keyboard resize handle', async () => {

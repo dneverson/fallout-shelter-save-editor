@@ -76,6 +76,8 @@ export interface CatalogTableViewProps<T> {
   /** Equip a single catalog id onto dwellers (omitted for junk). */
   onEquip?: (id: string) => void;
   equipLabel?: string;
+  /** Row id to scroll into view + briefly flash (arrival cue from a cross-tab jump). */
+  focusRowId?: string | null;
   virtualized?: boolean;
 }
 
@@ -98,6 +100,7 @@ export function CatalogTableView<T>({
   notice = null,
   onEquip,
   equipLabel = 'Equip…',
+  focusRowId,
   virtualized = true,
 }: CatalogTableViewProps<T>) {
   const [globalFilter, setGlobalFilter] = useState('');
@@ -230,6 +233,7 @@ export function CatalogTableView<T>({
         leading={leading}
         trailing={trailing}
         getRowId={getRowId}
+        {...(focusRowId != null ? { focusRowId } : {})}
         initialSorting={[{ id: 'name', desc: false }]}
         enableGlobalFilter
         globalFilter={globalFilter}
