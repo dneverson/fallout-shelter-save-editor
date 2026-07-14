@@ -50,6 +50,10 @@ export function selectColumn<T>(getLabel: (row: T) => string): ColumnDef<T> {
     enableSorting: false,
     enableHiding: false,
     enableColumnFilter: false,
+    // The row is a CSS grid, so the cell is a grid item: `m-auto` on the cell itself
+    // centers the checkbox both horizontally and vertically within its grid track. (A
+    // bare `m-auto` on the inline checkbox does nothing in the default block cell.)
+    meta: { cellClassName: 'm-auto' },
   };
 }
 

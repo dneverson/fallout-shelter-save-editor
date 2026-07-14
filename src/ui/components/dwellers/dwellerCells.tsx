@@ -27,7 +27,14 @@ export function IndeterminateCheckbox({
     if (ref.current) ref.current.indeterminate = !checked && !!indeterminate;
   }, [checked, indeterminate]);
   return (
-    <input ref={ref} type="checkbox" aria-label={label} checked={checked} onChange={onChange} />
+    <input
+      ref={ref}
+      type="checkbox"
+      aria-label={label}
+      checked={checked}
+      onChange={onChange}
+      className="m-auto"
+    />
   );
 }
 
