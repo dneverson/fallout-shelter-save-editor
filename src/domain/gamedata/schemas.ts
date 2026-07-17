@@ -243,6 +243,14 @@ const uniqueDwellerSchema = z.object({
   hairColor: z.number(),
   /** [S,P,E,C,I,A,L] base values (1..10). */
   stats: z.array(z.number()),
+  /**
+   * Lottery tier: 'Rare' | 'Legendary' | 'Normal'. Membership of DwellerManager.prefab's curated
+   * m_rareDwellers / m_legendaryDwellers arrays, which is the only place the game records it (see
+   * build-unique-dwellers.mjs). 'Normal' == in neither array.
+   */
+  rarity: z.string(),
+  /** IsHiddenDweller: excluded from random-rare draws (quest-only characters set this). */
+  isHidden: z.boolean(),
   isInfertile: z.boolean(),
   /** Game randomizes appearance at spawn → add-op uses neutral appearance defaults. */
   randomBody: z.boolean(),
@@ -306,6 +314,147 @@ export const metaSchema = z.object({
   counts: z.record(z.string(), z.number()),
 });
 
+// --- Quest catalog (quests.json) -------------------------------------------------
+// The full narrative quest catalog is captured WHOLE (all m_* fields) by build-quests.mjs,
+// so these use `z.looseObject`: the fields the UI + loot engine read are typed; everything
+// else (procedural-gen ranges, dialogue blocks, ...) passes through untouched and stays
+// robust across game updates. Loaded lazily by the Quest tab, never in the core bundle.
+
+/** One loot slot in a mandatory room (m_combatLoot / m_roomCompletionLoot / *[] arrays). */
+export const questLootSchema = z.looseObject({
+  m_lootType: z.number(),
+  m_lootID: z.string().optional(),
+  m_lootQuantity: z.number().optional(),
+  m_fromVaultQuantity: z.number().optional(),
+});
+
+/** An entry requirement (m_questRequirements[]) - EQuestRequirementType + id + quantity. */
+export const questRequirementSchema = z.looseObject({
+  m_questRequirementType: z.number(),
+  m_questRequirementID: z.string().optional(),
+  m_questRequirementQuantity: z.number().optional(),
+});
+
+/** One mandatory room: objectives, room type, and its four loot slots. */
+export const questRoomSchema = z.looseObject({
+  m_questRoomType: z.number().optional(),
+  m_primaryObjectiveType: z.number().optional(),
+  m_secondaryObjective: z.number().optional(),
+  m_thirdObjective: z.number().optional(),
+  m_combatLoot: questLootSchema.optional(),
+  m_roomCompletionLoot: questLootSchema.optional(),
+  m_pickableLoot: z.array(questLootSchema).optional(),
+  m_extraRoomCompletionLoot: z.array(questLootSchema).optional(),
+});
+
+/**
+ * One end of a quest's seasonal window. Only m_isTimeLimited quests carry a real one; the rest
+ * carry a 1970..2100 sentinel. The window recurs annually - see isSeasonOpen in
+ * quests/questFilter.ts, which explains why the years are authoring metadata.
+ */
+export const questDateSchema = z.looseObject({
+  m_year: z.number(),
+  m_month: z.number(),
+  m_day: z.number(),
+  m_hour: z.number().optional(),
+});
+
+/**
+ * One quest's standing in one Season Pass season.
+ *
+ * m_validity is an unlabelled enum (no EQuestValidity in enums.json), but the catalog pins its
+ * meaning exactly: all 64 m_questScheme=5 ("Season") quests carry exactly ONE entry, always
+ * m_validity 2, and no other quest carries a 2 anywhere. So a validity-2 entry names the season a
+ * quest BELONGS to, while validity 1 marks the ordinary quests that merely remain playable during
+ * that season (345 such entries across the other schemes).
+ */
+export const questSeasonValiditySchema = z.looseObject({
+  m_seasonID: z.string(),
+  m_validity: z.number(),
+});
+
+/** One full quest record (m_questName is the id stored in completedQuestDataManager). */
+export const questSchema = z.looseObject({
+  m_questName: z.string(),
+  m_questType: z.number(),
+  m_questScheme: z.number().optional(),
+  m_questEnvironment: z.number().optional(),
+  m_questDifficultyMin: z.number().optional(),
+  m_questDifficultyMax: z.number().optional(),
+  m_questDependancies: z.array(z.string()).optional(),
+  m_questRequirements: z.array(questRequirementSchema).optional(),
+  // Unity serializes these flags as 0/1 integers, not booleans.
+  m_isRepeatable: z.number().optional(),
+  m_isTimeLimited: z.number().optional(),
+  m_isVisible: z.number().optional(),
+  m_timeToReach: z.number().optional(),
+  m_startDate: questDateSchema.optional(),
+  m_endDate: questDateSchema.optional(),
+  m_validityForExVaultBySeasonList: z.array(questSeasonValiditySchema).optional(),
+  m_mandatoryRooms: z.array(questRoomSchema).optional(),
+  // Convenience resolved English text added by build-quests.mjs (also in resolvedText).
+  title: z.string(),
+  questlineTitle: z.string().optional(),
+  shortDescription: z.string().optional(),
+  longDescription: z.string().optional(),
+});
+
+/** One node in the questline graph (a quest, difficulty variants collapsed). */
+export const questlineNodeSchema = z.looseObject({
+  id: z.string(),
+  title: z.string(),
+  titleLocID: z.string().optional(),
+  shortDescription: z.string().optional(),
+  environment: z.number().optional(),
+  questNames: z.array(z.string()),
+  dependencies: z.array(z.string()),
+  difficultyMin: z.number().optional(),
+  difficultyMax: z.number().optional(),
+});
+
+/** A narrative questline: title + topo-sorted nodes (the horizontal graph lane). */
+export const questlineSchema = z.looseObject({
+  titleLocID: z.string().optional(),
+  title: z.string(),
+  nodes: z.array(questlineNodeSchema),
+});
+
+export const questsFileSchema = z.object({
+  resolvedText: z.record(z.string(), z.string()),
+  quests: z.array(questSchema),
+  questlines: z.array(questlineSchema),
+});
+
+// --- Objective catalog (objectives.json) -----------------------------------------
+// The 530 daily-objective definitions, captured whole by build-objectives.mjs with their
+// requirement rows + assignment requisites resolved. Same loose-object rationale as quests.
+
+export const objectiveDefRequirementSchema = z.looseObject({
+  m_requirementID: z.string().optional(),
+  m_requirementIncreasePerLevel: z.number().optional(),
+  m_requirementMaxValue: z.number().optional(),
+  m_baseGoalResources: z.record(z.string(), z.number()).optional(),
+});
+
+export const objectiveDefSchema = z.looseObject({
+  m_objectiveID: z.string(),
+  m_descriptionLocalizerKey: z.string().optional(),
+  m_rewardIncrement: z.number().optional(),
+  m_baseRewardType: z.number().optional(),
+  m_baseRewardAmount: z.number().optional(),
+  m_level: z.number().optional(),
+  m_isNormalMode: z.number().optional(),
+  m_isSurvivalMode: z.number().optional(),
+  requirements: z.array(objectiveDefRequirementSchema),
+  assignmentRequisites: z.array(z.looseObject({})),
+  description: z.string().optional(),
+});
+
+export const objectivesFileSchema = z.object({
+  resolvedText: z.record(z.string(), z.string()),
+  objectives: z.array(objectiveDefSchema),
+});
+
 export type Rarity = z.infer<typeof raritySchema>;
 export type Special = z.infer<typeof specialSchema>;
 export type Weapon = z.infer<typeof weaponSchema>;
@@ -328,3 +477,15 @@ export type UniqueDweller = z.infer<typeof uniqueDwellerSchema>;
 export type CatalogReward = z.infer<typeof catalogRewardSchema>;
 export type SeasonCatalogEntry = z.infer<typeof seasonCatalogEntrySchema>;
 export type SeasonPassCatalog = z.infer<typeof seasonPassCatalogSchema>;
+export type QuestDate = z.infer<typeof questDateSchema>;
+export type QuestSeasonValidity = z.infer<typeof questSeasonValiditySchema>;
+export type QuestLoot = z.infer<typeof questLootSchema>;
+export type QuestRequirement = z.infer<typeof questRequirementSchema>;
+export type QuestRoom = z.infer<typeof questRoomSchema>;
+export type Quest = z.infer<typeof questSchema>;
+export type QuestlineNode = z.infer<typeof questlineNodeSchema>;
+export type Questline = z.infer<typeof questlineSchema>;
+export type QuestsFile = z.infer<typeof questsFileSchema>;
+export type ObjectiveDefRequirement = z.infer<typeof objectiveDefRequirementSchema>;
+export type ObjectiveDef = z.infer<typeof objectiveDefSchema>;
+export type ObjectivesFile = z.infer<typeof objectivesFileSchema>;

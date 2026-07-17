@@ -598,8 +598,11 @@ export function markDwellerWaiting(save: SaveData, dwellerId: number): SaveData 
  *
  * `random-body` catalog characters (the game randomizes their appearance at spawn) keep
  * the neutral base appearance; their outfit/weapon/SPECIAL/name still come from the entry.
- * Rarity is left at the editable base default (the catalog stores card-lottery odds, not a
- * rarity word). The op trusts the entry's outfit/weapon ids - the id-existence guard
+ * Rarity is stamped the way the game stamps collected dweller loot
+ * (QuestSetupReferences.GenerateLootFrom + Equipment.AddDweller): `L_`-prefixed ids are
+ * Legendary, everything else is Rare - a quest-granted character is never plain Normal,
+ * regardless of catalog lottery membership. The op trusts the entry's outfit/weapon ids
+ * - the id-existence guard
  * lives at the UI call site (the picker only surfaces real catalog characters). Id
  * allocation matches `createDwellerAtDoor` (running counter + `dwellers.id` bump), so ids
  * never collide. Pure/immutable: existing dwellers and other top-level keys pass through.
@@ -636,9 +639,14 @@ export function addSpecialDweller(
         ...(entry.faceMask !== null ? { faceMask: entry.faceMask } : {}),
       };
 
+  // The game's rule for collected dweller loot, independent of catalog membership:
+  // GenerateLootFrom picks Legendary for L_-prefixed ids (case-insensitive), else Rare.
+  const rarity: DwellerRarity = /^l_/i.test(uniqueId) ? 'Legendary' : 'Rare';
+
   const dweller: Dweller = {
     ...base,
     uniqueData: uniqueId,
+    rarity,
     stats: { ...base.stats, stats },
     equipedOutfit: { id: entry.outfitId, type: 'Outfit', ...SLOT_FLAGS },
     equipedWeapon: { id: entry.weaponId || DEFAULT_WEAPON_ID, type: 'Weapon', ...SLOT_FLAGS },

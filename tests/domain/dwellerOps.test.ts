@@ -611,6 +611,8 @@ describe('dwellerOps - addSpecialDweller', () => {
     skinColor: 4286339388,
     hairColor: 4280623644,
     stats: [7, 6, 6, 5, 4, 7, 5],
+    rarity: 'Legendary',
+    isHidden: false,
     isInfertile: false,
     randomBody: false,
     randomName: false,
@@ -649,6 +651,15 @@ describe('dwellerOps - addSpecialDweller', () => {
       faceMask: 'glasses2',
     }).dwellers?.dwellers.at(-1);
     expect(bearded?.faceMask).toBe('glasses2');
+  });
+
+  // Matches the game's collected-dweller-loot rule (GenerateLootFrom + Equipment.AddDweller):
+  // L_-prefixed ids are Legendary, everything else Rare - never the base 'Normal'.
+  it('stamps rarity from the unique id prefix: L_ is Legendary, otherwise Rare', () => {
+    const legendary = addSpecialDweller(makeSave(), 'L_Max', MAX).dwellers?.dwellers.at(-1);
+    expect(legendary?.rarity).toBe('Legendary');
+    const rare = addSpecialDweller(makeSave(), 'Cleric', MAX).dwellers?.dwellers.at(-1);
+    expect(rare?.rarity).toBe('Rare');
   });
 
   it('falls back to the vault default weapon when the catalog weapon id is empty', () => {

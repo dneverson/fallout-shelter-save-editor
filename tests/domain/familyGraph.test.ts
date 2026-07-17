@@ -22,6 +22,8 @@ const UNIQUE: UniqueDwellers = {
     skinColor: 4286339388,
     hairColor: 4280623644,
     stats: [7, 6, 6, 5, 4, 7, 5],
+    rarity: 'Legendary',
+    isHidden: false,
     isInfertile: false,
     randomBody: false,
     randomName: false,

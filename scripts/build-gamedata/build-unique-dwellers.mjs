@@ -113,9 +113,40 @@ function buildGuidToName() {
   return map;
 }
 
+/**
+ * uniqueId -> EDwellerRarity word, from DwellerManager.prefab's CURATED m_rareDwellers /
+ * m_legendaryDwellers arrays.
+ *
+ * Rarity is NOT a field on the UniqueDwellerData asset - DwellerManager.IsDataLegendary /
+ * IsDataRare answer it by membership of these two arrays, and GetRandomRareDweller draws from
+ * m_rareDwellers. So the quest engine's RandomRareDweller pool can only be reconstructed from
+ * here. Anything in neither array is an ordinary special character, not lottery-tier loot.
+ */
+function buildRarityById(guidToName) {
+  const text = readSource(`${PATHS.gameObjectDir}/DwellerManager.prefab`);
+  const rarityById = new Map();
+  for (const [key, rarity] of [
+    ['m_rareDwellers', 'Rare'],
+    ['m_legendaryDwellers', 'Legendary'],
+  ]) {
+    const start = text.indexOf(`${key}:`);
+    if (start < 0) throw new Error(`DwellerManager.prefab: ${key} not found`);
+    // The array ends at the next sibling key (two-space indent); guids inside are its entries.
+    const rest = text.slice(start + key.length);
+    const end = rest.search(/\n {2}\w/);
+    const block = end > 0 ? rest.slice(0, end) : rest;
+    for (const m of block.matchAll(/guid:\s*([0-9a-f]{32})/g)) {
+      const name = guidToName.get(m[1]);
+      if (name) rarityById.set(name, rarity);
+    }
+  }
+  return rarityById;
+}
+
 export function buildUniqueDwellers() {
   const guidToName = buildGuidToName();
   const pieceName = (guid) => (guid ? (guidToName.get(guid) ?? null) : null);
+  const rarityById = buildRarityById(guidToName);
 
   const out = {};
   for (const file of readdirSync(PATHS.monoBehaviourDir)) {
@@ -138,6 +169,10 @@ export function buildUniqueDwellers() {
       skinColor: colorField(text, 'm_skinColor'),
       hairColor: colorField(text, 'm_hairColor'),
       stats: specialStats(text),
+      // Lottery tier (see buildRarityById). "Normal" == in neither curated array.
+      rarity: rarityById.get(uniqueId) ?? 'Normal',
+      // IsHiddenDweller characters are excluded from the random-rare draw (GetRareDwellers).
+      isHidden: boolField(text, 'm_isHiddenDweller'),
       isInfertile: boolField(text, 'm_isInfertile'),
       // m_randomBody → the game randomizes appearance at spawn (ignores asset hair/
       // skin/face); the add-op falls back to neutral defaults for those characters.

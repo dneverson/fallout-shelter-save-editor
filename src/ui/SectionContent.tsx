@@ -42,6 +42,9 @@ const JunkView = lazy(() => import('./views/JunkView.tsx').then((m) => ({ defaul
 const StorageView = lazy(() =>
   import('./views/StorageView.tsx').then((m) => ({ default: m.StorageView })),
 );
+const QuestsView = lazy(() =>
+  import('./views/QuestsView.tsx').then((m) => ({ default: m.QuestsView })),
+);
 const BulkView = lazy(() => import('./views/BulkView.tsx').then((m) => ({ default: m.BulkView })));
 const SeasonPassView = lazy(() =>
   import('./views/SeasonPassView.tsx').then((m) => ({ default: m.SeasonPassView })),
@@ -68,6 +71,7 @@ function renderSection(section: Section) {
   if (section === 'handies') return <HandiesView />;
   if (section === 'junk') return <JunkView />;
   if (section === 'storage') return <StorageView />;
+  if (section === 'quests') return <QuestsView />;
   if (section === 'bulk') return <BulkView />;
   if (section === 'season-pass') return <SeasonPassView />;
   if (section === 'advanced') return <AdvancedView />;

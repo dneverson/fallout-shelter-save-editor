@@ -85,6 +85,8 @@ function makeUnique(over: Partial<UniqueDweller> = {}): UniqueDweller {
     skinColor: 0,
     hairColor: 0,
     stats: [1, 1, 1, 1, 1, 1, 1],
+    rarity: 'Legendary',
+    isHidden: false,
     isInfertile: false,
     randomBody: false,
     randomName: false,

@@ -16,7 +16,7 @@ import { NO_THEME, themeRecipeInfo } from '../rooms/themes.ts';
 // three structures never disagree.
 
 /** parts a theme needs to count as fully crafted/built (the game's per-theme part count). */
-const BUILT_PARTS = 9;
+export const BUILT_PARTS = 9;
 
 /** A themeList entry the way the game writes a fully-crafted, claimed theme. */
 function makeThemeEntry(id: string) {
@@ -73,6 +73,45 @@ export function addRecipes(save: SaveData, ids: readonly string[]): SaveData {
   const toAdd = ids.filter((id) => !have.has(id));
   if (toAdd.length === 0) return save;
   return { ...save, survivalW: { ...(save.survivalW ?? {}), recipes: [...recipes, ...toAdd] } };
+}
+
+/**
+ * Add `parts` theme-recipe parts toward `recipeId`, the partial-progress step the quest engine
+ * awards (EQuestLootType.RecipeParts / RandomRecipePart).
+ *
+ * Parts accumulate on the themeList entry and CAP at BUILT_PARTS; reaching the cap crafts the
+ * theme, which is what the game's own crafting flow does when the last part lands. Below the cap
+ * the entry stays un-crafted, so a half-collected theme survives a round-trip as half-collected.
+ * An already-built theme is a no-op (same ref) - there is no progress left to add.
+ *
+ * Unlike buildTheme this does NOT mark the recipe known: parts are collected toward a theme the
+ * vault may not have the recipe for yet, exactly as in game.
+ */
+export function addRecipeParts(save: SaveData, recipeId: string, parts: number): SaveData {
+  if (!themeRecipeInfo(recipeId) || parts <= 0) return save;
+  const list = save.survivalW?.collectedThemes?.themeList ?? [];
+  const idx = list.findIndex((t) => t.id === recipeId);
+  const current = idx >= 0 ? (list[idx].extraData?.partsCollectedCount ?? 0) : 0;
+  if (current >= BUILT_PARTS) return save;
+
+  const collected = Math.min(current + parts, BUILT_PARTS);
+  const crafted = collected >= BUILT_PARTS;
+  const base = idx >= 0 ? list[idx] : makeThemeEntry(recipeId);
+  const entry = {
+    ...base,
+    extraData: {
+      ...(base.extraData ?? {}),
+      partsCollectedCount: collected,
+      IsCraftingInProgress: false,
+      IsCrafted: crafted,
+      IsClaimed: crafted,
+      IsClaimedInCraftingRoom: crafted,
+      IsNew: true,
+    },
+  };
+  const next = idx >= 0 ? [...list] : [...list, entry];
+  if (idx >= 0) next[idx] = entry;
+  return withThemeList(save, next);
 }
 
 /**

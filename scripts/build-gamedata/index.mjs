@@ -16,6 +16,8 @@ import { buildRoomMetadata } from './build-room-metadata.mjs';
 import { buildRoomProduction } from './build-room-production.mjs';
 import { buildUniqueDwellers } from './build-unique-dwellers.mjs';
 import { buildSeasonPass } from './build-season-pass.mjs';
+import { buildQuests } from './build-quests.mjs';
+import { buildObjectives } from './build-objectives.mjs';
 import { buildDwellerMesh } from './build-dweller-mesh.mjs';
 import { buildSpriteIndex } from './build-sprite-index.mjs';
 import { buildItemIcons } from './build-item-icons.mjs';
@@ -35,6 +37,8 @@ const roomMetadata = buildRoomMetadata();
 const roomProduction = buildRoomProduction();
 const uniqueDwellers = buildUniqueDwellers();
 const seasonPass = buildSeasonPass();
+const quests = buildQuests();
+const objectives = buildObjectives();
 
 writeOutput('weapons.json', weapons);
 writeOutput('outfits.json', outfits);
@@ -49,6 +53,9 @@ writeOutput('room-metadata.json', roomMetadata);
 writeOutput('room-production.json', roomProduction);
 writeOutput('unique-dwellers.json', uniqueDwellers);
 writeOutput('season-pass.json', seasonPass);
+// Minified: the full quest catalog is multi-MB; 2-space indent would nearly double it.
+writeOutput('quests.json', quests, { pretty: false });
+writeOutput('objectives.json', objectives);
 
 // Visual assets → public/gamedata/atlas/ (meshes, sprite index, item icons + PNGs).
 console.log('Building visual assets → public/gamedata/atlas/');
@@ -89,6 +96,9 @@ writeOutput('meta.json', {
     roomProductionTypes: Object.keys(roomProduction.rooms).length,
     uniqueDwellers: Object.keys(uniqueDwellers).length,
     seasons: seasonPass.seasons.length,
+    quests: quests.quests.length,
+    questlines: quests.questlines.length,
+    objectives: objectives.objectives.length,
     spriteAtlases: spriteStats.atlases,
   },
 });

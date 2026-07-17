@@ -19,6 +19,8 @@ export const PATHS = {
   unlockableMgr: join(EXPORT_ROOT, 'GameObject/Unlockable MGR.prefab'),
   vaultLogic: join(EXPORT_ROOT, 'GameObject/VaultLogic.prefab'),
   gameObjectDir: join(EXPORT_ROOT, 'GameObject'),
+  resourcesDir: join(EXPORT_ROOT, 'Resources'),
+  objectiveMgr: join(EXPORT_ROOT, 'GameObject/Objective MGR.prefab'),
   // Visual-asset sources: dweller meshes, customization pieces, atlases.
   dwellerCatalog: join(EXPORT_ROOT, 'GameObject/DwellerCatalog.prefab'),
   meshDir: join(EXPORT_ROOT, 'Mesh'),
@@ -65,11 +67,16 @@ export function readSourceBuffer(path) {
   return readFileSync(path);
 }
 
-/** Write pretty JSON to public/gamedata/<name> and log a one-line summary. */
-export function writeOutput(name, data) {
+/**
+ * Write JSON to public/gamedata/<name> and log a one-line summary. Pretty-printed by
+ * default (readable git diffs); pass `{ pretty: false }` for large catalogs (quests.json)
+ * where the 2-space indent would nearly double an already-multi-MB file for no benefit.
+ */
+export function writeOutput(name, data, { pretty = true } = {}) {
   mkdirSync(PATHS.outDir, { recursive: true });
   const path = join(PATHS.outDir, name);
-  writeFileSync(path, JSON.stringify(data, null, 2) + '\n', 'utf8');
+  const text = pretty ? JSON.stringify(data, null, 2) : JSON.stringify(data);
+  writeFileSync(path, text + '\n', 'utf8');
   const count = Array.isArray(data) ? `${data.length} entries` : 'object';
   console.log(`  wrote public/gamedata/${name} (${count})`);
 }

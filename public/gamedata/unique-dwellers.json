@@ -19,6 +19,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -43,6 +45,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -67,6 +71,8 @@
       1,
       1
     ],
+    "rarity": "Normal",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -91,6 +97,8 @@
       7,
       7
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -115,6 +123,8 @@
       4,
       3
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -139,6 +149,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -163,6 +175,8 @@
       6,
       6
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -187,6 +201,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -211,6 +227,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -235,6 +253,8 @@
       4,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -259,6 +279,8 @@
       2,
       9
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -283,6 +305,8 @@
       7,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -307,6 +331,8 @@
       4,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -331,6 +357,8 @@
       5,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -355,6 +383,8 @@
       6,
       2
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -379,6 +409,8 @@
       8,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -403,6 +435,8 @@
       5,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -427,6 +461,8 @@
       5,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -451,6 +487,8 @@
       3,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -475,6 +513,8 @@
       8,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -499,6 +539,8 @@
       7,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -523,6 +565,8 @@
       7,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -547,6 +591,8 @@
       7,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -571,6 +617,8 @@
       6,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -595,6 +643,8 @@
       6,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -619,6 +669,8 @@
       4,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -643,6 +695,8 @@
       3,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -667,6 +721,8 @@
       3,
       9
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -691,6 +747,8 @@
       4,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -715,6 +773,8 @@
       3,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -739,6 +799,8 @@
       7,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -763,6 +825,8 @@
       4,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -787,6 +851,8 @@
       4,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -811,6 +877,8 @@
       6,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -835,6 +903,8 @@
       4,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -859,6 +929,8 @@
       7,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -883,6 +955,8 @@
       4,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -907,6 +981,8 @@
       8,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -931,6 +1007,8 @@
       6,
       2
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -955,6 +1033,8 @@
       5,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -979,6 +1059,8 @@
       5,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1003,6 +1085,8 @@
       4,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1027,6 +1111,8 @@
       7,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1051,6 +1137,8 @@
       5,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1075,6 +1163,8 @@
       4,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1099,6 +1189,8 @@
       2,
       8
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1123,6 +1215,8 @@
       1,
       1
     ],
+    "rarity": "Normal",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1147,6 +1241,8 @@
       2,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1171,6 +1267,8 @@
       7,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": true,
     "randomBody": false,
     "randomName": false
@@ -1195,6 +1293,8 @@
       6,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1219,6 +1319,8 @@
       7,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1243,6 +1345,8 @@
       6,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1267,6 +1371,8 @@
       5,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1291,6 +1397,8 @@
       8,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1315,6 +1423,8 @@
       4,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1339,6 +1449,8 @@
       6,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1363,6 +1475,8 @@
       5,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1387,6 +1501,8 @@
       5,
       2
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1411,6 +1527,8 @@
       5,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1435,6 +1553,8 @@
       6,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1459,6 +1579,8 @@
       4,
       6
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1483,6 +1605,8 @@
       1,
       1
     ],
+    "rarity": "Normal",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1507,6 +1631,8 @@
       6,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1531,6 +1657,8 @@
       5,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1555,6 +1683,8 @@
       7,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1579,6 +1709,8 @@
       5,
       7
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1603,6 +1735,8 @@
       5,
       5
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1627,6 +1761,8 @@
       5,
       4
     ],
+    "rarity": "Legendary",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1651,6 +1787,8 @@
       5,
       3
     ],
+    "rarity": "Legendary",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1675,6 +1813,8 @@
       4,
       8
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -1699,6 +1839,8 @@
       8,
       3
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -1723,6 +1865,8 @@
       5,
       5
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -1747,6 +1891,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -1771,6 +1917,8 @@
       5,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -1795,6 +1943,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -1819,6 +1969,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1843,6 +1995,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -1867,6 +2021,8 @@
       2,
       5
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1891,6 +2047,8 @@
       5,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -1915,6 +2073,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -1939,6 +2099,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -1963,6 +2125,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -1987,6 +2151,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2011,6 +2177,8 @@
       5,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2035,6 +2203,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2059,6 +2229,8 @@
       3,
       1
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": true,
     "randomBody": false,
     "randomName": false
@@ -2083,6 +2255,8 @@
       4,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2107,6 +2281,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2131,6 +2307,8 @@
       4,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2155,6 +2333,8 @@
       6,
       9
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2179,6 +2359,8 @@
       2,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2203,6 +2385,8 @@
       2,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2227,6 +2411,8 @@
       2,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2251,6 +2437,8 @@
       5,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2275,6 +2463,8 @@
       5,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2299,6 +2489,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2323,6 +2515,8 @@
       6,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2347,6 +2541,8 @@
       2,
       8
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2371,6 +2567,8 @@
       5,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2395,6 +2593,8 @@
       5,
       2
     ],
+    "rarity": "Rare",
+    "isHidden": true,
     "isInfertile": false,
     "randomBody": false,
     "randomName": true
@@ -2419,6 +2619,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -2443,6 +2645,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -2467,6 +2671,8 @@
       4,
       3
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -2491,6 +2697,8 @@
       4,
       8
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -2515,6 +2723,8 @@
       4,
       3
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -2539,6 +2749,8 @@
       3,
       4
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -2563,6 +2775,8 @@
       4,
       3
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true
@@ -2587,6 +2801,8 @@
       1,
       1
     ],
+    "rarity": "Normal",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": false,
     "randomName": false
@@ -2611,6 +2827,8 @@
       8,
       3
     ],
+    "rarity": "Rare",
+    "isHidden": false,
     "isInfertile": false,
     "randomBody": true,
     "randomName": true

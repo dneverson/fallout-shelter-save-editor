@@ -413,6 +413,112 @@ const specialThemeSchema = z.looseObject({
   themeByRoomType: z.record(z.string(), z.string()).optional(),
 });
 
+// CompletedQuestDataManager. `completedQuests` is the flat list of completed quest NAMES
+// (m_questName, difficulty variant included, e.g. "SecretAgentQuestline_01_Quest_02" /
+// "ShowQuestline_Ryan_01_Diff40"); these match the quest catalog. Load is tolerant - unknown
+// names warn and are skipped (Section 8) - but the editor validates names against the catalog.
+// `taskID` links to taskMgr; left untouched by quest edits.
+// The pickers below are what the game's quest log actually offers. A quest being "unlocked"
+// (all m_questDependancies complete) is NOT the same as being offered: dailies/weeklies/
+// surprises have no dependencies at all, so ~790 of the 1040 catalog quests are trivially
+// unlocked. The game narrows that pool by rolling a small rotation into these picker fields,
+// and THAT is the set the player sees. Read-only here; the Quests tab filters on them.
+//
+// `current*` may be empty on a stale save: the rotations carry real date windows and the game
+// re-rolls them on load once they expire. The `history*` entries are the previous rotations.
+const questRotationSchema = z.looseObject({
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
+  officialStartDate: z.string().optional(),
+  questName: z.string().optional(),
+});
+
+/** A quest the player skipped; `isCurrentDay` marks a skip from the live rotation. */
+const skippedQuestSchema = z.looseObject({
+  questName: z.string().optional(),
+  isCurrentDay: z.boolean().optional(),
+});
+
+const skipperSchema = z.looseObject({
+  skippedQuests: z.array(skippedQuestSchema).optional(),
+});
+
+const completedQuestDataManagerSchema = z.looseObject({
+  taskID: z.number().optional(),
+  completedQuests: z.array(z.string()).optional(),
+  /**
+   * Clue quest-names the vault has found (CompletedQuestDataManager.m_foundClues, key
+   * "foundClues"). A team carries clues home in `equipment.questClues`, then ColllectQuestClues()
+   * flushes them here and clears the satchel - so THIS is the durable record, and the per-actor
+   * arrays are always empty in a save at rest. The game derives its AvailableClue pool as every
+   * EQuestType.QuestClue quest absent from this list.
+   */
+  foundClues: z.array(z.string()).optional(),
+  // The single rotating standalone quest currently on offer.
+  standaloneQuestPicker: z.looseObject({ currentStandalone: z.string().optional() }).optional(),
+  dailyQuestPicker: z
+    .looseObject({
+      currentDailies: z.array(questRotationSchema).optional(),
+      historyDailies: z.array(questRotationSchema).optional(),
+    })
+    .optional(),
+  weeklyQuestPicker: z
+    .looseObject({
+      currentWeeklies: z.array(questRotationSchema).optional(),
+      historyWeeklies: z.array(questRotationSchema).optional(),
+    })
+    .optional(),
+  standaloneQuestSkipper: skipperSchema.optional(),
+  dailyQuestSkipper: skipperSchema.optional(),
+  weeklyQuestSkipper: skipperSchema.optional(),
+  /**
+   * quest-name -> .NET ticks (100 ns since 0001-01-01) of when it was completed. The game stamps
+   * every completion but only READS the entries for dated EventQuests: on quest-list open,
+   * ReactivateEventQuestIfExpired un-completes such a quest when its stamp is older than the
+   * ~180-day cooldown - or MISSING, so the editor must write one with every event completion
+   * (see PERMANENT_EVENT_STAMP_TICKS in quests/questCompletion.ts).
+   */
+  eventQuestCompletedTimes: z.record(z.string(), z.number()).optional(),
+});
+
+// objectiveMgr - the 3 rotating daily objectives. One requirement's per-save progress fields
+// vary by objective type (currentEmergency / currentNumberItems / lastWeapons / allDwellers /
+// ...), so the row is a loose object with only the stable keys typed.
+const objectiveSlotRequirementSchema = z.looseObject({
+  requirementID: z.string().optional(),
+  satisfied: z.boolean().optional(),
+});
+const objectiveSlotSchema = z.looseObject({
+  objective: z
+    .looseObject({
+      objectiveID: z.string().optional(),
+      requirements: z.array(objectiveSlotRequirementSchema).optional(),
+      completed: z.boolean().optional(),
+      incrementLevel: z.number().optional(),
+    })
+    .optional(),
+  incLevel: z.number().optional(),
+  lottery: z.array(z.boolean()).optional(), // the 5-boolean reward-tier roll
+});
+// `slotArray` is exactly 3 active objectives (the game assumes 3 - replace, never remove);
+// `shuffleBags` are the per-tier draw pools of objective ids.
+const objectiveMgrSchema = z.looseObject({
+  taskID: z.number().optional(),
+  canDiscard: z.boolean().optional(),
+  nukaQuantumIncrement: z.number().optional(),
+  shuffleBags: z.array(z.array(z.string())).optional(),
+  slotArray: z.array(objectiveSlotSchema).optional(),
+});
+
+// questDataManager - the single current/last quest instance. `questDone` distinguishes a team
+// still out there from the record of the last finished run (a completed run keeps its
+// CurrentQuestID), so both flags are needed to read "deployed right now".
+const questDataManagerSchema = z.looseObject({
+  questDone: z.boolean().optional(),
+  cancelled: z.boolean().optional(),
+  questTeam: z.looseObject({ CurrentQuestID: z.string().optional() }).optional(),
+});
+
 export const saveSchema = z.looseObject({
   dwellers: dwellersBlockSchema.optional(),
   vault: vaultSchema.optional(),
@@ -427,6 +533,9 @@ export const saveSchema = z.looseObject({
   DeathclawManager: deathclawManagerSchema.optional(),
   BottleAndCappyMgrSerializeKey: bottleAndCappySchema.optional(),
   dayToDayRewardMgr: dayToDayRewardSchema.optional(),
+  completedQuestDataManager: completedQuestDataManagerSchema.optional(),
+  questDataManager: questDataManagerSchema.optional(),
+  objectiveMgr: objectiveMgrSchema.optional(),
   // Cosmetic device string (SystemInfo.deviceName). Randomized on sandbox loads so the
   // bundled baseline is not traceable to one device across every user's exports.
   deviceName: z.string().optional(),
@@ -455,6 +564,15 @@ export type Child = z.infer<typeof childSchema>;
 
 /** A wasteland exploration team (`vault.wasteland.teams[]`). */
 export type WastelandTeam = z.infer<typeof wastelandTeamSchema>;
+
+/** Completed-quest tracker (`completedQuestDataManager`): the flat completed-name list. */
+export type CompletedQuestDataManager = z.infer<typeof completedQuestDataManagerSchema>;
+
+/** The daily-objectives manager (`objectiveMgr`): 3 active slots + per-tier shuffle bags. */
+export type ObjectiveMgr = z.infer<typeof objectiveMgrSchema>;
+
+/** One active objective slot (`objectiveMgr.slotArray[]`). */
+export type ObjectiveSlot = z.infer<typeof objectiveSlotSchema>;
 
 /** The decoded save JSON. Edit-surface typing is layered on phase by phase. */
 export type SaveData = z.infer<typeof saveSchema>;

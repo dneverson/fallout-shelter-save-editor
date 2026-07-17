@@ -18,6 +18,7 @@ export const SECTION_NAV: ReadonlyArray<{ id: Section; label: string }> = [
   { id: 'handies', label: 'Mr. Handies' },
   { id: 'junk', label: 'Junk' },
   { id: 'storage', label: 'Storage' },
+  { id: 'quests', label: 'Quests' },
   { id: 'bulk', label: 'Bulk' },
   { id: 'season-pass', label: 'Season Pass' },
   { id: 'advanced', label: 'Advanced' },

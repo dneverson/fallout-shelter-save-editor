@@ -38,6 +38,13 @@ export function Popover({ trigger, children, align = 'start', className }: Popov
     if (overflow > 0) panel.style.transform = `translateX(${-overflow}px)`;
   }, [open]);
 
+  // Outside-click listens in the CAPTURE phase, which is what makes "click anywhere to close"
+  // actually mean anywhere. React Flow's canvas is driven by d3-zoom/d3-drag, and both call
+  // stopImmediatePropagation() on mousedown to claim the gesture - a bubble-phase listener on
+  // document never hears it, so the quest map was the one surface where an open facet panel
+  // stubbornly stayed open. Capture runs document -> target, before anything can swallow the
+  // event. The `contains` check still exempts the popover's own trigger and panel, which is the
+  // one place a click must NOT close it.
   useEffect(() => {
     if (!open) return;
     const onPointerDown = (e: MouseEvent): void => {
@@ -46,10 +53,10 @@ export function Popover({ trigger, children, align = 'start', className }: Popov
     const onKeyDown = (e: KeyboardEvent): void => {
       if (e.key === 'Escape') setOpen(false);
     };
-    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('mousedown', onPointerDown, true);
     document.addEventListener('keydown', onKeyDown);
     return () => {
-      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('mousedown', onPointerDown, true);
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [open]);

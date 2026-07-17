@@ -61,6 +61,8 @@ try {
     roomMetadata: readJson('room-metadata.json'),
     roomProduction: readJson('room-production.json'),
     uniqueDwellers: readJson('unique-dwellers.json'),
+    quests: readJson('quests.json'),
+    objectives: readJson('objectives.json'),
   };
 } catch (err) {
   console.error(`verify: cannot read public/gamedata - ${err.message}`);
@@ -106,11 +108,22 @@ const roomProduction = checkSchema(
 ) ?? { rooms: {} };
 const uniqueDwellers =
   checkSchema('uniqueDwellers', schemas.uniqueDwellersSchema, raw.uniqueDwellers) ?? {};
+const questsFile = checkSchema('quests', schemas.questsFileSchema, raw.quests) ?? {
+  quests: [],
+  questlines: [],
+};
+const objectivesFile = checkSchema('objectives', schemas.objectivesFileSchema, raw.objectives) ?? {
+  objectives: [],
+};
 
 if (findings.some((f) => f.area === 'schema'))
   info('schema', 'one or more catalogs failed schema validation (see above)');
 else
-  info('schema', `all 12 catalogs valid (${weapons.length} weapons, ${outfits.length} outfits, …)`);
+  info(
+    'schema',
+    `all 14 catalogs valid (${weapons.length} weapons, ${outfits.length} outfits, ` +
+      `${questsFile.quests.length} quests, ${objectivesFile.objectives.length} objectives, …)`,
+  );
 
 // --- 2. meta.json self-consistency (the hand-edit guard) ---------------------
 // Counts derivable from the committed JSON. `spriteAtlases` is intentionally omitted -
@@ -130,6 +143,11 @@ const derivedCounts = {
   roomMetadataTypes: Object.keys(roomMetadata.rooms).length,
   roomProductionTypes: Object.keys(roomProduction.rooms).length,
   uniqueDwellers: Object.keys(uniqueDwellers).length,
+  // Quests: count-only guard for now (a drop toward 0 flags a parser break vs git HEAD).
+  // The runtime zod schema lands with the app's gamedata loader (build order step 4).
+  quests: Array.isArray(raw.quests?.quests) ? raw.quests.quests.length : 0,
+  questlines: Array.isArray(raw.quests?.questlines) ? raw.quests.questlines.length : 0,
+  objectives: Array.isArray(raw.objectives?.objectives) ? raw.objectives.objectives.length : 0,
 };
 
 if (meta) {

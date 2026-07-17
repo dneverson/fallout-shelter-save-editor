@@ -8,6 +8,7 @@ import type {
   VisibilityState,
 } from '@tanstack/react-table';
 import type { SaveData } from '../domain/model/saveSchema.ts';
+import { EMPTY_QUEST_FILTER, type QuestFilter } from '../domain/quests/questFilter.ts';
 
 // View/UI state. Distinct from saveStore (the working save):
 // this holds the selected dweller and the Dwellers-table view state. Durable
@@ -33,6 +34,7 @@ export type Section =
   | 'handies'
   | 'junk'
   | 'storage'
+  | 'quests'
   | 'bulk'
   | 'season-pass'
   | 'advanced';
@@ -156,6 +158,36 @@ export interface UIState {
   dwellerRowSelection: RowSelectionState;
   setDwellerRowSelection: (selection: RowSelectionState) => void;
 
+  // --- Quests tab: session-only view state -------------------------------------
+  /**
+   * Which Quests sub-tab is open (graph vs. daily objectives). Session-only, like the
+   * filters below: switching sections and coming back reopens the same sub-tab.
+   */
+  questsTab: 'quests' | 'objectives';
+  setQuestsTab: (tab: 'quests' | 'objectives') => void;
+  /**
+   * The full quest filter (facets + search). Held here instead of view-local state so a
+   * carefully built filter survives hopping to another section and back; resets on reload
+   * like every other transient filter.
+   */
+  questFilter: QuestFilter;
+  setQuestFilter: (filter: QuestFilter) => void;
+  /**
+   * Last quest-map viewport (React Flow pan x/y + zoom). Restored on remount so returning
+   * to the tab lands on the same spot in the graph instead of re-fitting the whole map.
+   * Null until the user first moves the map.
+   */
+  questViewport: { x: number; y: number; zoom: number } | null;
+  setQuestViewport: (viewport: { x: number; y: number; zoom: number } | null) => void;
+  /**
+   * Last selected quest (the URL `:detail` name). The URL stays the source of truth while
+   * the tab is open; this shadow copy exists ONLY so QuestsView can restore the selection -
+   * and with it the right-hand detail panel - when the sidebar re-enters the section at bare
+   * `/quests`. Null after the user explicitly closes the panel, so closing sticks.
+   */
+  questDetail: string | null;
+  setQuestDetail: (name: string | null) => void;
+
   // --- Pets table: session-only filters ---------------------------------------
   petGlobalFilter: string;
   setPetGlobalFilter: (value: string) => void;
@@ -232,6 +264,15 @@ export const useUIStore = create<UIState>()(
         }),
       dwellerRowSelection: {},
       setDwellerRowSelection: (dwellerRowSelection) => set({ dwellerRowSelection }),
+
+      questsTab: 'quests',
+      setQuestsTab: (questsTab) => set({ questsTab }),
+      questFilter: EMPTY_QUEST_FILTER,
+      setQuestFilter: (questFilter) => set({ questFilter }),
+      questViewport: null,
+      setQuestViewport: (questViewport) => set({ questViewport }),
+      questDetail: null,
+      setQuestDetail: (questDetail) => set({ questDetail }),
 
       petGlobalFilter: '',
       setPetGlobalFilter: (petGlobalFilter) => set({ petGlobalFilter }),
