@@ -23,22 +23,45 @@ it is never uploaded to a server.
 
 The editor is organized into sections, each backed by undo/redo and live save-health checks:
 
-- **Vault**: vault name, caps, resources (food/water/power/Nuka-Cola), Lunchboxes, and other
-  top-level settings.
+- **Vault**: vault name, caps, resources (food/water/power/Nuka-Cola), Lunchboxes and other
+  consumables, game mode, and the Mysterious Stranger. Disaster toggles for Deathclaw attacks
+  and the Bottle & Cappy visit, plus a vault time card with vault-wide fast-forward and
+  daily-reward status.
 - **Dwellers**: full roster table with SPECIAL stats, level/XP, health, happiness, equipped
-  weapon/outfit/pet, name and gender. Includes bulk name fixes.
-- **Family Tree**: relationship graph derived from each dweller's parent/lineage data.
-- **Rooms**: room grid with capacity, production, themes, per-room auto-staff, and placement
-  validation.
+  weapon/outfit/pet, name, gender, and appearance; includes bulk name fixes. Location status is
+  resolved from real save state (Exploring / Returning / On Quest / At Door / Coffee Break).
+  Pregnancy controls can deliver or cancel, restore the imported timer, and force twins or
+  triplets; grow-up and exploration timers are editable too. Adding dwellers is capacity-aware
+  (fills the living-quarters population cap, then the game's 10-place door queue), special
+  named dwellers can be added multi-select in one undo step, and bulk remove scrubs every
+  reference the game would (room rosters, training slots, partnerships, wasteland teams,
+  orphaned tasks). The population cap itself is derived from your living quarters, as in game.
+- **Family Tree**: relationship graph derived from each dweller's parent/lineage data, with
+  vault-wide genetics stats.
+- **Rooms**: room grid with capacity, production, themes, per-room auto-staff, placement
+  validation, and repair, plus work/crafting/training/rush timer editing. Ultracite rooms carry
+  a warning that they are inert unless Ultracite Fever is the active season.
 - **Weapons / Outfits / Pets / Junk**: catalogs of every game item with icons, sorted/filtered
-  views, and add-to-storage with per-row quantity.
+  views, and add-to-storage with per-row quantity. Weapons and outfits show a Craftable column
+  that jumps to the matching recipe.
+- **Recipes**: craftable weapon/outfit recipes with rarity and unlock state, plus a detail
+  panel (item stats, add/remove from the collection, jump to the item's catalog tab).
+- **Survival Guide**: the in-game collection/achievement lists (weapons, outfits, dwellers,
+  pets, breeds, junk) with collect/remove and new/seen marking. Anything added elsewhere in the
+  editor (storage grants, equips, loadouts, pets, special dwellers) is auto-collected into the
+  guide, mirroring the game.
 - **Mr. Handies**: owned-robot roster with health and floor assignment editing, plus a catalog
   of the game's variants.
-- **Recipes**: craftable weapon/outfit recipes and unlock state.
-- **Storage**: the vault inventory, with an add-items dialog driven by the game-data catalog.
-- **Bulk**: apply an operation across every dweller at once (max stats, heal, and more).
+- **Storage**: the vault inventory, with an add-items dialog driven by the game-data catalog
+  and multi-select row removal.
+- **Quests**: quest and objective catalogs with a questline graph map, a quest detail panel
+  with loot and completion editing, and the three daily objective slots as editable cards
+  (replace, progress, completed flag, reward lottery, escalation level).
+- **Bulk**: vault-wide operations - Max Everything, dweller presets (max stats, heal, and
+  more), room operations, unlocks, and location loadouts.
 - **Season Pass**: load the game's season files (`spd.dat` / `nvf.dat`) to view the reward
-  track and claim or unclaim rewards, up to maxing out every season.
+  track and claim or unclaim rewards, up to maxing out every season. A season clock card
+  drives the game's own debug offset (+days, skip past the season end, reset).
 - **Advanced**: a CodeMirror JSON IDE with an explorer tree and a live diff against the
   original save, for direct edits not covered by the structured views.
 
@@ -46,6 +69,7 @@ Other behavior:
 
 - **Automatic backup**: a timestamped copy of your original file is downloaded before your
   first export.
+- **Change review**: before export, a dialog summarizes everything changed since import.
 - **Save health**: diagnostics run on every edit/undo/redo and surface repairable issues.
 - **Cross-platform export**: exported saves are byte-compatible across PC / Android / iOS /
   Switch, and the app shows where each platform stores its `Vault<N>.sav`. (Only the PC path is
@@ -116,7 +140,8 @@ round-trip with **identical values**. (Whole-file bytes are not guaranteed ident
 `JSON.stringify` may reorder keys and reformat numbers, but the game re-parses the JSON, so this
 is functionally transparent.)
 
-Game-data catalogs (weapons, outfits, pets, junk, rooms, recipes, sprite atlases) live in
+Game-data catalogs (weapons, outfits, pets, junk, rooms, quests, objectives, unique dwellers,
+season passes, sprite atlases, and more) live in
 [public/gamedata/](public/gamedata/) and are fetched at runtime relative to the app's deploy
 base, so the app works mounted at a domain root or a project subpath.
 
@@ -155,6 +180,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the pull-request checklist and commit
 | `pnpm test` / `pnpm test:watch`     | Vitest unit/integration tests                             |
 | `pnpm test:e2e`                     | Playwright end-to-end tests                               |
 | `pnpm gamedata:build`               | Regenerate `public/gamedata/` from raw inputs (see below) |
+| `pnpm gamedata:refresh`             | Full extraction chain from a local game install           |
+| `pnpm gamedata:verify`              | Validate the committed game data (schema/meta/save ids)   |
 
 ### Game data
 
