@@ -1,7 +1,7 @@
 {
-  "gameVersion": "2.4.1",
+  "gameVersion": "2.5.0",
   "unityVersion": "6000.0.58f2",
-  "generatedAt": "2026-07-14T17:05:54.601Z",
+  "generatedAt": "2026-07-17T22:41:36.077Z",
   "counts": {
     "weapons": 254,
     "outfits": 215,
@@ -16,10 +16,10 @@
     "roomMetadataTypes": 43,
     "roomProductionTypes": 43,
     "uniqueDwellers": 109,
-    "seasons": 5,
-    "spriteAtlases": 39,
-    "quests": 1040,
+    "seasons": 8,
+    "quests": 1039,
     "questlines": 45,
-    "objectives": 530
+    "objectives": 530,
+    "spriteAtlases": 39
   }
 }

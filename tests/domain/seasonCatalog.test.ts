@@ -16,17 +16,23 @@ function load(name: string): unknown {
 const catalog = parseSeasonCatalog(load('season-pass'));
 
 describe('season-pass catalog artifact', () => {
-  it('contains all 5 shipped seasons with the correct reward counts', () => {
-    expect(catalog.seasons).toHaveLength(5);
+  it('contains all 8 shipped seasons with the correct reward counts', () => {
+    expect(catalog.seasons).toHaveLength(8);
     expect(catalog.seasonIds).toEqual([
       'NewVegasA',
       'NewVegasB',
       'UltraciteFever',
       'Enclave',
       'Institute',
+      // v2.5.0 rerun seasons: date-suffixed replays of the original cycle.
+      'NewVegasA_26_07',
+      'NewVegasB_26_09',
+      'UltraciteFever_26_10',
     ]);
     for (const season of catalog.seasons) {
-      expect(season.freeRewards).toHaveLength(12);
+      // The active rerun (NewVegasA_26_07) fills every free level 1-20 with caps
+      // rewards; the original seasons and not-yet-started reruns carry 12.
+      expect(season.freeRewards).toHaveLength(season.id === 'NewVegasA_26_07' ? 20 : 12);
       expect(season.premiumRewards).toHaveLength(25);
       expect(season.maxRank).toBe(25);
       // Last 5 premium ranks are prestige rewards.
@@ -37,8 +43,9 @@ describe('season-pass catalog artifact', () => {
   it('indexes seasons by id and matches the meta count', () => {
     expect(catalog.seasonById.get('Institute')?.maxRank).toBe(25);
     expect(catalog.seasonById.has('NewVegasA')).toBe(true);
+    expect(catalog.seasonById.has('NewVegasA_26_07')).toBe(true);
     const meta = load('meta') as { counts: Record<string, number> };
-    expect(meta.counts.seasons).toBe(5);
+    expect(meta.counts.seasons).toBe(8);
   });
 
   it('carries the inert ncqReward placeholder template (claim state stripped)', () => {

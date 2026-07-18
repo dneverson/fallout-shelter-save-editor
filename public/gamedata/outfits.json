@@ -3416,7 +3416,7 @@
     "hasHelmet": true,
     "rarity": "Rare",
     "sprite": "Soldier",
-    "gender": null,
+    "gender": "female",
     "codeId": "97"
   },
   {

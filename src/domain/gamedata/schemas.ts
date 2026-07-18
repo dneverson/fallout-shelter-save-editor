@@ -338,7 +338,8 @@ export const questRequirementSchema = z.looseObject({
 /** One mandatory room: objectives, room type, and its four loot slots. */
 export const questRoomSchema = z.looseObject({
   m_questRoomType: z.number().optional(),
-  m_primaryObjectiveType: z.number().optional(),
+  /** Renamed from m_primaryObjectiveType in game v2.5.0. */
+  m_primaryObjective: z.number().optional(),
   m_secondaryObjective: z.number().optional(),
   m_thirdObjective: z.number().optional(),
   m_combatLoot: questLootSchema.optional(),

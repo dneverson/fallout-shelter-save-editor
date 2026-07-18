@@ -1863,6 +1863,1191 @@
           "levelRequired": 25
         }
       ]
+    },
+    {
+      "id": "NewVegasA_26_07",
+      "maxRank": 25,
+      "tokenRequirements": [
+        0,
+        3,
+        5,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        15,
+        15,
+        15,
+        10,
+        15,
+        15,
+        15,
+        20
+      ],
+      "basePassTokens": 0,
+      "premiumPassTokens": 25,
+      "endDate": "2026-08-31",
+      "freeRewards": [
+        {
+          "id": 787724316,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 300,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 1
+        },
+        {
+          "id": 379731925,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 2
+        },
+        {
+          "id": 927364984,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 700,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 3
+        },
+        {
+          "id": 990633696,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 1000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 4
+        },
+        {
+          "id": 589473977,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "ActionWeddingDress",
+          "icon": "BP_ActionWeddingDress",
+          "levelRequired": 5
+        },
+        {
+          "id": 329881727,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 1200,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 6
+        },
+        {
+          "id": 833978731,
+          "isPrestige": false,
+          "rewardType": "stimpack",
+          "dataValInt": 8,
+          "dataValString": "none",
+          "icon": "BP_Stimpack",
+          "levelRequired": 7
+        },
+        {
+          "id": 1041537472,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 0,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 8
+        },
+        {
+          "id": 312681165,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 1500,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 9
+        },
+        {
+          "id": 241700351,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 10
+        },
+        {
+          "id": 683363853,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 2000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 11
+        },
+        {
+          "id": 590097555,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 3000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 12
+        },
+        {
+          "id": 308211606,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "GhoulRevolver",
+          "icon": "BP_GhoulRevolver",
+          "levelRequired": 13
+        },
+        {
+          "id": 695848672,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 4000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 14
+        },
+        {
+          "id": 606625397,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "petcarrier",
+          "icon": "BP_PetCarrier",
+          "levelRequired": 15
+        },
+        {
+          "id": 559370162,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 5000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 16
+        },
+        {
+          "id": 661523908,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "VaultSecurityOutfit",
+          "icon": "BP_VaultSecurityOutfit",
+          "levelRequired": 17
+        },
+        {
+          "id": 561268106,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 18
+        },
+        {
+          "id": 547387371,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 5000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 19
+        },
+        {
+          "id": 435047571,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 20
+        }
+      ],
+      "premiumRewards": [
+        {
+          "id": 405339502,
+          "isPrestige": false,
+          "rewardType": "stimpack",
+          "dataValInt": 3,
+          "dataValString": "none",
+          "icon": "BP_Stimpack",
+          "levelRequired": 1
+        },
+        {
+          "id": 53076271,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "SniperRifle",
+          "icon": "BP_SniperRifle",
+          "levelRequired": 2
+        },
+        {
+          "id": 962051455,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 3
+        },
+        {
+          "id": 441108426,
+          "isPrestige": false,
+          "rewardType": "theme",
+          "dataValInt": 0,
+          "dataValString": "NewVegasExterior",
+          "icon": "BP_Theme",
+          "levelRequired": 4
+        },
+        {
+          "id": 171228535,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "sphynx_r",
+          "icon": "BP_Sphynx",
+          "levelRequired": 5
+        },
+        {
+          "id": 883263811,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "NCR_Ranger",
+          "icon": "BP_NCRArmor",
+          "levelRequired": 6
+        },
+        {
+          "id": 581236072,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 7
+        },
+        {
+          "id": 522885908,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "abyssinian_r",
+          "icon": "BP_Abyssinian",
+          "levelRequired": 8
+        },
+        {
+          "id": 456273891,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "BOSAssaultRifle",
+          "icon": "BP_BOSAssaultRifle",
+          "levelRequired": 9
+        },
+        {
+          "id": 447970840,
+          "isPrestige": false,
+          "rewardType": "dweller",
+          "dataValInt": 3,
+          "dataValString": "Stephanie",
+          "icon": "BP_Stephanie",
+          "levelRequired": 10
+        },
+        {
+          "id": 864196094,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "petcarrier",
+          "icon": "BP_PetCarrier",
+          "levelRequired": 11
+        },
+        {
+          "id": 520701744,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "ScarredPowerArmor",
+          "icon": "BP_ScarredPowerArmor",
+          "levelRequired": 12
+        },
+        {
+          "id": 841986562,
+          "isPrestige": false,
+          "rewardType": "dweller",
+          "dataValInt": 3,
+          "dataValString": "Paladin",
+          "icon": "BP_Paladin",
+          "levelRequired": 13
+        },
+        {
+          "id": 861217624,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 14
+        },
+        {
+          "id": 862606824,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "SuperSledge",
+          "icon": "BP_SuperSledge",
+          "levelRequired": 15
+        },
+        {
+          "id": 721373618,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "militarymacaw_l",
+          "icon": "BP_MilitaryMacaw",
+          "levelRequired": 16
+        },
+        {
+          "id": 335326191,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "GatlingLaser_Vengeance",
+          "icon": "BP_Vengeance",
+          "levelRequired": 17
+        },
+        {
+          "id": 412606577,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 5,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 18
+        },
+        {
+          "id": 302872384,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "Cryolator",
+          "icon": "BP_Cryolator",
+          "levelRequired": 19
+        },
+        {
+          "id": 889735248,
+          "isPrestige": false,
+          "rewardType": "theme",
+          "dataValInt": 0,
+          "dataValString": "SunsetSarsaparilla",
+          "icon": "BP_Theme",
+          "levelRequired": 20
+        },
+        {
+          "id": 689302791,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 21
+        },
+        {
+          "id": 1040270813,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 22
+        },
+        {
+          "id": 525091181,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 23
+        },
+        {
+          "id": 260682532,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 24
+        },
+        {
+          "id": 260153141,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 25
+        }
+      ]
+    },
+    {
+      "id": "NewVegasB_26_09",
+      "maxRank": 25,
+      "tokenRequirements": [
+        0,
+        3,
+        5,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        15,
+        15,
+        15,
+        10,
+        15,
+        15,
+        15,
+        20
+      ],
+      "basePassTokens": 0,
+      "premiumPassTokens": 25,
+      "endDate": "2026-10-19",
+      "freeRewards": [
+        {
+          "id": 984950228,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 2
+        },
+        {
+          "id": 561192789,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 700,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 3
+        },
+        {
+          "id": 630808033,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "FormalWear_Fancy",
+          "icon": "BP_FancyFormalWear",
+          "levelRequired": 5
+        },
+        {
+          "id": 642034047,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 0,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 7
+        },
+        {
+          "id": 120881725,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "JunkJet",
+          "icon": "BP_JunkJet",
+          "levelRequired": 8
+        },
+        {
+          "id": 424617504,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 10
+        },
+        {
+          "id": 404166633,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "petcarrier",
+          "icon": "BP_PetCarrier",
+          "levelRequired": 12
+        },
+        {
+          "id": 998911912,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 3000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 13
+        },
+        {
+          "id": 499073786,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "bombay_r",
+          "icon": "BP_Bombay",
+          "levelRequired": 15
+        },
+        {
+          "id": 565520925,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "SurvivorSpecial",
+          "icon": "BP_SurvivorArmor",
+          "levelRequired": 17
+        },
+        {
+          "id": 549996388,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 18
+        },
+        {
+          "id": 991776369,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 20
+        }
+      ],
+      "premiumRewards": [
+        {
+          "id": 516409354,
+          "isPrestige": false,
+          "rewardType": "stimpack",
+          "dataValInt": 3,
+          "dataValString": "none",
+          "icon": "BP_Stimpack",
+          "levelRequired": 1
+        },
+        {
+          "id": 645162740,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "SurgicalRipper_Enhanced",
+          "icon": "BP_SurgicalRipper",
+          "levelRequired": 2
+        },
+        {
+          "id": 188008890,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 3
+        },
+        {
+          "id": 828060651,
+          "isPrestige": false,
+          "rewardType": "theme",
+          "dataValInt": 0,
+          "dataValString": "NewVegasNightExterior",
+          "icon": "BP_Theme",
+          "levelRequired": 4
+        },
+        {
+          "id": 766158270,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "pitbullterrier_l3",
+          "icon": "BP_Pitbull",
+          "levelRequired": 5
+        },
+        {
+          "id": 646578580,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "HandymanJumpsuit_Advanced",
+          "icon": "BP_AdvancedJumpsuit",
+          "levelRequired": 6
+        },
+        {
+          "id": 250730583,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "Minigun",
+          "icon": "BP_Minigun",
+          "levelRequired": 7
+        },
+        {
+          "id": 707736186,
+          "isPrestige": false,
+          "rewardType": "stimpack",
+          "dataValInt": 8,
+          "dataValString": "none",
+          "icon": "BP_Stimpack",
+          "levelRequired": 8
+        },
+        {
+          "id": 1025346799,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 9
+        },
+        {
+          "id": 879889484,
+          "isPrestige": false,
+          "rewardType": "dweller",
+          "dataValInt": 3,
+          "dataValString": "Legate",
+          "icon": "BP_Legate",
+          "levelRequired": 10
+        },
+        {
+          "id": 357810010,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "petcarrier",
+          "icon": "BP_PetCarrier",
+          "levelRequired": 11
+        },
+        {
+          "id": 975439955,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "PlasmaThrower_DragonsMaw",
+          "icon": "BP_DragonsMaw",
+          "levelRequired": 12
+        },
+        {
+          "id": 383032814,
+          "isPrestige": false,
+          "rewardType": "dweller",
+          "dataValInt": 3,
+          "dataValString": "Ghoul King",
+          "icon": "BP_GhoulKing",
+          "levelRequired": 13
+        },
+        {
+          "id": 66350431,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 14
+        },
+        {
+          "id": 737377637,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "RadiumRifle",
+          "icon": "BP_RadiumRifle",
+          "levelRequired": 15
+        },
+        {
+          "id": 678376697,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "husky_l",
+          "icon": "BP_Husky",
+          "levelRequired": 16
+        },
+        {
+          "id": 873203096,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "Fatman_Mirv",
+          "icon": "BP_MIRV",
+          "levelRequired": 17
+        },
+        {
+          "id": 354773766,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 5,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 18
+        },
+        {
+          "id": 802912865,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "NCRPowerArmor",
+          "icon": "BP_NCRPowerArmor",
+          "levelRequired": 19
+        },
+        {
+          "id": 720732912,
+          "isPrestige": false,
+          "rewardType": "theme",
+          "dataValInt": 0,
+          "dataValString": "LivingQuartersLucky38Penthouse",
+          "icon": "BP_Theme",
+          "levelRequired": 20
+        },
+        {
+          "id": 327423709,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 21
+        },
+        {
+          "id": 684897221,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 22
+        },
+        {
+          "id": 276394491,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 23
+        },
+        {
+          "id": 469591310,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 24
+        },
+        {
+          "id": 553721455,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 25
+        }
+      ]
+    },
+    {
+      "id": "UltraciteFever_26_10",
+      "maxRank": 25,
+      "tokenRequirements": [
+        0,
+        3,
+        5,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        15,
+        15,
+        15,
+        10,
+        15,
+        15,
+        15,
+        20
+      ],
+      "basePassTokens": 0,
+      "premiumPassTokens": 25,
+      "endDate": "2026-12-07",
+      "freeRewards": [
+        {
+          "id": 484669547,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 2
+        },
+        {
+          "id": 440323503,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 700,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 3
+        },
+        {
+          "id": 551880031,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "RobCoFactoryUniform",
+          "icon": "BP_RobcoFactoryUniform",
+          "levelRequired": 5
+        },
+        {
+          "id": 489099245,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 0,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 7
+        },
+        {
+          "id": 538599496,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "Flamer_Burnmaster",
+          "icon": "BP_Flamer",
+          "levelRequired": 8
+        },
+        {
+          "id": 565428617,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 10
+        },
+        {
+          "id": 586421541,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "petcarrier",
+          "icon": "BP_PetCarrier",
+          "levelRequired": 12
+        },
+        {
+          "id": 1012359510,
+          "isPrestige": false,
+          "rewardType": "caps",
+          "dataValInt": 3000,
+          "dataValString": "none",
+          "icon": "BP_Caps",
+          "levelRequired": 13
+        },
+        {
+          "id": 964058710,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "scarletmacaw_r",
+          "icon": "BP_ScarletMacaw",
+          "levelRequired": 15
+        },
+        {
+          "id": 952419321,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "HazmatSuit_Sturdy",
+          "icon": "BP_HazmatSuit",
+          "levelRequired": 17
+        },
+        {
+          "id": 381970054,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 3,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 18
+        },
+        {
+          "id": 872941982,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 20
+        }
+      ],
+      "premiumRewards": [
+        {
+          "id": 411410466,
+          "isPrestige": false,
+          "rewardType": "stimpack",
+          "dataValInt": 3,
+          "dataValString": "none",
+          "icon": "BP_Stimpack",
+          "levelRequired": 1
+        },
+        {
+          "id": 165236116,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "UltraciteSword1",
+          "icon": "BP_UltraciteWeaponLegendary",
+          "levelRequired": 2
+        },
+        {
+          "id": 354858524,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 3
+        },
+        {
+          "id": 378008665,
+          "isPrestige": false,
+          "rewardType": "theme",
+          "dataValInt": 0,
+          "dataValString": "ExteriorUltracite",
+          "icon": "BP_Theme",
+          "levelRequired": 4
+        },
+        {
+          "id": 674176373,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "rottweiler_r",
+          "icon": "BP_Rottweiler",
+          "levelRequired": 5
+        },
+        {
+          "id": 619392255,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "BattleArmor_Sturdy",
+          "icon": "BP_BattleArmor",
+          "levelRequired": 6
+        },
+        {
+          "id": 483058409,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "UltracitePlasma1",
+          "icon": "BP_UltraciteWeaponCommon",
+          "levelRequired": 7
+        },
+        {
+          "id": 815726608,
+          "isPrestige": false,
+          "rewardType": "stimpack",
+          "dataValInt": 8,
+          "dataValString": "none",
+          "icon": "BP_Stimpack",
+          "levelRequired": 8
+        },
+        {
+          "id": 548657684,
+          "isPrestige": false,
+          "rewardType": "dweller",
+          "dataValInt": 3,
+          "dataValString": "Scribe Valdez",
+          "icon": "BP_ScribeValdez",
+          "levelRequired": 9
+        },
+        {
+          "id": 557502837,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "UltraciteSword2",
+          "icon": "BP_UltraciteWeaponLegendary",
+          "levelRequired": 10
+        },
+        {
+          "id": 929563034,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "petcarrier",
+          "icon": "BP_PetCarrier",
+          "levelRequired": 11
+        },
+        {
+          "id": 212633472,
+          "isPrestige": false,
+          "rewardType": "outfit",
+          "dataValInt": 0,
+          "dataValString": "WandererArmor_Heavy",
+          "icon": "BP_WandererArmor",
+          "levelRequired": 12
+        },
+        {
+          "id": 791288547,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "UltraciteGatling1",
+          "icon": "BP_UltraciteWeaponRare",
+          "levelRequired": 13
+        },
+        {
+          "id": 244130413,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "mrhandy",
+          "icon": "BP_MrHandy",
+          "levelRequired": 14
+        },
+        {
+          "id": 869138798,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "UltracitePlasma2",
+          "icon": "BP_UltraciteWeaponCommon",
+          "levelRequired": 15
+        },
+        {
+          "id": 1012763734,
+          "isPrestige": false,
+          "rewardType": "pet",
+          "dataValInt": 0,
+          "dataValString": "havanabrown_l",
+          "icon": "BP_HavanaBrown",
+          "levelRequired": 16
+        },
+        {
+          "id": 838706641,
+          "isPrestige": false,
+          "rewardType": "dweller",
+          "dataValInt": 3,
+          "dataValString": "76 Overseer",
+          "icon": "BP_Vault76Overseer",
+          "levelRequired": 17
+        },
+        {
+          "id": 11489468,
+          "isPrestige": false,
+          "rewardType": "lunchbox",
+          "dataValInt": 5,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 18
+        },
+        {
+          "id": 995527794,
+          "isPrestige": false,
+          "rewardType": "weapon",
+          "dataValInt": 0,
+          "dataValString": "UltraciteGatling2",
+          "icon": "BP_UltraciteWeaponRare",
+          "levelRequired": 19
+        },
+        {
+          "id": 336632594,
+          "isPrestige": false,
+          "rewardType": "theme",
+          "dataValInt": 0,
+          "dataValString": "WeaponFactory_Ultracite",
+          "icon": "BP_Theme",
+          "levelRequired": 20
+        },
+        {
+          "id": 894434939,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 21
+        },
+        {
+          "id": 590859751,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 22
+        },
+        {
+          "id": 1025128652,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 23
+        },
+        {
+          "id": 105300545,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 24
+        },
+        {
+          "id": 210523815,
+          "isPrestige": true,
+          "rewardType": "lunchbox",
+          "dataValInt": 1,
+          "dataValString": "regular",
+          "icon": "BP_Lunchbox",
+          "levelRequired": 25
+        }
+      ]
     }
   ]
 }

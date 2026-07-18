@@ -138,6 +138,9 @@ export function buildQuests() {
     const mono = parseMonoBehaviour(readSource(join(PATHS.resourcesDir, file)));
     const entries = mono.m_questInformations ?? [];
     for (const entry of entries) {
+      // v2.5.0 leaks dev test entries (Quest_Dummy_NPCSpotTesting_1..4, "LEVEL UP")
+      // into FullQuestData; they are not real content and would pollute questlines.
+      if (entry.m_questName?.startsWith('Quest_Dummy_')) continue;
       collectLoc(entry, loc, resolvedText);
       quests.push({
         ...slimQuest(entry),
