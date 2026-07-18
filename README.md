@@ -60,8 +60,11 @@ The editor is organized into sections, each backed by undo/redo and live save-he
 - **Bulk**: vault-wide operations - Max Everything, dweller presets (max stats, heal, and
   more), room operations, unlocks, and location loadouts.
 - **Season Pass**: load the game's season files (`spd.dat` / `nvf.dat`) to view the reward
-  track and claim or unclaim rewards, up to maxing out every season. A season clock card
-  drives the game's own debug offset (+days, skip past the season end, reset).
+  track and claim or unclaim rewards, up to maxing out every season - including the rerun
+  seasons introduced in game v2.5.0. Claims are tracked per vault slot, auto-matched to the
+  loaded `Vault<N>.sav` (overridable), so a seasonal vault's board shows its own claim state.
+  A season clock card drives the game's own debug offset (+days, skip past the season end,
+  reset).
 - **Advanced**: a CodeMirror JSON IDE with an explorer tree and a live diff against the
   original save, for direct edits not covered by the structured views.
 
