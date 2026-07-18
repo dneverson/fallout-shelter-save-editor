@@ -13,6 +13,7 @@ import { assetUrl } from '../domain/gamedata/assetBase.ts';
 import {
   buildFreshNvf,
   buildFreshSeasonSave,
+  claimIndexFromSaveFileName,
   loadSeasonSave,
   type ReversalHandles,
   type SeasonWorkspace,
@@ -111,6 +112,13 @@ export interface SaveState {
   seasonSource: SeasonSource;
   /** True once the season model has been edited (export offers `spd.dat`/`nvf.dat` then). */
   seasonEdited: boolean;
+  /**
+   * The vault-slot claim index season claim ops read/write (`claimedList` holds vault
+   * slot indexes: Vault1.sav → 0 … Vault4.sav → 3; see seasonOps). Auto-derived from the
+   * imported `.sav` file name; the Season tab exposes an override. A pairing setting,
+   * not file state - deliberately outside undo history.
+   */
+  seasonClaimIndex: number;
 
   /** Undo stack (older states) and redo stack (states undone away from). */
   past: SaveData[];
@@ -143,6 +151,8 @@ export interface SaveState {
   startSeasonFromCatalog: (catalog: SeasonCatalog) => void;
   /** Load an uploaded `spd.dat` (and optional `nvf.dat`) into the season working model. */
   loadSeasonFromText: (spdText: string, nvfText: string | null, fileName: string) => Promise<void>;
+  /** Override the vault-slot claim index (the Season tab's "Claims for Vault N" control). */
+  setSeasonClaimIndex: (index: number) => void;
   /** Encode the current `spd.dat` working model to container text. */
   exportSeasonText: () => Promise<string>;
   /** Encode the current `nvf.dat` working model to container text. */
@@ -171,6 +181,7 @@ const initialState = {
   seasonFileName: null,
   seasonSource: 'none' as SeasonSource,
   seasonEdited: false,
+  seasonClaimIndex: 0,
   past: [] as SaveData[],
   future: [] as SaveData[],
   seasonPast: [] as SeasonSnapshot[],
@@ -246,6 +257,8 @@ export const useSaveStore = create<SaveState>((set, get) => ({
         originalSavText: savText,
         originalSave: save,
         isSandbox: opts?.isSandbox ?? false,
+        // Season claims are per vault slot; pair them with the vault just imported.
+        seasonClaimIndex: claimIndexFromSaveFileName(fileName),
         health: checkSaveHealth(save),
         status: 'loaded',
       });
@@ -365,6 +378,11 @@ export const useSaveStore = create<SaveState>((set, get) => ({
       seasonSource: 'file',
       seasonEdited: false,
     });
+  },
+
+  setSeasonClaimIndex: (index) => {
+    if (!Number.isInteger(index) || index < 0) return;
+    set({ seasonClaimIndex: index });
   },
 
   exportSeasonText: async () => {

@@ -15,6 +15,8 @@ export interface SeasonBoardProps {
   rankCap: number;
   /** Highlighted "current rank" column, or null when the viewed season isn't the active one. */
   currentRank: number | null;
+  /** Vault-slot claim index the board reads claim state for (Vault1 → 0 … Vault4 → 3). */
+  claimIndex: number;
   gameData: GameData | null;
   /** `${track}:${rewardId}` of the cell shown in the detail panel, for highlight. */
   inspectedKey: string | null;
@@ -37,6 +39,7 @@ const CELL = 'h-12 w-12 shrink-0';
 function RewardCellButton({
   reward,
   track,
+  claimIndex,
   gameData,
   locked,
   inspected,
@@ -46,6 +49,7 @@ function RewardCellButton({
 }: {
   reward: SeasonReward;
   track: SeasonTrack;
+  claimIndex: number;
   gameData: GameData | null;
   locked: boolean;
   inspected: boolean;
@@ -53,7 +57,7 @@ function RewardCellButton({
   onToggle: () => void;
   onLockedPremium: () => void;
 }) {
-  const claimed = isRewardClaimed(reward);
+  const claimed = isRewardClaimed(reward, claimIndex);
   const icon = rewardIcon(reward);
   const title = rewardTitle(reward, gameData);
 
@@ -119,6 +123,7 @@ function TrackRow({
   rewards,
   ranks,
   premiumLocked,
+  claimIndex,
   gameData,
   inspectedKey,
   onInspect,
@@ -130,6 +135,7 @@ function TrackRow({
   rewards: Map<number, SeasonReward>;
   ranks: number[];
   premiumLocked: boolean;
+  claimIndex: number;
   gameData: GameData | null;
   inspectedKey: string | null;
   onInspect: (track: SeasonTrack, rewardId: number) => void;
@@ -147,6 +153,7 @@ function TrackRow({
             key={rank}
             reward={reward}
             track={track}
+            claimIndex={claimIndex}
             gameData={gameData}
             locked={track === 'premium' && premiumLocked}
             inspected={inspectedKey === cellKey(track, reward.id)}
@@ -164,6 +171,7 @@ export function SeasonBoard({
   record,
   rankCap,
   currentRank,
+  claimIndex,
   gameData,
   inspectedKey,
   onInspect,
@@ -199,6 +207,7 @@ export function SeasonBoard({
           rewards={premium}
           ranks={ranks}
           premiumLocked={premiumLocked}
+          claimIndex={claimIndex}
           gameData={gameData}
           inspectedKey={inspectedKey}
           onInspect={onInspect}
@@ -211,6 +220,7 @@ export function SeasonBoard({
           rewards={free}
           ranks={ranks}
           premiumLocked={premiumLocked}
+          claimIndex={claimIndex}
           gameData={gameData}
           inspectedKey={inspectedKey}
           onInspect={onInspect}

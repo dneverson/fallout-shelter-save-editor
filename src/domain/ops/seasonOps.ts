@@ -32,8 +32,23 @@ import { addRecipes, removeRecipes, recipeKnown } from './recipeOps.ts';
 // it is passed in by the caller (the UI's gameData), mirroring how the other ops take
 // already-resolved values rather than fetching. Pure: no React/DOM.
 
-/** Single-vault claim index - a reward is "claimed" when its `claimedList` holds this. */
-const VAULT_INDEX = 0;
+/**
+ * The default claim (vault-slot) index. A reward's `claimedList` holds the VAULT SLOT
+ * INDEXES that have claimed it (Vault1.sav → 0 … Vault4.sav → 3) - confirmed v2.5.0,
+ * where the seasonal vault claims from slot 3 while the rerun season records arrive
+ * pre-seeded with the original seasons' slot-0 claims. Claim ops and predicates take
+ * the paired vault's index (derive it with {@link claimIndexFromSaveFileName});
+ * 0 preserves the pre-2.5.0 single-vault behavior.
+ */
+export const DEFAULT_CLAIM_INDEX = 0;
+
+/** Derive the claim (vault-slot) index from a `.sav` file name: "Vault4.sav" → 3.
+ *  Unrecognized names fall back to {@link DEFAULT_CLAIM_INDEX}. */
+export function claimIndexFromSaveFileName(fileName: string | null): number {
+  const match = fileName?.match(/vault(\d+)/i);
+  const slot = match ? Number(match[1]) - 1 : DEFAULT_CLAIM_INDEX;
+  return Number.isInteger(slot) && slot >= 0 ? slot : DEFAULT_CLAIM_INDEX;
+}
 
 /** Caps live under `vault.storage.resources.Nuka`, NOT a `Caps` key. */
 const CAPS_KEY = 'Nuka';
@@ -54,8 +69,6 @@ const REWARD_LIST_KEY = {
   free: 'freeRewardsList',
   premium: 'premiumRewardsList',
 } as const;
-
-type RewardListKey = (typeof REWARD_LIST_KEY)[keyof typeof REWARD_LIST_KEY];
 
 /**
  * The reversal info captured when a claim grants into the `.sav`, so an unclaim removes
@@ -124,18 +137,55 @@ function withRecord(
   return { ...spd, seasonsData: { ...spd.seasonsData, [seasonId]: record } };
 }
 
-function withReward(
+/**
+ * Set/clear a claim index on EVERY reward carrying this id, across ALL season records.
+ * Rerun seasons (v2.5.0) reuse the original seasons' reward ids, and the game keeps
+ * same-id rewards' claim state in sync across records (confirmed in a real spd.dat: a
+ * claim made in NewVegasA_26_07 also appears in the NewVegasA record). Mirroring the
+ * flag matches that invariant so exported files agree with what the game would write.
+ * Structural sharing: untouched records/lists keep their references; a no-op returns
+ * the same `spd`.
+ */
+function withClaimFlagById(
   spd: SeasonSave,
-  seasonId: string,
-  listKey: RewardListKey,
-  index: number,
-  reward: SeasonReward,
+  rewardId: number,
+  claimIndex: number,
+  on: boolean,
 ): SeasonSave {
-  const record = spd.seasonsData?.[seasonId];
-  if (!record) return spd;
-  const list = (record[listKey] ?? []).slice();
-  list[index] = reward;
-  return withRecord(spd, seasonId, { ...record, [listKey]: list });
+  const seasonsData = spd.seasonsData;
+  if (!seasonsData) return spd;
+  let anyChanged = false;
+  const nextData: NonNullable<SeasonSave['seasonsData']> = {};
+  for (const [seasonId, record] of Object.entries(seasonsData)) {
+    let recordChanged = false;
+    const apply = (list: SeasonReward[] | undefined): SeasonReward[] | undefined => {
+      if (!Array.isArray(list)) return list;
+      let listChanged = false;
+      const next = list.map((r) => {
+        if (r.id !== rewardId || r.claimedList.includes(claimIndex) === on) return r;
+        listChanged = true;
+        return {
+          ...r,
+          claimedList: on
+            ? [...r.claimedList, claimIndex]
+            : r.claimedList.filter((i) => i !== claimIndex),
+        };
+      });
+      if (listChanged) recordChanged = true;
+      return listChanged ? next : list;
+    };
+    const free = apply(record.freeRewardsList);
+    const premium = apply(record.premiumRewardsList);
+    nextData[seasonId] = recordChanged
+      ? {
+          ...record,
+          ...(free !== undefined ? { freeRewardsList: free } : {}),
+          ...(premium !== undefined ? { premiumRewardsList: premium } : {}),
+        }
+      : record;
+    if (recordChanged) anyChanged = true;
+  }
+  return anyChanged ? { ...spd, seasonsData: nextData } : spd;
 }
 
 // --- reward → grant resolution ----------------------------------
@@ -284,8 +334,6 @@ function reverseGrant(save: SaveData, handle: ReversalHandle): SaveData {
 // --- locate a reward in the workspace -------------------------------------------
 
 interface RewardLocation {
-  listKey: RewardListKey;
-  index: number;
   reward: SeasonReward;
 }
 
@@ -297,17 +345,18 @@ function locateReward(
 ): RewardLocation | null {
   const record = spd.seasonsData?.[seasonId];
   if (!record) return null;
-  const listKey = REWARD_LIST_KEY[track];
-  const list = record[listKey];
+  const list = record[REWARD_LIST_KEY[track]];
   if (!Array.isArray(list)) return null;
-  const index = list.findIndex((r) => r.id === rewardId);
-  if (index === -1) return null;
-  return { listKey, index, reward: list[index] };
+  const reward = list.find((r) => r.id === rewardId);
+  return reward ? { reward } : null;
 }
 
-/** True if a reward's `claimedList` holds the (single-vault) claim index. */
-export function isRewardClaimed(reward: SeasonReward): boolean {
-  return reward.claimedList.includes(VAULT_INDEX);
+/** True if a reward's `claimedList` holds the given vault-slot claim index. */
+export function isRewardClaimed(
+  reward: SeasonReward,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
+): boolean {
+  return reward.claimedList.includes(claimIndex);
 }
 
 /** The season id under which the Ultracite Mine / Ultracite Weapon Workshop function. */
@@ -336,18 +385,18 @@ export function claimReward(
   seasonId: string,
   track: SeasonTrack,
   rewardId: number,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
 ): SeasonWorkspace {
   const loc = locateReward(ws.spd, seasonId, track, rewardId);
-  if (!loc || isRewardClaimed(loc.reward)) return ws;
+  if (!loc || isRewardClaimed(loc.reward, claimIndex)) return ws;
 
   const { save, handle } = grantReward(ws.save, loc.reward, data);
-  const claimedReward: SeasonReward = {
-    ...loc.reward,
-    claimedList: [...loc.reward.claimedList, VAULT_INDEX],
-  };
   return {
     save,
-    spd: withReward(ws.spd, seasonId, loc.listKey, loc.index, claimedReward),
+    // The flag is mirrored to every same-id reward (rerun seasons share reward ids with
+    // the originals), but the item is granted ONCE - same-id rewards are one logical
+    // reward, which is exactly how the game claims them.
+    spd: withClaimFlagById(ws.spd, rewardId, claimIndex, true),
     nvf: ws.nvf,
     handles: { ...ws.handles, [rewardKey(seasonId, track, rewardId)]: handle },
   };
@@ -364,22 +413,19 @@ export function unclaimReward(
   seasonId: string,
   track: SeasonTrack,
   rewardId: number,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
 ): SeasonWorkspace {
   const loc = locateReward(ws.spd, seasonId, track, rewardId);
-  if (!loc || !isRewardClaimed(loc.reward)) return ws;
+  if (!loc || !isRewardClaimed(loc.reward, claimIndex)) return ws;
 
   const key = rewardKey(seasonId, track, rewardId);
   const handle = ws.handles[key];
   const save = handle ? reverseGrant(ws.save, handle) : ws.save;
-  const unclaimedReward: SeasonReward = {
-    ...loc.reward,
-    claimedList: loc.reward.claimedList.filter((i) => i !== VAULT_INDEX),
-  };
   const handles = { ...ws.handles };
   delete handles[key];
   return {
     save,
-    spd: withReward(ws.spd, seasonId, loc.listKey, loc.index, unclaimedReward),
+    spd: withClaimFlagById(ws.spd, rewardId, claimIndex, false),
     nvf: ws.nvf,
     handles,
   };
@@ -392,12 +438,13 @@ export function toggleReward(
   seasonId: string,
   track: SeasonTrack,
   rewardId: number,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
 ): SeasonWorkspace {
   const loc = locateReward(ws.spd, seasonId, track, rewardId);
   if (!loc) return ws;
-  return isRewardClaimed(loc.reward)
-    ? unclaimReward(ws, seasonId, track, rewardId)
-    : claimReward(ws, data, seasonId, track, rewardId);
+  return isRewardClaimed(loc.reward, claimIndex)
+    ? unclaimReward(ws, seasonId, track, rewardId, claimIndex)
+    : claimReward(ws, data, seasonId, track, rewardId, claimIndex);
 }
 
 // --- batch helpers (one combined undo entry in the store) ------------------------
@@ -416,15 +463,16 @@ export function claimUnclaimed(
   ws: SeasonWorkspace,
   data: RewardResolverData,
   seasonId: string,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
 ): SeasonWorkspace {
   let next = ws;
   const premiumUnlocked = next.spd.seasonsData?.[seasonId]?.isPremium === true;
   for (const id of rewardIds(next.spd, seasonId, 'free')) {
-    next = claimReward(next, data, seasonId, 'free', id);
+    next = claimReward(next, data, seasonId, 'free', id, claimIndex);
   }
   if (premiumUnlocked) {
     for (const id of rewardIds(next.spd, seasonId, 'premium')) {
-      next = claimReward(next, data, seasonId, 'premium', id);
+      next = claimReward(next, data, seasonId, 'premium', id, claimIndex);
     }
   }
   return next;
@@ -438,11 +486,12 @@ export function claimAll(
   ws: SeasonWorkspace,
   data: RewardResolverData,
   seasonId: string,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
 ): SeasonWorkspace {
   let next = setPremiumPlus(ws, seasonId, true);
   for (const track of ['free', 'premium'] as const) {
     for (const id of rewardIds(next.spd, seasonId, track)) {
-      next = claimReward(next, data, seasonId, track, id);
+      next = claimReward(next, data, seasonId, track, id, claimIndex);
     }
   }
   return next;
@@ -467,19 +516,24 @@ export function maxSeason(
   ws: SeasonWorkspace,
   data: RewardResolverData,
   seasonId: string,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
 ): SeasonWorkspace {
   const cap = maxRankOf(ws.spd, seasonId);
-  let next = claimAll(ws, data, seasonId);
+  let next = claimAll(ws, data, seasonId, claimIndex);
   next = setMaxRank(next, seasonId, cap);
   if (next.spd.currentSeason === seasonId) next = setLevel(next, cap);
   return next;
 }
 
 /** Max every season present in the workspace (one combined undo entry in the store). */
-export function maxAllSeasons(ws: SeasonWorkspace, data: RewardResolverData): SeasonWorkspace {
+export function maxAllSeasons(
+  ws: SeasonWorkspace,
+  data: RewardResolverData,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
+): SeasonWorkspace {
   let next = ws;
   for (const seasonId of Object.keys(next.spd.seasonsData ?? {})) {
-    next = maxSeason(next, data, seasonId);
+    next = maxSeason(next, data, seasonId, claimIndex);
   }
   return next;
 }
@@ -489,20 +543,29 @@ export function maxAllSeasons(ws: SeasonWorkspace, data: RewardResolverData): Se
 // button is spent, and clicking it again would only confuse (nothing visibly happens).
 
 /** True when a season's track list is fully claimed (empty lists count as claimed). */
-function trackClaimed(spd: SeasonSave, seasonId: string, track: SeasonTrack): boolean {
+function trackClaimed(
+  spd: SeasonSave,
+  seasonId: string,
+  track: SeasonTrack,
+  claimIndex: number,
+): boolean {
   const record = spd.seasonsData?.[seasonId];
-  return (record?.[REWARD_LIST_KEY[track]] ?? []).every(isRewardClaimed);
+  return (record?.[REWARD_LIST_KEY[track]] ?? []).every((r) => isRewardClaimed(r, claimIndex));
 }
 
 /**
  * True when everything {@link claimUnclaimed} is entitled to claim is already claimed:
  * the whole free track, plus the premium track when premium is unlocked.
  */
-export function isEntitledClaimed(spd: SeasonSave, seasonId: string): boolean {
+export function isEntitledClaimed(
+  spd: SeasonSave,
+  seasonId: string,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
+): boolean {
   const premiumUnlocked = spd.seasonsData?.[seasonId]?.isPremium === true;
   return (
-    trackClaimed(spd, seasonId, 'free') &&
-    (!premiumUnlocked || trackClaimed(spd, seasonId, 'premium'))
+    trackClaimed(spd, seasonId, 'free', claimIndex) &&
+    (!premiumUnlocked || trackClaimed(spd, seasonId, 'premium', claimIndex))
   );
 }
 
@@ -510,13 +573,17 @@ export function isEntitledClaimed(spd: SeasonSave, seasonId: string): boolean {
  * True when {@link claimAll} would change nothing: both tracks fully claimed and the
  * premium + plus unlocks it performs are already in place.
  */
-export function isSeasonFullyClaimed(spd: SeasonSave, seasonId: string): boolean {
+export function isSeasonFullyClaimed(
+  spd: SeasonSave,
+  seasonId: string,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
+): boolean {
   const record = spd.seasonsData?.[seasonId];
   return (
     record?.isPremium === true &&
     record.isPremiumPlus === true &&
-    trackClaimed(spd, seasonId, 'free') &&
-    trackClaimed(spd, seasonId, 'premium')
+    trackClaimed(spd, seasonId, 'free', claimIndex) &&
+    trackClaimed(spd, seasonId, 'premium', claimIndex)
   );
 }
 
@@ -524,8 +591,12 @@ export function isSeasonFullyClaimed(spd: SeasonSave, seasonId: string): boolean
  * True when {@link maxSeason} has nothing left to add: fully claimed, `maxRankAchieved`
  * at (or past) the rank cap, and - for the active season - `currentLevel` there too.
  */
-export function isSeasonMaxed(spd: SeasonSave, seasonId: string): boolean {
-  if (!isSeasonFullyClaimed(spd, seasonId)) return false;
+export function isSeasonMaxed(
+  spd: SeasonSave,
+  seasonId: string,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
+): boolean {
+  if (!isSeasonFullyClaimed(spd, seasonId, claimIndex)) return false;
   const cap = maxRankOf(spd, seasonId);
   const record = spd.seasonsData?.[seasonId];
   if ((record?.maxRankAchieved ?? 0) < cap) return false;
@@ -533,8 +604,11 @@ export function isSeasonMaxed(spd: SeasonSave, seasonId: string): boolean {
 }
 
 /** True when every season in the workspace is maxed ({@link maxAllSeasons} is spent). */
-export function areAllSeasonsMaxed(spd: SeasonSave): boolean {
-  return Object.keys(spd.seasonsData ?? {}).every((id) => isSeasonMaxed(spd, id));
+export function areAllSeasonsMaxed(
+  spd: SeasonSave,
+  claimIndex: number = DEFAULT_CLAIM_INDEX,
+): boolean {
+  return Object.keys(spd.seasonsData ?? {}).every((id) => isSeasonMaxed(spd, id, claimIndex));
 }
 
 // --- status setters --------------------------------------------------------------

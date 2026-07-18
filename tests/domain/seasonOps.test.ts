@@ -7,10 +7,13 @@ import {
   buildFreshNvf,
   buildFreshSeasonSave,
   claimAll,
+  claimIndexFromSaveFileName,
   claimReward,
   claimUnclaimed,
   grantPassTokens,
+  isEntitledClaimed,
   isRewardClaimed,
+  isSeasonFullyClaimed,
   maxSeason,
   setLevel,
   setPremium,
@@ -403,7 +406,7 @@ describe('seasonOps batch', () => {
     const ws = claimUnclaimed(makeWorkspace(), data, 'TestSeason');
     const free = ws.spd.seasonsData!.TestSeason.freeRewardsList!;
     const prem = ws.spd.seasonsData!.TestSeason.premiumRewardsList!;
-    expect(free.every(isRewardClaimed)).toBe(true);
+    expect(free.every((r) => isRewardClaimed(r))).toBe(true);
     expect(prem.every((r) => !isRewardClaimed(r))).toBe(true);
   });
 
@@ -412,7 +415,7 @@ describe('seasonOps batch', () => {
     let ws = setPremium(makeWorkspace(), 'TestSeason', true);
     ws = claimUnclaimed(ws, data, 'TestSeason');
     const prem = ws.spd.seasonsData!.TestSeason.premiumRewardsList!;
-    expect(prem.every(isRewardClaimed)).toBe(true);
+    expect(prem.every((r) => isRewardClaimed(r))).toBe(true);
   });
 
   it('claimAll unlocks premium+plus and claims both tracks', () => {
@@ -421,8 +424,8 @@ describe('seasonOps batch', () => {
     const record = ws.spd.seasonsData!.TestSeason;
     expect(record.isPremium).toBe(true);
     expect(record.isPremiumPlus).toBe(true);
-    expect(record.freeRewardsList!.every(isRewardClaimed)).toBe(true);
-    expect(record.premiumRewardsList!.every(isRewardClaimed)).toBe(true);
+    expect(record.freeRewardsList!.every((r) => isRewardClaimed(r))).toBe(true);
+    expect(record.premiumRewardsList!.every((r) => isRewardClaimed(r))).toBe(true);
   });
 
   it('maxSeason claims all, sets maxRankAchieved + active-season level to the cap', () => {
@@ -432,7 +435,7 @@ describe('seasonOps batch', () => {
     expect(record.maxRankAchieved).toBe(10); // highest levelRequired
     expect(ws.spd.currentLevel).toBe(10);
     expect(ws.spd.battlepassWindowLastObservedLevel).toBe(10);
-    expect(record.premiumRewardsList!.every(isRewardClaimed)).toBe(true);
+    expect(record.premiumRewardsList!.every((r) => isRewardClaimed(r))).toBe(true);
   });
 });
 
@@ -609,7 +612,7 @@ describe('seasonOps fresh model', () => {
       handles: {},
     };
     const maxed = maxSeason(ws, data, 'S1');
-    expect(maxed.spd.seasonsData!.S1.freeRewardsList!.every(isRewardClaimed)).toBe(true);
+    expect(maxed.spd.seasonsData!.S1.freeRewardsList!.every((r) => isRewardClaimed(r))).toBe(true);
     expect(maxed.save.vault?.storage?.resources?.Nuka).toBe(800);
   });
 });
@@ -674,5 +677,92 @@ describe('seasonOps - Ultracite season gate (room functionality)', () => {
   it('treats a missing season model / current season as not active', () => {
     expect(isUltraciteSeasonActive(null)).toBe(false);
     expect(isUltraciteSeasonActive({} as SeasonSave)).toBe(false);
+  });
+});
+
+// --- vault-aware claims (v2.5.0: claimedList holds vault slot indexes) ------------
+
+describe('seasonOps - vault-slot claim index', () => {
+  it('claimIndexFromSaveFileName derives the slot from VaultN names, else 0', () => {
+    expect(claimIndexFromSaveFileName('Vault1.sav')).toBe(0);
+    expect(claimIndexFromSaveFileName('Vault4.sav')).toBe(3);
+    expect(claimIndexFromSaveFileName('vault2.sav')).toBe(1);
+    expect(claimIndexFromSaveFileName('Vault3.backup-2026.sav')).toBe(2);
+    expect(claimIndexFromSaveFileName('MyVault.sav')).toBe(0);
+    expect(claimIndexFromSaveFileName(null)).toBe(0);
+    // Vault0 would be slot -1 - clamps to the default.
+    expect(claimIndexFromSaveFileName('Vault0.sav')).toBe(0);
+  });
+
+  it('isRewardClaimed checks the given index, not just slot 0', () => {
+    const seeded = makeReward({ id: 1, claimedList: [0] });
+    expect(isRewardClaimed(seeded)).toBe(true);
+    expect(isRewardClaimed(seeded, 3)).toBe(false);
+    expect(isRewardClaimed(makeReward({ id: 1, claimedList: [3] }), 3)).toBe(true);
+  });
+
+  it('a reward pre-seeded with another vault claim is still claimable for this vault', () => {
+    // The v2.5.0 rerun scenario: rerun records arrive with the original season's
+    // slot-0 claims; the paired seasonal vault is slot 3.
+    const ws = makeWorkspace();
+    ws.spd.seasonsData!.TestSeason.freeRewardsList![0] = makeReward({
+      id: FREE.caps,
+      rewardType: 'caps',
+      dataValInt: 700,
+      levelRequired: 3,
+      claimedList: [0],
+    });
+    const claimed = claimReward(ws, makeData(), 'TestSeason', 'free', FREE.caps, 3);
+    expect(claimed).not.toBe(ws); // slot 0's claim does not block slot 3
+    expect(claimed.save.vault?.storage?.resources?.Nuka).toBe(800);
+    expect(rewardOf(claimed, 'free', FREE.caps).claimedList).toEqual([0, 3]);
+
+    // Unclaiming slot 3 leaves the other vault's claim untouched.
+    const back = unclaimReward(claimed, 'TestSeason', 'free', FREE.caps, 3);
+    expect(rewardOf(back, 'free', FREE.caps).claimedList).toEqual([0]);
+    expect(back.save.vault?.storage?.resources?.Nuka).toBe(100);
+  });
+
+  it('claiming mirrors the flag to same-id rewards in other season records', () => {
+    // Rerun seasons reuse the original season's reward ids; the game keeps their
+    // claim state in sync across records.
+    const ws = makeWorkspace();
+    ws.spd.seasonsData!.RerunSeason = {
+      freeRewardsList: [
+        makeReward({ id: FREE.caps, rewardType: 'caps', dataValInt: 700, levelRequired: 3 }),
+      ],
+      premiumRewardsList: [],
+    };
+    const claimed = claimReward(ws, makeData(), 'TestSeason', 'free', FREE.caps, 3);
+    // Granted once, flagged in both records.
+    expect(claimed.save.vault?.storage?.resources?.Nuka).toBe(800);
+    expect(rewardOf(claimed, 'free', FREE.caps).claimedList).toEqual([3]);
+    expect(claimed.spd.seasonsData!.RerunSeason.freeRewardsList![0].claimedList).toEqual([3]);
+
+    const back = unclaimReward(claimed, 'TestSeason', 'free', FREE.caps, 3);
+    expect(rewardOf(back, 'free', FREE.caps).claimedList).toEqual([]);
+    expect(back.spd.seasonsData!.RerunSeason.freeRewardsList![0].claimedList).toEqual([]);
+    expect(back.save.vault?.storage?.resources?.Nuka).toBe(100);
+  });
+
+  it('spent predicates evaluate against the given claim index', () => {
+    const ws = makeWorkspace();
+    const data = makeData();
+    const claimed = claimAll(ws, data, 'TestSeason', 3);
+    const spd = claimed.spd;
+    expect(isSeasonFullyClaimed(spd, 'TestSeason', 3)).toBe(true);
+    // Slot 0 has claimed nothing - the same file is NOT fully claimed for it.
+    expect(isSeasonFullyClaimed(spd, 'TestSeason', 0)).toBe(false);
+    expect(isEntitledClaimed(spd, 'TestSeason', 3)).toBe(true);
+    expect(isEntitledClaimed(spd, 'TestSeason', 0)).toBe(false);
+  });
+
+  it('toggleReward routes to claim/unclaim by the given index', () => {
+    const ws = makeWorkspace();
+    const data = makeData();
+    const on = toggleReward(ws, data, 'TestSeason', 'free', FREE.caps, 3);
+    expect(rewardOf(on, 'free', FREE.caps).claimedList).toEqual([3]);
+    const off = toggleReward(on, data, 'TestSeason', 'free', FREE.caps, 3);
+    expect(rewardOf(off, 'free', FREE.caps).claimedList).toEqual([]);
   });
 });

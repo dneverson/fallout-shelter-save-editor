@@ -13,6 +13,8 @@ import { rewardIcon, rewardTitle, rewardTypeLabel } from './seasonText.ts';
 interface RewardDetailProps {
   reward: SeasonReward | null;
   track: SeasonTrack | null;
+  /** Vault-slot claim index the panel reads claim state for (Vault1 → 0 … Vault4 → 3). */
+  claimIndex: number;
   gameData: GameData | null;
   /** Premium track is locked - premium rewards can't be claimed until it's unlocked. */
   premiumLocked: boolean;
@@ -33,6 +35,7 @@ const QUANTITY_TYPES = new Set(['caps', 'stimpack', 'lunchbox']);
 export function RewardDetail({
   reward,
   track,
+  claimIndex,
   gameData,
   premiumLocked,
   onToggle,
@@ -48,7 +51,7 @@ export function RewardDetail({
     );
   }
 
-  const claimed = isRewardClaimed(reward);
+  const claimed = isRewardClaimed(reward, claimIndex);
   const icon = rewardIcon(reward);
   const claimBlocked = track === 'premium' && premiumLocked && !claimed;
 

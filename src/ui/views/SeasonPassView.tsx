@@ -58,6 +58,8 @@ function rankCapOf(rewards: SeasonReward[]): number {
 export function SeasonPassView() {
   const seasonSave = useSaveStore((s) => s.seasonSave);
   const seasonSource = useSaveStore((s) => s.seasonSource);
+  const seasonClaimIndex = useSaveStore((s) => s.seasonClaimIndex);
+  const setSeasonClaimIndex = useSaveStore((s) => s.setSeasonClaimIndex);
   const applySeasonEdit = useSaveStore((s) => s.applySeasonEdit);
   const startSeasonFromCatalog = useSaveStore((s) => s.startSeasonFromCatalog);
   const loadSeasonFromText = useSaveStore((s) => s.loadSeasonFromText);
@@ -156,7 +158,7 @@ export function SeasonPassView() {
     setInspected({ season: effectiveViewed, track, rewardId });
     if (!needGameData() || !gameData) return;
     applySeasonEdit(
-      (ws) => toggleReward(ws, gameData, effectiveViewed, track, rewardId),
+      (ws) => toggleReward(ws, gameData, effectiveViewed, track, rewardId, seasonClaimIndex),
       `Toggle reward - ${viewedLabel}`,
     );
   };
@@ -164,7 +166,7 @@ export function SeasonPassView() {
   const onClaimUnclaimed = (): void => {
     if (!needGameData() || !gameData) return;
     applySeasonEdit(
-      (ws) => claimUnclaimed(ws, gameData, effectiveViewed),
+      (ws) => claimUnclaimed(ws, gameData, effectiveViewed, seasonClaimIndex),
       `Claim unclaimed - ${viewedLabel}`,
     );
     pushToast(`Claimed unclaimed rewards - ${viewedLabel}`);
@@ -172,14 +174,17 @@ export function SeasonPassView() {
 
   const onClaimAll = (): void => {
     if (!needGameData() || !gameData) return;
-    applySeasonEdit((ws) => claimAll(ws, gameData, effectiveViewed), `Claim all - ${viewedLabel}`);
+    applySeasonEdit(
+      (ws) => claimAll(ws, gameData, effectiveViewed, seasonClaimIndex),
+      `Claim all - ${viewedLabel}`,
+    );
     pushToast(`Claimed all rewards - ${viewedLabel}`);
   };
 
   const onMaxSeason = (): void => {
     if (!needGameData() || !gameData) return;
     applySeasonEdit(
-      (ws) => maxSeason(ws, gameData, effectiveViewed),
+      (ws) => maxSeason(ws, gameData, effectiveViewed, seasonClaimIndex),
       `Max season - ${viewedLabel}`,
     );
     pushToast(`Maxed ${viewedLabel}`);
@@ -187,7 +192,7 @@ export function SeasonPassView() {
 
   const onMaxAllSeasons = (): void => {
     if (!needGameData() || !gameData) return;
-    applySeasonEdit((ws) => maxAllSeasons(ws, gameData), 'Max all seasons');
+    applySeasonEdit((ws) => maxAllSeasons(ws, gameData, seasonClaimIndex), 'Max all seasons');
     pushToast('Maxed all seasons');
   };
 
@@ -294,10 +299,10 @@ export function SeasonPassView() {
             <SeasonQuickActions
               viewedLabel={viewedLabel}
               ready={gameDataReady}
-              claimUnclaimedSpent={isEntitledClaimed(seasonSave, effectiveViewed)}
-              claimAllSpent={isSeasonFullyClaimed(seasonSave, effectiveViewed)}
-              maxSeasonSpent={isSeasonMaxed(seasonSave, effectiveViewed)}
-              maxAllSeasonsSpent={areAllSeasonsMaxed(seasonSave)}
+              claimUnclaimedSpent={isEntitledClaimed(seasonSave, effectiveViewed, seasonClaimIndex)}
+              claimAllSpent={isSeasonFullyClaimed(seasonSave, effectiveViewed, seasonClaimIndex)}
+              maxSeasonSpent={isSeasonMaxed(seasonSave, effectiveViewed, seasonClaimIndex)}
+              maxAllSeasonsSpent={areAllSeasonsMaxed(seasonSave, seasonClaimIndex)}
               onClaimUnclaimed={onClaimUnclaimed}
               onClaimAll={onClaimAll}
               onMaxSeason={onMaxSeason}
@@ -333,11 +338,36 @@ export function SeasonPassView() {
         </div>
 
         <div className="mt-5">
-          <h3 className="mb-2 text-sm font-semibold text-neutral-300">Rewards - {viewedLabel}</h3>
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <h3 className="text-sm font-semibold text-neutral-300">Rewards - {viewedLabel}</h3>
+            {/* Claim state is PER VAULT SLOT (v2.5.0 rerun seasons arrive pre-seeded with
+                the original seasons' Vault1 claims, while a seasonal vault claims as its
+                own slot). Auto-set from the loaded .sav name; overridable here. */}
+            <label
+              className="flex items-center gap-2 text-xs text-neutral-400"
+              title="The game records claims per vault (claimedList holds vault slot numbers). Pick the vault this season pass plays with - auto-set from the loaded .sav file name."
+            >
+              Claims for
+              <select
+                value={seasonClaimIndex}
+                onChange={(e) => setSeasonClaimIndex(Number(e.target.value))}
+                className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs text-neutral-200"
+              >
+                {[...new Set([0, 1, 2, 3, seasonClaimIndex])]
+                  .sort((a, b) => a - b)
+                  .map((slot) => (
+                    <option key={slot} value={slot}>
+                      Vault {slot + 1}
+                    </option>
+                  ))}
+              </select>
+            </label>
+          </div>
           <SeasonBoard
             record={record}
             rankCap={rankCap}
             currentRank={isViewedActive ? (seasonSave.currentLevel ?? null) : null}
+            claimIndex={seasonClaimIndex}
             gameData={gameData}
             inspectedKey={
               inspectedReward && inspected ? cellKey(inspected.track, inspectedReward.id) : null
@@ -356,6 +386,7 @@ export function SeasonPassView() {
           <RewardDetail
             reward={inspectedReward}
             track={inspectedReward ? (inspected?.track ?? null) : null}
+            claimIndex={seasonClaimIndex}
             gameData={gameData}
             premiumLocked={record.isPremium !== true}
             onToggle={() => {
