@@ -37,6 +37,7 @@ import { SeasonClockCard } from '../components/season/SeasonClockCard.tsx';
 import { SeasonBoard } from '../components/season/SeasonBoard.tsx';
 import { RewardDetail } from '../components/season/RewardDetail.tsx';
 import { SeasonExportBar } from '../components/season/SeasonExportBar.tsx';
+import { SeasonPassVideo } from '../components/season/SeasonPassVideo.tsx';
 import { cellKey, seasonLabel } from '../components/season/seasonText.ts';
 
 // Season Pass tab. Orchestrates the season working model + game data
@@ -199,6 +200,8 @@ export function SeasonPassView() {
   return (
     <div className="h-full overflow-auto">
       <div className="mx-auto max-w-6xl p-6">
+        <SeasonPassVideo />
+
         <div className="flex items-baseline gap-3">
           <h2 className="text-lg font-semibold">Season Pass</h2>
           {gameDataStatus === 'loading' && (

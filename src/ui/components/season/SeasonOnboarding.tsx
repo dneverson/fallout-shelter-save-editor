@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SEASON_FILE_NAMES } from '../../../domain/codec/platformTargets.ts';
 import { SourcePicker } from '../SourcePicker.tsx';
 import { WheresMyFile } from './WheresMyFile.tsx';
+import { SeasonPassVideo } from './SeasonPassVideo.tsx';
 
 // Season Pass onboarding: the user picks a SOURCE for the season
 // working model. Upload their real `spd.dat` (+ optional `nvf.dat`) to recover/edit actual
@@ -58,6 +59,7 @@ export function SeasonOnboarding({
 
   return (
     <SourcePicker
+      topContent={<SeasonPassVideo />}
       title="Season Pass"
       description={
         <>

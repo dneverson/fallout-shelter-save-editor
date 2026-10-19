@@ -16,6 +16,8 @@ const SECONDARY_BTN =
   'rounded border border-neutral-700 px-4 py-2 text-sm text-neutral-200 transition-colors hover:bg-neutral-800 disabled:opacity-50';
 
 export interface SourcePickerProps {
+  /** Optional content rendered above the section heading (e.g. video guide). */
+  topContent?: ReactNode;
   /** Section heading. */
   title: string;
   /** Section sub-copy under the heading. */
@@ -56,6 +58,7 @@ export function SourcePicker(props: SourcePickerProps) {
 
   return (
     <div className="mx-auto max-w-3xl p-6">
+      {props.topContent}
       <h2 className="text-lg font-semibold">{props.title}</h2>
       <p className="mt-1 text-sm text-neutral-400">{props.description}</p>
 
