@@ -119,6 +119,14 @@ export interface UIState {
   allowOutOfRange: boolean;
   setAllowOutOfRange: (value: boolean) => void;
 
+  /**
+   * Raw-editor toggle: skip the typed save-schema validation on Apply and show schema
+   * issues as warnings instead of errors. Lets users edit unknown/unsupported fields
+   * without the editor blocking the write.
+   */
+  advancedIgnoreSchemaValidation: boolean;
+  setAdvancedIgnoreSchemaValidation: (value: boolean) => void;
+
   /** Bypass the storage-capacity guardrail on add-to-storage flows (remembered across
    *  every catalog tab and the Storage add dialog). */
   storageBypassCapacity: boolean;
@@ -232,6 +240,10 @@ export const useUIStore = create<UIState>()(
       allowOutOfRange: false,
       setAllowOutOfRange: (allowOutOfRange) => set({ allowOutOfRange }),
 
+      advancedIgnoreSchemaValidation: false,
+      setAdvancedIgnoreSchemaValidation: (advancedIgnoreSchemaValidation) =>
+        set({ advancedIgnoreSchemaValidation }),
+
       storageBypassCapacity: false,
       setStorageBypassCapacity: (storageBypassCapacity) => set({ storageBypassCapacity }),
 
@@ -335,6 +347,7 @@ export const useUIStore = create<UIState>()(
       // section is persisted separately by the router layer - see routing/sections.ts.)
       partialize: (state) => ({
         allowOutOfRange: state.allowOutOfRange,
+        advancedIgnoreSchemaValidation: state.advancedIgnoreSchemaValidation,
         storageBypassCapacity: state.storageBypassCapacity,
         detailPanelWidth: state.detailPanelWidth,
         roomPanelWidth: state.roomPanelWidth,
