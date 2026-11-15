@@ -478,7 +478,7 @@ const completedQuestDataManagerSchema = z.looseObject({
    * ~180-day cooldown - or MISSING, so the editor must write one with every event completion
    * (see PERMANENT_EVENT_STAMP_TICKS in quests/questCompletion.ts).
    */
-  eventQuestCompletedTimes: z.record(z.string(), z.number()).optional(),
+  eventQuestCompletedTimes: z.record(z.string(), int64Schema).optional(),
 });
 
 // objectiveMgr - the 3 rotating daily objectives. One requirement's per-save progress fields
