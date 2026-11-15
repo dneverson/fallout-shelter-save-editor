@@ -66,6 +66,8 @@ export function AdvancedView() {
   const unlocked = useUIStore((s) => s.advancedUnlocked);
   const setUnlocked = useUIStore((s) => s.setAdvancedUnlocked);
   const setAdvancedDraft = useUIStore((s) => s.setAdvancedDraft);
+  const ignoreSchemaValidation = useUIStore((s) => s.advancedIgnoreSchemaValidation);
+  const setIgnoreSchemaValidation = useUIStore((s) => s.setAdvancedIgnoreSchemaValidation);
   // In-progress editor buffer + place recovered from a prior tab visit. Snapshotted ONCE at
   // mount (non-reactive) - this view owns the draft while mounted and writes it back on
   // unmount. useState (not a ref) so the value is read render-safely.
@@ -253,8 +255,12 @@ export function AdvancedView() {
         .slice(0, 8)
         .map((i) => `• ${i.path.join('.') || '(root)'}: ${i.message}`)
         .join('\n');
-      setError(`Validation failed:\n${issues}`);
-      return;
+      if (ignoreSchemaValidation) {
+        setError(`Validation warnings (ignored):\n${issues}`);
+      } else {
+        setError(`Validation failed:\n${issues}`);
+        return;
+      }
     }
     setError(null);
     // Apply the literal parsed object so unknown/untouched managers round-trip exactly.
@@ -299,28 +305,30 @@ export function AdvancedView() {
 
   // Map the save schema's zod issues onto their text spans for inline lint markers.
   const schemaLint = useCallback((src: string): Diagnostic[] => {
-    let parsed: unknown;
-    try {
-      parsed = parseLossless(src);
-    } catch {
-      return []; // pure parse errors are handled by the JSON parse linter
-    }
-    const result = saveSchema.safeParse(parsed);
-    if (result.success) return [];
-    const resolver = createPathResolver(src);
-    return result.error.issues.slice(0, 50).map((issue) => {
-      const path = issue.path.filter(
-        (p): p is string | number => typeof p === 'string' || typeof p === 'number',
-      );
-      const span = resolver.resolve(path) ?? { from: 0, to: Math.min(1, src.length) };
-      return {
-        from: span.from,
-        to: span.to,
-        severity: 'error' as const,
-        message: `${path.join('.') || '(root)'}: ${issue.message}`,
-      };
-    });
-  }, []);
+      let parsed: unknown;
+      try {
+        parsed = parseLossless(src);
+      } catch {
+        return []; // pure parse errors are handled by the JSON parse linter
+      }
+      const result = saveSchema.safeParse(parsed);
+      if (result.success) return [];
+      const resolver = createPathResolver(src);
+      return result.error.issues.slice(0, 50).map((issue) => {
+        const path = issue.path.filter(
+          (p): p is string | number => typeof p === 'string' || typeof p === 'number',
+        );
+        const span = resolver.resolve(path) ?? { from: 0, to: Math.min(1, src.length) };
+        return {
+          from: span.from,
+          to: span.to,
+          severity: ignoreSchemaValidation ? ('warning' as const) : ('error' as const),
+          message: `${path.join('.') || '(root)'}: ${issue.message}`,
+        };
+      });
+    },
+    [ignoreSchemaValidation],
+  );
 
   // Resizable divider between the explorer and the editor. Pointer events (with capture)
   // so the drag works with mouse, pen, AND touch.
@@ -456,6 +464,14 @@ export function AdvancedView() {
             </button>
             <button type="button" onClick={onRevert} className={TOOLBAR_BTN}>
               Revert
+            </button>
+            <button
+              type="button"
+              onClick={() => setIgnoreSchemaValidation(!ignoreSchemaValidation)}
+              className={`${TOOLBAR_BTN} ${ignoreSchemaValidation ? 'border-amber-500 text-amber-300' : ''}`}
+              title="Show schema issues as warnings and allow Apply even when the typed model reports unknown/unsupported fields"
+            >
+              {ignoreSchemaValidation ? 'Schema checks: ignored' : 'Schema checks: on'}
             </button>
             <span className="text-xs text-neutral-400">
               Validated against the typed-permissive model; unknown managers round-trip unchanged.
